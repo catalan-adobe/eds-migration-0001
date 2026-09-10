@@ -27,11 +27,15 @@ Cursor). Nothing may work only on pi.
 
 | Sibling | Role in this pipeline |
 | --- | --- |
-| `page-import` (+ `scrape-webpage`, `identify-page-structure`, `authoring-analysis`, `generate-import-html`, `preview-import`) | Long-tail importer: every URL no transformer matches is delegated to it. |
 | `page-tree` | The divide step of the analysis (bounded visual tree). |
 | `block-inventory` | Survey of blocks already in the target repo, at template-stage start. |
 | `da-auth` / `da-content` | Token acquisition and DA conventions; bulk upload stays in our runner. |
 | `content-driven-development`, `building-blocks`, `content-modeling` | Downstream consumers of `blocks.json` and the stubs. |
+
+**Deliberately not used:** `page-import` and its sub-skills (`scrape-webpage`,
+`identify-page-structure`, `authoring-analysis`, `generate-import-html`, `preview-import`). They
+are the page-at-a-time, LLM-per-page approach; mixing them in would blur the distinction this
+skill exists to make. URLs no transformer matches are *reported*, not imported (§ 5).
 
 ## 2. Decisions
 
@@ -40,7 +44,7 @@ Cursor). Nothing may work only on pi.
 | 1 | One skill, `upskill`-installable, runners vendored under `scripts/` | What the tool supports; how siblings work. Revisit (publish runners to npm) only if tessl review or PR size objects. |
 | 2 | Control flow lives in declarative stage specs (`stages/*.yaml`); gates live in runners; state lives in files | LLMs drift when the plan is prose. Specs are compiled once by the executor into its harness's workflow primitive; gates cannot be skipped by a mis-compiled workflow because they are not in the workflow. |
 | 3 | pi dynamic-workflow scripts shipped as the *reference executor*; other harnesses translate the spec | Proves the specs are sufficient; keeps the package harness-neutral. |
-| 4 | Stages: `discover`, `template`, `bulk`. Foundation (brand, header/footer) is a checked prerequisite | Foundation is the most knack-entangled stage and duplicates sibling skills. |
+| 4 | Stages: `discover`, `template`, `bulk`. Foundation (brand, header/footer, homepage) is out of scope and **not required** | The pipeline needs only an EDS repo, a DA space and a token to transform, upload and preview content; brand and header/footer are downstream or parallel work. The knack machine ran foundation first because it chased Lighthouse and visual parity, which this pipeline does not. |
 | 5 | New blocks get a structural stub (`status: scaffold`), no brand tokens | Pages render cleanly for content review; design stays downstream. |
 | 6 | Model tiers are a per-unit hint `tier: low/medium/high`; cost budgets are ledger-recorded, not enforced | Every harness can honour a tier; budgets are the executor's business. |
 | 7 | Learning loop = `LEARNINGS.md` in the project, promoted to the skill by humans via PR | Automatic prompt self-modification is unproven and makes runs non-reproducible. |
@@ -109,7 +113,7 @@ indexes of any depth and size (hundreds of child sitemaps), and scope by `site.c
 
 - `init.mjs` — creates `migration/` and `site.config.json`, appends `.hlxignore`, runs `npm ci`
   in `scripts/`. Refuses when preconditions fail: not an EDS repo (`scripts/aem.js`,
-  `head.html`), no `styles/styles.css`, no DA token (points at `da-auth`).
+  `head.html`), no DA org/site reachable, no DA token (points at `da-auth`).
 - `scaffold-block.mjs --template <t> | <name>` — `blocks.json.model` → `blocks/<name>/<name>.js`
   (structural classes only) and `.css` (legible grid/table layout, no brand tokens), header
   comment `STUB — structural only, see migration/data/blocks.json`. Never overwrites a non-stub.
@@ -174,8 +178,10 @@ exit: 3 representatives transform with 0 warnings and `fidelity.mjs` passes) →
 several `template` stages concurrently, one worktree each.
 
 **`bulk <t>`:** `dry-run` (run; coverage gate) → `run` (run; upload + preview, checkpointed,
-time-boxed rounds) → `sample-fidelity` (run; 5 sampled pages) → `long-tail` (LLM, medium,
-`parallel: true`, one URL per agent: invoke `page-import`) → `retro` (low).
+time-boxed rounds) → `sample-fidelity` (run; 5 sampled pages) → `long-tail` (run: writes
+`reports/bulk-<t>-longtail.md` — every unmatched URL with its fingerprint; when ≥
+`thresholds.newTemplateMin` of them share a fingerprint, `discover` proposes a new template from
+them) → `retro` (low). Unmatched pages are never LLM-imported one by one in this pipeline.
 
 Tier mapping is the executor's; `workflows/pi/model-tiers.json` is the reference.
 
@@ -270,5 +276,5 @@ not fixtures. This worktree's Python clustering tooling is not ported (`cluster.
 
 ## 11. Later (explicitly out of iteration 1)
 
-Foundation stage; runners published to npm; automatic learning loop; Claude Code executor beyond
-prose; block-collection auto-sync; tessl eval `tile.json`.
+Per-page LLM import of long-tail URLs; runners published to npm; automatic learning loop;
+Claude Code executor beyond prose; block-collection auto-sync; tessl eval `tile.json`.
