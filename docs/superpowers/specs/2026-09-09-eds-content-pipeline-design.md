@@ -89,14 +89,18 @@ migration/
 
 **Ported unchanged in behaviour** (with tests): `inventory`, `state`,
 `ledger`, `progress`, `transform`, `validate`, `bulk`, `da`, `http`, `browser`, `pool`,
-`capture`, `media`, `importer`, `paths`, `config`, `args`, `shapes`, `sitemap`, `retro`,
-`watch-run`, `taxonomy`, `index` (kept because listing templates need a query index; it is the one
+`media`, `importer`, `paths`, `config`, `args`, `shapes`, `sitemap`, `retro`,
+`watch-run`, `index` (kept because listing templates need a query index; it is the one
 operator-gated site-config write).
 
 **Dropped:** `brand-extract`, `brand-apply`, `design-md`, `lighthouse`, `scorecard`, `frames`,
 `block-plan`, `plan-state`, `checks` (block-code quality gate: CSS scoping, imports, `decorate()`,
 undefined CSS variables, rendered console errors — judges authored blocks, i.e. downstream work),
-dashboard.
+dashboard. Also dropped during Plan A: `capture` (render-layer module for the scorecard with no
+importers; `bulk` keeps each fetched source page under `data/captures/<template>/<slug>.html`
+instead, where `<slug>` is the whole pathname slugged — Rulings 3, 8, 14) and `taxonomy` (the old
+site's archive crawler: hardcoded theme selectors and URL families; re-port behind
+`config.taxonomy` when a target site needs it — Ruling 10).
 
 **Re-sourcing `cluster.mjs` / `fingerprint.mjs` on the visual tree.** The knack machine fingerprinted
 pages with the `page-reduce` skill's tokenised skeleton (`fingerprintFromReduce`). That dependency
@@ -147,7 +151,7 @@ newly applied item (rework). Nothing in the pipeline blocks on an unanswered ite
 
 | Gate | Where | Rule |
 | --- | --- | --- |
-| Coverage | `bulk.mjs` | `--run` refused when dry-run coverage < `thresholds.coverage` (default 0.95) |
+| Coverage | `bulk.mjs` | `--run` refused when `data/bulk/<t>-dryrun.json` is missing or its coverage < `thresholds.coverage` (default 0.95); `--accept-coverage` overrides and is recorded in the `units` ledger rows (Ruling 16) |
 | Content validity | `validate.mjs` via `bulk.mjs` | invalid document is not uploaded |
 | Fidelity | `fidelity.mjs` at template review and bulk sampling | below `thresholds.fidelity` → template not `ready` / rework record |
 | DA write | `bulk.mjs --dry-run` vs `--run` | explicit; preview only |
@@ -267,6 +271,19 @@ gates and per-unit isolation.
 
 `templates/<t>/analysis.md` fixed headings: Representatives · Decomposition · Blocks · Default
 content decisions · Not migrated · Open operator decisions.
+
+**Transformer contract** (`references/transformer-contract.md`): a transformer is a plain ES
+module in `migration/transformers/<t>.mjs` exporting `version`, `needsBrowser`, `match(url,
+document)`, `generateDocumentPath({ url })` and `transformDOM({ document, url, html, params,
+importer })`. It imports nothing from the skill: the harness passes `importer` (the skill's
+`importer.mjs` namespace — `Blocks`, `DOMUtils`, `FileUtils`, `pickImageSrc`, `sectionMetadata`,
+`splitSections`) because Node's `imports` map cannot resolve `#lib/*` from the EDS repo (Ruling
+13). `transformHtml` also takes `hosts` (`originAliasHosts(config)`) from its caller instead of
+reading `site.config.json` itself.
+
+**Feedback settlement** (`bulk --run`): `template:<t>` and `page:<p>` items get `appliedRun` when
+every URL they forced in the run finished (vacuously when none was left to run); `global` items
+are settled by the operator with `state.mjs feedback set` (Ruling 15).
 
 Stubs in `blocks/<name>/` carry the `STUB` marker and the `blocks.json` name; downstream replaces
 them and flips `status`. DA documents are plain EDS document HTML whose block tables follow
