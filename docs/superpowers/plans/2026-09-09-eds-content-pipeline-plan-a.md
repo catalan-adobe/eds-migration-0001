@@ -757,6 +757,7 @@ test('treeFromPoll returns the tree or throws the captured error', () => {
     await writeJsonAtomic(treeFile, tree);
     const fp = fingerprintFromTree(tree);
     ```
+
   - Update the import line to `fingerprintFromTree`.
   - Replace knack wording in comments.
 
