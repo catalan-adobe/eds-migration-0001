@@ -47,7 +47,8 @@ skill exists to make. URLs no transformer matches are *reported*, not imported (
 | 4 | Stages: `discover`, `template`, `bulk`. Foundation (brand, header/footer, homepage) is out of scope and **not required** | The pipeline needs only an EDS repo, a DA space and a token to transform, upload and preview content; brand and header/footer are downstream or parallel work. The knack machine ran foundation first because it chased Lighthouse and visual parity, which this pipeline does not. |
 | 5 | New blocks get a structural stub (`status: scaffold`), no brand tokens | Pages render cleanly for content review; design stays downstream. |
 | 6 | Model tiers are a per-unit hint `tier: low/medium/high`; cost budgets are ledger-recorded, not enforced | Every harness can honour a tier; budgets are the executor's business. |
-| 7 | Learning loop = `LEARNINGS.md` in the project, promoted to the skill by humans via PR | Automatic prompt self-modification is unproven and makes runs non-reproducible. |
+| 7 | Learning loop = `LEARNINGS.md` in the project, promoted to the skill by humans via PR | Automatic prompt self-modification is unproven and makes runs non-reproducible. The rules registry with earned scopes from the analysis session is deferred until the hirslanden run shows what a registry must hold. |
+| 9 | Human-in-the-loop is non-blocking: reports surface decisions, `migration/feedback.json` carries structured overrides read at every stage start and unit boundary | Runs never wait on a human; corrections are applied through rework units, not by stopping the machine. |
 | 8 | Project state at `migration/` in the EDS repo root, `.hlxignore`d; the skill directory is stateless and disposable | `tools/` is served by the code bus; upgrading the skill must never touch project state. |
 
 ## 3. Layout
@@ -133,6 +134,14 @@ indexes of any depth and size (hundreds of child sitemaps), and scope by `site.c
   content preserved), precision (output traceable to source; catches invention), editorial
   checklist, block-shape conformance to `blocks.json.model`. Space-joined text at element
   boundaries. Prints one JSON object with `pass`.
+
+**Feedback channel (`migration/feedback.json`, read by `state.mjs feedback` and every stage
+start):** one record per item — `{ id, scope, decision, note, status }` with
+`scope: global | template:<t> | block:<b> | page:<path>` and
+`status: received | acknowledged | applied | verified`. Operators write items (or the reviewer
+prompt records their answers to its "open operator decisions"); the analyst and transformer-author
+prompts receive the items in scope as input; `bulk.mjs` re-transforms pages whose scope matches a
+newly applied item (rework). Nothing in the pipeline blocks on an unanswered item.
 
 **Gates (all in runners):**
 
