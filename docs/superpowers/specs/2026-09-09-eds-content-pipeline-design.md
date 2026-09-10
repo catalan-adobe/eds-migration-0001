@@ -98,7 +98,7 @@ operator-gated site-config write).
 undefined CSS variables, rendered console errors — judges authored blocks, i.e. downstream work),
 dashboard. Also dropped during Plan A: `capture` (render-layer module for the scorecard with no
 importers; `bulk` keeps each fetched source page under `data/captures/<template>/<slug>.html`
-instead, where `<slug>` is the whole pathname slugged — Rulings 3, 8, 14) and `taxonomy` (the old
+instead, refreshed when the page changed, where `<slug>` is the whole pathname slugged — Rulings 3, 8, 14; controller review) and `taxonomy` (the old
 site's archive crawler: hardcoded theme selectors and URL families; re-port behind
 `config.taxonomy` when a target site needs it — Ruling 10).
 
@@ -278,7 +278,11 @@ document)`, `generateDocumentPath({ url })` and `transformDOM({ document, url, h
 importer })`. It imports nothing from the skill: the harness passes `importer` (the skill's
 `importer.mjs` namespace — `Blocks`, `DOMUtils`, `FileUtils`, `pickImageSrc`, `sectionMetadata`,
 `splitSections`) because Node's `imports` map cannot resolve `#lib/*` from the EDS repo (Ruling
-13). `transformHtml` also takes `hosts` (`originAliasHosts(config)`) from its caller instead of
+13). `needsBrowser` is recorded but no runner acts on it in iteration 1. Templates are clustered
+on the fine fingerprint (two levels, layout and class tokens); the coarse fingerprint groups the
+long tail (Ruling 17). `overlaySelectors` is not a config key: the page-tree bundle already tags
+overlays and the fingerprint skips them. `fidelity.mjs --ignore <selector>` excludes elements the
+template's analysis declares "Not migrated" before computing recall. `transformHtml` also takes `hosts` (`originAliasHosts(config)`) from its caller instead of
 reading `site.config.json` itself.
 
 **Feedback settlement** (`bulk --run`): `template:<t>` and `page:<p>` items get `appliedRun` when
