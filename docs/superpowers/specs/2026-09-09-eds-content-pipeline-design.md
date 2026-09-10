@@ -27,7 +27,7 @@ Cursor). Nothing may work only on pi.
 
 | Sibling | Role in this pipeline |
 | --- | --- |
-| `page-tree` | The divide step of the analysis (bounded visual tree). |
+| `page-tree` (in `plugins/web/skills/page-tree`) | **The one page-shape source of the pipeline**: `cluster.mjs` fingerprints pages from its visual tree (discover), and the analyst's divide step reads the same tree (template). Not part of the EDS plugin, so `init` checks for it and prints the install line (`upskill adobe/skills --path plugins/web/skills --skill page-tree`). |
 | `block-inventory` | Survey of blocks already in the target repo, at template-stage start. |
 | `da-auth` / `da-content` | Token acquisition and DA conventions; bulk upload stays in our runner. |
 | `content-driven-development`, `building-blocks`, `content-modeling` | Downstream consumers of `blocks.json` and the stubs. |
@@ -86,7 +86,7 @@ migration/
 
 ## 4. Runners (`scripts/lib/`)
 
-**Ported unchanged in behaviour** (with tests): `inventory`, `cluster`, `fingerprint`, `state`,
+**Ported unchanged in behaviour** (with tests): `inventory`, `state`,
 `ledger`, `progress`, `transform`, `validate`, `bulk`, `da`, `http`, `browser`, `pool`,
 `capture`, `media`, `importer`, `paths`, `config`, `args`, `shapes`, `sitemap`, `retro`,
 `watch-run`, `taxonomy`, `index` (kept because listing templates need a query index; it is the one
@@ -96,6 +96,14 @@ operator-gated site-config write).
 `block-plan`, `plan-state`, `checks` (block-code quality gate: CSS scoping, imports, `decorate()`,
 undefined CSS variables, rendered console errors — judges authored blocks, i.e. downstream work),
 dashboard.
+
+**Re-sourcing `cluster.mjs` / `fingerprint.mjs` on the visual tree.** The knack machine fingerprinted
+pages with the `page-reduce` skill's tokenised skeleton (`fingerprintFromReduce`). That dependency
+is dropped: `fingerprintFromTree(tree)` derives the fingerprint from the `page-tree` visual tree
+(the sequence of top-level boxes and each box's child-shape signature — the method this session
+used to cluster the same site into 259 clusters). `similarity`, `clusterRecords`,
+`pickRepresentatives` and the resumable per-URL loop of `cluster.mjs` are kept; only the
+fingerprint source changes. `site.config.json.bundles` keeps a single entry, `pageTree`.
 
 **Generalising `inventory.mjs`** (hirslanden.ch exposes what knack never did): recurse sitemap
 indexes of any depth and size (hundreds of child sitemaps), and scope by `site.config.json`
@@ -113,7 +121,8 @@ indexes of any depth and size (hundreds of child sitemaps), and scope by `site.c
 
 - `init.mjs` — creates `migration/` and `site.config.json`, appends `.hlxignore`, runs `npm ci`
   in `scripts/`. Refuses when preconditions fail: not an EDS repo (`scripts/aem.js`,
-  `head.html`), no DA org/site reachable, no DA token (points at `da-auth`).
+  `head.html`), `page-tree` skill not installed (prints the `upskill` line), `playwright-cli` not
+  on PATH, no DA org/site reachable, no DA token (points at `da-auth`).
 - `scaffold-block.mjs --template <t> | <name>` — `blocks.json.model` → `blocks/<name>/<name>.js`
   (structural classes only) and `.css` (legible grid/table layout, no brand tokens), header
   comment `STUB — structural only, see migration/data/blocks.json`. Never overwrites a non-stub.
