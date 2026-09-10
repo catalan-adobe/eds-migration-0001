@@ -89,7 +89,14 @@ migration/
 operator-gated site-config write).
 
 **Dropped:** `brand-extract`, `brand-apply`, `design-md`, `lighthouse`, `scorecard`, `frames`,
-`block-plan`, `plan-state`, `checks` (confirm render-only during port), dashboard.
+`block-plan`, `plan-state`, `checks` (block-code quality gate: CSS scoping, imports, `decorate()`,
+undefined CSS variables, rendered console errors — judges authored blocks, i.e. downstream work),
+dashboard.
+
+**Generalising `inventory.mjs`** (hirslanden.ch exposes what knack never did): recurse sitemap
+indexes of any depth and size (hundreds of child sitemaps), and scope by `site.config.json`
+`include[]` / `exclude[]` path regexes so a run can target one language and one section
+(e.g. `include: ["^/de/corporate/"]`) while the inventory still records the whole site.
 
 **De-knacking:**
 
@@ -245,9 +252,13 @@ them and flips `status`. DA documents are plain EDS document HTML whose block ta
 
 1. `npm run validate` passes; tessl review ≥ 50 %; `grep -ri knack` over the skill → nothing.
 2. Fixture e2e green: `init → discover → template → bulk --dry-run`, no network, no DA.
-3. A real second site end-to-end through the pi workflows (candidate koffievoordeel.nl, 2–3
-   templates): `discover → template ×N → bulk --run` to DA preview; fidelity passes on samples;
-   stub-rendered preview reviewable via `aem up`.
+3. A real second site end-to-end through the pi workflows: **<https://www.hirslanden.ch/>** —
+   classic AEM, ~377 child sitemaps, tens of thousands of URLs across ~25 clinic sub-sites and
+   four languages. Scoped for iteration 1: `discover` over the **whole** sitemap index (the
+   inventory test), then `template × 3 → bulk --run` on `/de/corporate/` only — `treatments`
+   (~98 URLs), `diseasepatterns` (~194) and `doctors` (~3,000 near-identical, data-driven pages)
+   — to DA preview; fidelity passes on samples; stub-rendered preview reviewable via `aem up`.
+   The rest of the site is a later milestone, not iteration 1.
 4. That project's `LEARNINGS.md` has ≥ 1 entry per stage.
 
 ## 10. Migration from `test-f51`
