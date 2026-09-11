@@ -159,3 +159,55 @@ test('a representative that fails to fetch is reported and the others are captur
   it following the first; all other code is given or names an existing function.
 - Types: `writeCapture(paths, template, url, html)` used in Tasks 1 (bulk, capture.mjs);
   `resume: { while, max_rounds }` used in Task 2 across YAML, stage.mjs, interpreter, tests.
+
+---
+
+### Task 3: `prep` unit — overlay recipe from the `page-prep` skill, applied everywhere
+
+**Files:**
+
+- Create: `$SKILL/prompts/page-prep.md`, `$SKILL/scripts/fixtures/example-site/migration/page-prep.json`
+- Modify: `$SKILL/stages/discover.yaml` (unit `prep` between `inventory` and `cluster`),
+  `$SKILL/scripts/lib/state.mjs` (`loadPrepRecipe`), `$SKILL/scripts/lib/stage.mjs` (`check-prep`),
+  `$SKILL/scripts/lib/transform.mjs` (`strip` option), `$SKILL/scripts/lib/bulk.mjs`,
+  `$SKILL/scripts/lib/fidelity.mjs`, `$SKILL/scripts/lib/cluster.mjs` (prep init script),
+  `$SKILL/scripts/lib/init.mjs` (`page-prep` precondition), the fixture pages (a cookie banner),
+  `$SKILL/SKILL.md`, tests alongside each module, the e2e.
+
+**Interfaces:**
+
+- `migration/page-prep.json` (the site's overlay recipe, written by the `prep` unit):
+  `{ "checked": [url…], "overlays": [{ "id", "selector", "hide": { "css": [..] }?,
+  "dismiss": { "steps": [..] }? }], "scroll_fix"?: string }`. `checked` (≥ 1 URL) proves the
+  unit looked; `overlays` may be empty. `selector` is required per overlay.
+- `loadPrepRecipe(paths) → { selectors: string[], css: string[], scrollFix: string|null }`
+  (`{ selectors: [], css: [], scrollFix: null }` when the file is absent).
+- `stage.mjs check-prep` → `{ checked, overlays, pass }`; exit 1 when the file is missing,
+  unparsable, `checked` empty, or an overlay lacks `selector`.
+- `transformHtml({ …, strip })`: removes every element matching `strip` from the source
+  document before `match`/`transformDOM`/metadata. `bulk`, `check-transformer`, the
+  `transform` CLI and `sample-fidelity` pass `loadPrepRecipe(paths).selectors`.
+- `fidelity`: `contentSet(source, root, [...ignore, ...recipe.selectors])` in
+  `check-transformer`, `sample-fidelity` and the CLI (which reads the recipe from the project
+  when present).
+- `cluster`: a second init script from the recipe — on `load`, inject the hide CSS, remove the
+  selectors, apply `scroll_fix` — before the visual-tree capture.
+- `init`: precondition `page-prep` (skill dir present) with the upskill hint; `discover.yaml`:
+  `prep` (role `prompts/page-prep.md`, tier medium, `depends_on: [inventory]`, `done_when:
+  node scripts/lib/stage.mjs check-prep`); `cluster.depends_on: [prep]`.
+- Fixture: every page gets `<div id="cookie-banner" class="cookie-banner">We use cookies.
+  <button>Accept</button></div>` as the first body child; `migration/page-prep.json` names it.
+
+- [ ] Tests first (each RED then GREEN): `check-prep` missing/empty-checked/no-selector/ok;
+  `loadPrepRecipe` absent → empty; `transformHtml` with `strip` drops the banner and its text
+  never reaches the output; `contentSet` ignore includes recipe selectors so recall stays 1 on
+  the fixture; `cluster` init scripts include the prep snippet and the fixture tree has no
+  `cookie` box (e2e: read one visual tree, assert no node className contains `cookie`);
+  `validateStages` accepts the new unit; `prompts.test.mjs` covers the new prompt.
+- [ ] Implement; e2e passes with the banner present on every fixture page and recall/precision
+  still 1 for both templates.
+- [ ] By hand (controller): fixture repo → `stage.mjs run discover --skip-llm` stops at `prep`
+  (LLM); write the fixture's `page-prep.json` into the repo; re-run → `cluster` done; open a
+  stored visual tree: no cookie box; `template product --skip-llm` → `check-transformer` passes
+  with the banner in the captures.
+- [ ] Commit — `git commit -m "discover: page-prep recipe unit; overlays stripped in cluster, transform and fidelity"`
