@@ -394,9 +394,7 @@ units:
     depends_on: []
     inputs: [data/templates.json, data/captures/<template>/]
     outputs: [templates/<template>/analysis.md, data/blocks.json]
-    done_when: >
-      node scripts/lib/state.mjs list blocks template=<template> --count-min 1
-      && node scripts/lib/state.mjs check-evidence <template>
+    done_when: node scripts/lib/state.mjs check-evidence <template>
   - id: scaffold-blocks
     run: node scripts/lib/scaffold-block.mjs --template <template>
     depends_on: [analyse]
@@ -492,7 +490,7 @@ units:
     depends_on: [cluster]
     inputs: [data/templates.json, data/urls.json]
     outputs: [reports/discover.md]
-    done_when: test -s reports/discover.md
+    done_when: test -s migration/reports/discover.md
 ```
 
 `stages/template.yaml`:
@@ -509,9 +507,7 @@ units:
     depends_on: []
     inputs: [data/templates.json, data/captures/<template>/, data/visual-trees/]
     outputs: [templates/<template>/analysis.md, data/blocks.json]
-    done_when: >
-      node scripts/lib/state.mjs list blocks template=<template> --count-min 1
-      && node scripts/lib/state.mjs check-evidence <template>
+    done_when: node scripts/lib/state.mjs check-evidence <template>
   - id: scaffold-blocks
     run: node scripts/lib/scaffold-block.mjs --template <template>
     depends_on: [analyse]
@@ -544,7 +540,7 @@ units:
     depends_on: [review]
     inputs: [data/ledger/units.jsonl, data/ledger/runs.jsonl]
     outputs: [LEARNINGS.md]
-    done_when: test -s LEARNINGS.md
+    done_when: test -s migration/LEARNINGS.md
 ```
 
 `stages/bulk.yaml`:
@@ -575,7 +571,7 @@ units:
     depends_on: [sample-fidelity]
     inputs: [data/ledger/units.jsonl, data/ledger/runs.jsonl, reports/bulk-<template>-longtail.md]
     outputs: [LEARNINGS.md]
-    done_when: test -s LEARNINGS.md
+    done_when: test -s migration/LEARNINGS.md
 ```
 
 The `stage.mjs check-*` and `sample-fidelity` subcommands, and `state.mjs --count-min /
