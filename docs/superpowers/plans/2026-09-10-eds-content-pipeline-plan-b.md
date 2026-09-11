@@ -734,6 +734,9 @@ CLI is `path.resolve(import.meta.dirname, '../..')`.
 - Produces:
   - `state.mjs list <name> [k=v] --count-min N` exits 1 (stderr `expected ≥ N, got M`) when
     the count is below N; `--count-max N` likewise above N; both print `{ count }`.
+  - `state.mjs rename-template <old> <new>`: renames the `templates.json` record and sets
+    `template: <new>` on every URL that had `<old>`; prints `{ from, to, urls }`; exit 1 when
+    `<old>` does not exist or `<new>` already does. (The discover-report prompt uses it.)
   - `scaffold-block.mjs --template <t> --check` → `{ template, blocks, missing: [] }`, exit 1
     when any stub file is missing.
   - `stage.mjs check-transformer <t>`: loads `migration/transformers/<t>.mjs`, transforms every
