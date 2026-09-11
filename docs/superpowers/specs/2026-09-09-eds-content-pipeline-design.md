@@ -184,6 +184,11 @@ units:
 ```
 
 Rules: `done_when` is always a runner command with a boolean result — never a judgment.
+A `run:` unit may declare `resume: { while: <stop reason>, max_rounds: N }`: executors re-run
+the command while its stdout JSON reports `stopped: <stop reason>` (bulk is resumable and
+time-boxed), at most N more times, before consulting `done_when`; the `template` stage opens
+with a `capture` unit that fetches the representatives' HTML so `analyse` has markup to work
+on before any transformer exists.
 `parallel: true` means units of that id are independent and each runs in its own worktree.
 `gate` names the runner gate that decides the transition. Rework: `review: needs-work` and
 `sample-fidelity: fail` append a `rework` ledger record; `author-transformer` re-runs while one
