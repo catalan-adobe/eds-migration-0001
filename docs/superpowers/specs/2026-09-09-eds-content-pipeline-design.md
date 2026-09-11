@@ -58,11 +58,10 @@ skill exists to make. URLs no transformer matches are *reported*, not imported (
 ```text
 SKILL.md  package.json  .releaserc.json  CHANGELOG.md
 stages/        discover.yaml  template.yaml  bulk.yaml
-prompts/       analyst.md  transformer-author.md  reviewer.md  retro-writer.md
-workflows/pi/  discover.mjs  template.mjs  bulk.mjs  templates.mjs  watch-run.mjs
-               lib/run-stage.mjs  model-tiers.json
-scripts/       package.json  lib/*.mjs (+ *.test.mjs)  init.mjs  scaffold-block.mjs  fidelity.mjs
-               fixtures/example-site/
+prompts/       discover-report.md  analyst.md  transformer-author.md  reviewer.md  retro-writer.md
+workflows/pi/  stage.mjs  templates.mjs  model-tiers.json  README.md  tools/{retro,watch-run}.mjs
+scripts/       package.json  lib/*.mjs (+ *.test.mjs) incl. stage.mjs (plan | validate | check-* |
+               sample-fidelity | run [--skip-llm] | record-run)  fixtures/example-site/ (two templates)
 references/    method.md  transformer-contract.md  content-model.md
 ```
 
@@ -194,16 +193,20 @@ exists, at most 2 rounds, then the stage stops with open items in the report.
 clusters, proposes representatives and template order, flags page-builder mix) →
 `reports/discover.md`; `templates.json` entries `status: proposed`.
 
-**`template <t>`:** `analyse` (high) → `scaffold-blocks` (run) → `author-transformer` (high;
-exit: 3 representatives transform with 0 warnings and `fidelity.mjs` passes) → `review` (medium;
-`verdict: ready | needs-work`) → `retro` (low). Templates are independent: executors may run
+**`template <t>`:** `analyse` (high; exit `state.mjs check-evidence <t>`) → `scaffold-blocks`
+(run) → `author-transformer` (medium; exit `stage.mjs check-transformer <t>`: every
+representative transforms with 0 warnings and passes `thresholds.fidelity`) → `review` (high;
+`verdict: ready | needs-work`, gated by `stage.mjs check-review <t>`, which records a `rework`
+ledger row on `needs-work`) → `retro` (low). Templates are independent: executors may run
 several `template` stages concurrently, one worktree each.
 
-**`bulk <t>`:** `dry-run` (run; coverage gate) → `run` (run; upload + preview, checkpointed,
-time-boxed rounds) → `sample-fidelity` (run; 5 sampled pages) → `long-tail` (run: writes
-`reports/bulk-<t>-longtail.md` — every unmatched URL with its fingerprint; when ≥
-`thresholds.newTemplateMin` of them share a fingerprint, `discover` proposes a new template from
-them) → `retro` (low). Unmatched pages are never LLM-imported one by one in this pipeline.
+**`bulk <t>`:** `dry-run` (run; exit `check-coverage`) → `run` (run; upload + preview,
+checkpointed; exit: ≥ 1 previewed URL and no long tail) → `sample-fidelity` (run; 5 sampled
+pages, compared against their captures; exit `check-fidelity`) → `retro` (low). The long-tail
+report `reports/bulk-<t>-longtail.md` is written by `bulk.mjs` itself in both modes — every
+unmatched URL with its fingerprint; when ≥ `thresholds.newTemplateMin` of them share a
+fingerprint, `discover` proposes a new template from them. Without a DA token the `run` and
+`sample-fidelity` units report `skipped-no-da` in the no-LLM runner. Unmatched pages are never LLM-imported one by one in this pipeline.
 
 Tier mapping is the executor's; `workflows/pi/model-tiers.json` is the reference.
 
@@ -212,6 +215,8 @@ Tier mapping is the executor's; `workflows/pi/model-tiers.json` is the reference
 Each prompt ≤ 150 lines, bounded inputs, runner-checkable exit, the plugin's external-content
 safety clause.
 
+- **`discover-report.md`** — names clusters from sitemap type + class tokens (renames through
+  `state.mjs rename-template`), proposes the order, flags page builders and fingerprint failures.
 - **`analyst.md`** — divide (from `page-tree` output: top-level boxes → sections/layouts; never
   from raw DOM) → conquer (per box, descend the raw DOM until recognised: default content, known
   block model, or novel; record stable selectors and evidence for every leaf) → model (authoring
@@ -232,15 +237,26 @@ discriminator; reaching a block is recognition, not depth; bounded divide, unbou
 
 ## 7. Executors
 
-**pi reference (`workflows/pi/`).** `lib/run-stage.mjs` (~200 lines): parse spec → walk units in
-dependency order → `run:` units executed by the orchestrator itself (no LLM) → LLM units as
-`agent(promptFile + inputs, { tier, timeoutMs })`, `parallel()` where allowed → evaluate
-`done_when` after each unit (retry once, then stop naming the unit) → `progress.mjs` per unit,
-`ledger.mjs` at end → honour rework records. `discover.mjs`, `template.mjs`, `bulk.mjs` are ~15
-lines each. `templates.mjs` fans `template.mjs` out over `args.templates[]`, one worktree per
-agent, default concurrency 2. `watch-run.mjs` ported as is. `model-tiers.json` maps tier → model
-and runs a 30-second probe unit before any long run. Rule: no plan, prompt or gate in the JS —
-if a workflow needs a rule the spec lacks, the spec is fixed.
+**Deterministic core (`scripts/lib/stage.mjs`).** Every stage decision that needs no LLM lives in
+a tested Node runner: `plan` (parse + validate the YAML, resolve `<param>`s, order units,
+absolutise commands), `validate`, the gates (`check-transformer`, `check-review`,
+`check-coverage`, `check-fidelity`, `sample-fidelity`), `record-run`, and `run <stage>
+[--skip-llm]` — the sequential executor any harness can call: `run:` units execute, `done_when`
+is evaluated after every unit (retry once, then stop naming the unit), LLM units are skipped
+with `--skip-llm` (their `done_when` still decides) or stop the run otherwise. A failed
+`review` stops the run after `check-review` recorded the rework request.
+
+**pi reference (`workflows/pi/`).** pi workflow scripts cannot import files, read the filesystem
+or run shells, so `stage.mjs` (one self-contained script, ~200 lines) asks a `small` agent to run
+`stage.mjs plan`, then walks the units: `run:` units and `done_when` checks through `small`
+agents with a strict result schema — every command carries its own `cd <repo> &&`, and a
+non-zero exit fails a `run:` unit before `done_when` is consulted — and LLM units through
+`agent(read-this-prompt-file + inputs, { tier })` with `low|medium|high` mapped to pi's
+`small|medium|big` (`model-tiers.json`). It owns the rework loop (`author-transformer` →
+`review`, at most `rework.max_rounds`). `templates.mjs` fans the `template` stage out over
+`args.templates[]` through the saved `eds-stage` workflow; concurrency is a workflow-tool
+option. `tools/retro.mjs` and `tools/watch-run.mjs` read pi run journals. Rule: no plan,
+prompt or gate in the JS — if a workflow needs a rule the spec lacks, the spec is fixed.
 
 **Other harnesses.** `SKILL.md § Executing a stage` gives the same six steps as prose: execute
 `run:` units directly; one subagent per LLM unit; verify `done_when` before advancing; stop at
@@ -273,12 +289,12 @@ gates and per-unit isolation.
 content decisions · Not migrated · Open operator decisions.
 
 **Transformer contract** (`references/transformer-contract.md`): a transformer is a plain ES
-module in `migration/transformers/<t>.mjs` exporting `version`, `needsBrowser`, `match(url,
+module in `migration/transformers/<t>.mjs` exporting `version`, `match(url,
 document)`, `generateDocumentPath({ url })` and `transformDOM({ document, url, html, params,
 importer })`. It imports nothing from the skill: the harness passes `importer` (the skill's
 `importer.mjs` namespace — `Blocks`, `DOMUtils`, `FileUtils`, `pickImageSrc`, `sectionMetadata`,
 `splitSections`) because Node's `imports` map cannot resolve `#lib/*` from the EDS repo (Ruling
-13). `needsBrowser` is recorded but no runner acts on it in iteration 1. Templates are clustered
+13). `needsBrowser` was dropped (no runner acted on it). Templates are clustered
 on the fine fingerprint (two levels, layout and class tokens); the coarse fingerprint groups the
 long tail (Ruling 17). `overlaySelectors` is not a config key: the page-tree bundle already tags
 overlays and the fingerprint skips them. `fidelity.mjs --ignore <selector>` excludes elements the
