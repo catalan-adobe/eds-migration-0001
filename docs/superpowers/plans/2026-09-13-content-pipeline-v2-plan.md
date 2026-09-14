@@ -160,3 +160,46 @@ one script.
    stays tier `low` because the driver carries the mechanics.
 6. Acceptance: the second run's 47-HTML cache fails the new check; the driver caches 5 pages
    of the real site through the real proxy with assets present and `check cache` passing.
+
+---
+
+## Part 6 — the URL inventory, augmented at cache time
+
+Premise: every URL to be migrated is cached at some point, so the cache visit is where a URL
+is classified and documented — no separate pass, no extra request per URL. The one file that
+holds what is known about each URL is `urls/urls.json`; the runner is its only writer.
+
+1. **Inventory ownership.** `scan` writes the crawler's raw `URLExtended[]` to `urls/scan.json`.
+   `status.mjs urls` merges it into `urls/urls.json`: new URLs added (`URLExtended` fields
+   plus `group`, the first segment below the shared scope), known URLs keep every enrichment,
+   URLs missing from the latest crawl get `inLastScan: false` (never deleted). Operator lists
+   go through the same merge (`status.mjs urls import <file>`). `urls.mjs` owns read, merge,
+   write; `lib/inventory.mjs` holds the record shape.
+2. **Augmentation by `warm.mjs`**, per visited URL, from the proxy sidecars only plus one
+   browser read:
+   - `http`: `status`, `contentType`, `bytes` (cached body size), `lastModified`, `etag`.
+   - `redirect`: `status`, `target` (normalised to a site URL), `chain[]` (every hop the proxy
+     stored), `targetInList`.
+   - `finalUrl`: `location.href` after the pace wait, normalised (proxy prefix removed,
+     fragment dropped); a cross-origin landing keeps the other host. `finalUrl !== url` with a
+     2xx sidecar marks a client-side redirect.
+   - `kind`: `page` (2xx + html, no redirect) · `binary` (2xx + other) · `redirect` (3xx, or
+     `finalUrl` elsewhere) · `error` (4xx/5xx) · `unreachable` (no response).
+   - `migrate`: `yes` (page) · `target` (redirect; migrate `redirect.target`/`finalUrl`) · `no`
+     (error) · `asset` (binary).
+   - `cache`: `{ at, selection, path, durationMs }`.
+   Written through `urls.mjs` (`recordVisit(url, facts)`), never by hand. A source `4xx/5xx`
+   is `kind: error`, terminal, and not a cache failure; `failed` stays for no response.
+3. **Binaries**: decided by extension before the visit and, when a navigation turns out to be a
+   download, after it: fetched through the proxy with a browser-side `fetch` from the current
+   page (same channel, no download prompt, cached, content-type confirms).
+4. **Consumers**: `cache.md` rows carry `kind` and the target for redirects; `urls.md` gains
+   counts by kind, the redirect table (source → target, status, in list), the not-to-migrate
+   list, cached vs uncached; `pick` and the proposal skip URLs already known as `redirect`,
+   `error` or `binary`; `check cache` requires `kind` for every selected URL; `check scan`
+   accepts `scan.json` + merged `urls.json`.
+5. **Deferred**: `title`, `lang`, `canonical`, `robots`, `textLength`, soft-404 and other DOM
+   reads; automatic downgrades of `migrate` from flags.
+6. **Acceptance**: replay on the run-5 cache (50 sidecars → 50 records with `kind: page`, the
+   9 sample PDFs classified `binary` when cached); a hand-made fixture with a 301, a 404 and a
+   client-side redirect through the fake proxy and browser; the fresh-site run afterwards.
