@@ -128,3 +128,35 @@ independent; 4 independent). Task 5 needs 1–4 for exact command names. Task 6 
 4. Hand-off note for the page-prep and browser-probe sessions.
 5. Acceptance in a fresh folder on the same site: `init` with the flags → `setup --install`
    → scan from inside `migration/.work/` → `urls.md` proposal on its first lines, no cap.
+
+---
+
+## Part 5 — after the second fresh-session run (same site, medium-tier model)
+
+Steps 1–5 ran clean; `cache` failed four ways and `check cache` passed an HTML-only cache. The
+cache step is the one step that drives a long-lived process across many tool calls; it becomes
+one script.
+
+1. **`check cache` inspects the cache.** For every `cached` row the proxy's body file exists at
+   the deterministic path (`<host>_<sha256(origin)[0:8]>/<path>`, `index.html` for directories
+   and extension-less paths, `!query` before the extension); a cache holding pages but no
+   CSS, JS, image or font fails with "warmed without a browser". `approve cache` with no
+   selection errors on an over-threshold site and lists the subsets; `all` must be typed.
+2. **`pick --count N --write <name>`** writes `urls/subsets/<name>.txt`: N URLs round-robin over
+   the groups, HTML pages only (no pdf/xml/txt/php), no duplicates, reachable.
+3. **`status.mjs section <id>`** upserts one `REPORT.md` section from stdin; briefs use it; the
+   report brief never rewrites the file.
+4. **`scripts/warm.mjs`** — the cache step as one process: resolve the selection; start the
+   page-cache proxy on a free port; drive `playwright-cli` through it (open with the probe
+   config, `goto` per URL, hide rules + scroll fix in one expression, scroll down and back,
+   pace); stop; restart `--offline`; request every URL, record `cached`/`failed`; count assets;
+   write `cache/cache.md`; upsert `## cache`; exit 1 when a URL failed or no asset was cached.
+   Every external call (`spawn` proxy, `playwright-cli`, `fetch`) is injectable; tests use a
+   fake proxy (an `http` server that records requests and writes files in the cache format) and
+   a fake browser. The cache brief becomes: approve, run `warm.mjs`, read the check.
+5. Briefs and SKILL.md: scan runs in the foreground and quotes its last line; never delete
+   under `migration/cache/` (a re-warm is idempotent); pre-authorisation in a prompt names a
+   size, so build the subset with `pick --write` and approve that; no bash arrays; `cache`
+   stays tier `low` because the driver carries the mechanics.
+6. Acceptance: the second run's 47-HTML cache fails the new check; the driver caches 5 pages
+   of the real site through the real proxy with assets present and `check cache` passing.
