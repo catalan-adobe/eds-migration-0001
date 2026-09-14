@@ -108,3 +108,23 @@ $SKILL/
 
 1 → 2 → 3 → 4 → 5 → 6. Tasks 1–4 are code-only and can be parallel after Task 1 (2 and 3
 independent; 4 independent). Task 5 needs 1–4 for exact command names. Task 6 last.
+
+---
+
+## Part 4 — after the first fresh-session run (6,684-URL root site, 20 min, $4.42)
+
+1. `init` accepts `--skills-repo`/`--skills-ref` (recorded in `project.json`); every command
+   rejects unknown flags loudly. The scan snippet resolves the project from its own location,
+   not the cwd.
+2. Scan snippet: no `limit` for sitemaps, `limit` only for `http`, a warning when the cap is
+   hit; the brief asks to record any deviation from the snippet in `REPORT.md`. `urls.md`
+   opens with the proposal sentence and caps every table at 25 rows.
+3. SKILL.md: state the harness rung before the first step; a tier means a model switch or a
+   subagent at that tier, and when the harness cannot, `REPORT.md ## setup` says so; one
+   todo per step named by id. Briefs: screenshots under `migration/prep/`; sibling SKILL.md
+   is the fallback when the snippet fails; refresh the overlay database when older than
+   7 days; `eval` takes an expression (wrap statements in an IIFE), dismiss with the native
+   click.
+4. Hand-off note for the page-prep and browser-probe sessions.
+5. Acceptance in a fresh folder on the same site: `init` with the flags → `setup --install`
+   → scan from inside `migration/.work/` → `urls.md` proposal on its first lines, no cap.
