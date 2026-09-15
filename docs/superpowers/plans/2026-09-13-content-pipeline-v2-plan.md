@@ -337,3 +337,21 @@ tests use them, so unhappy paths run every time.
 A coverage threshold (would push toward padding), jsdom for the dashboard (playwright-cli
 does it without a dependency), property-based tests (no parser worth it), more tests for the
 parked first skill.
+
+## Part 10 — live progress, and what the review and the next run found
+
+Built and reviewed (3e9c938, d73e983, cd2b03f). The worker records each URL right after its
+visit (`cache.verified: false`, flipped by the offline pass; a rerun re-visits unverified
+records) and writes `cache/progress.json` after every URL; the dashboard polls it every 5 s
+while a job is open. A code review of 5627342..3e9c938 found committed test artefacts (86
+playwright-cli files — removed, ignored, the CLI now runs from a scratch cwd in tests and
+from `migration/.work/` in the worker), a job stopped after a failed visit recorded `done`
+(`done` already counts failed visits), and that nothing the browser did could end a run
+(five navigations failing in a row now do). The fresh-session run that followed (36 min,
+$6.34, all steps done, two cache phases, the job left alone, `status.mjs dashboard` used) hit
+one real defect: `status.mjs urls` deleted `urls/subsets/` wholesale, including the approved
+`pick --write` selection; it now replaces only its own files (`subsets/.generated.json`).
+Also from that run: `pick` skips cached URLs, the worker refreshes `urls.md` at the end of a
+job, `check report` rejects a stray `##` heading, `init` creates the step directories.
+Sibling notes (browser-probe `hasMainContent`, "Unknown command: network") went to the
+hand-off document.

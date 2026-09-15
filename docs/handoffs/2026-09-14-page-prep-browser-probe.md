@@ -64,3 +64,18 @@ runs.
 
 Both skills' scripts are driven by agents that pay for every echoed byte. Prefer quiet
 output with a `--json` result over human banners.
+
+## P6 — browser-probe: `health.hasMainContent` false on sites without a `<main>` landmark
+
+Seen on a large AEM site (2026-09-15 run): the page rendered fully (title, 9,468 characters of
+visible text inside `div.root`), yet `probe-report.json` said `"hasMainContent": false`, which
+reads as "rendered by scripts / blocked". The heuristic seems to look for a `<main>` (or role)
+landmark. Suggest a fallback on visible text density (e.g. body text length above a threshold,
+or the largest text-bearing block) before reporting `false`, and a distinct field for "no
+landmark" so consumers can tell the two apart.
+
+## B3 — browser-probe: "Unknown command: network"
+
+Still printed by the probe script with @playwright/cli 0.1.18 (a subcommand that version does
+not have); harmless, but four update banners plus this line make the output look broken to an
+agent reading it.
