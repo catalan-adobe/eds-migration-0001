@@ -79,3 +79,14 @@ landmark" so consumers can tell the two apart.
 Still printed by the probe script with @playwright/cli 0.1.18 (a subcommand that version does
 not have); harmless, but four update banners plus this line make the output look broken to an
 agent reading it.
+
+## C1 — page-cache: cache additional first-party hosts
+
+Measured 2026-09-15 on a large AEM site: the proxy stores and rewrites everything on the
+page's own host, but the brand's images live on an image CDN sub-domain (59 of 1,221
+requests over ten pages), search on a SaaS host, video on Brightcove. Offline renders
+either fetch those live (default) or lose them (with `network.allowedOrigins` limited to
+the proxy). Suggest an `--also-origin <origin>` (repeatable) option: responses from those
+origins are stored under their own `<host>_<hash>/` directory and their absolute URLs are
+rewritten to proxied form (`/path?_origin=<that origin>`) in HTML and CSS, so a truly
+offline render keeps the images. The cache step could pass the asset hosts the probe saw.

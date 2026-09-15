@@ -102,6 +102,24 @@ the number: negligible → state the limit and move on; material → an issue on
 steps blocks the origin host (`playwright-cli` route rule), so "never touch the origin" holds
 even when a page tries.
 
+### Part A — record (87b9dea, 1ed253a, 4145255, 1088167, 96af770)
+
+A0–A3 as planned. A4 measured on ten cached pages of the 6,687-URL site through the offline
+server, browser request log on: 1,221 requests; **0 to the site's own host** (page-cache
+rewrites same-host absolute URLs and follows sub-resources by cookie), 0 proxy misses on
+page requests; **814 (67 %) live to other hosts** — Coveo search 360, OneTrust 70, Adobe
+Launch 70, the brand's image CDN 59, Brightcove, Adobe Analytics beacons, Cloudflare
+Insights. So the rule held literally and failed in spirit: an "offline" render fetched the
+customer's images live and fired their real analytics. Decision: material. `cache serve`
+writes `.work/cache-browser-config.json` (probe config + `network.allowedOrigins` = the
+proxy alone); a session opened with `--config` on it made **0 successful off-machine
+requests**, and the page still rendered header, nav, hero, cards and footer with 42 of 100
+images missing (all from the image CDN). Remaining gap, owned by page-cache: caching
+additional first-party hosts (image CDN) with the same rewrite — hand-off note. Also seen:
+the site's chrome has no `<header>` landmark (div-based), confirming that detection must
+not rely on landmarks. A3's subagent one-shot needs the workflow tool; pending the
+operator's trigger.
+
 ## Part B — the `chrome` step
 
 ### Task B1 — capture every cached page
