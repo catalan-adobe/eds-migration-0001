@@ -281,3 +281,59 @@ itself; there is no foreground mode to pick wrongly.
 - Parallel workers per host, a progress websocket for the dashboard (reload is enough),
   notifications when a job ends (the next `status.mjs` call is the notification), and any
   scheduling (pace/hour windows) until a site needs it.
+
+## Part 9 — testing at the seams
+
+Line coverage of `lib/` is 98.7 % (c8, one-off), the suite runs in 5 s, and none of the six
+defects found by real runs in Part 8 was in covered library code. They were at process and
+contract seams: the CLI adapters in `scripts/warm.mjs` (no tests at all), the sibling CLIs'
+real output, the OS. More unit tests would not have found them; running the real thing does.
+
+### Task 1 — the CLI adapters get tests
+
+- `proxyStarter`, `playwright`, `ensureWorker`, `workerMain`, `main` move from
+  `scripts/warm.mjs` to `lib/warm-cli.mjs` with `execFile`, `spawn` and `fetch` injectable;
+  the entry file stays a few lines. Same for `status.mjs dashboard`'s io.
+- Tests: `playwright()` against recorded real output (`### Result`, `### Error` on stdout,
+  the update banner on stderr) — `-s=cache` on every call, the real error line extracted;
+  `ensureWorker` with a fake spawn — one claim under concurrent calls, `detached`, stdio to
+  the log and never inherited; `proxyStarter` — dead child reported with its stderr,
+  `--offline` passed, stop escalates to SIGKILL.
+
+### Task 2 — contract tests against the real siblings
+
+`npm run test:integration` (`node --test integration/`), each test skipped with a clear
+message when its sibling is not installed; a fixture site on `127.0.0.1`, never the internet.
+
+- page-cache proxy: sidecar layout matches `cacheRelativePath`, `?_origin=`, a 301 stored
+  with its `location`, `/__status`, `--offline` serving.
+- playwright-cli: `eval` double-encoding (the `parseEval` assumption), `### Error` on a
+  failed `goto`, session isolation (default session opened and closed while `-s=cache` holds
+  a page).
+- `aem up` through `status.mjs dashboard` in a temporary git repository: starts while other
+  ports are held, serves an `.hlxignore`d `migration/`, `stop` frees the port; a folder that
+  is not a git repository fails with the message.
+- `free-port` against listeners bound on `0.0.0.0`, `127.0.0.1` and `::`.
+
+### Task 3 — one end-to-end run without the internet
+
+Fixture site (sitemap, a 301, a 404, a PDF, a cookie banner) served locally: `init → urls
+import → approve → warm (worker in-process) → check cache → status`, then the dashboard
+rendered by playwright-cli with its rows and cards asserted. The regression net for "the
+pieces still fit" and the only test the dashboard has.
+
+### Task 4 — assertion strength, once
+
+Stryker mutation testing run ad hoc on `lib/` (`npx`, nothing committed); survivors that
+matter are fixed. Not a gate.
+
+### Task 5 — hostile fakes by default
+
+The fake browser and proxy gain `failsOn`, `diesAfter` and slow knobs and the existing
+tests use them, so unhappy paths run every time.
+
+### Not done on purpose
+
+A coverage threshold (would push toward padding), jsdom for the dashboard (playwright-cli
+does it without a dependency), property-based tests (no parser worth it), more tests for the
+parked first skill.
