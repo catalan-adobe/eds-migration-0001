@@ -74,7 +74,7 @@ landmark. Suggest a fallback on visible text density (e.g. body text length abov
 or the largest text-bearing block) before reporting `false`, and a distinct field for "no
 landmark" so consumers can tell the two apart.
 
-## B3 — browser-probe: "Unknown command: network"
+## B3 — browser-probe: "Unknown command: network" — fixed in the fork (commit after cd2b03f)
 
 Still printed by the probe script with @playwright/cli 0.1.18 (a subcommand that version does
 not have); harmless, but four update banners plus this line make the output look broken to an
