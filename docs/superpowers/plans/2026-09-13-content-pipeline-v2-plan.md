@@ -203,3 +203,81 @@ holds what is known about each URL is `urls/urls.json`; the runner is its only w
 6. **Acceptance**: replay on the run-5 cache (50 sidecars → 50 records with `kind: page`, the
    9 sample PDFs classified `binary` when cached); a hand-made fixture with a 301, a 404 and a
    client-side redirect through the fake proxy and browser; the fresh-site run afterwards.
+
+## Part 7 — the migration dashboard (built ahead of this write-up)
+
+Done in 2525443 and 614915a. `init` copies `tools/migration/` (HTML, module, stylesheet, no
+dependencies) into the EDS repository and adds `migration/` to an existing `.hlxignore`;
+`aem up` serves ignored files from disk (with a warning), so the dashboard reads
+`migration/status.json` (now written on every `status`/`check`), `project.json`,
+`setup.json`, `urls/urls.json` and `REPORT.md` locally while nothing is deployed.
+`status.mjs dashboard [stop]` starts `aem up` on a free port and prints the URL; `free-port`
+tests by connecting (a bind succeeds on ports other processes serve — SO_REUSEADDR).
+
+## Part 8 — caching in the background, in phases
+
+Operators cache in phases (one subset, then another) and must not have their session blocked
+while a phase runs. Both runs so far blocked the session for the whole warm; a second subset
+meant waiting. The mechanism belongs in `warm.mjs`, as with `dashboard`: the script detaches
+itself; there is no foreground mode to pick wrongly.
+
+### Task 1 — jobs and the detached worker
+
+- `lib/jobs.mjs`: `enqueue(project, selection, urls)` writes
+  `migration/.work/warm/<id>.json` `{id, selection, total, done, failed, current, started,
+  finished, pid, state}` with `state: queued|running|done|interrupted|stopped`; `readJobs`,
+  `alive(pid)` (`process.kill(pid, 0)`), `next()`.
+- `warm.mjs` (no arguments): resolves the approved selection as today, enqueues a job (a job
+  for the same selection that is `queued` or `running` is not duplicated), and if no worker is
+  alive spawns `node warm.mjs --worker` detached with stdio to
+  `migration/.work/warm/worker.log` (never inherited: an inherited pipe blocks the harness's
+  shell call), `unref()`, prints `{job, queued, worker: {pid, started}}` and exits. Under one
+  second.
+- `--worker`: takes jobs from the queue in order; runs `warm()` per job with an `onProgress`
+  io hook that updates the job file after every URL (done/failed/current); marks `done`.
+- Tests: fake io as now; the CLI adapter's spawn is injectable; the job file after each URL.
+
+### Task 2 — the step graph knows about running work
+
+- `stepStates` gains `running` (a job `running` or `queued` exists and `check cache` is not
+  yet passing). `status.mjs --text`, `status.json` and the dashboard chip show it, with
+  `12/50 (blogs) · queued: ja-jp`.
+- `check cache` refuses while a job is alive: `cache: warm job blogs running 12/50 — nothing
+  downstream may start on a half-warmed cache`. Only when the queue is empty does it inspect
+  `.page-cache/` and the inventory as today.
+- `warm.mjs status` prints the jobs; `warm.mjs stop` sends SIGTERM to the worker, which drains
+  (finishes the current URL, writes the job as `stopped`) — the drain exists today for SIGINT.
+
+### Task 3 — interruption and resume
+
+- A job whose pid is dead but whose state is `running` is reported `interrupted` (machine
+  slept, terminal closed). Running `warm.mjs` again enqueues the same selection; the worker
+  skips URLs whose inventory record has `cache.at` for this selection — the proxy would serve
+  them from disk anyway, but skipping saves the browser visits.
+- Only one worker at a time: the playwright-cli session and the proxy are per-job singletons,
+  and serial is the bot-friendly behaviour.
+
+### Task 4 — briefs
+
+- `steps/cache.md`: run `warm.mjs`; it returns at once; do not poll in a loop or wait for it —
+  report the job to the operator and stop, or move to the next unblocked step; the operator
+  (or the next session) runs `status.mjs` to see progress; `report` is blocked while a job
+  runs. `approve cache <next subset>` followed by `warm.mjs` queues the next phase.
+- `SKILL.md`: `warm.mjs [status|stop]` in the command list; the phase pattern in the cache
+  section; the `running` state in the states list.
+
+### Task 5 — acceptance
+
+- Unit: queue order, dedup, progress after every URL, `check cache` refusal while running,
+  `interrupted` on a dead pid, resume skipping, stop draining.
+- Real (a scratch clone, not a run in progress): approve `blogs`, `warm.mjs` returns in
+  under a second, session free; approve `ja-jp`, `warm.mjs` queues it; `status.mjs --text`
+  shows `running 12/50 (blogs) · queued: ja-jp`; `check cache` refuses during and passes
+  after; the dashboard's cached count grows on reload; `warm.mjs stop` mid-job leaves a
+  `stopped` job and a consistent inventory; rerun resumes.
+
+### Deferred
+
+- Parallel workers per host, a progress websocket for the dashboard (reload is enough),
+  notifications when a job ends (the next `status.mjs` call is the notification), and any
+  scheduling (pace/hour windows) until a site needs it.
