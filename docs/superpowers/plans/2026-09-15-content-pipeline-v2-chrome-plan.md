@@ -22,7 +22,21 @@ No step after `cache` can use the cache without knowing that. Part A makes the c
 *available* (start-on-demand, idempotent, visible) — not permanently *running*: a server
 nobody owns drifts (dead pid, taken port, several servers per repo).
 
-### Task A1 — `cache-server` and `cache-url`
+Decision (after weighing a CLI for the whole pipeline): no router over the sibling skills.
+Wrapping a sibling is justified only where the runner adds project state, a port, a wait or a
+check — never to rename; agents wanting the raw sibling use its own skill. `status.mjs` is
+already the pipeline's project-aware surface; the cache becomes a noun on it. Folding the
+entry scripts into one dispatcher or a shim in the repo is cosmetic and deferred until it
+demonstrably costs an agent something.
+
+### Task A0 — `--help` from the command table
+
+`status.mjs --help` and `status.mjs <noun> --help` are generated from the command table
+(name, arguments, one line each), so briefs say "run `--help`" instead of listing verbs.
+Top level lists nouns and step commands only; a noun's help lists its verbs. A test asserts
+every command in the table has a one-line description and that the help fits 40 lines.
+
+### Task A1 — the `cache` noun: `serve`, `stop`, `status`, `url`, `ls`, `has`, `get`
 
 - `lib/cache-server.mjs`, modelled on `lib/dashboard.mjs`: `cacheServer(project, freePort,
   io)` returns `{ port, pid, offline: true, reused }`. Liveness = `/__status` answers on the
@@ -32,9 +46,12 @@ nobody owns drifts (dead pid, taken port, several servers per repo).
   file. Every external call through `io` (`spawn`, `fetch`, `kill`).
 - `proxiedUrl(origin, url, port)` → `http://127.0.0.1:<port><path><query>&_origin=<origin>`
   (the one place that knows the `?_origin=` form). Refuses a URL not on the project origin.
-- `status.mjs cache-server [stop]` prints `{ port, pid, offline, reused, cached }`;
-  `status.mjs cache-url <url>...` prints one proxied URL per line, starting the server if
-  needed. Both fail with a plain message when `cache/.page-cache` does not exist yet.
+- `status.mjs cache serve|stop|status` — the offline server (`serve` prints `{ port, pid,
+  offline, reused, cached }`); `cache url <url>...` prints one proxied URL per line, starting
+  the server if needed; `cache ls [--group g] [--kind k]` lists cached URLs from the
+  inventory; `cache has <url>` exits 0/1; `cache get <url>` prints the stored body (sidecar
+  headers with `--headers`). `ls`, `has`, `get` read the inventory and the cache dir, no
+  server. All fail with a plain message when `cache/.page-cache` does not exist yet.
 - `warm.mjs` is unchanged: its online proxy is per job on its own port. Two proxies on one
   dir (one writing, one reading) are fine; a test asserts the offline server does not answer
   a URL that is not cached with anything but 404.
@@ -42,15 +59,16 @@ nobody owns drifts (dead pid, taken port, several servers per repo).
   server, `proxiedUrl` on foreign origin); integration against the real page-cache script on
   the fixture cache (start, `/__status`, one cached page served, one uncached → 404, stop).
 
-Acceptance: on a copy of a real cache, `status.mjs cache-server` twice → same port, second
-says `reused: true`; `cache-url` of a cached page fetches with `curl` and returns the stored
-body; `cache-url` of an uncached page → 404 and the origin is not contacted (verified with
-the proxy's `/__status` misses staying at 0 and no outbound connection in `lsof`).
+Acceptance: on a copy of a real cache, `status.mjs cache serve` twice → same port, second
+says `reused: true`; `cache url` of a cached page fetches with `curl` and returns the same
+body as `cache get`; `cache url` of an uncached page → 404 and the origin is not contacted
+(the proxy's `/__status` misses stay at 0, no outbound connection in `lsof`); `cache ls
+--group <g>` matches `cache.md`.
 
 ### Task A2 — visible everywhere
 
 - `status.mjs` (text and JSON) gets a `cache server` line: `running on <port> (offline,
-  <N> pages)` or `not running — status.mjs cache-server starts it`; `status.json` carries the
+  <N> pages)` or `not running — status.mjs cache serve starts it`; `status.json` carries the
   same object; the dashboard shows it in the project line and links `cache.md`.
 - `check cache` unchanged; `check` of any later step includes `cache server reachable` only
   where that step needs it (chrome does).
@@ -61,12 +79,12 @@ Acceptance: `status.json.cacheServer` present in both states; dashboard renders 
 
 - `references/local-cache.md` (≤ 60 lines): what the cache is (stored bodies plus what the
   browser fetched during the cache step), where (`cache/.page-cache`, `cache.md` lists the
-  pages), how to open a page from it (`status.mjs cache-url`, or the browser via that URL),
-  what offline 404 means ("not cached" — never "fetch it live"), and the limit: absolute
-  same-host URLs inside a page bypass a reverse proxy (see A4).
+  pages), how to read it (`status.mjs cache ls|get`), how to open a page in the browser
+  (`cache url`), what offline 404 means ("not cached" — never "fetch it live"), and the
+  limit: absolute same-host URLs inside a page bypass a reverse proxy (see A4).
 - `SKILL.md`: one rule — after the `cache` step no step touches the origin; every read goes
-  through `cache-server`. `steps/cache.md` and `steps/report.md` link the reference; every
-  later brief (chrome first) opens with it.
+  through `status.mjs cache …` (`ls`, `get`, `url`). `steps/cache.md` and `steps/report.md`
+  link the reference; every later brief (chrome first) opens with it.
 - Line, residue and validate gates cover the new files.
 
 Acceptance: gates green; a subagent given only `SKILL.md` + the reference opens a cached
@@ -171,7 +189,7 @@ one screenshot → fail naming it; editing a selector → fail naming the member
   it is background — one `status` look, then back to the operator; when done, open one full
   screenshot per variant, confirm or note; `section chrome`; what not to do (read captures,
   browse the origin, name variants). Defines chrome in one sentence for the reader.
-- `SKILL.md`: step table, command table (`chrome.mjs`, `cache-server`, `cache-url`), the
+- `SKILL.md`: step table, command table (`chrome.mjs`, `cache …`), the
   one-sentence definition, the "future static elements" door left open in one clause.
 
 Acceptance: gates green; brief within 60 lines; residue clean.
@@ -181,7 +199,7 @@ Acceptance: gates green; brief within 60 lines; residue clean.
 - Replay on the three real caches: variant counts, without lists, unplaced, and a look at
   every full screenshot. Findings → this plan (Part C), fixes → tasks.
 - Fresh-session run on a new clone with the usual minimal prompt plus "then detect the
-  chrome". Watch: the agent uses `cache-server`/`cache-url` and never the origin, leaves
+  chrome". Watch: the agent uses `status.mjs cache …` and never the origin, leaves
   the job alone, looks at screenshots not captures, writes the section, dashboard panel.
 
 ## Decisions carried from the spec
