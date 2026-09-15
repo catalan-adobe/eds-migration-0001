@@ -117,8 +117,11 @@ requests**, and the page still rendered header, nav, hero, cards and footer with
 images missing (all from the image CDN). Remaining gap, owned by page-cache: caching
 additional first-party hosts (image CDN) with the same rewrite — hand-off note. Also seen:
 the site's chrome has no `<header>` landmark (div-based), confirming that detection must
-not rely on landmarks. A3's subagent one-shot needs the workflow tool; pending the
-operator's trigger.
+not rely on landmarks. A3's subagent one-shot ($0.13): given only `SKILL.md` and the
+reference, the agent ran `cache ls`, `cache url`, opened the address with `--config`,
+read the title, `cache stop`; it never composed `?_origin=` and never ran `serve` by
+hand. It had to infer the browser config path and hit `--config` on `close` (rejected);
+the reference now shows the literal two-line open command (2961055).
 
 ## Part B — the `chrome` step
 
