@@ -223,6 +223,47 @@ Acceptance: gates green; brief within 60 lines; residue clean.
   chrome". Watch: the agent uses `status.mjs cache …` and never the origin, leaves
   the job alone, looks at screenshots not captures, writes the section, dashboard panel.
 
+## Part B — record (1ac04b8 … 36bb89c)
+
+B1–B6 built; B7's two replays done, the fresh-session run still to come. What the data
+changed:
+
+- **Capture**: 97 pages in ~90 s serial — the three parallel sessions were not needed.
+  Page-tree nodes carry ids and class tokens, so the spec's "no class tokens" gap and its
+  fallback capture script do not apply. The bundle returns `{data, textFormat, nodeMap}`.
+- **Identity = fingerprint at a position.** Page-tree prunes children narrower than 900 px,
+  so a bare wrapper looks like every other; each occurrence joins a top- and a
+  bottom-anchored bucket. One page is not a recurrence.
+- **Hairlines and single-child chains are not structure** (baeb534). The operator compared
+  the two "header variants" and found identical DOM: the rendered difference was a 5 px
+  reading-progress bar a table-of-contents script injects on a dozen pages, plus page-tree
+  collapsing a parent with its only visible child on the other pages. Children under 6 px
+  are dropped, single-child chains collapse. This exposed `dedupeAnchors` merging two
+  different elements that shared a fingerprint (nav wrapper, footer wrapper); it now keys on
+  the occurrences themselves.
+- **Slot alternatives** are admitted below the support line; **adjacency** extends a
+  region past the geometric band (the pre-footer call to action touches the footer).
+- **Session names are global** to playwright-cli on a machine: two projects at once
+  collided (1cfe100). Sessions are `kind-<hash of project root>` for both workers.
+- **The prep expression scrolls down**; a sticky nav was captured where it stuck. Capture
+  and screenshots scroll back up first.
+- **Result on three real caches**: one header of two members on 93–94 of 96–97 pages; a
+  two-page remainder with the utility bar only (a nav drawn over a hero, folded into it by
+  the capture — a stated limit); one footer on 93–95 pages, the call to action optional
+  (49 % vs 51 %: a threshold doing what thresholds do); on one cache the locale footer as
+  its own two-page variant; one `.php` tool page without chrome. Not the locale split the
+  spec predicted for the header: locale pages carry the main header on this site.
+- **The dashboard was never live by itself** (36bb89c). Chasing a flaky e2e after the
+  chrome panel landed: `aem up` injects live-reload and reloaded the page on every file the
+  worker wrote — that was the "live" view of Part 10, and the emptied DOM the test sampled;
+  the poll loop only started when a job was already open at page load. Now
+  `--no-livereload`, polling always (5 s open / 15 s idle), a failed read keeps the screen,
+  `status.json` written atomically, `chrome.json` fetched only once `status.json` says the
+  step is done (a missing file makes `aem up` ask the remote origin, up to a second each —
+  the dashboard should never request a file `status.json` can say is not there).
+- A commit (baeb534) went out with one integration test red — read as green. Rule
+  restated: every gate, every time; the fix went in a new commit.
+
 ## Decisions carried from the spec
 
 Rendered DOM only; page-tree bundle for capture with the stated fallback trigger; regions as
