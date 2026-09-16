@@ -74,6 +74,38 @@ step, 300 px is its default and chrome reads the same store.
 Recurring sequences of types (would-be templates) appear in the `.md` as a courtesy view,
 with no merging, no thresholds and no claim: page signature counts, nothing more.
 
+## Adapting to the site: rules, not scripts
+
+A fixed engine will plateau on the next site. The five rule changes the first exploration
+forced were all generic — evidence that the engine was unfinished, not that it should bend
+per site — but a site with no class discipline (utility classes, hand-rolled markup) will
+test the identity rule harder than this one did. The step therefore has two layers:
+
+- **The engine**: fixed, tested, replayed. Detection rules are functions of a rules object.
+- **`elements/rules.json`**, per project, with a bounded vocabulary: identity token
+  exclusions (regexes beyond the built-in state, generated-name and width patterns), extra
+  noise classes, leaf-component tags, the container share, the capture min-width, explicit
+  `merge` (type A is type B), `split` (a type by a child identity), `chrome` (a section
+  that is chrome after all), `reject` (a selector). Nothing in it is code. The file is a
+  deliverable: it documents the site's idiosyncrasies, diffs, and replays.
+
+The loop is run → evaluate → adapt → run, with the agent or operator editing the rules
+file only, never the scripts. **Evaluation is by evidence, not by numbers**: coverage up and
+type count down are trivially reached by merging everything, so the engine emits an
+**evaluation report** built for the eye —
+
+- per type above the line: three random instance crops (do they look alike?), the height
+  spread, the position habit (always first? always last?), the variant count;
+- flags: a type whose instances' heights differ tenfold; two types whose instance crops
+  look alike (same identity minus one token); a section that recurs once per page at a
+  stable position (a chrome leak → belongs to the chrome step); a page with one section;
+- the unique tail, the coverage distribution, the sequences view.
+
+Each iteration ends with a summary diff against the previous run (types, recurring,
+coverage, unique — the replay harness's shape), so what a rule edit moved is visible. When
+the loop wants something the vocabulary cannot express, that is an engine gap: it goes
+back into the skill as code, with a test and a replay, and the per-site layer stays thin.
+
 ## Sample, not site
 
 Everything here is derived from the **cached sample** (typically ~100 of thousands of
@@ -93,6 +125,8 @@ labelled by type id. Types under the line get a crop only when the operator asks
 
 ```
 migration/elements/
+  rules.json           the site's rules (created empty by the first run; edited by hand)
+  evaluation.md        the evaluation report for the eye, with its crops under screenshots/
   elements.json        the deliverable (below)
   elements.md          operator view: types by support with classification, variants,
                        screenshots; coverage per page; unique sections; sequences view;
@@ -133,10 +167,12 @@ migration/elements/
 
 ## The agent's part
 
-Runs the script, looks at the crop of every type above the line and one outlined page
-screenshot, confirms or notes (a type that is two things, two types that are one, a
-classification that is wrong), writes the report section. Never reads the captures, never
-names types, never edits `elements.json`.
+Runs the script, reads `evaluation.md` (the crops, the flags), and either confirms or edits
+`rules.json` — a merge, a split, a chrome leak, a reject — and runs again; two or three
+iterations is the expectation, the summary diff says whether an edit helped. Then writes
+the report section with what it changed and why. Never reads the captures, never names
+types, never edits `elements.json`, never touches the scripts. A wish the rules cannot
+express is reported as an engine gap, not worked around.
 
 ## Dashboard
 
@@ -148,6 +184,9 @@ without a page collapsed.
 
 - Elements, not templates: the inventory is what makes pages importable; sequences are a
   view. This also retires the "template" word and its collision with other efforts.
+- Adaptation through a bounded rules file, never through editable scripts: a run stays
+  replayable and checkable, and the engine grows only through tested, generic changes.
+- Evaluation is evidence for the eye (instance crops, flags), never a score to optimise.
 - Same engine as chrome (fingerprint at position → fingerprint anywhere); same playbook:
   no LLM in the detector, screenshots as evidence, agent confirms by looking, every rule
   replayed on the three held caches before it lands.
