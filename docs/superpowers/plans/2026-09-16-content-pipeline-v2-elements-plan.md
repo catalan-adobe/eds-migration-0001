@@ -178,3 +178,13 @@ that changes something defensible (a merge or a chrome leak) and reports the del
 
 Naming or mapping types to EDS blocks; transformers; content extraction; the nested
 structure inside a section (the mapping expert's concern); Monarch-shaped exports.
+
+## Commit ledger
+
+One commit per task, one row per commit, appended as work lands. Tags mark safe points on
+the fork branch; a fresh clone installs from a tag with `upskill … -b <tag>`. To find a
+regression: the replay column says which row moved it.
+
+| commit / tag | task | what changed | replay (chrome ×3 · elements 806) |
+|---|---|---|---|
+| `b9f7749` (tag `cpv2-chrome-stable`) | — | baseline | unchanged · 91/51/788/40 |
