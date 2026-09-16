@@ -285,6 +285,29 @@ tool page without chrome. The DOM fallback discussed for this case is not needed
 capture was the defect. Also from page-tree: `className` now records every class (it kept
 only the first), which is what the fingerprint's class tokens read.
 
+### Verification of page-tree and the replay harness (c7b0f6b, bef13e6, 7cc23c2)
+
+Three layers, each of which found something while being built:
+
+- **`processTree` seam + 13 pure-pipeline tests** through `vm` with a bare `window`: one
+  whole-page case per phenomenon met. Writing them corrected a wrong expectation of mine (a
+  0×0 shell hands its children up; it cannot contain them).
+- **Fixture corpus** `page-tree/fixtures/` (six 20-line pages, one per phenomenon) rendered
+  by a real browser on loopback with targeted assertions — no golden trees, no network. The
+  fixed-consent-banner fixture found a pre-existing loss: a fixed element that was the only
+  child of its chain was absorbed into the content by the collapse. Nodes carry `fixed`;
+  a collapse never absorbs one; promotion always lifts one to the root.
+- **Replay harness** `replay/replay.mjs` here in the lab (never the product): copies each
+  held cache to scratch, runs the chrome step, reduces `chrome.json` to counts and shapes
+  (no URLs) and diffs against `replay/expected/<name>.json`; `--update` records. Its very
+  first run — three caches at once — found a race: projects starting together picked the
+  same free port, the loser's proxy died, the winner's answered `/__status` for it, and one
+  project browsed another's cache (ten "pages" that were the proxy's miss text). `cache
+  serve` and the warm proxy starter now accept a server only when it reports our directory.
+  Concurrent and sequential replays agree; three consecutive runs unchanged.
+
+Before any change to detection or to page-tree: `node replay/replay.mjs` (about 3 minutes).
+
 ## Decisions carried from the spec
 
 Rendered DOM only; page-tree bundle for capture with the stated fallback trigger; regions as

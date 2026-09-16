@@ -1,0 +1,8 @@
+{
+  "skills": "/Users/catalan/repos/adobe-skills/.worktrees/eds-content-pipeline/plugins/web/skills",
+  "caches": {
+    "run-08": "/Users/catalan/repos/ai/migration-tests/eds-projects/test-content-pipeline-0001/eds-mig-20260914-08/migration",
+    "run-09": "/Users/catalan/repos/ai/migration-tests/eds-projects/test-content-pipeline-0001/eds-mig-20260914-09/migration",
+    "run-10": "/Users/catalan/repos/ai/migration-tests/eds-projects/test-content-pipeline-0001/eds-mig-20260914-10/migration"
+  }
+}

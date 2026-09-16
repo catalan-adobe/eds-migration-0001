@@ -1,0 +1,34 @@
+{
+  "captured": 96,
+  "failed": 0,
+  "header": [
+    {
+      "pages": 94,
+      "members": 2,
+      "optional": 0,
+      "group": "site-wide"
+    },
+    {
+      "pages": 1,
+      "members": 1,
+      "optional": 0,
+      "group": "cloud"
+    }
+  ],
+  "footer": [
+    {
+      "pages": 93,
+      "members": 1,
+      "optional": 0,
+      "group": "site-wide"
+    }
+  ],
+  "without": {
+    "header": 1,
+    "footer": 3
+  },
+  "unplaced": 0,
+  "rejected": 10,
+  "shortestUrlInHeader1": true,
+  "checkPass": true
+}
