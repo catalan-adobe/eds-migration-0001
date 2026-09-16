@@ -19,7 +19,8 @@ the lab probe (`lab/elements-probe.mjs`) or its successor over the 806-page 300 
 type. The *elements inventory* (`elements.json`) lists the types with evidence, plus each
 page's composition and coverage. The step is `elements`; the process is decomposition.
 Source element types (what the DOM shows) and their EDS classification (section, default
-content, block candidate) are two fields, never one.
+content, block candidate) are two fields, never one. A page's *composition* is its sequence
+of types; *group* is the URL group from the inventory. Nothing is called a template.
 
 ## Baby steps
 
@@ -130,8 +131,16 @@ by name; removing a page's entry fails by name.
   height spread; look-alike identities; once-per-page stable position → chrome leak; one-
   section pages); the unique tail; coverage distribution; sequences; the delta and
   saturation tables. `check elements` requires the crops for types above the line.
-- Dashboard: elements panel (types by support with crop, classification, variants; coverage
-  distribution; saturation table; unique tail collapsed).
+- Dashboard: the URL group stays the primary axis everywhere; composition is a derived
+  second axis inside the elements panel, never a grouping of its own. The panel shows:
+  the **groups × compositions cross-tab** — per group the dominant composition and the share
+  of pages carrying it, the number of distinct compositions, cached pages, saturation
+  state (this is the "is this group one kind of page?" view); the **types** by support with
+  crop, classification, variants, and the groups each appears in; coverage distribution;
+  the unique tail collapsed. The existing URL table gains per-page **composition chips**
+  and a coverage badge (full / partial / uncovered), filterable, so a group's pages can be
+  compared side by side. `elements.json` carries what the panel needs (`pages[].types`,
+  `pages[].coverage`, `compositions[]` with pages and groups, `groups[]` with saturation).
 
 Acceptance: on the 806-page copy the report shows, and a reviewer can tell from the crops
 alone whether `column` is one type or several — recorded as a finding, whichever way.
@@ -156,7 +165,8 @@ that changes something defensible (a merge or a chrome leak) and reports the del
 
 - `pick` skips saturated groups (from `elements.json`), prefers groups with few cached
   pages, stratifies by depth / extension / query string, and reserves `--audit N` random
-  never-picked URLs. `urls.md` shows saturation per group.
+  never-picked URLs. `urls.md` and the inventory panel's group table show saturation and
+  the number of compositions per group, so the operator sees where the next batch goes.
 
 ### Task F2 — the phase loop, end to end
 
