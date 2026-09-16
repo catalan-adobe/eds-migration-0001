@@ -25,19 +25,33 @@ Nothing is rendered again for detection; nothing touches the origin.
 ## Definitions, stated once
 
 - **Content region**: a page's tree minus its chrome members. Wrappers that contain chrome
-  descendants are peeled; then, while a single non-chrome node covers most of the page
-  height (≥ 60 %), it is peeled too — it is the content container, not a section.
-- **Section**: a child of the content region. Sections map onto EDS sections.
-- **Element type**: sections that share a structural fingerprint — the chrome fingerprint
-  (tag, stable id, class tokens minus state and generated names, structural children;
-  hairlines and single-child chains ignored) with position released. Text, bounds and
-  hrefs never count.
+  descendants are peeled; a lone node, or a node covering most of the page height (≥ 60 %)
+  with several children, is a container and is peeled too — unless its children are
+  text-level elements (`p`, headings, lists, images…): that is a leaf component, and the
+  peel stops there.
+- **Section**: a child of the content region, minus **parts**: a node whose selector starts
+  with another section's selector on the same page was promoted out of that section by the
+  capture (a hero image, a carousel track) and belongs to it. Sections map onto EDS
+  sections.
+- **Element type**: sections that share an **identity** — the outermost element of the
+  capture's collapsed chain: tag, stable id, class tokens minus state, generated names and
+  width tokens (`col-sm-4`, `…--default--12`). Children do not enter the identity:
+  repetition (three cards or four) never splits a type. Text, bounds and hrefs never count.
 - **Instance**: one section of a given type on one page. A type has pages (how many pages
   carry it) and instances (how many times in total).
-- **Variant**: within a type, a sub-structure that recurs (cards with and without an image,
-  a hero with and without a call to action) — the same mechanism as chrome variants.
+- **Variant**: within a type, the **set** of its children's identities (cards with and
+  without an image, a hero with and without a call to action). A set, so the count of a
+  repeated child is not a variant either.
 - **Coverage** of a page: the share of its content-region height made of sections whose
   type has support ≥ the threshold. What is left is listed, per page, as unique sections.
+
+## Capture resolution
+
+The store's default capture folds elements narrower than 900 px into their parent — right
+for chrome, too coarse here: every AEM column looked identical. The elements step needs
+the store captured at **300 px** (`chrome.mjs --min-width 300`); on 806 real pages that
+left chrome detection intact (header 803, footer 801). When the capture becomes its own
+step, 300 px is its default and chrome reads the same store.
 
 ## Detection
 
@@ -144,6 +158,23 @@ without a page collapsed.
 - Reads the visual-tree store; when this step lands, the capture becomes its own step
   (`capture` → `chrome`, `elements`) — the mechanical split announced in the store's
   contract.
+
+## What the first exploration measured (2026-09-16, 806 cached pages of one site)
+
+Rules applied literally to the visual-tree store, in the lab (`lab/elements-probe.mjs`):
+
+| rule set | types | recurring | fully covered | unique types / pages |
+|---|---|---|---|---|
+| spec as first written, 900 px, depth-3 fingerprint | 283 | 52 | 154 / 334 | 231 / 178 |
+| + containers peeled, off-page nodes rejected | 231 | 92 | 248 / 334 | 139 / 84 |
+| 300 px capture, depth-3 fingerprint | 1,449 | 429 | 255 / 806 | 1,020 / 546 |
+| identity = outermost element, variants = child set | 105 | 61 | 785 / 806 | 44 / 16 |
+| + parts attached, leaves kept, widths out | **91** | **51** | **788 / 806** | **40 / 13** |
+
+The final list reads as the site's component catalog (column, text, banner, breadcrumb,
+experience fragment, table of contents, page title, image, carousel, blog banner, floating
+tabs, box links, form, rich text, spotlight, anchor, faq, card container…), median 9
+sections per page. Each row above was a design change forced by the data, not a tuning.
 
 ## Out of scope
 
