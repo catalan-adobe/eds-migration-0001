@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Replays the chrome step over the caches we hold and diffs a compact summary of each result
+// Replays the capture and chrome steps over the caches we hold and diffs a compact summary of each result
 // against replay/expected/<name>.json. Lab tooling: the caches and site names never enter the
 // skill repository. Usage: node replay/replay.mjs [--update] [name...]
 import { cp, mkdir, readFile, rm, symlink, writeFile } from 'node:fs/promises';
@@ -22,8 +22,9 @@ async function prepare(name) {
   await rm(dir, { recursive: true, force: true });
   await mkdir(path.join(dir, '.agents', 'skills'), { recursive: true });
   await cp(config.caches[name], path.join(dir, 'migration'), { recursive: true });
-  await rm(path.join(dir, 'migration', 'chrome'), { recursive: true, force: true });
-  await rm(path.join(dir, 'migration', '.work', 'chrome'), { recursive: true, force: true });
+  for (const sub of ['chrome', 'capture', '.work/chrome', '.work/capture']) {
+    await rm(path.join(dir, 'migration', sub), { recursive: true, force: true });
+  }
   await rm(path.join(dir, 'migration', '.work', 'cache-server.json'), { force: true });
   for (const s of SIBLINGS) {
     await symlink(path.join(config.skills, s), path.join(dir, '.agents', 'skills', s));
@@ -34,15 +35,15 @@ async function prepare(name) {
   return dir;
 }
 
-const status = async (dir) => JSON.parse(
-  (await x('node', [path.join(runner, 'chrome.mjs'), 'status'], { cwd: dir })).stdout,
+const status = async (dir, script) => JSON.parse(
+  (await x('node', [path.join(runner, script), 'status'], { cwd: dir })).stdout,
 );
 
-async function runChrome(dir) {
-  await x('node', [path.join(runner, 'chrome.mjs'), '--force'], { cwd: dir });
+async function runStep(dir, script, args = []) {
+  await x('node', [path.join(runner, script), ...args], { cwd: dir });
   for (;;) {
     await new Promise((r) => { setTimeout(r, 5000); });
-    const run = await status(dir);
+    const run = await status(dir, script);
     if (!['queued', 'running', 'analysing'].includes(run.state)) return run;
   }
 }
@@ -72,7 +73,9 @@ function summarise(chrome, run, check) {
 async function replay(name) {
   const dir = await prepare(name);
   const t0 = Date.now();
-  const run = await runChrome(dir);
+  const run = await runStep(dir, 'capture.mjs', ['--force']);
+  if (run.state !== 'done') throw new Error(`${name}: capture ${run.state} — ${run.error}`);
+  await runStep(dir, 'chrome.mjs');
   const chrome = JSON.parse(await readFile(path.join(dir, 'migration/chrome/chrome.json'), 'utf8'));
   const check = JSON.parse((await x('node', [path.join(runner, 'status.mjs'), 'check', 'chrome'],
     { cwd: dir }).catch((e) => ({ stdout: e.stdout }))).stdout);

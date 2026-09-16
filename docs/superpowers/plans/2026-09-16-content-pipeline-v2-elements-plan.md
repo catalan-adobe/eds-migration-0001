@@ -188,3 +188,4 @@ regression: the replay column says which row moved it.
 | commit / tag | task | what changed | replay (chrome ×3 · elements 806) |
 |---|---|---|---|
 | `b9f7749` (tag `cpv2-chrome-stable`) | — | baseline | unchanged · 91/51/788/40 |
+| `f5b6838` | A1 | `capture.mjs` owns `capture/` at 300 px | h/f same, rejected +1 ×3 · 803/801 |
