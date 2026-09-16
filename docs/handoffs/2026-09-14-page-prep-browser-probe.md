@@ -90,3 +90,11 @@ the proxy). Suggest an `--also-origin <origin>` (repeatable) option: responses f
 origins are stored under their own `<host>_<hash>/` directory and their absolute URLs are
 rewritten to proxied form (`/path?_origin=<that origin>`) in HTML and CSS, so a truly
 offline render keeps the images. The cache step could pass the asset hosts the probe saw.
+
+## T1 — page-tree: zero-height wrapper deleted its visible child — fixed in the fork (05aa15b)
+
+`collapseSingleChildren` kept the parent's bounds when absorbing its only child; with a
+0 px wrapper around an absolutely positioned nav, `pruneZeroHeightLeaves` then dropped the
+nav. The collapse now takes the child's box and identity when the parent does not contain
+it, records the absorbed chain as `collapsed`, and `className` holds every class. Tested
+via `node --test scripts/page-tree-bundle.test.mjs` (the bundle loaded in a vm).

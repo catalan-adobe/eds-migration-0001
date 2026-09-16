@@ -264,6 +264,27 @@ changed:
 - A commit (baeb534) went out with one integration test red — read as green. Rule
   restated: every gate, every time; the fix went in a new commit.
 
+### The transparent header (05aa15b, d9d7b8b)
+
+The operator compared the two header variants' representatives, `/demo.html` and `/`, and
+saw the same DOM. Asked the rendered pages: same DOM indeed, different CSS — on the home
+page the theme draws the nav over the hero, so `#topNav` is `position: absolute` and its
+sticky wrapper is 0 px high. Page-tree kept the wrapper (it has a child), absorbed the nav
+in `collapseSingleChildren` while keeping the wrapper's zero-height bounds, and
+`pruneZeroHeightLeaves` then deleted a fully visible 1280×80 nav. Fixed in page-tree, not
+worked around: a collapse onto a child the parent does not contain takes the child's box
+and identity, and every collapsed node records the chain it absorbed (`collapsed`,
+outermost first). Two false starts on the consumer side, both caught by the replays: using
+the chain's union as identity (depends on how deep the collapse went — re-split the header,
+lost eight locale footers) and recording only one link of nested collapses. Identity is the
+outermost element of the chain; members carry every selector in it; screenshot resolution
+prefers an element with a visible box; the check accepts any selector in the chain. Result
+on the three real caches: **one header on 94–95 of 96–97 pages, the home page included**,
+one footer, the locale footer as its own variant where its pages were picked, one `.php`
+tool page without chrome. The DOM fallback discussed for this case is not needed; the
+capture was the defect. Also from page-tree: `className` now records every class (it kept
+only the first), which is what the fingerprint's class tokens read.
+
 ## Decisions carried from the spec
 
 Rendered DOM only; page-tree bundle for capture with the stated fallback trigger; regions as
