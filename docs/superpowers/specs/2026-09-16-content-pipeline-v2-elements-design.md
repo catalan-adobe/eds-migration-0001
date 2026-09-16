@@ -106,6 +106,27 @@ coverage, unique — the replay harness's shape), so what a rule edit moved is v
 the loop wants something the vocabulary cannot express, that is an engine gap: it goes
 back into the skill as code, with a test and a replay, and the per-site layer stays thin.
 
+## At scale: the inventory converges, it is never complete
+
+Decomposition is cheap (about a second per page to capture from the cache, milliseconds to
+fingerprint); caching and attention are what cost. So the step decomposes **every cached
+page** and the sampling decides what gets fetched and what gets looked at:
+
+- pages are cached in batches per inventory group (the URL-path prior `pick` already uses,
+  stratified further by depth, extension and query strings so the rare is not skipped);
+- after each batch the store is decomposed again and the inventory merged: stable type ids
+  (from the identity, never an index), append-only types, a **per-batch delta** ("+3
+  types, +2 sequences") and a **saturation table** per group ("0 new types and 0 new
+  sequences in the last N pages");
+- a saturated group stops being picked; a small random audit sample of never-picked URLs
+  closes the loop, because novelty-driven sampling underestimates the rare by construction.
+
+The inventory converges; it does not complete. The import phase later runs the same loop —
+a page whose sections are all known imports, a new section joins the inventory — so the
+step is designed as the standing mechanism, not a one-off analysis. Chrome and elements
+must therefore rerun cheaply after every cache phase, and a store behind the cache is a
+state the runner reports, not a surprise.
+
 ## Sample, not site
 
 Everything here is derived from the **cached sample** (typically ~100 of thousands of
