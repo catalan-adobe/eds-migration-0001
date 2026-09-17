@@ -256,3 +256,4 @@ regression: the replay column says which row moved it.
 | `20fd237` | E1 acceptance | flag/remedy wording, `isMain` through symlinks | same ×3 |
 | `e257d49` (tag `cpv2-part-e-reviewed`) | review E | re-head selector, warnings | same ×3 |
 | `5a8e05b` | F1 | `pick`: saturated skipped, strata, `--audit` | n/a |
+| `1466766` (tag `cpv2-f1-reviewed`) | review F1 | audit from saturated groups; real tests | n/a |
