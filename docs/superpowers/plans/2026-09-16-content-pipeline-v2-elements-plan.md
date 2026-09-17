@@ -211,3 +211,4 @@ regression: the replay column says which row moved it.
 | `bc6686f` (tag `cpv2-elements-step`) | C | `elements.mjs`, runs, groups, check, brief | same ×4 |
 | `c61ac27` (tag `cpv2-part-c-reviewed`) | review C | rules hash, saturation, staleness | same ×4 |
 | `708dc6e` | D1 | crops, flags, `evaluation.md`; worker | same ×4 |
+| `5b11da6` (tag `cpv2-elements-evidence`) | D2 | dashboard panel, composition chips | n/a |
