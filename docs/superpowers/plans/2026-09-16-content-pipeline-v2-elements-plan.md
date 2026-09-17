@@ -204,6 +204,46 @@ is the first refinement to consider in F1 if `pick` stops too early.
   read the delta; repeat until saturation on the large groups; record how many pages it
   took to saturate each group, and what the audit sample found. Findings → this plan.
 
+### F2 on the `-11` project — four rounds, read
+
+Four rounds of `pick --count 100 --audit 10 --write`, approve, warm (pace 1500), capture,
+chrome, elements; ~15 min a round, ~98 pages caught per 110 picked (the rest binaries,
+redirects, unreachable). Rules untouched (the lab's `containers` + `fragments`).
+
+| round | pages | types | recurring | new types | new compositions | saturated groups |
+| --- | --- | --- | --- | --- | --- | --- |
+| 0 | 806 | 158 | 107 | – | – | 8 / 39 |
+| 1 | 904 | 162 | 108 | 4 | 67 | 7 / 39 |
+| 2 | 1003 | 164 | 110 | 2 | 58 | 6 / 39 |
+| 3 | 1101 | 166 | 114 | 2 | 56 | 9 / 39 |
+| 4 | 1199 | 166 | 117 | 0 | 42 | 10 / 39 |
+
+- **Types converge; compositions never do.** 158 → 166 over 393 pages, none in the last 98;
+  compositions keep arriving by the dozen. The spec's saturation-on-types call holds.
+- **Group saturation flips both ways.** "No type new to the group in its last 10 pages" on a
+  40–70-page group is a low bar: `blogs` saturated in rounds 2–3, an audit page un-saturated
+  it in round 4; `zh-tw`, `resources`, `company` likewise. Skipping a saturated group costs
+  little (the audit brings it back when it should), so this is the intended behaviour, not a
+  defect — but a group's `saturated` is a reading of the moment, never a verdict.
+- **The audit earns its place.** Round 2's audit on `company` (saturated, 34 pages) found a
+  globally new type — `interactiveBanner` on an Armenia about-us page. Rounds 1 and 4 found
+  types new to `zh-tw` and `blogs`. Novelty-driven sampling underestimates the rare; the
+  audit is where the rare shows up.
+- **Two audit defects found by the data, fixed** (`1466766`, `f3dae69`): audits drawn by hash
+  from the whole pool landed 0 of 5 in saturated groups; drawn from the saturated groups as
+  one pool they landed 10 of 10 in `blogs`. Now one saturated group at a time, hash order
+  within — a round's 10 audits land in 10 groups.
+- **The new types after 800 pages are of three kinds**: a group's own component seen once
+  (`cmp-list__*` on `/zh-cn/authors.html`, `cards.image` on a SNUG proceedings page); a
+  style-class identity (`background-component.light-grey-bg.vert-pad-top-md` — the
+  `identityExclusions` question already open for the operator's judgement); and the genuine
+  rare (`interactiveBanner`). The first two are rules matters; only the third is new content.
+- `cloud`, `careers`, `events` never grew: every URL of theirs is cached already. `cloud` has
+  28 recent new types on 31 pages — the least saturated group, with nothing left to fetch.
+- `check elements` fails on one type throughout: `links-wrapper` inside the footer fragment
+  (`siteFooterChinese`, `siteFooter`) — the footer-via-XF leak from E1, a `chrome` rule away.
+  Left in place so the measurement stays clean.
+
 ## Not in this plan
 
 Naming or mapping types to EDS blocks; transformers; content extraction; the nested
@@ -257,3 +297,4 @@ regression: the replay column says which row moved it.
 | `e257d49` (tag `cpv2-part-e-reviewed`) | review E | re-head selector, warnings | same ×3 |
 | `5a8e05b` | F1 | `pick`: saturated skipped, strata, `--audit` | n/a |
 | `1466766` (tag `cpv2-f1-reviewed`) | review F1 | audit from saturated groups; real tests | n/a |
+| `f3dae69` | F2 | audit one saturated group at a time; F2 readings in the plan | n/a |
