@@ -203,3 +203,4 @@ regression: the replay column says which row moved it.
 | `bfa87fe` (tag `cpv2-elements-engine`) | B3 | `elements.mjs` identity, inventory | 91/51/788/40 |
 | `be4cb71` | review A | minWidth first key; open states; lib moves; tests | n/a |
 | `45763d4` (tag `cpv2-parts-ab-reviewed`) | review B | rules validation; drop reasons | same ×4 |
+| `bc6686f` (tag `cpv2-elements-step`) | C | `elements.mjs`, runs, groups, check, brief | same ×4 |
