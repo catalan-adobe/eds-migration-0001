@@ -68,7 +68,7 @@ anything else.
 - `lib/elements-rules.mjs`: the rules vocabulary with defaults — identity exclusions
   (state, generated names, width tokens), noise classes, leaf-component tags, container
   share 0.6, recurrence threshold 2 pages — and `readRules(project)` merging
-  `elements/rules.json` (`merge`, `split`, `chrome`, `reject`, and overrides of the
+  `elements/rules.json` (`merge`, `chrome`, `reject`, and overrides of the
   defaults) over them. Unknown keys are an error with the list of known ones.
 
 ### Task B2 — sections
@@ -88,7 +88,7 @@ anything else.
   `variantKey(node, rules)` (set of children identities), `inventory(pages, rules)` →
   types with stable ids (`t-<8 hex of identity>`), pages, instances, support, median
   bounds, selectors, sample, groups, variants; per-page composition and coverage; the
-  sequences view; `merge`/`split`/`chrome`/`reject` applied from the rules; classification
+  sequences view; `merge`/`chrome`/`reject` applied from the rules; classification
   as a first cut with its signal.
 - Tests: repetition never splits a type; a width token never does; a merge rule joins two
   ids and keeps both in `mergedFrom`; coverage arithmetic; sequences.
@@ -177,7 +177,16 @@ that changes something defensible (a merge or a chrome leak) and reports the del
 ## Not in this plan
 
 Naming or mapping types to EDS blocks; transformers; content extraction; the nested
-structure inside a section (the mapping expert's concern); Monarch-shaped exports.
+structure inside a section (the mapping expert's concern); Monarch-shaped exports; a `split`
+rule (variants show the child sets; a needed split is an engine gap).
+
+## Known limits (from review)
+
+- Parts are attached by selector prefix; page-tree's selectors stop at the nearest id, so a
+  part promoted from under an id'd wrapper (`div#hero-inner > img`) is not recognised and
+  becomes a type of its own. Fix, if a site shows it: page-tree records the origin parent.
+- A capture's min-width is held in `.work/capture/run.json`; without a run the store is held
+  to 300 px. Persist it in `project.json` the day a project uses another width.
 
 ## Commit ledger
 
@@ -192,3 +201,5 @@ regression: the replay column says which row moved it.
 | `0e6506f` (tag `cpv2-capture-step`) | A2 | store-behind-cache note; chrome fails on it | n/a |
 | `dac3fbd` | B1+B2 | `elements-rules.mjs`, `decompose.mjs` sections() | 8569 sections on 806 |
 | `bfa87fe` (tag `cpv2-elements-engine`) | B3 | `elements.mjs` identity, inventory | 91/51/788/40 |
+| `be4cb71` | review A | minWidth first key; open states; lib moves; tests | n/a |
+| `45763d4` (tag `cpv2-parts-ab-reviewed`) | review B | rules validation; drop reasons | same ×4 |

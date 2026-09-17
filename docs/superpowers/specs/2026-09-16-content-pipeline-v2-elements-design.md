@@ -49,7 +49,7 @@ Nothing is rendered again for detection; nothing touches the origin.
 
 The store's default capture folds elements narrower than 900 px into their parent — right
 for chrome, too coarse here: every AEM column looked identical. The elements step needs
-the store captured at **300 px** (`chrome.mjs --min-width 300`); on 806 real pages that
+the store captured at **300 px** (`capture.mjs`, its default); on 806 real pages that
 left chrome detection intact (header 803, footer 801). When the capture becomes its own
 step, 300 px is its default and chrome reads the same store.
 
@@ -84,10 +84,12 @@ test the identity rule harder than this one did. The step therefore has two laye
 - **The engine**: fixed, tested, replayed. Detection rules are functions of a rules object.
 - **`elements/rules.json`**, per project, with a bounded vocabulary: identity token
   exclusions (regexes beyond the built-in state, generated-name and width patterns), extra
-  noise classes, leaf-component tags, the container share, the capture min-width, explicit
-  `merge` (type A is type B), `split` (a type by a child identity), `chrome` (a section
-  that is chrome after all), `reject` (a selector). Nothing in it is code. The file is a
-  deliverable: it documents the site's idiosyncrasies, diffs, and replays.
+  noise classes, leaf-component tags, the container share, explicit `merge` (type A is
+  type B), `chrome` (a section that is chrome after all), `reject` (a selector). Nothing in
+  it is code, and nothing splits a type: variants already show the child sets a split would
+  key on, and a split the data really needs is an engine gap. The capture min-width belongs
+  to the capture step. The file is a deliverable: it documents the site's idiosyncrasies,
+  diffs, and replays.
 
 The loop is run → evaluate → adapt → run, with the agent or operator editing the rules
 file only, never the scripts. **Evaluation is by evidence, not by numbers**: coverage up and
@@ -189,7 +191,7 @@ migration/elements/
 ## The agent's part
 
 Runs the script, reads `evaluation.md` (the crops, the flags), and either confirms or edits
-`rules.json` — a merge, a split, a chrome leak, a reject — and runs again; two or three
+`rules.json` — a merge, a chrome leak, a reject — and runs again; two or three
 iterations is the expectation, the summary diff says whether an edit helped. Then writes
 the report section with what it changed and why. Never reads the captures, never names
 types, never edits `elements.json`, never touches the scripts. A wish the rules cannot
