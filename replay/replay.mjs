@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Replays the capture and chrome steps over the caches we hold and diffs a compact summary of each result
+// Replays capture, chrome and the elements engine over the caches we hold and diffs a summary
 // against replay/expected/<name>.json. Lab tooling: the caches and site names never enter the
 // skill repository. Usage: node replay/replay.mjs [--update] [name...]
 import { cp, mkdir, readFile, rm, symlink, writeFile } from 'node:fs/promises';
@@ -80,6 +80,10 @@ async function replay(name) {
   const check = JSON.parse((await x('node', [path.join(runner, 'status.mjs'), 'check', 'chrome'],
     { cwd: dir }).catch((e) => ({ stdout: e.stdout }))).stdout);
   await x('node', [path.join(runner, 'status.mjs'), 'cache', 'stop'], { cwd: dir }).catch(() => {});
+  const flags = update ? ['--update'] : [];
+  const el = await x('node', [path.join(here, 'elements.mjs'), name, dir, ...flags])
+    .catch((e) => ({ stdout: e.stdout }));
+  console.log(el.stdout.trim());
   return { summary: summarise(chrome, run, check), seconds: Math.round((Date.now() - t0) / 1000) };
 }
 

@@ -190,3 +190,5 @@ regression: the replay column says which row moved it.
 | `b9f7749` (tag `cpv2-chrome-stable`) | — | baseline | unchanged · 91/51/788/40 |
 | `f5b6838` | A1 | `capture.mjs` owns `capture/` at 300 px | h/f same, rejected +1 ×3 · 803/801 |
 | `0e6506f` (tag `cpv2-capture-step`) | A2 | store-behind-cache note; chrome fails on it | n/a |
+| `dac3fbd` | B1+B2 | `elements-rules.mjs`, `decompose.mjs` sections() | 8569 sections on 806 |
+| `bfa87fe` (tag `cpv2-elements-engine`) | B3 | `elements.mjs` identity, inventory | 91/51/788/40 |
