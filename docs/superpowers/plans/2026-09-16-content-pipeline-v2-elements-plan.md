@@ -254,3 +254,4 @@ regression: the replay column says which row moved it.
 | `c7e86d8` (tag `cpv2-part-d-reviewed`) | review D | named crops, stop path, flags | same ×4 |
 | `1570c2d` (tag `cpv2-elements-loop`) | E1 | containers, fragments, chain walk, seed | same ×3 |
 | `20fd237` | E1 acceptance | flag/remedy wording, `isMain` through symlinks | same ×3 |
+| `e257d49` (tag `cpv2-part-e-reviewed`) | review E | re-head selector, warnings | same ×3 |
