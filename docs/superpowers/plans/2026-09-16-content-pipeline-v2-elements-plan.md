@@ -210,3 +210,4 @@ regression: the replay column says which row moved it.
 | `45763d4` (tag `cpv2-parts-ab-reviewed`) | review B | rules validation; drop reasons | same ×4 |
 | `bc6686f` (tag `cpv2-elements-step`) | C | `elements.mjs`, runs, groups, check, brief | same ×4 |
 | `c61ac27` (tag `cpv2-part-c-reviewed`) | review C | rules hash, saturation, staleness | same ×4 |
+| `708dc6e` | D1 | crops, flags, `evaluation.md`; worker | same ×4 |
