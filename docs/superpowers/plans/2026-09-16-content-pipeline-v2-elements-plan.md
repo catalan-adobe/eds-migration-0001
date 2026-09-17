@@ -161,6 +161,11 @@ that changes something defensible (a merge or a chrome leak) and reports the del
 
 ## Part F — scale
 
+Saturation (decided in the Part C review): read from the data, not from run boundaries — a
+group is saturated when its last 10 pages in capture order brought no type its earlier
+pages lack; judged on types only (compositions are a long tail), a new *variant* as novelty
+is the first refinement to consider in F1 if `pick` stops too early.
+
 ### Task F1 — novelty-aware `pick`
 
 - `pick` skips saturated groups (from `elements.json`), prefers groups with few cached
@@ -204,3 +209,4 @@ regression: the replay column says which row moved it.
 | `be4cb71` | review A | minWidth first key; open states; lib moves; tests | n/a |
 | `45763d4` (tag `cpv2-parts-ab-reviewed`) | review B | rules validation; drop reasons | same ×4 |
 | `bc6686f` (tag `cpv2-elements-step`) | C | `elements.mjs`, runs, groups, check, brief | same ×4 |
+| `c61ac27` (tag `cpv2-part-c-reviewed`) | review C | rules hash, saturation, staleness | same ×4 |
