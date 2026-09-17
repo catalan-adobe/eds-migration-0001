@@ -159,6 +159,19 @@ alone whether `column` is one type or several — recorded as a finding, whichev
 Acceptance: a one-shot subagent given the brief and the `-11` copy performs one iteration
 that changes something defensible (a merge or a chrome leak) and reports the delta.
 
+### E1 on the 806-page store — the first iteration, read
+
+`rules.json`: `containers: [column, component-column.row]`, `fragments: [experiencefragment]`.
+The run says "rules changed", 91 → 158 types, 8569 → 8611 sections, 788 → 777 fully covered
+(30 unique types surfaced from under the column). The column is gone; the fragment table
+names the site's 33 fragment documents (`cmp-experiencefragment--contact-us---general` on
+132 pages) — AEM stamps the document name on the inner div, and the chain walk exposed it.
+The next layer is the EDS section itself: `background-component.<bg>.<vert-pad-*>` wrappers
+(174, 112, 93, 91 pages) whose classes are styles, not identity — `identityExclusions:
+["-bg$", "^vert-pad-"]` is the second edit; `DIV#.container` and the unclassed row cells
+`DIV#.` are the next `containers`. Engine gap found and closed in E1: decomposing through a
+node with a collapsed chain must walk the chain (the fragment's content was in it).
+
 ## Part F — scale
 
 Saturation (decided in the Part C review): read from the data, not from run boundaries — a
@@ -227,3 +240,4 @@ regression: the replay column says which row moved it.
 | `708dc6e` | D1 | crops, flags, `evaluation.md`; worker | same ×4 |
 | `5b11da6` (tag `cpv2-elements-evidence`) | D2 | dashboard panel, composition chips | n/a |
 | `c7e86d8` (tag `cpv2-part-d-reviewed`) | review D | named crops, stop path, flags | same ×4 |
+| `1570c2d` (tag `cpv2-elements-loop`) | E1 | containers, fragments, chain walk, seed | same ×3 |
