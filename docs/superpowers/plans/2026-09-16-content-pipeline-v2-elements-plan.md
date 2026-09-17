@@ -172,6 +172,18 @@ The next layer is the EDS section itself: `background-component.<bg>.<vert-pad-*
 `DIV#.` are the next `containers`. Engine gap found and closed in E1: decomposing through a
 node with a collapsed chain must walk the chain (the fragment's content was in it).
 
+### E1 acceptance — one fresh agent, the brief alone (medium tier, 81 min, $1.74)
+
+Passed the mechanism: only `rules.json` and the report section changed; no script touched;
+no capture read; two iterations with the runs table read; an engine gap named rather than
+worked around. The edits: two whole-page wrappers → `containers` (right, closes the
+one-section flag); breadcrumb → `chrome` (wrong: content; the flag's wording invited it);
+leaked footer → `reject` (wrong: `chrome`; the check's remedy said "reject"). Both wordings
+fixed. The named gap — 5 pages with no section — is honest: their capture holds nothing
+between header and footer (gated or script-built content that did not render offline); a
+cache matter, flagged as such now. Found on the way: scripts invoked through a symlinked
+skill directory silently did nothing (`isMain` now resolves the entry path).
+
 ## Part F — scale
 
 Saturation (decided in the Part C review): read from the data, not from run boundaries — a
@@ -241,3 +253,4 @@ regression: the replay column says which row moved it.
 | `5b11da6` (tag `cpv2-elements-evidence`) | D2 | dashboard panel, composition chips | n/a |
 | `c7e86d8` (tag `cpv2-part-d-reviewed`) | review D | named crops, stop path, flags | same ×4 |
 | `1570c2d` (tag `cpv2-elements-loop`) | E1 | containers, fragments, chain walk, seed | same ×3 |
+| `20fd237` | E1 acceptance | flag/remedy wording, `isMain` through symlinks | same ×3 |
