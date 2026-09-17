@@ -146,6 +146,11 @@ labelled by type id. Types under the line get a crop only when the operator asks
 
 ## Outputs
 
+Delivered in Parts C–D: `elements.json`, `elements.md`, `evaluation.md` with per-type and
+per-variant crops, the dashboard panel. Still an intention (see the plan's "Deferred"):
+`classification`/`signal`, outlined `page-<n>.png`, `--all`. The EDS reading, when it comes,
+uses four words — section, default content, block, fragment.
+
 ```
 migration/elements/
   rules.json           the site's rules (created empty by the first run; edited by hand)

@@ -185,6 +185,20 @@ Naming or mapping types to EDS blocks; transformers; content extraction; the nes
 structure inside a section (the mapping expert's concern); Monarch-shaped exports; a `split`
 rule (variants show the child sets; a needed split is an engine gap).
 
+## Deferred from Part D (recorded, not forgotten)
+
+- Outlined full-page screenshots per representative page (`page-<n>.png`): the per-type
+  crops carried the judgement on the first real run; add when a reviewer asks for context.
+- `--all` for crops of the unique tail: the tail is listed with its sample URL instead.
+- The structural classification (`classification`, `signal`) — the EDS reading of a type as
+  section, default content, block or **fragment** (a first-class EDS element: a reference
+  to another document, itself a sequence of elements): a later part, once the container
+  and fragment rules exist; the spec's Outputs still show the field as an intention.
+- On the type card: the groups a type appears in; in the groups table: the dominant
+  composition itself, not only its share.
+- A "container?" hint: the numbers (variants per instance, height spread) did not separate
+  containers from rich leaves on the first run; the crops did. Not added.
+
 ## Known limits (from review)
 
 - Parts are attached by selector prefix; page-tree's selectors stop at the nearest id, so a
@@ -212,3 +226,4 @@ regression: the replay column says which row moved it.
 | `c61ac27` (tag `cpv2-part-c-reviewed`) | review C | rules hash, saturation, staleness | same ×4 |
 | `708dc6e` | D1 | crops, flags, `evaluation.md`; worker | same ×4 |
 | `5b11da6` (tag `cpv2-elements-evidence`) | D2 | dashboard panel, composition chips | n/a |
+| `c7e86d8` (tag `cpv2-part-d-reviewed`) | review D | named crops, stop path, flags | same ×4 |
