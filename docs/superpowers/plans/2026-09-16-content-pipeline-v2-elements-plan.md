@@ -193,10 +193,11 @@ is the first refinement to consider in F1 if `pick` stops too early.
 
 ### Task F1 — novelty-aware `pick`
 
-- `pick` skips saturated groups (from `elements.json`), prefers groups with few cached
-  pages, stratifies by depth / extension / query string, and reserves `--audit N` random
-  never-picked URLs. `urls.md` and the inventory panel's group table show saturation and
-  the number of compositions per group, so the operator sees where the next batch goes.
+- `pick` skips saturated groups (from `elements.json`), round-robins the rest (largest
+  first — equal shares, so no preference for thin groups is needed), stratifies by depth /
+  extension / query string, and reserves `--audit N` hash-ordered never-picked URLs.
+  `urls.md` and the inventory panel's group table show saturation and the number of
+  compositions per group, so the operator sees where the next batch goes.
 
 ### Task F2 — the phase loop, end to end
 
@@ -222,17 +223,21 @@ redirects, unreachable). Rules untouched (the lab's `containers` + `fragments`).
   compositions keep arriving by the dozen. The spec's saturation-on-types call holds.
 - **Group saturation flips both ways.** "No type new to the group in its last 10 pages" on a
   40–70-page group is a low bar: `blogs` saturated in rounds 2–3, an audit page un-saturated
-  it in round 4; `zh-tw`, `resources`, `company` likewise. Skipping a saturated group costs
-  little (the audit brings it back when it should), so this is the intended behaviour, not a
-  defect — but a group's `saturated` is a reading of the moment, never a verdict.
+  it in round 4; `zh-tw` and `resources` flipped the same way, `company` un-saturated in
+  round 2 and stayed so. Skipping a saturated group costs little (the audit brings it back
+  when it should), so this is the intended behaviour, not a defect — but a group's
+  `saturated` is a reading of the moment, never a verdict.
 - **The audit earns its place.** Round 2's audit on `company` (saturated, 34 pages) found a
-  globally new type — `interactiveBanner` on an Armenia about-us page. Rounds 1 and 4 found
-  types new to `zh-tw` and `blogs`. Novelty-driven sampling underestimates the rare; the
-  audit is where the rare shows up.
+  globally new type — `interactiveBanner` on an Armenia about-us page. Rounds 1, 2 and 4
+  found types new to `zh-tw`, `resources` and `blogs`; `company`, un-saturated at 34 pages
+  and 28 types, learnt 10 more types from its round-3 main picks. The five groups skipped
+  all four rounds took ~8 audit pages each and yielded nothing: skipping them cost nothing.
+  Novelty-driven sampling underestimates the rare; the audit is where the rare shows up.
 - **Two audit defects found by the data, fixed** (`1466766`, `f3dae69`): audits drawn by hash
   from the whole pool landed 0 of 5 in saturated groups; drawn from the saturated groups as
   one pool they landed 10 of 10 in `blogs`. Now one saturated group at a time, hash order
-  within — a round's 10 audits land in 10 groups.
+  within — a dry `pick` on the project after the fix (not a fifth round) lands the 10 audits
+  in 10 groups.
 - **The new types after 800 pages are of three kinds**: a group's own component seen once
   (`cmp-list__*` on `/zh-cn/authors.html`, `cards.image` on a SNUG proceedings page); a
   style-class identity (`background-component.light-grey-bg.vert-pad-top-md` — the
@@ -298,3 +303,4 @@ regression: the replay column says which row moved it.
 | `5a8e05b` | F1 | `pick`: saturated skipped, strata, `--audit` | n/a |
 | `1466766` (tag `cpv2-f1-reviewed`) | review F1 | audit from saturated groups; real tests | n/a |
 | `f3dae69` | F2 | audit one saturated group at a time; F2 readings in the plan | n/a |
+| `352f414` (`cpv2-part-f-reviewed`, `cpv2-elements-complete`) | review F | wording; bound; root | n/a |
