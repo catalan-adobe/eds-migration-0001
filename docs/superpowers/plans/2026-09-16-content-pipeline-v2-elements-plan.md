@@ -276,6 +276,47 @@ rule (variants show the child sets; a needed split is an engine gap).
   becomes a type of its own. Fix, if a site shows it: page-tree records the origin parent.
 - A capture's min-width is held in `.work/capture/run.json`; without a run the store is held
   to 300 px. Persist it in `project.json` the day a project uses another width.
+- At 300 px, columns nested in a grid column (`col-sm-9` → three-up ≈ 300 px) lose their
+  children in the capture: the column wrapper is a leaf and stays a type, an opaque box
+  whose crop shows content the inventory cannot see (`-11`: `column` 316 pages, 774
+  instances, all leaves, 46–8927 px). A lower `--min-width` buys it back at the price of
+  noise everywhere else; a per-node rule is not worth writing before a second site shows it.
+
+## The second rules iteration on the `-11` project — read
+
+The question: is `background-component` one section type with styles? 36 types differed
+only by `light-grey-bg` / `white-bg` / `vert-pad-*` classes. Three readings of the 1199-page
+store, in memory, before any write:
+
+| rules | types | recurring | what the types are |
+| --- | --- | --- | --- |
+| lab (two containers, XF fragment) | 166 | 117 | 36 × `background-component` |
+| + exclusions `-bg$`, `^vert-pad-` | 132 | 87 | one `background-component`: 789 pages |
+| + five wrapper containers | 167 | 111 | `aem-GridColumn.<component>`: `text` 993, `banner` 540 |
+
+The five: `background-component` (and its `tocSictkyArticlesMobile` twin), `container`,
+the bare `div`, `aem-Grid`, `three`.
+
+Applied: the third. In the four-word reading, `background-component` is a **section** (its
+classes are section styles), the five wrappers are layout containers, and what remains is
+what an author placed — the AEM component vocabulary, which is the block inventory a
+migration wants. The wrappers are an onion: each one peeled shows the next (`container` →
+`aem-Grid` → `column` → `aem-Grid`); five lines settled it here. Rules, not engine.
+
+Two engine gaps the iteration found, fixed as generic code (`668ca2e`, replayed on the
+three fixture caches — the identical footer leak was on every one of them, and vanished):
+- A node **under** a chrome member selector was not chrome: page-tree sometimes keeps a
+  wrapper's children without the wrapper, so the footer's `links-wrapper` had no matching
+  selector and was a one-page type. `chrome`, `rules.chrome`, `rules.reject` match
+  descendants now. `check elements` passes on `-11` for the first time.
+- An unmatched `chrome` or `reject` rule was silent (`containers`/`fragments` warned). The
+  operator's first instinct — a CSS class such as `div.siteFooter` — now yields a warning
+  naming what to paste.
+
+What the evaluation flags after this: `contact-us---general` (last on 199 pages) reads as
+"chrome leak?" — it is a reused CTA band, a fragment content, and stays; `image` is the base
+class of 14 types (a shared base, not a merge); `text` spans 15–7068 px (rich text of every
+length, one type).
 
 ## Commit ledger
 
@@ -303,4 +344,5 @@ regression: the replay column says which row moved it.
 | `5a8e05b` | F1 | `pick`: saturated skipped, strata, `--audit` | n/a |
 | `1466766` (tag `cpv2-f1-reviewed`) | review F1 | audit from saturated groups; real tests | n/a |
 | `f3dae69` | F2 | audit one saturated group at a time; F2 readings in the plan | n/a |
-| `352f414` (`cpv2-part-f-reviewed`, `cpv2-elements-complete`) | review F | wording; bound; root | n/a |
+| `352f414` (tags part-f-reviewed, elements-complete) | review F | wording; bound; root | n/a |
+| `668ca2e` | iteration 2 | node under chrome selector is chrome; unmatched rules warn | updated |

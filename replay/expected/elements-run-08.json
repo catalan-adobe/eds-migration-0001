@@ -1,16 +1,16 @@
 {
   "pages": 97,
-  "sections": 1107,
-  "types": 46,
+  "sections": 1106,
+  "types": 45,
   "recurring": 30,
   "covered": {
-    "full": 88,
-    "partial": 7,
+    "full": 89,
+    "partial": 6,
     "none": 2
   },
   "unique": {
-    "types": 16,
-    "pages": 8
+    "types": 15,
+    "pages": 7
   },
   "compositions": 89,
   "topVariants": [
