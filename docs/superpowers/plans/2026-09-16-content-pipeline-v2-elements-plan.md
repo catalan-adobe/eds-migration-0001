@@ -345,4 +345,4 @@ regression: the replay column says which row moved it.
 | `1466766` (tag `cpv2-f1-reviewed`) | review F1 | audit from saturated groups; real tests | n/a |
 | `f3dae69` | F2 | audit one saturated group at a time; F2 readings in the plan | n/a |
 | `352f414` (tags part-f-reviewed, elements-complete) | review F | wording; bound; root | n/a |
-| `668ca2e` | iteration 2 | node under chrome selector is chrome; unmatched rules warn | updated |
+| `668ca2e` (`cpv2-elements-iter2`) | iteration 2 | node under chrome is chrome; warn | updated |
