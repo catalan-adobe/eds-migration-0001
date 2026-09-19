@@ -346,3 +346,4 @@ regression: the replay column says which row moved it.
 | `f3dae69` | F2 | audit one saturated group at a time; F2 readings in the plan | n/a |
 | `352f414` (tags part-f-reviewed, elements-complete) | review F | wording; bound; root | n/a |
 | `668ca2e` (`cpv2-elements-iter2`) | iteration 2 | node under chrome is chrome; warn | updated |
+| `b3a8872` (`cpv2-elements-iter3`) | pick | fetches nothing; briefs | n/a |
