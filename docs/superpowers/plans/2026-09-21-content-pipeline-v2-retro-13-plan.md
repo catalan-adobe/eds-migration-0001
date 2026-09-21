@@ -107,3 +107,12 @@ A1, A4, A5 (words, one commit) → B1 (one commit, tests) → A2, A3 (one commit
 (one commit, tests) → tag `cpv2-retro-13` → C1 on the `-11` store → rerun the `-13`
 project's elements loop from its current `rules.json` with the new brief, fresh agent,
 and read whether it finds `column`.
+
+## Commit ledger
+
+| sha (tag) | item | what |
+| --- | --- | --- |
+| `cb8c77d` | A1 A3 A4 A5 | elements finish line, reading rule; empty-page words; ten steps |
+| `695b7fe` | B1 | done step without its section: note `no report section`; report brief reads it |
+| `2cde89a` | A2 | `takes` column in the step table, measured; twice for a timeout |
+| `15fed33` (`cpv2-retro-13`) | B2 | `skills.<name>.source`; `check setup` on mismatch |
