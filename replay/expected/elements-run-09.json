@@ -1,22 +1,22 @@
 {
   "pages": 96,
-  "sections": 1133,
-  "types": 44,
-  "recurring": 33,
+  "sections": 1091,
+  "types": 40,
+  "recurring": 34,
   "covered": {
     "full": 91,
-    "partial": 3,
-    "none": 2
+    "partial": 4,
+    "none": 1
   },
   "unique": {
-    "types": 11,
+    "types": 6,
     "pages": 4
   },
   "compositions": 88,
   "topVariants": [
     15,
     27,
-    19,
+    20,
     6,
     1
   ]

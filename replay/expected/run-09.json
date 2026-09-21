@@ -17,7 +17,7 @@
   ],
   "footer": [
     {
-      "pages": 93,
+      "pages": 94,
       "members": 1,
       "optional": 0,
       "group": "site-wide"
@@ -25,10 +25,10 @@
   ],
   "without": {
     "header": 1,
-    "footer": 3
+    "footer": 2
   },
   "unplaced": 0,
-  "rejected": 11,
+  "rejected": 10,
   "shortestUrlInHeader1": true,
   "checkPass": true
 }

@@ -17,21 +17,15 @@
   ],
   "footer": [
     {
-      "pages": 94,
+      "pages": 95,
       "members": 1,
       "optional": 1,
       "group": "site-wide"
-    },
-    {
-      "pages": 2,
-      "members": 1,
-      "optional": 0,
-      "group": "ja-jp"
     }
   ],
   "without": {
     "header": 1,
-    "footer": 1
+    "footer": 2
   },
   "unplaced": 0,
   "rejected": 10,

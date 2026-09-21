@@ -106,6 +106,41 @@ item of a repeated group takes the group's name; two components under one type n
 the source element is (raw HTML: `embed`); counts from `elements.json`, not from crops;
 leaves are the runner's, not the agent's.
 
+## "12 of 48 pages open for container leaves" — what it was
+
+The number had been read as the 300 px capture limit. Recapturing the project at 200 and
+150 px (`replay/width.mjs`, a lab copy per width) moved nothing: `column` stayed a leaf on
+16 pages at every width. So it was not the width. The DOM under a leaf column was complete
+— `container → section.row → two 424 px columns → content` — and page-tree dropped the
+subtree at the row.
+
+- **Cause 1, page-tree**: containment was exact within 2 px. A grid row with negative
+  margins (878 px inside an 848 px container — every Bootstrap-style row) read as an
+  element rendered outside its parent: the collapse stopped, `promoteEscapedNodes`
+  re-parented the row to the nearest wider ancestor, the columns went with it. Downstream:
+  the container came back childless (the leaves) and the row surfaced elsewhere as a type
+  of its own (`component-column.row`, 50 instances of "unrelated" content). Fix
+  (`309007d`): a child is contained when nine tenths of its area lie inside the parent; a
+  dropdown below its trigger or a banner off to the side still escapes. Replayed on three
+  caches: sections −59, two types fewer, one stray footer variant merged. Leaves on the
+  project: 18 → 9 pages. This very likely is C1 (the `anchor` absorbing what follows) too.
+- **Cause 2, the width**: what remained were four-up rows of `col-sm-3` at 293 px and
+  quarter-width rails — genuinely under 300 at a 1280 viewport. Default min-width → 250
+  (`4a5bb17`); 200 saw nothing more. Leaves: 9 → 2 pages; four new types to decide (a
+  sticky left-rail TOC, right-rail items, a `four` wrapper — the onion, one more line).
+- **The width's price, and its fix**: at 250 the footer's five link columns became
+  structural children; the site's other-language footer has four, so its fingerprint
+  differed and twelve pages of three caches lost their footer. The chrome fingerprint now
+  hashes the *set* of children fingerprints, not the list — one more of the same child is
+  repetition, as the elements engine already reads a variant. Footer back to every page;
+  on the project 48/48 header and footer (was 47 footer).
+
+Final on the project at 250 with both fixes: 73 types, 38 recurring, leaves on 2 pages,
+38/48 covered with 4 types still to decide (the newly visible content). Tag
+`cpv2-capture-250`. Lesson kept: a "known limit" is a hypothesis until the number moves
+when the limit does — this one did not, and the real cause was a page-tree rule that had
+been wrong on every grid site since the beginning.
+
 ## Commit ledger
 
 | sha (tag) | task | what | replay |
@@ -115,3 +150,5 @@ leaves are the runner's, not the agent's.
 | `3235d77` | C | dashboard: block inventory panel, kind chips | n/a |
 | `245df3d` (`cpv2-mapping-step`) | D | undecided orphans dropped; run read above | n/a |
 | `9a20012` (`cpv2-mapping-accepted`) | acceptance | container leaves; brief words | n/a |
+| `309007d` | page-tree | containment by overlap area (rows with negative margins) | re-recorded |
+| `4a5bb17` (`cpv2-capture-250`) | capture | default 250 px; set fingerprint | re-recorded |
