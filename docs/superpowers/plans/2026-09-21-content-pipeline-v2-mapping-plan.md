@@ -166,3 +166,4 @@ morning, with nothing decided that the eye could not see.
 | `4a5bb17` (`cpv2-capture-250`) | capture | default 250 px; set fingerprint | re-recorded |
 | `669efda` (`cpv2-reject-identity`) | rules | `reject` by identity | unchanged |
 | `f2efba9` (`cpv2-dashboard-follows`) | dashboard | the copy follows the skill | n/a |
+| `5f0cc99` (`cpv2-warm-scrolls`) | cache | the warm scrolls through the page; lazy images | n/a |
