@@ -141,6 +141,18 @@ Final on the project at 250 with both fixes: 73 types, 38 recurring, leaves on 2
 when the limit does — this one did not, and the real cause was a page-tree rule that had
 been wrong on every grid site since the beginning.
 
+## The project brought to the new default
+
+Reinstalled from `cpv2-capture-250` (the `.claude/skills/page-tree` mirror upskill leaves
+had to go first: detection found it and skipped the install), recaptured, chrome 48/48
+both, elements 73 types / 38 recurring, four new types: `four` → `containers` (the
+onion), the left-rail TOC → `toc` (same component as the top bar), right-rail items →
+`link-list` (one item), the generated back-to-top button → noise. `skip` would have kept
+its two pages open, and `reject` took only selectors, which differ per page for generated
+nodes: `reject` now takes an identity too (`669efda`, tag `cpv2-reject-identity`). Final:
+14 blocks, 9 default content, leaves on 1 page, **43 of 48 covered** — from 36 this
+morning, with nothing decided that the eye could not see.
+
 ## Commit ledger
 
 | sha (tag) | task | what | replay |
@@ -152,3 +164,4 @@ been wrong on every grid site since the beginning.
 | `9a20012` (`cpv2-mapping-accepted`) | acceptance | container leaves; brief words | n/a |
 | `309007d` | page-tree | containment by overlap area (rows with negative margins) | re-recorded |
 | `4a5bb17` (`cpv2-capture-250`) | capture | default 250 px; set fingerprint | re-recorded |
+| `669efda` (`cpv2-reject-identity`) | rules | `reject` by identity | unchanged |
