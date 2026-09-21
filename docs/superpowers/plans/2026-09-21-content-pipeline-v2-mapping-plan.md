@@ -76,6 +76,36 @@ it in one more rerun. 30 types to decide; 17 blocks, 6 default content, 0 skippe
 - Nothing the vocabulary could not say; no engine gap beyond the orphan wart. The site's
   names never entered the engine: the decisions live in `mapping.json`.
 
+## Acceptance — one fresh medium agent from the brief alone, one reviewer
+
+Run `mapping-acceptance-mub7ju2l-pzs55g` (2 agents, 17 min, $3.55). The agent passed the
+check: 14 blocks, 11 default content, 0 skipped, 44/48 covered; edited only `mapping.json`
+and the report section. The reviewer compared it with the hand mapping type by type and
+was told not to assume the reference right; it did not:
+
+- **Agreed** on hero, page-nav, cards (three types merged), carousel, breadcrumb (both read
+  the dropdown arrows as component styling), the link grid (both types), tabs, form (both
+  types), benefits, accordion, search, and every default-content type of the reference.
+  Its names beat mine three times (`link-list`, `logos`, `benefits` say what the thing is;
+  `box-links`, `logo-carousel`, `key-benefits` echo the class).
+- **Reference better**: `quote` (a boxed testimonial with name and logo — the agent
+  followed the brief's literal "a quote: default content"); `embed` for the raw-HTML
+  component (the agent named the majority crop, and miscounted from three crops); `tags`.
+- **Neither right**: the leaf columns. Both of us decided a type that cannot be decided —
+  a container whose content the capture never saw. The agent said so in its own words
+  ("mapping.json has no section kind … it has to masquerade as default-content") and
+  named it an engine gap. It was. It also claimed `divider-row` was a dead-end container;
+  it was in neither `containers` nor childless — the missing verification step.
+
+Engine (`9a20012`, tag `cpv2-mapping-accepted`): **container leaves** — a container
+identity whose instances all lack children — are not seeded, are listed as their own
+section, keep their pages open with the reason, and a stale decision on one covers nothing.
+On the project: 36 of 48 covered, 12 open for leaves alone — the 300 px capture limit
+priced in pages for the first time. Brief: a boxed testimonial is a `quote` block; one
+item of a repeated group takes the group's name; two components under one type name what
+the source element is (raw HTML: `embed`); counts from `elements.json`, not from crops;
+leaves are the runner's, not the agent's.
+
 ## Commit ledger
 
 | sha (tag) | task | what | replay |
@@ -84,3 +114,4 @@ it in one more rerun. 30 types to decide; 17 blocks, 6 default content, 0 skippe
 | `0f095cd` | B | `mapping.mjs`, step, check, brief, structure, SKILL row | n/a |
 | `3235d77` | C | dashboard: block inventory panel, kind chips | n/a |
 | `245df3d` (`cpv2-mapping-step`) | D | undecided orphans dropped; run read above | n/a |
+| `9a20012` (`cpv2-mapping-accepted`) | acceptance | container leaves; brief words | n/a |
