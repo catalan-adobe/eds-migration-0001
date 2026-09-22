@@ -153,6 +153,41 @@ nodes: `reject` now takes an identity too (`669efda`, tag `cpv2-reject-identity`
 14 blocks, 9 default content, leaves on 1 page, **43 of 48 covered** — from 36 this
 morning, with nothing decided that the eye could not see.
 
+## The fresh run on a clean project (`fresh-run-12-mubjjvu6-kwqxco`, 68 min, $11.27)
+
+One medium agent, setup to mapping, from the briefs alone, at `cpv2-warm-scrolls`; one
+reviewer on the disk. Outcome: 10 of 11 checks pass (report not asked); five siblings with
+their source recorded; 50/50 cached, no same-host image missing (the scrolling warm at
+work); chrome 48/48; elements seven runs; mapping 34 decided, 12 blocks, 42/48 covered —
+close to the hand-mapped project. Not as the operator would have it, and the reviewer saw:
+
+- **The sticky nav measured at the bottom of every page** and the header shrunk to the
+  utility bar. Mine, from the same afternoon: the capture ran `prep, scrollTo(0,0)` as one
+  comma expression, right while the prep was synchronous, wrong the moment the warm's
+  expression became an asynchronous scroll pass ending at the bottom. The replay would
+  have caught it; it was not run after the warm change ("detection-neutral", I thought).
+  Fixed (`4c1a3fb`): the prep is awaited, then the top. Rule kept: **every change that
+  touches what the browser does before a measurement is a detection change; replay.**
+- **One page captured empty, on both projects.** Not page-tree, not a flake: the landing
+  page sits at opacity 0 for five seconds after load, then fades in; page-tree prunes
+  opacity 0, rightly. Three tries at a settle wait: stable element count and height
+  (misses it — nothing changes but opacity); wait while a large opacity-0 block exists
+  (right, 541 s for 48 pages — every carousel slide and parked chat window held the
+  capture to the bound); **wait while a hole is left** — a block in the flow, a quarter of
+  the viewport, opacity 0, with children, nothing visible drawn over it (`394a5c0`):
+  right, 180 s. The fixture caches' one "none"-covered page captures now too.
+- **"An AEM site: three to six" read as a cap on reruns**; the agent stopped one wrapper
+  short (`three`, `four` mapped as `cards`) and declined the run it knew it needed. The
+  brief says "no limit on reruns" (`e039e7f`). Same commit: the capture worker writes its
+  report section; an empty page is not "covered".
+- Not acted on: the footer's optional member that is a CTA band (chrome heuristic — an
+  optional member above the mandatory one is suspect; noted); cross-host images
+  (`images.synopsys.com`: 40 of 100 on the home page) outside the cache's same-origin
+  scope — a decision for the operator, not a bug; the operator's authorising words for
+  the cache not recorded (the prompt pre-authorised it).
+
+Tag `cpv2-fresh-12`.
+
 ## Commit ledger
 
 | sha (tag) | task | what | replay |
@@ -167,3 +202,6 @@ morning, with nothing decided that the eye could not see.
 | `669efda` (`cpv2-reject-identity`) | rules | `reject` by identity | unchanged |
 | `f2efba9` (`cpv2-dashboard-follows`) | dashboard | the copy follows the skill | n/a |
 | `5f0cc99` (`cpv2-warm-scrolls`) | cache | the warm scrolls through the page; lazy images | n/a |
+| `4c1a3fb` | capture | prep awaited, then the top (sticky nav regression) | re-recorded |
+| `394a5c0` | capture | wait for a hole to fill, bounded | re-recorded |
+| `e039e7f` (`cpv2-fresh-12`) | three fixes | rerun limit; capture section; empty page | n/a |
