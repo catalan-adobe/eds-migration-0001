@@ -127,3 +127,6 @@ file's inputs (the dependency graph of classes points only at `raw` and `decisio
 | `e0d0314` | 2.3 | `migration.json`: init once, open, setting, plan, approve |
 | `a0adcce` | 2.4 | runs: one shape, finished runs stay, heartbeat + pid liveness |
 | `968676c` (`mdata-unit-2`) | 2.5–2.7 | state (process registry, checks), CLI, invariant test |
+| `9ffc167` | 3.1 | `pages.json` table, the verdict, `decisions.json` |
+| `ea39b6a` | 3.2 | selections; the plan's selection judged; off-scope has no group |
+| `9f8fd2b` (`mdata-unit-3`) | 3.3 | `composition@1`: EDS document shape, per-page files |
