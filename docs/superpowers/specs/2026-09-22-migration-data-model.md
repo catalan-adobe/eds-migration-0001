@@ -45,13 +45,12 @@ migration/
   website/                  the source site as a whole
     website.json            origin, scope, how it was discovered, languages, groups derived
     access.json             how to open a page: bot-protection recipe, overlays     decision
-    chrome.json             header and footer: variants, members, membership        derived
+    chrome.json             chrome variants: id, part, members (no page lists)      derived
   pages/                    the pages
     pages.json              the table: one record per URL                           derived+facts
     selections/<name>.json  a named set of page ids with its criteria               decision
     <id>/                   one page's artefacts
-      tree.json             the visual tree                                         derived
-      sections.json         the decomposition: sections, types, coverage            derived
+      composition.json      the page in EDS shape: chrome, sections, items, omitted derived
       shots/                crops taken on this page                                evidence
   cache/                    the site's bodies and assets (the proxy's own layout)   raw
   elements/                 the site's vocabulary
@@ -131,8 +130,12 @@ verified on. One file: a page is opened one way, wherever it is opened from.
 
 ### website/chrome.json — *derived*
 
-Header and footer: variants with members and optional members, each variant's page ids,
-pages without, unplaced and rejected candidates. Page ids, not URLs.
+The chrome **variants** a site has — any number, not one header and one footer: each with
+an id, a `part` (`header`, `footer`, or a named other: `utility-bar`, `subnav`, `legal`),
+its members and optional members, how it was detected, and counts. Which pages carry a
+variant is not stored here: the page says so (its composition's `chrome` nodes, summarised
+on its record), and "pages with variant X" is a query. A site with a campaign header, a
+language footer and a legal strip is three more variants, no special case.
 
 ### pages/pages.json — *derived + facts*
 
@@ -144,13 +147,13 @@ The page table. One record per URL the migration knows:
   "http": { "status": 200, "contentType": "text/html" }, "redirect": null, "finalUrl": "…",
   "kind": "page", "migrate": "yes",
   "cache": { "at": "…", "path": "www.example.com_15600fa6/index.html", "selection": "sample-50" },
-  "capture": { "at": "…", "minWidth": 250 },
-  "decomposition": { "at": "…", "sections": 7, "covered": true } }
+  "chrome": ["c-utility", "c-header-main", "c-footer"],
+  "composition": { "method": "visual-tree", "at": "…", "sections": 7, "omitted": 2 } }
 ```
 
 Discovery, HTTP, redirect, kind and cache are facts the proxy and the scan produced; the
-`capture` and `decomposition` fields are summaries of the page's own files, maintained by
-their writers. The class is mixed and said so: the record's facts are regenerable only by
+`chrome` and `composition` fields are summaries of the page's own composition, maintained
+by its writer. The class is mixed and said so: the record's facts are regenerable only by
 re-caching, so the table is kept with the cache.
 
 ### pages/selections/<name>.json — *decision*
@@ -164,23 +167,48 @@ re-caching, so the table is kept with the cache.
 A selection freezes the ids it chose and keeps the criteria that chose them, so it can be
 read ("fifty pages, one per group") and remade.
 
-### pages/<id>/tree.json — *derived*
+### pages/<id>/composition.json — *derived*
 
-The page's visual tree as page-tree returns it, with `capturedAt` and `minWidth`.
+The page in **EDS document shape** — the one structure every decomposition method writes,
+whatever it does to get there, so the elements and block layers read one thing:
 
-### pages/<id>/sections.json — *derived*
+```json
+{ "schema": "pages/composition@1",
+  "method": { "name": "visual-tree", "version": "…", "at": "…", "inputs": "sha…" },
+  "chrome":   [ { "ref": "c-utility", "selector": "…", "bounds": {…} },
+                { "ref": "c-header-main", "selector": "…", "bounds": {…} } ],
+  "sections": [ { "id": "s1", "selector": "…", "bounds": {…}, "style": { "background": "…" },
+                  "items": [
+                    { "role": "content",  "selector": "…", "bounds": {…} },
+                    { "role": "block",    "type": "t-…", "variant": "v-…", "selector": "…"},
+                    { "role": "fragment", "ref": "f-…", "selector": "…", "bounds": {…} } ]}],
+  "omitted":  [ { "selector": "…", "bounds": {…}, "reason": "hairline" } ] }
+```
 
-The page's decomposition: `rulesHash`, `sections[]` (type id, selector, bounds, variant,
-`within`), `rejected[]` with reasons, `coverage`, `composition`. Written by whichever
-decomposition method ran — the pipeline's or another — in the same schema, so the
-elements and block layers read one shape.
+The depth is fixed by the schema, as an EDS document's is: chrome at the page level;
+sections in order, each with its style and its items; an item is `content` (default
+content), a `block` (a type of the site's vocabulary, with its variant) or a `fragment`
+(a reference to another document, which has this same shape). A block never holds a
+block. A method that cannot yet tell section boundaries writes one section.
+
+`selector` is mandatory on every node — the universal locator any client can re-find.
+`bounds` (the rendered rectangle) are present when the method rendered the page; crops,
+position statistics and evidence use them and skip without them. `omitted` records what
+the method saw and left out, with a reason, so coverage is honest across methods and
+"where did my hero go" has an answer. `method` is the provenance; two methods' compositions
+of one page may coexist as `composition.<method>.json`, and the page record says which is
+current.
+
+Mapping to a document is then mechanical: sections → sections, `block` → a block table,
+`content` → default content, `fragment` → a fragment reference.
 
 ### elements/types.json — *derived*
 
 The site's element types: id, identity, pages (count), instances, support, recurring,
 height statistics, variants (children identities, counts), sample (page id + selector),
 evidence paths, `mergedFrom`; fragments and their distinct contents; groups' saturation;
-`rulesHash`, `storeAt`. No per-page content.
+`rulesHash`, `compositionsAt`. No per-page content — the pages reference the types; "pages
+with type X" is a query over compositions.
 
 ### elements/rules.json — *decision*
 
@@ -219,8 +247,8 @@ it exists and that it is disposable.
 - `migration.mjs` — open, create, settings, approvals.
 - `runs.mjs` — start, progress, finish, list, newest per step.
 - `website.mjs` — website summary, access, chrome.
-- `pages.mjs` — the table (upsert by id, query by group/kind/cached), selections, per-page
-  files (tree, sections, shots).
+- `pages.mjs` — the table (upsert by id, query by group/kind/cached/chrome/type),
+  selections, per-page files (composition, shots).
 - `elements.mjs` — types, rules, blocks, inventory, evidence.
 - `notes.mjs` — add, list, render.
 - `state.mjs` — compute and write `state.json` from the data and the runs.
@@ -235,7 +263,8 @@ service. The skill becomes one client.
 A step is **done** when its outcome is on disk and valid — the checks — and its inputs
 are not newer than it. The checks read the data layer, not file paths: `capture` is done
 when every cached page of the approved selections has a tree at the current min-width;
-`elements` when every tree has sections at the current rules hash; and so on. Staleness
+`elements` when every cached page has a composition at the current rules hash; and so
+on. Staleness
 is a comparison of recorded hashes and times inside the data, not of file mtimes.
 
 ## 6. Decided and open
@@ -246,7 +275,10 @@ Decided here:
   views; the target becomes a unit when the build phase needs it.
 - Ids everywhere, 12 hex; classes per file; schemas per file; one access layer.
 - Per-page artefacts in `pages/<id>/`; the cache stays the proxy's own directory.
-- Decomposition per page in one schema, open to other methods.
+- One composition schema per page, in EDS document shape (chrome, sections, items),
+  `selector` mandatory, `bounds` optional, `omitted` recorded; open to any method.
+- Membership points from the page to the site: a page lists its chrome variants and its
+  types; the site files define them and carry counts.
 
 Open, for the review:
 - **Table size**: one `pages.json` for the whole site (6 700 rows ≈ 3 MB; rewritten on
@@ -265,7 +297,7 @@ Open, for the review:
 
 1. This model, reviewed.
 2. `lib/data/`: schemas, validator, atomic writes, ids; `migration`, `runs`, `state`.
-3. `pages`: table, selections, per-page files; the scan, pick, cache, capture steps on it.
+3. `pages`: table, selections, composition schema; the scan, pick, cache, capture steps.
 4. `website`: access (probe + prep merged), chrome on page ids.
 5. `elements`: types, rules, blocks, inventory, per-page sections; evidence by type id.
 6. `notes` and `views`; the report rendered.
