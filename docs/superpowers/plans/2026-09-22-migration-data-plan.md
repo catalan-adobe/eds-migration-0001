@@ -130,3 +130,4 @@ file's inputs (the dependency graph of classes points only at `raw` and `decisio
 | `9ffc167` | 3.1 | `pages.json` table, the verdict, `decisions.json` |
 | `ea39b6a` | 3.2 | selections; the plan's selection judged; off-scope has no group |
 | `9f8fd2b` (`mdata-unit-3`) | 3.3 | `composition@1`: EDS document shape, per-page files |
+| `aef00c3` (`mdata-unit-4`) | 4 | website.json, access.json, chrome.json (variants only) |
