@@ -18,9 +18,9 @@ rejects the wrong shape and accepts the right one.
 - `read` parses, validates against the named schema, returns the data; a file that fails
   validation throws naming the file and the first three faults.
 - `write` validates, writes to `<file>.tmp`, renames (atomic), sets `updatedAt`.
-- `id(kind, seed)` → `${kind}-${sha1(seed).slice(0, 12)}`: `p-` pages, `t-` types,
-  `c-` chrome variants, `f-` fragments, `s-` selections, `n-` notes, `m-` the migration;
-  runs are `r-<ISO compact time>-<step>`.
+- `id(kind, seed)` → `${kind}-${sha1(seed).slice(0, 12)}`: `pag-` pages, `typ-` types,
+  `chr-` chrome variants, `frg-` fragments, `sel-` selections, `not-` notes, `mig-` the
+  migration; runs are `run-<compact time>-<step>`.
 - Classes: `CLASSES = { decision, raw, derived, run, history, evidence, view }` and a
   `classOf(rel)` from the schema registry — the invariant test reads it.
 
@@ -38,37 +38,40 @@ rejects the wrong shape and accepts the right one.
 ### 2.3 `migration.json`
 
 ```json
-{ "schema": "migration/migration@1", "id": "m-5f2a9c1e3b7d",
+{ "schema": "migration/migration@1", "id": "mig-5f2a9c1e3b7d",
   "created": "2026-09-22T10:00:00.000Z", "updatedAt": "…",
   "source": { "origin": "https://www.example.com/", "scope": "https://www.example.com/" },
   "target": { "kind": "eds", "repo": ".", "owner": null, "site": null },
+  "plan": { "pages": 500, "selection": null },
   "settings": { "cacheAllUpTo": 500, "captureMinWidth": 250, "pace": 1500,
                 "skills": { "repo": "adobe/skills", "ref": null } },
   "approvals": { "cache": ["sample-50"], "elements": true } }
 ```
 
-- `lib/migration.mjs`: `init(cwd, { origin, scope?, target?, settings? })` (refuses an
-  existing migration), `open(cwd)`, `setting(name, value)`, `approve(step, what)`
-  (`what`: selection names for `cache`, `true` otherwise), `approvals()`.
+- `lib/migration.mjs`: `init(cwd, { origin, scope?, target?, plan?, settings? })`
+  (refuses an existing migration), `open(cwd)`, `setting(name, value)`, `plan(patch)`,
+  `approve(step, what)` (`what`: selection names for `cache`, `true` otherwise).
 - `scope` defaults to the origin; `target.repo` defaults to `.` (the migration lives in
   the EDS repository).
 
 ### 2.4 `runs/<id>.json`
 
 ```json
-{ "schema": "runs/run@1", "id": "r-20260922T101500Z-capture", "step": "capture",
+{ "schema": "runs/run@1", "id": "run-20260922T101500Z-capture", "step": "capture",
   "state": "running", "started": "…", "finished": null, "updatedAt": "…", "pid": 4242,
-  "total": 48, "done": 12, "failed": [{ "id": "p-…", "error": "…" }], "current": "p-…",
+  "total": 48, "done": 12, "failed": [{ "id": "pag-…", "error": "…" }], "current": "pag-…",
   "input": { "selection": "sample-50", "minWidth": 250 },
   "summary": null, "error": null }
 ```
 
 - `lib/runs.mjs`: `start(store, step, input)` → run (state `queued`), `update(store, id,
-  patch)`, `finish(store, id, { state: 'done' | 'stopped' | 'failed', summary?, error? })`,
-  `list(store, { step? })`, `newest(store, step)`, `alive(run)` (pid check — a running run
-  whose process is gone reads as `interrupted`).
+  patch)` (refreshes `updatedAt`, the heartbeat), `finish(store, id, { state: 'done' |
+  'stopped' | 'failed', summary?, error? })`, `list(store, { step? })`, `newest(store,
+  step)`, `liveness(run, { now, staleAfterMs })` — `interrupted` when `running` with a
+  dead `pid` or a heartbeat older than the threshold; `pid` is optional (a worker that is
+  not a local process has only the heartbeat).
 - `state` ∈ `queued | running | done | stopped | failed`; `interrupted` is computed, never
-  written.
+  written. `summary`: what the run did, in words.
 - Finished runs stay: `runs/` is the history. `summary` is free-form per step
   (the elements step records types added and removed; the cache run its counts).
 
@@ -76,7 +79,8 @@ rejects the wrong shape and accepts the right one.
 
 ```json
 { "schema": "state/state@1", "generatedAt": "…",
-  "steps": [ { "id": "cache", "state": "running", "blockedBy": [], "run": "r-…",
+  "summary": "Cache running, 12 of 48 pages; chrome and elements wait on it.",
+  "steps": [ { "id": "cache", "state": "running", "blockedBy": [], "run": "run-…",
                "progress": "12/48", "note": null }, … ] }
 ```
 

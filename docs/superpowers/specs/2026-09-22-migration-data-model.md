@@ -21,10 +21,11 @@ sake; what survives does so because the model wants it.
    - *run* — the state of one execution, ephemeral;
    - *history* — append-only record of what happened.
    The invariant: **the cache and the decisions are the migration; the rest is rebuilt.**
-3. **Every entity has an id**, and references are by id, never by string matching. A
-   page's id is `sha1(canonical url)` truncated to 12 hex (48 bits: no collision in
-   practice at a hundred thousand pages). A type's id is `sha1(identity)`, 12 hex. Runs,
-   notes and selections carry their own ids.
+3. **Every entity has an id**, and references are by id, never by string matching. Ids
+   are a three-letter prefix and 12 hex of a sha1 (48 bits: no collision in practice at a
+   hundred thousand pages): `mig-` the migration, `pag-` a page (of its canonical URL),
+   `typ-` a type (of its identity), `chr-` a chrome variant, `frg-` a fragment, `sel-` a
+   selection, `not-` a note; a run is `run-<compact time>-<step>`.
 4. **Every file states its schema**: `"schema": "<unit>/<file>@<version>"`. A JSON Schema
    per file lives with the data layer; reading validates, writing validates.
 5. **Per-entity facts live per entity.** Nothing about one page sits inside a site-level
@@ -34,6 +35,9 @@ sake; what survives does so because the model wants it.
    the data and the runs, cached in one file for readers that cannot compute it.
 7. **Big and small apart.** Bodies, trees, images in their own files, addressed by id;
    the tables stay small enough to read whole.
+8. **Every derived file carries a `summary`**: one short paragraph, in words, of what it
+   holds, written by its writer. A dashboard, a `--text` view, a note or an agent reads it
+   first; a run's `summary` says what the run did.
 
 ## 2. The units
 
@@ -78,26 +82,36 @@ writes into it (layout contract, brand, blocks).
 ```json
 {
   "schema": "migration/migration@1",
-  "id": "m-5f2a9c1e3b7d",
+  "id": "mig-5f2a9c1e3b7d",
   "created": "…",
   "source": { "origin": "https://www.example.com/", "scope": "https://www.example.com/" },
   "target": { "repo": ".", "kind": "eds", "owner": null, "site": null },
+  "plan": { "pages": 500, "selection": null },
   "settings": { "cacheAllUpTo": 500, "captureMinWidth": 250, "pace": 1500,
                 "skills": { "repo": "adobe/skills", "ref": null } },
   "approvals": { "cache": ["sample-50"], "elements": true }
 }
 ```
 
-`approvals` is the operator's yes per gated step, with what was approved (selection names
-for `cache`). The skills source is a setting of the migration, not of a step.
+- `source.scope` bounds the website: only URLs under it are pages of the migration;
+  groups are the first path segment below it; the rest is off-scope, recorded and not
+  migrated. Explicit, default the origin — a migration of one section of a site is common.
+- `plan` is how much to migrate: `pages` a budget (drives what `pick` proposes, what
+  progress means, the estimate) until the operator decides *which* — then `selection`
+  names the frozen selection and the count follows from it.
+- `approvals` is the operator's recorded yes at the gated steps, with what was approved
+  (selection names for `cache`, `true` for `elements`): what lets the state say
+  `waiting-operator` and keeps an agent from going on alone.
+- The skills source is a setting of the migration, not of a step.
 
 ### state.json — *derived*
 
-The runner's view: per step `state` (`done | ready | blocked | waiting-operator |
-running`), `blockedBy`, `note`, `progress`, the run id while running; `generatedAt`.
-Computed by the state function from the data and the runs; written so dashboards and
-services need not compute it. Never read by a step to decide anything — steps run the
-checks.
+The migration's global status — at the root, not among the runs. Per step `state`
+(`done | ready | blocked | waiting-operator | running`), `blockedBy`, `note` (a short human
+text: why it is not done), `progress`, the run id while running; a top-level `summary`;
+`generatedAt`. Computed by the state function from the data and the runs; written so
+dashboards and services need not compute it. Never read by a step to decide anything —
+steps run the checks.
 
 ### runs/<runId>.json — *run*, then *history*
 
@@ -111,10 +125,14 @@ One shape for every background or foreground execution:
   "summary": null }
 ```
 
-`state`: `queued | running | done | stopped | failed`. A finished run keeps its file:
-the runs directory is the migration's history (the elements step's rules iterations are
-runs with a `summary` of types added and removed; the cache's selections are runs). A
-run is addressed by step and time; the newest per step is what `state.json` reports.
+`state`: `queued | running | done | stopped | failed`. Liveness is two signals, neither
+tied to one kind of client: `pid` when the worker is a local process, and `updatedAt` as
+a heartbeat the worker refreshes with its progress; a `running` run whose pid is dead or
+whose heartbeat is older than a threshold reads as `interrupted` — computed, never
+written. A finished run keeps its file: the runs directory is the migration's history
+(the elements step's rules iterations are runs with a `summary` of types added and
+removed; the cache's selections are runs). The newest run per step is what `state.json`
+reports.
 
 ### website/website.json — *derived*
 
