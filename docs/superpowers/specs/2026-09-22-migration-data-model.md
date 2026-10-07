@@ -24,7 +24,7 @@ sake; what survives does so because the model wants it.
 3. **Every entity has an id**, and references are by id, never by string matching. Ids
    are a three-letter prefix and 12 hex of a sha1 (48 bits: no collision in practice at a
    hundred thousand pages): `mig-` the migration, `pag-` a page (of its canonical URL),
-   `typ-` a type (of its identity), `chr-` a chrome variant, `frg-` a fragment, `sel-` a
+   `typ-` a type (of its identity), `frg-` a fragment (header, footer or inline), `sel-` a
    selection, `not-` a note; a run is `run-<compact time>-<step>`.
 4. **Every file states its schema**: `"schema": "<unit>/<file>@<version>"`. A JSON Schema
    per file lives with the data layer; reading validates, writing validates.
@@ -49,20 +49,22 @@ migration/
   website/                  the source site as a whole
     website.json            origin, scope, how it was discovered, languages, groups derived
     access.json             how to open a page: bot-protection recipe, overlays     decision
-    chrome.json             chrome variants: id, part, members (no page lists)      derived
+    fragments.json          the shared documents: header, footer (template), inline  derived
   pages/                    the pages
     pages.json              the table: one record per URL, with its verdict         derived+facts
     selections/<name>.json  a named set of page ids with its criteria               decision
     decisions.json          the operator's word on single pages: in or out, why     decision
     <id>/                   one page's artefacts
-      composition.json      the page in EDS shape: chrome, sections, items, omitted derived
+      composition.json      the page in EDS shape: fragments, sections, items     derived
       shots/                crops taken on this page                                evidence
+  fragments/<id>/           a shared document's artefacts
+      composition.json      the fragment in EDS shape (a header has its bands here) derived
   cache/                    the site's bodies and assets (the proxy's own layout)   raw
   elements/                 the site's vocabulary
-    types.json              element types, variants, fragments, groups' saturation  derived
-    rules.json              how to decompose this site                              decision
-    blocks.json             what each type is in EDS terms, block names             decision
-    inventory.json          the block inventory: blocks, coverage                   derived
+    types.json              element types as a method found them: variants, sample  derived
+    elements.json           what each type is in EDS terms: six kinds, one field    decision
+    methods/<name>.json     a method's own knobs for this site                      decision
+    inventory.json          the EDS reading: blocks, sections, fragments, coverage  derived
     evidence/<typeId>/      crops per type and variant                              evidence
   notes/                    words from people and agents
     notes.json              index: id, step, author, at, file, summary              history
@@ -147,14 +149,19 @@ How to open a page of this site: the browser recipe (engine, headers, stealth, p
 from the probe, the overlays and hide rules from the prep, the pages the recipe was
 verified on. One file: a page is opened one way, wherever it is opened from.
 
-### website/chrome.json — *derived*
+### website/fragments.json — *derived*
 
-The chrome **variants** a site has — any number, not one header and one footer: each with
-an id, a `part` (`header`, `footer`, or a named other: `utility-bar`, `subnav`, `legal`),
-its members and optional members, how it was detected, and counts. Which pages carry a
-variant is not stored here: the page says so (its composition's `chrome` nodes, summarised
-on its record), and "pages with variant X" is a query. A site with a campaign header, a
-language footer and a legal strip is three more variants, no special case.
+In EDS a header and a footer **are fragments** — documents of their own placed by the
+template — and a banner reused across pages is a fragment placed by a block. One entity,
+two placements. Every shared document the site has: `frg-` id, `placement` (`template`,
+with a `part`: `header`, `footer`, or a named other; `inline`, with a `name`), a label, the
+member selectors and optional members, page count, evidence, the method that found it,
+and the candidates rejected. **One header is one document however many bands compose
+it**; two template fragments of one part are two designs (a campaign microsite) and need
+their own ids and labels. Which pages use a fragment is not stored here: the page says so
+(its composition, summarised on its record), and "pages using X" is a query. Each
+fragment has a composition like a page's under `fragments/<id>/` — a header's bands are
+its sections, decomposable into blocks like any document.
 
 ### pages/pages.json — *derived + facts*
 
@@ -168,12 +175,12 @@ The page table. One record per URL the migration knows:
   "verdict": { "status": "in", "reasons": [
     { "code": "no-footer", "kind": "flag", "by": "chrome", "at": "…", "detail": "…" } ] },
   "cache": { "at": "…", "path": "www.example.com_15600fa6/index.html", "selection": "sample-50" },
-  "chrome": ["chr-utility", "chr-header-main"],
+  "fragments": ["frg-header", "frg-footer", "frg-contact-cta"],
   "composition": { "method": "visual-tree", "at": "…", "sections": 7, "omitted": 2 } }
 ```
 
 Discovery, HTTP, redirect, kind and cache are facts the proxy and the scan produced; the
-`chrome` and `composition` fields are summaries of the page's own composition, maintained
+`fragments` and `composition` fields are summaries of the page's own composition, maintained
 by its writer. The class is mixed and said so: the record's facts are regenerable only by
 re-caching, so the table is kept with the cache.
 
@@ -224,8 +231,9 @@ whatever it does to get there, so the elements and block layers read one thing:
 ```json
 { "schema": "pages/composition@1",
   "method": { "name": "visual-tree", "version": "…", "at": "…", "inputs": "sha…" },
-  "chrome":   [ { "ref": "c-utility", "selector": "…", "bounds": {…} },
-                { "ref": "c-header-main", "selector": "…", "bounds": {…} } ],
+  "document": { "kind": "page", "id": "pag-…" },
+  "fragments": [ { "ref": "frg-header", "selector": "…", "bounds": {…} },
+                 { "ref": "frg-footer", "selector": "…", "bounds": {…} } ],
   "sections": [ { "id": "s1", "selector": "…", "bounds": {…}, "style": { "background": "…" },
                   "items": [
                     { "role": "content",  "selector": "…", "bounds": {…} },
@@ -234,11 +242,13 @@ whatever it does to get there, so the elements and block layers read one thing:
   "omitted":  [ { "selector": "…", "bounds": {…}, "reason": "hairline" } ] }
 ```
 
-The depth is fixed by the schema, as an EDS document's is: chrome at the page level;
-sections in order, each with its style and its items; an item is `content` (default
-content), a `block` (a type of the site's vocabulary, with its variant) or a `fragment`
-(a reference to another document, which has this same shape). A block never holds a
-block. A method that cannot yet tell section boundaries writes one section.
+The depth is fixed by the schema, as an EDS document's is: the template-placed fragments
+(header, footer) at the document level; sections in order, each with its style and its
+items; an item is `content` (default content), a `block` (a type of the site's
+vocabulary, with its variant) or a `fragment` (a shared document embedded here, which
+has this same shape). A block never holds a block. A method that cannot yet tell section
+boundaries writes one section. The `document` is a page or a fragment: a header's own
+composition is its bands as sections.
 
 `selector` is mandatory on every node — the universal locator any client can re-find.
 `bounds` (the rendered rectangle) are present when the method rendered the page; crops,
@@ -259,22 +269,31 @@ evidence paths, `mergedFrom`; fragments and their distinct contents; groups' sat
 `rulesHash`, `compositionsAt`. No per-page content — the pages reference the types; "pages
 with type X" is a query over compositions.
 
-### elements/rules.json — *decision*
+### elements/elements.json — *decision*
 
-As today's vocabulary, named for the site: containers, fragments, merge, chrome, reject,
-identity exclusions, noise classes, leaf tags, thresholds. The one file that adapts the
-engine to the site.
+What each recurring type **is in EDS terms** — one file for all the words, keyed by type
+id, six kinds each with its one field: `section` (with its `style` — section metadata),
+`block` (its name), `default-content`, `fragment` (its name — the type is a shared
+document), `wrapper` (no EDS element: a layout wrapper, look inside), `skip`; `null` while
+undecided. A rerun of the vocabulary keeps what was decided and drops undecided orphans;
+`header` and `footer` are never a name. Structured repeating content (cards, carousel,
+tabs) is a block, never a wrapper. The decomposition reads this file: a section is
+decomposed through and becomes a section with that style, a fragment becomes a fragment
+item or document, a wrapper disappears, a skip goes to `omitted`.
 
-### elements/blocks.json — *decision*
+### elements/methods/<name>.json — *decision*
 
-Per type id: `kind` (`block | default-content | skip`), `block` name, `notes`. The block
-inventory's decisions, by their EDS name rather than "mapping".
+A method's own knobs for this site — what adapts *how it reads a DOM*: identity
+exclusions, noise classes, leaf tags, thresholds, merges, rejections by selector. Another
+method has other knobs and its own file; `elements.json` is shared by all.
 
 ### elements/inventory.json — *derived*
 
-Blocks with their types, instances, page ids, variants, evidence; default content;
-skipped; container leaves; coverage (covered page ids, open pages with reasons);
-undecided; orphaned; the hashes of `blocks.json` and `types.json` it derives from.
+The EDS reading of the site: blocks with their types, instances, pages, variants, sample
+and evidence; section styles; inline fragments linked to their shared documents; default
+content; wrappers; skipped; undecided; orphaned decisions; coverage read from the
+compositions themselves — a page is fully read when it has a composition, every block
+item's type is decided, nothing on it is undecided or skipped, and it is not empty.
 
 ### notes/ — *history*
 
@@ -295,10 +314,10 @@ it exists and that it is disposable.
 
 - `migration.mjs` — open, create, settings, approvals.
 - `runs.mjs` — start, progress, finish, list, newest per step.
-- `website.mjs` — website summary, access, chrome.
+- `website.mjs` — website summary, access, fragments (the shared documents).
 - `pages.mjs` — the table (upsert by id, query by group/kind/cached/chrome/type),
   selections, per-page files (composition, shots).
-- `elements.mjs` — types, rules, blocks, inventory, evidence.
+- `elements.mjs` — types, element decisions, methods; `inventory.mjs` — the EDS reading.
 - `notes.mjs` — add, list, render.
 - `state.mjs` — compute and write `state.json` from the data and the runs.
 - `schema.mjs` — the JSON Schemas and the validator every read and write goes through.
@@ -326,8 +345,12 @@ Decided here:
 - Per-page artefacts in `pages/<id>/`; the cache stays the proxy's own directory.
 - One composition schema per page, in EDS document shape (chrome, sections, items),
   `selector` mandatory, `bounds` optional, `omitted` recorded; open to any method.
-- Membership points from the page to the site: a page lists its chrome variants and its
-  types; the site files define them and carry counts.
+- Membership points from the page to the site: a page lists the fragments it uses and
+  its types; the site files define them and carry counts.
+- Header and footer are fragments: shared documents placed by the template; a banner
+  reused across pages is a fragment placed by a block. One header is one document,
+  however many bands.
+- One decision file for the EDS words: `elements.json`, six kinds; a method's knobs apart.
 
 Open, for the review:
 - **Table size**: one `pages.json` for the whole site (6 700 rows ≈ 3 MB; rewritten on

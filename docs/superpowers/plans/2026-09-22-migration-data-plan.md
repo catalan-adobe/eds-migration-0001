@@ -131,3 +131,6 @@ file's inputs (the dependency graph of classes points only at `raw` and `decisio
 | `ea39b6a` | 3.2 | selections; the plan's selection judged; off-scope has no group |
 | `9f8fd2b` (`mdata-unit-3`) | 3.3 | `composition@1`: EDS document shape, per-page files |
 | `aef00c3` (`mdata-unit-4`) | 4 | website.json, access.json, chrome.json (variants only) |
+| `e464582` | 5.1 | fragments replace chrome: `fragments.json`, compositions for documents |
+| `299813e` | 5.2 | `types.json`, `elements.json` (six kinds), `methods/<name>.json` |
+| `e9e57c3` (`mdata-unit-5`) | 5.3 | `inventory.json`: the EDS reading, coverage from compositions |
