@@ -134,3 +134,4 @@ file's inputs (the dependency graph of classes points only at `raw` and `decisio
 | `e464582` | 5.1 | fragments replace chrome: `fragments.json`, compositions for documents |
 | `299813e` | 5.2 | `types.json`, `elements.json` (six kinds), `methods/<name>.json` |
 | `e9e57c3` (`mdata-unit-5`) | 5.3 | `inventory.json`: the EDS reading, coverage from compositions |
+| `a9dcc5f` (`mdata-unit-6`) | 6 | notes, views, full CLI, `references/data-model.md`, SKILL.md |
