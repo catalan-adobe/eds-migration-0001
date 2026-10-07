@@ -6,7 +6,7 @@ the model names — `discover`, `access`, `cache`, `chrome`, `elements`, `blocks
 — each step a brief for an agent and a script that reads and writes only through the
 layer. The engines are kept where they earned it (page-tree's bundle, the chrome
 detector, the decomposition, the warm driver); their storage is not. `content-pipeline-v2`
-is deleted when this skill runs the same ground.
+stays as it is, untouched, alongside.
 
 Rules as before: zero runtime dependencies; Node ≥ 22; `node --test`; ≤ 100 chars a
 line; every step a brief ≤ 60 lines ending with its check; one commit per task with a
@@ -14,8 +14,9 @@ ledger row; replay before any detection change; nothing about a site in the engi
 
 ## Decisions
 
-- **A new skill, not a rewrite in place.** Nothing of the step-shaped storage survives;
-  engines are copied as they are needed and lose their file knowledge on the way.
+- **A new skill, not a rewrite in place.** Nothing of the step-shaped storage is carried
+  over; engines are copied as they are needed and lose their file knowledge on the way.
+  `content-pipeline-v2` is left alone — nothing is deleted.
 - **Steps are the model's process.** `setup` (installing tools and siblings) is the
   skill's own first command, not a step: `pipeline setup` records what it installed in
   `migration/.work/setup.json` (run-class, not part of the model).
@@ -98,7 +99,7 @@ ledger row; replay before any detection change; nothing about a site in the engi
 - `report`: `views.writeReport`; brief.
 - Dashboard on the new files; integration test.
 - Replay harness re-pointed; expectations re-recorded in the new shapes.
-- `content-pipeline-v2` deleted; `migration-pipeline` documented; tag.
+- `migration-pipeline` documented; tag.
 
 ## First runnable slice
 
