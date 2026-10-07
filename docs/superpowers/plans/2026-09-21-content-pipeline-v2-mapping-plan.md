@@ -205,3 +205,4 @@ Tag `cpv2-fresh-12`.
 | `4c1a3fb` | capture | prep awaited, then the top (sticky nav regression) | re-recorded |
 | `394a5c0` | capture | wait for a hole to fill, bounded | re-recorded |
 | `e039e7f` (`cpv2-fresh-12`) | three fixes | rerun limit; capture section; empty page | n/a |
+| `6c1643c` (`cpv2-gate-elements`) | gate | elements waits for approve; runs end at chrome | n/a |
