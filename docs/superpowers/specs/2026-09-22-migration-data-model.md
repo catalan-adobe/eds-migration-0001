@@ -51,8 +51,9 @@ migration/
     access.json             how to open a page: bot-protection recipe, overlays     decision
     chrome.json             chrome variants: id, part, members (no page lists)      derived
   pages/                    the pages
-    pages.json              the table: one record per URL                           derived+facts
+    pages.json              the table: one record per URL, with its verdict         derived+facts
     selections/<name>.json  a named set of page ids with its criteria               decision
+    decisions.json          the operator's word on single pages: in or out, why     decision
     <id>/                   one page's artefacts
       composition.json      the page in EDS shape: chrome, sections, items, omitted derived
       shots/                crops taken on this page                                evidence
@@ -160,12 +161,14 @@ language footer and a legal strip is three more variants, no special case.
 The page table. One record per URL the migration knows:
 
 ```json
-{ "id": "p-3f9a2c7d1e4b", "url": "https://…", "group": "blogs", "lang": "en",
+{ "id": "pag-3f9a2c7d1e4b", "url": "https://…", "group": "blogs",
   "discovered": { "from": "sitemap", "at": "…" },
   "http": { "status": 200, "contentType": "text/html" }, "redirect": null, "finalUrl": "…",
-  "kind": "page", "migrate": "yes",
+  "kind": "page",
+  "verdict": { "status": "in", "reasons": [
+    { "code": "no-footer", "kind": "flag", "by": "chrome", "at": "…", "detail": "…" } ] },
   "cache": { "at": "…", "path": "www.example.com_15600fa6/index.html", "selection": "sample-50" },
-  "chrome": ["c-utility", "c-header-main", "c-footer"],
+  "chrome": ["chr-utility", "chr-header-main"],
   "composition": { "method": "visual-tree", "at": "…", "sections": 7, "omitted": 2 } }
 ```
 
@@ -173,6 +176,34 @@ Discovery, HTTP, redirect, kind and cache are facts the proxy and the scan produ
 `chrome` and `composition` fields are summaries of the page's own composition, maintained
 by its writer. The class is mixed and said so: the record's facts are regenerable only by
 re-caching, so the table is kept with the cache.
+
+**The verdict** says whether the page is migrated and, above all, *why not*. `status` is
+computed, never written by hand: `out` when an `exclude` reason stands, `undecided` for a
+page in scope not yet chosen (`plan.selection` unset), else `in`; an operator decision
+overrides. Each reason is a fact with a `code` from the schema's closed vocabulary — the
+one place reasons are documented —, a `kind` (`exclude`: the page is out; `flag`: odd,
+still in until someone decides), the unit that found it (`by`: `discover`, `plan`, `cache`,
+`chrome`, `composition`, `operator`) so that re-running a unit refreshes its reasons and
+no other's, `at` and a `detail`. Codes: `off-scope` (not under `source.scope`),
+`over-budget` (beyond `plan.pages` in the plan's selection), `not-a-page` (binary, asset),
+`redirect`, `http-error`, `unreachable`, `duplicate` (same final URL as another page),
+`no-header`, `no-footer`, `empty` (nothing between the chrome), `broken` (capture failed),
+`operator`. `over-budget` exists only once `plan.selection` names the frozen set.
+
+### pages/decisions.json — *decision*
+
+The operator's word on single pages, irreplaceable, merged into the record's verdict as a
+reason `by: operator` that wins:
+
+```json
+{ "schema": "pages/decisions@1",
+  "pages": {
+    "pag-…": { "status": "out", "reason": "legal pages stay on the old site", "at": "…" },
+    "pag-…": { "status": "in", "reason": "a missing footer is the template", "at": "…" } } }
+```
+
+`pages.json`'s `summary` counts by reason; `views/pages.md` lists excluded and flagged pages
+by reason; a step's state note may cite them ("chrome: 2 pages without a footer").
 
 ### pages/selections/<name>.json — *decision*
 
@@ -302,7 +333,7 @@ Open, for the review:
 - **Table size**: one `pages.json` for the whole site (6 700 rows ≈ 3 MB; rewritten on
   every cached URL) versus one `pages/<id>/page.json` per page with an index. One table
   is simpler and fine to ~20 000 pages; per-page records scale further and cost a
-  listing. Proposal: one table, and the layer hides the choice.
+  listing. Decided: one table, and the layer hides the choice.
 - **Where notes about a page go**: in `notes/` with a `page` field, or in the page's
   directory. Proposal: `notes/`, one place for words.
 - **The cache**: the proxy's layout (host/path with sidecars) is a sibling's; the page
