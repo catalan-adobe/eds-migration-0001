@@ -123,3 +123,7 @@ file's inputs (the dependency graph of classes points only at `raw` and `decisio
 
 | sha (tag) | task | what |
 | --- | --- | --- |
+| `542896e` | 2.1 2.2 | `store.mjs` (ids, atomic validated io), `schema.mjs` (registry, validator) |
+| `e0d0314` | 2.3 | `migration.json`: init once, open, setting, plan, approve |
+| `a0adcce` | 2.4 | runs: one shape, finished runs stay, heartbeat + pid liveness |
+| `968676c` (`mdata-unit-2`) | 2.5–2.7 | state (process registry, checks), CLI, invariant test |
