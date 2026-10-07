@@ -113,3 +113,4 @@ chrome and elements move.
 
 | sha (tag) | task | what |
 | --- | --- | --- |
+| `bea7a44` (`mpipe-7.1`) | 7.1 | skeleton, setup, discover; live: 7271 URLs, 34 groups |
