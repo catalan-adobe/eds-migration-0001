@@ -1,0 +1,56 @@
+{
+  "note": "Step 3 DOM-grounded block specs. Anchoring selectors + cell structure extracted from live DOM via block-probe.js across 44 representative pages. KEY FINDING: the site is built with TWO page builders (custom WordPress templates + Elementor); most blocks have a DIFFERENT DOM implementation in each, so a block needs up to 2-3 detectors/transformers. Invisible to the visual tree and to name-based consolidation.",
+  "pages_grounded": 44,
+  "builders_detected": {
+    "wp-custom": "Bootstrap-grid custom WordPress templates (.row > .col-*, .accordion.faq-card, splide + slick carousels). Accordions on 10 pages.",
+    "elementor": "Elementor page builder (.e-n-accordion > details, .elementor-element-*, swiper carousels). Accordions on 18 pages."
+  },
+  "blocks": [
+    {
+      "block": "faq-accordion",
+      "coverage": 146,
+      "implementations": [
+        {
+          "builder": "wp-custom",
+          "anchor": ".accordion > .accordion-item.faq-card",
+          "item": ".accordion-item.faq-card (role=button question .faq-title + .accordion-collapse.collapse answer)",
+          "evidence": "solution-inventory, pricing/enterprise",
+          "cells": "1 col per row: question text + answer body"
+        },
+        {
+          "builder": "elementor",
+          "anchor": ".e-n-accordion > details.e-n-accordion-item",
+          "item": "details.e-n-accordion-item > summary.e-n-accordion-item-title + content",
+          "evidence": "health/hipaa-database, app-category/accounting, health/compare/*",
+          "cells": "1 col per row: summary text + details body"
+        }
+      ],
+      "variant_resolution": "One canonical block, TWO detectors (Bootstrap vs native <details>). At scale across 44 grounded pages: Elementor .e-n-accordion on 18, wp-custom .accordion on 10. Both map to the same EDS accordion block."
+    },
+    {
+      "block": "cards",
+      "coverage": 116,
+      "implementations": [
+        {
+          "builder": "wp-custom",
+          "anchor": ".row > [class*=col-]",
+          "item": "div.col-* card (image + heading + text + link)",
+          "evidence": ".row.solution-lists, .row.intergration-library, .row.case-card-lists, .pre-built-post-lists.row",
+          "cells": "1 cell per card; layout from Bootstrap col-* modifier"
+        }
+      ],
+      "variant_resolution": "Confirmed ONE block: a Bootstrap column grid. The 37 merged names (recipe-cards, event-card-grid, portal-cards…) are all .row>.col-* with different content — CSS/content variants, NOT distinct blocks. Resolves the biggest possible_variant_group.",
+      "modifier_classes": ["solution-lists", "intergration-library", "case-card-lists", "additional-recent-post-lists"]
+    },
+    {
+      "block": "carousel",
+      "coverage": 13,
+      "implementations": [
+        {"builder": "wp-custom", "anchor": ".splide__track > .splide__list > li.splide__slide", "evidence": "solution-inventory, pricing/enterprise (Splide lib)"},
+        {"builder": "wp-custom", "anchor": ".slick-list > .slick-slide", "evidence": "ai-app-builder (Slick lib)"},
+        {"builder": "elementor", "anchor": ".swiper-wrapper > .swiper-slide", "evidence": "app-category/accounting (Swiper lib)"}
+      ],
+      "variant_resolution": "One canonical block, THREE carousel libraries confirmed at scale: Slick (10 pages), Splide (6), Swiper/Elementor (3). Each needs its own slide-extraction selector; all map to one EDS carousel block."
+    }
+  ]
+}

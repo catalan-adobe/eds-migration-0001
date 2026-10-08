@@ -1,0 +1,56 @@
+{
+  "cluster_id": "C127",
+  "representative": "page-17__health-home-care.json",
+  "sections": [
+    { "eds": "section", "style": "hero-bg-image", "items": ["heading: HIPAA-Compliant Home Care Software", "default-content: Talk to Knack Health / See Pricing CTAs"], "note": "rc2c1" },
+    { "eds": "default-content", "items": ["paragraph: Most agencies with 500 caregivers..."], "note": "rc2c2, trust stat" },
+    { "eds": "default-content", "items": ["heading+paragraph: EVV Workflows Built to Federal..."], "note": "rc2c3 [2x1], single feature, no repeat" },
+    { "eds": "section", "items": ["heading: Portals Built for the Entire Care...", "block: portal-cards (Caregivers/Clients/Admin)"], "note": "rc2c4 [3x1] repeating role cards" },
+    { "eds": "section", "style": "bg-color", "items": ["heading+paragraph: Flat-Rate Pricing That Doesn't..."], "note": "rc2c5" },
+    { "eds": "section", "items": ["heading: Core Capabilities", "block: feature-grid"], "note": "rc2c6 [3x2] repeating cards" },
+    { "eds": "section", "items": ["heading: What Our Users Are Saying", "block: testimonial"], "note": "rc2c7 [3x1]" },
+    { "eds": "section", "items": ["default-content: Trusted by Home Care and Mobile...", "block: case-study-highlight", "default-content: Outgrew Lovable, Blaze, or Another... CTA"], "note": "rc2c8" },
+    { "eds": "section", "items": ["heading: Security and Compliance", "block: feature-grid (variant, 2x4 cells)"], "note": "rc2c9" },
+    { "eds": "section", "items": ["heading: Flat-Rate Pricing That Doesn't...", "default-content: intro", "block: pricing-cards"], "note": "rc2c10 [2x1] repeating plan cards" },
+    { "eds": "section", "style": "bg-color", "items": ["default-content: Your state's Medicaid rules... + Talk to Our Team CTA"], "note": "rc2c11, lead-gen CTA banner" },
+    { "eds": "section", "items": ["heading: Home Care Software FAQs", "block: faq-accordion"], "note": "rc2c12" },
+    { "eds": "default-content", "items": ["footer CTA + social row"], "note": "rc3 — global footer, see proposed rule" }
+  ],
+  "blocks": ["portal-cards", "feature-grid", "testimonial", "case-study-highlight", "pricing-cards", "faq-accordion"],
+  "covered_by_rules": [
+    "leaked-css-text-node",
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style",
+    "heading-then-component-same-section",
+    "full-width-image-behind-text-is-section-bg",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-footer-cta-fragment",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "A bottom-of-page block with the line 'The best no-code platform for ...' followed by a thin '| |' separator/social row, appearing verbatim at the end of nearly every captured page across templates.",
+      "decision": "Treat as global site footer chrome; exclude from per-page block inventory and model once as a shared footer fragment.",
+      "rationale": "Identical wording/layout recurs across landing, compare, and category templates — a shared footer partial, not page content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C127 rc3c1c1/c1c2 'The best no-code platform for...' + '| |'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "promoted-faq-answer-duplicate",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A [region] node appears as a top-level sibling of the root, outside its FAQ container, duplicating an answer already implied by a question row inside the FAQ block.",
+      "decision": "Fold the promoted region into its matching FAQ accordion row as the answer cell; do not emit as a separate block.",
+      "rationale": "page-tree promotes elements rendered outside their DOM parent (open accordion panel), duplicating content already covered by the FAQ accordion.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C127 rc4 and rc5 [region] nodes ('It depends on the services...', 'Most organizations have a func...') top-level siblings of rc3", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Home-care landing page: hero, role portals, capabilities grid, testimonial, case study, security grid, pricing, lead-gen CTA, FAQ. Two orphaned FAQ answer regions and one leaked CSS node (rc2c13) reinforce existing confirmed rules."
+}

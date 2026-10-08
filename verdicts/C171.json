@@ -1,0 +1,70 @@
+{
+  "cluster_id": "C171",
+  "representative": "page-41__health-hipaa-backend.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions", "Business", "Need", "Work On..."], "note": "global site nav" },
+    { "eds": "section", "style": "bg-image", "items": ["CTA: Book a Demo"], "note": "hero, bg image behind CTA (rc2c1)" },
+    { "eds": "default-content", "items": ["headline + intro: Connect your AI coding tool..."], "note": "intro copy above steps block (rc2c2c1/c2)" },
+    { "eds": "section", "items": ["steps block (rc2c2c3, Step 1: Sign up...)"], "note": "2-col step component" },
+    { "eds": "default-content", "items": ["heading: Watch a Demo: How to Connect..."], "note": "precedes video embed" },
+    { "eds": "section", "items": ["video-embed block (rc2c3c2, bg:color placeholder)"], "note": "embed content not text-captured" },
+    { "eds": "section", "style": "bg-color", "items": ["heading+intro: Everything your healthcare app...", "cards block (3x2, HIPAA-Compliant Data Storage...)"], "note": "bg-container per background-container-is-section-style" },
+    { "eds": "default-content", "items": ["heading: What healthcare teams are building..."], "note": "precedes use-case cards" },
+    { "eds": "section", "items": ["cards block (3x2, Patient Intake...)"], "note": "use-case grid" },
+    { "eds": "default-content", "items": ["paragraph: The major cloud providers are..."], "note": "plain text, no component" },
+    { "eds": "default-content", "items": ["heading: Choose from and integrate with..."], "note": "precedes integrations grid" },
+    { "eds": "section", "items": ["integrations-grid block (3x2, Click to learn more)"], "note": "logo/integration cards" },
+    { "eds": "section", "items": ["testimonial block (Royal Free London NHS Foundation...)"], "note": "single testimonial row [3x1]" },
+    { "eds": "section", "style": "bg-color", "items": ["heading+text: Ready to build for healthcare?", "CTA: Schedule a Consultation"], "note": "CTA banner, bg-container" },
+    { "eds": "section", "items": ["faq-accordion block (10 Q/A pairs)"], "note": "answers partly rendered as [region] siblings promoted out of parent (rc2c12, rc4)" },
+    { "eds": "section", "style": "footer", "items": ["footer tagline", "footer links"], "note": "global footer chrome" }
+  ],
+  "blocks": ["hero-image", "steps", "video-embed", "cards", "integrations-grid", "testimonial", "cta-banner", "faq-accordion"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "heading-then-component-same-section",
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "faq-accordion-block",
+    "leaked-css-text-node",
+    "knack-cookie-notice-overlay",
+    "variant-is-css-not-new-block"
+  ],
+  "proposed_rules": [
+    {
+      "id": "region-promoted-node-reattach",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A node tagged [region] appears as a sibling far from its logical container (including near page root), with content matching an FAQ answer, embed, or panel elsewhere in the tree that lacks a matching child.",
+      "decision": "Re-associate the [region] node with its nearest matching placeholder/question by content adjacency and vertical position instead of treating it as separate/lost content; merge into the parent block's row.",
+      "rationale": "The page-tree capture promotes absolutely/fixed-positioned descendants out of their DOM parent to preserve visual position, fragmenting single content items (FAQ Q&A pairs) across non-adjacent nodes (rc2c12c2c7..c16, rc4). Without reattachment, answers are lost or double-counted.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C171 rc2c10c2c11..c16 and rc4 [region] answers positioned outside rc2c10's list order",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "bg-only-zone-is-embed-widget",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A section-sized [bg:color]/[bg:image] container with no descendant text, sitting directly under a 'Watch a Demo'/video-style heading.",
+      "decision": "Flag as an embedded video/demo widget that failed to render text at capture time; route to Phase 2 for iframe/video src extraction rather than treating as decorative background.",
+      "rationale": "Distinguishes this narrow case from the confirmed underrendered-list-zone rule (which targets listing/card grids); a video embed needs different Phase 2 handling.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C171 rc2c3c2 [bg:color] 1140x701 directly under 'Watch a Demo' heading",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    }
+  ],
+  "notes": "Standard Knack solution-landing template (hero, steps, feature grids, testimonial, CTA, FAQ). FAQ answers are heavily fragmented by [region] promotion; cookie overlay excluded per knack-cookie-notice-overlay."
+}

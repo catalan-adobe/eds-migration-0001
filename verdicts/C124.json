@@ -1,0 +1,52 @@
+{
+  "cluster_id": "C124",
+  "representative": "page-16__health-compare-blazetech-vs-knack.json",
+  "sections": [
+    { "eds": "section", "style": "hero-bg-image", "items": ["heading: Knack vs. Blaze.tech..."], "note": "rc2c1 full-bleed bg:image hero, text overlaid" },
+    { "eds": "default-content", "items": ["heading+paragraph: Why Healthcare Teams Choose Knack"], "note": "rc2c2, plain intro text" },
+    { "eds": "section", "items": ["default-content: Blaze.tech column header", "block: comparison-table (6 rows)", "default-content: Start Building CTA"], "note": "rc2c3, reasons-to-switch list + CTA" },
+    { "eds": "section", "items": ["heading: Feature and Benefits Comparison", "block: comparison-table (7 rows)"], "note": "rc2c4, feature/benefit table" },
+    { "eds": "section", "style": "alternating-bg", "items": ["6x heading+paragraph pairs: Security, Ease of Use, Customization, Time to Value, Pricing, Integrations", "block: testimonial"], "note": "rc2c5c1-c8, each topic its own section w/ alternating bg:color" },
+    { "eds": "section", "style": "cta-banner", "items": ["default-content: Start Building Your Healthcare... CTA"], "note": "rc2c7 bg:color" },
+    { "eds": "default-content", "items": ["block: feature-grid (Patient intake, Referral, ...)"], "note": "rc2c8 [3x2] repeating cards" },
+    { "eds": "section", "items": ["block: faq-accordion"], "note": "rc2c9 FAQ" },
+    { "eds": "default-content", "items": ["footer CTA + social row"], "note": "rc3 — global footer, see proposed rule" }
+  ],
+  "blocks": ["comparison-table", "testimonial", "feature-grid", "faq-accordion"],
+  "covered_by_rules": [
+    "leaked-css-text-node",
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "full-width-image-behind-text-is-section-bg",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-footer-cta-fragment",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "A bottom-of-page block with the line 'The best no-code platform for ...' followed by a thin '| |' separator/social row, appearing verbatim at the end of nearly every captured page across templates.",
+      "decision": "Treat as global site footer chrome; exclude from per-page block inventory and model once as a shared footer fragment.",
+      "rationale": "Identical wording/layout recurs across compare, landing, and category templates — a shared footer partial, not page content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C124 rc3c1c1/c1c2 'The best no-code platform for...' + '| |'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "promoted-faq-answer-duplicate",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A [region] node appears as a top-level sibling of the root, outside its FAQ container, duplicating an answer already implied by a question row inside the FAQ block.",
+      "decision": "Fold the promoted region into its matching FAQ accordion row as the answer cell; do not emit as a separate block.",
+      "rationale": "page-tree promotes elements rendered outside their DOM parent (open accordion panel), duplicating content already covered by the FAQ accordion.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C124 rc4 [region] 'Knack. Knack's apps are produc...' top-level sibling of rc3", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Compare-page template: hero + two comparison tables + alternating detail sections + testimonial + feature grid + FAQ. One FAQ answer promoted to root, needs fold-back."
+}

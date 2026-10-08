@@ -1,0 +1,57 @@
+{
+  "cluster_id": "C187",
+  "representative": "page-6__health-compare-keragon-vs-knack.json",
+  "sections": [
+    { "eds": "section", "style": "bg-image hero", "items": ["H1 'Knack vs. Keragon...'", "intro text"], "note": "full-bleed hero image behind text" },
+    { "eds": "default-content", "items": ["'Why Healthcare Teams Choose Knack' heading+text"], "note": "plain intro copy" },
+    { "eds": "section", "style": "comparison-highlights", "items": ["Keragon column heading", "6 highlight rows", "Get Started CTA"], "note": "competitor pros/cons list, stacked column" },
+    { "eds": "section", "style": "comparison-table", "items": ["'Key Features and Benefits' heading", "Keragon feature rows (6)", "Knack feature rows (6, alternating bg)"], "note": "two stacked columns of one logical vs-table (see proposed rule)" },
+    { "eds": "default-content", "items": ["'What Our Users Are Saying' heading", "testimonial quote"], "note": "heading + testimonial block" },
+    { "eds": "section", "style": "bg-image decorative", "items": [], "note": "decorative image, no content" },
+    { "eds": "section", "style": "bg-color cta", "items": ["'Start Building Your Healthcare...' CTA"], "note": "" },
+    { "eds": "section", "items": ["use-case grid, 6 items (3x2)"], "note": "Patient intake / Referral..." },
+    { "eds": "default-content", "items": ["'Frequently Asked Questions...' heading"], "note": "intro to FAQ accordion" },
+    { "eds": "section", "items": ["FAQ accordion, 5 Q&A rows"], "note": "faq-accordion-block" },
+    { "eds": "section", "note": "global footer tagline bar (rc3)", "items": ["'The best no-code platform for...'"] },
+    { "eds": "default-content", "note": "cookie consent overlay (excluded)", "items": [] }
+  ],
+  "blocks": ["comparison-highlights", "comparison-table", "testimonial", "use-case-grid", "faq-accordion"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style",
+    "decorative-graphics-are-noise",
+    "variant-is-css-not-new-block",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay",
+    "leaked-css-text-node"
+  ],
+  "proposed_rules": [
+    {
+      "id": "stacked-vs-comparison-table-columns",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A single-competitor 'X vs Knack' page's comparison content renders as two separate stacked sections (competitor feature rows, then Knack feature rows with the same category labels and alternating row backgrounds) instead of one side-by-side two-column table.",
+      "decision": "Reassemble as ONE two-column comparison-table block at Phase 2 (competitor column + Knack column, matched by shared category labels: Security and Privacy, Ease of Use, Customization, Scalability, Pricing, Integrations) rather than treating the two stacks as unrelated blocks.",
+      "rationale": "The visual tree captures a responsive/mobile stacking of what is logically a single comparison table at the minWidth capture viewport; keeping them as two independent blocks would fragment one content unit.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C187 rc2c3/rc2c4 (Keragon column) vs rc2c5 (Knack column), identical category labels repeated in both", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-footer-cta-bar",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 66,
+      "trigger": "A full-width zone (~453px) immediately after the main content on every page, containing a fixed tagline ('The best no-code platform for...') and a divider/link row ('| |'), identical in content and position across unrelated pages.",
+      "decision": "Treat as global site footer chrome; exclude from the page's block/section inventory. Model once as a site-wide footer fragment, not per-page content.",
+      "rationale": "Identical text and position recur verbatim across every captured page, indicating shared footer markup injected by the template rather than authored content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C187 rc3c1c1 'The best no-code platform for...' recurring across all batch-12 pages", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Standard comparison-page layout; two proposed rules cover the stacked vs-table columns and the recurring footer bar not yet in the rulebook."
+}

@@ -1,0 +1,37 @@
+{
+  "cluster_id": "C64",
+  "representative": "page-18__simple-timesheet-template-app.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "Solutions/Business Need/Work nav bar" },
+    { "eds": "default-content", "items": ["rc1c2c1c1"], "note": "'Dashboard / Weekly Reports' tab heading" },
+    { "eds": "section", "items": ["rc1c2c1c2c1"], "note": "'Import Your Data with Customized...' [2x1] banner" },
+    { "eds": "default-content", "items": ["rc1c2c1c2c2c1","rc1c2c1c2c2c2"], "note": "'Employees' heading + 'Showing 1-2 of 2' count" },
+    { "eds": "section", "items": ["rc1c2c1c2c2c3"], "note": "Employees data table: [3x1] header row + 2 [3x1] data rows -> table block" },
+    { "eds": "section", "style": "bg-gradient", "items": ["rc1c2c2"], "note": "decorative trailing gradient, no content" },
+    { "eds": "section", "items": ["rc2"], "note": "global footer CTA banner" },
+    { "eds": "noise", "items": ["rc3","rc4"], "note": "cookie consent overlay" }
+  ],
+  "blocks": ["import-banner", "data-table"],
+  "covered_by_rules": [
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "decorative-graphics-are-noise",
+    "minimize-block-cells",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "embedded-app-iframe-inconsistent-capture",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "A template/app-demo page's main content zone renders as an app_id=\"...\" attribute string instead of visible UI, indicating the embedded live Knack app iframe did not render (cross-origin/lazy-load) during capture.",
+      "decision": "Treat live-app demo zones consistently as an 'app-demo-embed' block regardless of whether the specific capture rendered full UI or just a leaked attribute string; do not author the raw table data as static default-content since it's sample/demo data. Alternatives considered: import the rendered table verbatim as static content (rejected - it's live sample data (Linda Woodard, Patrick Oliver) tied to a demo app, not editorial copy).",
+      "rationale": "Same page-18/page-4 template pair as cluster C63, which shows the identical zone unrendered (just 'app_id=...' text). The two captures of the same template diverge only due to iframe render timing, confirming this is a pipeline capture artifact rather than real content difference.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C64 rc1c2c1 fully-rendered dashboard/table vs C63 rc1c2 'app_id=...' placeholder", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "This capture fully rendered the embedded Knack app demo (import banner + employee data table with sample rows), unlike its sibling cluster C63 where the same template's app embed did not render."
+}

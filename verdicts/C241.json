@@ -1,0 +1,46 @@
+{
+  "cluster_id": "C241",
+  "representative": "solution-3__solutions-customer-portal.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "'Solutions / Business Need / Work O...' top nav bar." },
+    { "eds": "default-content", "items": ["rc1c2c1"], "note": "Hero heading/subhead: 'Build Custom Client Portal Software...'." },
+    { "eds": "section", "style": "decorative bg image", "items": ["rc1c2c2"], "note": "Full-width bg:image band with no captured text -> decorative/section background." },
+    { "eds": "section", "style": "colored visual panel", "items": ["rc1c2c3c1","rc1c2c3c2"], "note": "bg:color panel wrapping a bg:image product screenshot -> section background + image content." },
+    { "eds": "section", "items": ["rc1c2c4"], "note": "2x1 text+image row: 'Industry-Specific Solutions for...'." },
+    { "eds": "section", "items": ["rc1c2c5"], "note": "2x1 text+image row: 'Secure Document Sharing and Collaboration...'." },
+    { "eds": "section", "items": ["rc1c2c6"], "note": "2x1 text+image row: 'Create the Best Client Portal...'." },
+    { "eds": "section", "items": ["rc1c2c7"], "note": "2x1 text+image row: 'Accept Customer Payments for...'." },
+    { "eds": "section", "items": ["rc1c2c8"], "note": "2x1 text+image row: 'Streamline Your Client Portal...'." },
+    { "eds": "section", "items": ["rc1c2c9"], "note": "2x1 text+image row: 'See Return on Investment with...'." },
+    { "eds": "section", "items": ["rc1c2c10c1","rc1c2c10c2"], "note": "9x3 integrations logo grid with a 'See All Integrations' CTA link below." },
+    { "eds": "section", "items": ["rc1c2c11c1","rc1c2c11c2"], "note": "'Client Portal FAQs' accordion (3 questions)." },
+    { "eds": "default-content", "items": ["rc1c2c12c2c1"], "note": "'Additional Customer Portal Resources' heading." },
+    { "eds": "section", "items": ["rc1c2c12c2c2"], "note": "3x1 resource card." },
+    { "eds": "section", "style": "footer band", "items": ["rc2c1","rc2c2"], "note": "Global 'best no-code platform' footer CTA band." },
+    { "eds": "default-content", "items": ["rc3","rc4"], "note": "Cookie consent overlay -> noise." }
+  ],
+  "blocks": ["logos", "columns", "accordion", "image"],
+  "covered_by_rules": [
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style",
+    "decorative-graphics-are-noise",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-footer-cta-band",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 86,
+      "trigger": "A sibling zone after the main content column containing 'The best no-code platform for...' text plus a thin '| |' bar, appearing identically at the bottom of nearly every page captured.",
+      "decision": "Treat as global site footer chrome; exclude from per-page block inventory. Model once as a site-wide footer fragment, not repeated page content.",
+      "rationale": "Byte-identical text/position recurs across unrelated templates (page, solution-2, solution-3).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C241 rc2c1/rc2c2 identical to C235-C240, C242", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Distinctive element is the 9x3 integrations-logo grid with a trailing 'See All Integrations' link, modeled as a logos block + default-content CTA rather than a new block type since it fits the confirmed repeating-cards rule."
+}

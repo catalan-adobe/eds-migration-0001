@@ -1,0 +1,75 @@
+{
+  "cluster_id": "C246",
+  "representative": "solution-6__solutions-erp.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "top nav bar" },
+    { "eds": "default-content", "items": ["rc1c2c1"], "note": "hero heading/intro text" },
+    { "eds": "section", "items": ["rc1c2c2c1", "rc1c2c2c2"], "note": "'Join users who trust Knack' heading + badge component" },
+    { "eds": "default-content", "items": ["rc1c2c3"], "note": "'Why Most ERP Systems Fail Small...' callout" },
+    { "eds": "default-content", "items": ["rc1c2c4"], "note": "'What ERP Really Means...' callout" },
+    { "eds": "noise", "items": ["rc1c2c5"], "note": "empty 449px zone with no text/children, likely a collapsed grid/list" },
+    { "eds": "noise", "items": ["rc1c2c6"], "note": "empty 30px thin divider spacer" },
+    { "eds": "section", "items": ["rc1c2c7c2c1", "rc1c2c7c2c2"], "note": "'How Knack Works as a Custom ERP' heading + 3x2 numbered feature-cards grid" },
+    { "eds": "section", "style": "bg-color", "items": ["rc1c2c8c1", "rc1c2c8c2"], "note": "3x2 feature-cards grid on color background (Operations & Inventory)" },
+    { "eds": "section", "items": ["rc1c2c9c1", "rc1c2c9c2"], "note": "'Knack vs. Traditional ERP vs. Manual' heading + 3-column comparison list" },
+    { "eds": "section", "items": ["rc1c2c10c1", "rc1c2c10c2"], "note": "'Is Knack the Right Choice?' heading + 2-column comparison list" },
+    { "eds": "section", "style": "bg-color", "items": ["rc1c2c11c1", "rc1c2c11c2"], "note": "'Start with a System that Fits...' callout on color background" },
+    { "eds": "default-content", "items": ["rc1c2c12"], "note": "'Explore AI-Powered App Templates' callout" },
+    { "eds": "noise", "items": ["rc1c2c13"], "note": "standalone bg:image banner, no text - decorative" },
+    { "eds": "section", "items": ["rc1c2c14c2c1", "rc1c2c14c2c2"], "note": "Additional Resources heading + 3x1 resource-cards grid" },
+    { "eds": "section", "items": ["rc1c2c15c1", "rc1c2c15c2"], "note": "FAQs heading + 5-row accordion" },
+    { "eds": "noise", "items": ["rc1c2c16"], "note": "standalone bg:gradient zone, 493px, no captured text, right before global footer" },
+    { "eds": "noise", "items": ["rc2"], "note": "global footer CTA band + link row" },
+    { "eds": "noise", "items": ["rc3", "rc4"], "note": "cookie consent overlay" }
+  ],
+  "blocks": ["trust-badges", "feature-cards", "comparison-list", "resource-cards", "accordion"],
+  "covered_by_rules": [
+    "knack-cookie-notice-overlay",
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "faq-accordion-block",
+    "variant-is-css-not-new-block",
+    "decorative-graphics-are-noise",
+    "underrendered-list-zone"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-global-footer-band",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 87,
+      "trigger": "A recurring end-of-page zone (rc2) with a CTA heading and a pipe-only link row, identical at the bottom of every page.",
+      "decision": "Exclude from per-page block inventory; model as a global footer fragment/site-wide chrome, analogous to the confirmed knack-announcement-bar rule.",
+      "rationale": "Identical structure across every page examined in this batch.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "rc2c1/rc2c2 identical across C243-C250", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "comparison-list-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 53,
+      "trigger": "A heading followed by a [list][NxM] node comparing options in short parallel text columns (e.g. 'Traditional ERP' vs 'Manual' vs 'Knack').",
+      "decision": "Model as one 'comparison-list' block, one column per option. Rejected alternative: plain default-content bullet list, since the [list][3x1]/[2x1] grid tagging indicates a structured multi-column layout better served by a block.",
+      "rationale": "Recurs twice on this page with consistent column-based structure, matching the repeating-cards-are-one-block spirit but for short comparison items rather than cards.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "rc1c2c9c2 [list][3x1], rc1c2c10c2 [list][2x1]", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "empty-bg-banner-zone-underrendered",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "A standalone [bg:gradient] or [bg:color] zone with substantial height (>300px) and zero captured text, positioned late in the page near the footer.",
+      "decision": "Flag for Phase 2 targeted extraction as a probable secondary CTA banner rather than assuming it is pure decoration. Rejected alternative: classifying it outright as noise/decorative-graphics, since its size and position match other pages' text-bearing CTA callouts.",
+      "rationale": "Height (493px) is inconsistent with the small fixed-height decorative spacers seen elsewhere, suggesting lost content rather than intentional blank space.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "rc1c2c16 [bg:gradient] @0,8994 1280x493, no children", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Longest/most complex page in the batch: adds two list-based comparison components and two under-rendered background zones alongside the standard feature-cards/resource-cards/accordion pattern."
+}

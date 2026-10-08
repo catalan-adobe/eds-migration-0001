@@ -1,0 +1,54 @@
+{
+  "cluster_id": "C109",
+  "representative": "page-11__solution-inventory.json",
+  "sections": [
+    { "eds": "nav", "items": ["top nav bar"], "note": "site nav" },
+    { "eds": "default-content", "items": ["Our No-Code Business Solutions (H1+intro)"], "note": "hero heading, no bg image" },
+    { "eds": "section", "items": ["Join users that trust Knack to... heading", "logo/testimonial component (empty)"], "note": "heading-then-component; component under-rendered" },
+    { "eds": "section", "items": ["cards grid: Custom CRM/Customer Portal/... (by Work type)"], "note": "first solutions grid" },
+    { "eds": "section", "items": ["cards grid: Healthcare/Legal/Manufacturing... (by Industry)"], "note": "second solutions grid" },
+    { "eds": "section", "items": ["cards grid: Project Management/Sales & Marketing... (by Business Need)"], "note": "third solutions grid" },
+    { "eds": "section", "items": ["FAQ heading", "3 Q&A rows"], "note": "faq accordion" },
+    { "eds": "section", "style": "bg-image/bg-gradient", "items": [], "note": "two stacked empty full-width bands directly above footer" },
+    { "eds": "section", "items": ["footer tagline", "footer link row"], "note": "site footer" }
+  ],
+  "blocks": ["cards", "faq-accordion"],
+  "covered_by_rules": ["heading-then-component-same-section", "repeating-cards-are-one-block", "faq-accordion-block", "underrendered-list-zone", "background-container-is-section-style", "knack-cookie-notice-overlay"],
+  "proposed_rules": [
+    {
+      "id": "pre-footer-empty-gradient-band",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A full-width [bg:gradient] or [bg:image] zone with zero captured child text, positioned as the last content zone immediately above the footer.",
+      "decision": "Flag for Phase 2 targeted extraction as a likely CTA banner (heading+button) rather than silently applying decorative-graphics-are-noise.",
+      "rationale": "Recurs across page-10/page-11 templates in the same position with a reserved height, suggesting real CTA copy that failed to render at capture width. Rejected alternative: treating it as pure decoration and dropping it.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C109 rc1c2c7 [bg:image] 1280x281 and rc1c2c8 [bg:gradient] 1280x507, both childless, stacked directly above footer rc2",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "oversized-bg-bleed-artifact",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 48,
+      "trigger": "A [bg:color] node whose width is roughly double the page's captured viewport width (e.g. 2560 vs 1280) and whose y-range overlaps a card-grid section.",
+      "decision": "Fold into the section style of the overlapping card-grid section (background-container-is-section-style); do not list as separate content or a separate section.",
+      "rationale": "Width doubling indicates the extractor captured an underlying full-bleed background layer independent of the viewport crop, not a real 2560px-wide element on the live site.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C109 rc3/rc4/rc5 [bg:color] @0,831 / 0,1879 / 0,2959 2560x1676 overlapping rc1c2c3/c4/c5 card grids",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    }
+  ],
+  "notes": "Three same-shaped card grids (Business Need/Industry/Work Type) modeled as repeated uses of one 'cards' block; two capture artifacts flagged."
+}

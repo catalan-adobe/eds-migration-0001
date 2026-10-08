@@ -1,0 +1,43 @@
+{
+  "cluster_id": "C28",
+  "representative": "solution-2__solutions-education.json",
+  "sections": [
+    { "eds": "section", "items": ["default-content: H1 + intro", "block: hero"], "note": "rc1c2c1 [2x1]" },
+    { "eds": "section", "items": ["default-content: intro", "block: logo-strip"], "note": "rc1c2c2c2 [5x1] trusted-by logos → repeating-cards" },
+    { "eds": "section", "items": ["block: templates-carousel"], "note": "rc1c2c3, graphic bg + template previews" },
+    { "eds": "section", "items": ["block: feature (image-right)"], "note": "rc1c2c4 [2x1]" },
+    { "eds": "section", "items": ["block: feature (image-left)"], "note": "rc1c2c5 [2x1] alternating → variant of same block" },
+    { "eds": "section", "items": ["block: feature (image-right)"], "note": "rc1c2c6 [2x1]" },
+    { "eds": "section", "style": "tinted", "items": ["block: cards (3x2)"], "note": "rc1c2c7 [bg:color] + [3x2] → section style + card grid" },
+    { "eds": "section", "items": ["default-content: H2 + text", "block: numbered-features (3x2)"], "note": "rc1c2c8 'Why Choose Knack' + numbered grid" },
+    { "eds": "section", "items": ["default-content: H2", "block: resource-cards (3x1)"], "note": "rc1c2c9" },
+    { "eds": "section", "items": ["default-content: H2", "block: accordion"], "note": "rc1c2c10 [presentation] FAQ, 5 items" }
+  ],
+  "blocks": ["hero", "logo-strip", "templates-carousel", "feature", "cards", "numbered-features", "resource-cards", "accordion"],
+  "covered_by_rules": ["heading-then-component-same-section", "repeating-cards-are-one-block", "background-container-is-section-style", "variant-is-css-not-new-block"],
+  "proposed_rules": [
+    {
+      "id": "faq-accordion-block",
+      "scope": "generic",
+      "category": "block",
+      "status": "proposed",
+      "priority": 64,
+      "trigger": "A vertical stack of uniform question rows (each a short heading, often with an expand affordance), typically under an 'FAQ' heading; visual tree marks the container [presentation] with N equal-height children.",
+      "decision": "Emit ONE accordion block with one row per Q/A pair. The question is the row's first cell; the answer (may be collapsed/under-rendered) the second — confirm answer text via Phase 2.",
+      "rationale": "FAQ accordions are a canonical reusable block; each item is one row, matching EDS table-per-item authoring.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C28 rc1c2c10c2 [presentation] with 5 uniform 60px rows", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "alternating-feature-rows-are-one-block",
+      "scope": "generic",
+      "category": "block",
+      "status": "proposed",
+      "priority": 63,
+      "trigger": "A sequence of full-width [2x1] rows each pairing an image and a text column, where the image/text sides alternate down the page.",
+      "decision": "Treat every row as the same 'feature' block; express the left/right alternation as a variant label (e.g. feature (image-left)), not as distinct blocks.",
+      "rationale": "Alternating media rows are the same content structure mirrored via CSS — a variant, not a new block, per variant-is-css-not-new-block.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C28 rc1c2c4/c5/c6 consecutive [2x1] feature rows", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Richest long-tail page seen: 8 distinct block types. solution/solution-2/solution-3 share this structure → one template family. Two generic blocks (accordion, alternating-feature) not yet in rulebook — high-value proposals since they recur across many marketing pages."
+}

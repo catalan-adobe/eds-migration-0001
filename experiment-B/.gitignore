@@ -1,0 +1,7 @@
+# Captured external content — read-only fidelity artifacts, NOT project source.
+# Do not lint or modify: the site's own duplicate ids and Dutch text are faithful capture.
+*.html
+*-dom.*
+vt-*.json
+*.raw
+*.jsonl

@@ -1,0 +1,42 @@
+{
+  "cluster_id": "C119",
+  "representative": "page-14__no-code-ai-app-builder-for-education.json",
+  "sections": [
+    { "eds": "nav", "items": ["nav links [2x1]"], "note": "rc1c1" },
+    { "eds": "section", "items": ["promo strip 'Back to School Sale: Save 65%...'", "H1 'No-Code AI Learning App for Ed...'", "subtext", "ai-prompt-box (bg:gradient card) 'What would you like to build?'", "disclaimer 'UNLIMITED USERS ALLOWS...'"], "note": "rc1c2c1 hero zone, no bg tag on outer container" },
+    { "eds": "default-content", "items": ["'*Special pricing valid for the...' disclaimer"], "note": "rc1c2c2" },
+    { "eds": "default-content", "items": ["H2 'How It Works'", "how-it-works steps block (2x1)"], "note": "rc1c2c3" },
+    { "eds": "section", "style": "bg-color", "items": ["2x2 feature grid block 'True No-Code, Drag-and-Drop...'"], "note": "rc1c2c4" },
+    { "eds": "block", "items": ["'Modernize Your Classroom' 2x1"], "note": "rc1c2c6 feature-banner (variant)" },
+    { "eds": "default-content", "items": ["H2 'Popular Use Cases'"], "note": "rc1c2c8" },
+    { "eds": "block", "items": ["4 stacked 2x1 use-case rows"], "note": "rc1c2c10-c13 repeating cards" },
+    { "eds": "section", "style": "bg-color", "items": ["H2 'Pricing That Scales With You'", "pricing table block", "'Learn more...' link"], "note": "rc1c2c15" },
+    { "eds": "block", "items": ["'Enterprise-Grade Security' 2x1"], "note": "rc1c2c16 feature-banner (variant)" },
+    { "eds": "section", "style": "bg-color", "items": ["H2 'Join building with Knack...'", "H3 'What Our Customers Are Saying'", "testimonial carousel block"], "note": "rc1c2c17" },
+    { "eds": "section", "items": ["'The best no-code platform...'", "'| |' link row"], "note": "rc2 footer" },
+    { "eds": "noise", "items": ["Decline button", "cookie consent box"], "note": "rc3/rc4 cookie overlay" }
+  ],
+  "blocks": ["ai-prompt-box", "how-it-works", "feature-grid", "use-cases", "pricing-table", "feature-banner", "testimonial-carousel"],
+  "covered_by_rules": [
+    "knack-cookie-notice-overlay",
+    "background-container-is-section-style",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "variant-is-css-not-new-block"
+  ],
+  "proposed_rules": [
+    {
+      "id": "in-hero-seasonal-promo-strip",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "default-content",
+      "status": "proposed",
+      "priority": 52,
+      "trigger": "A thin promotional text line ('Back to School Sale: Save 65%...') sitting inside the hero zone below the nav, above the H1, rather than as a page-wide bar above the nav.",
+      "decision": "Model as plain default-content text at the top of the hero section (a marketing line authors can edit/remove per campaign), not as the site-wide knack-announcement-bar (which is specifically above-nav chrome) and not as its own block.",
+      "rationale": "Rejected alternatives: (a) reuse knack-announcement-bar — rejected because that rule's trigger is specifically 'above the nav' global chrome, while this sits below nav inside page content and is campaign-specific, not persistent; (b) a dedicated 'promo-banner' block — rejected as overkill for a single text line with no distinct structure.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C119 rc1c2c1c2 'Back to School Sale: Save 65%...' 1280x36 below nav, above H1", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Same page-14 template as C118/C120 with an added seasonal promo line and pricing disclaimer footnote; ai-prompt-box card matches the generic rule's own negative example (single card w/ own background = block, not section)."
+}

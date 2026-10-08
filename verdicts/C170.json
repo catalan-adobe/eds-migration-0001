@@ -1,0 +1,64 @@
+{
+  "cluster_id": "C170",
+  "representative": "page-40__health-scheduling.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1 (leaked JS text, nav failed to render)"], "note": "" },
+    { "eds": "section", "style": "bg-image hero", "items": ["rc2c1 'Talk to Knack Health / Get Free...' CTA copy"], "note": "" },
+    { "eds": "noise", "items": ["rc2c2 empty 46px spacer"], "note": "layout spacer, no content" },
+    { "eds": "default-content", "items": ["rc2c3 'Most scheduling tools are gene...' two-col feature"], "note": "" },
+    { "eds": "default-content", "items": ["rc2c4c1 heading 'Scheduling Built Around How He...'"], "note": "" },
+    { "eds": "block", "style": "cards", "items": ["rc2c4c2 [3x2] Provider Availability etc. feature cards"], "note": "6-card grid" },
+    { "eds": "default-content", "items": ["rc2c5 'Scheduling that's Part of Your...' two-col feature"], "note": "" },
+    { "eds": "structure", "items": ["rc2c6 empty 815px zone, no rendered children"], "note": "flagged as under-rendered, not truly empty" },
+    { "eds": "default-content", "items": ["rc2c7c1 heading 'Built for a Range of Healthcar...'"], "note": "" },
+    { "eds": "block", "style": "cards", "items": ["rc2c7c2 [2x2] audience feature cards"], "note": "4-card grid" },
+    { "eds": "default-content", "items": ["rc2c8c1 heading 'What Our Users Are Saying'", "rc2c8c2 single testimonial quote"], "note": "" },
+    { "eds": "default-content", "items": ["rc2c9 'Start from a Free Patient Sche...' CTA"], "note": "" },
+    { "eds": "default-content", "items": ["rc2c10c1 heading 'Built on HIPAA-Ready Infrastru...'"], "note": "" },
+    { "eds": "block", "style": "cards", "items": ["rc2c10c2 [2x3] hosting/security feature cards"], "note": "6-card grid" },
+    { "eds": "default-content", "items": ["rc2c11 heading + single plan summary card + link"], "note": "" },
+    { "eds": "section", "style": "bg-color CTA", "items": ["rc2c12 'Scheduling that fits how your...' + CTA button"], "note": "" },
+    { "eds": "block", "style": "accordion", "items": ["rc2c13c1 'FAQ' heading", "rc2c13c2 10 Q rows + regions", "stray rc2c13c3 and rc2c15 answers"], "note": "FAQ; two answers promoted out of nested position" },
+    { "eds": "noise", "items": ["rc2c14 leaked CSS '.stickarrow{...'"], "note": "excluded" },
+    { "eds": "section", "style": "footer fragment", "items": ["rc3 CTA + separator"], "note": "" },
+    { "eds": "noise", "items": ["rc4 cookie overlay"], "note": "excluded" }
+  ],
+  "blocks": ["cards", "accordion", "nav", "footer"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "background-container-is-section-style",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "faq-accordion-block",
+    "leaked-css-text-node",
+    "knack-cookie-notice-overlay",
+    "underrendered-list-zone"
+  ],
+  "proposed_rules": [
+    {
+      "id": "site-footer-cta-is-global-fragment",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A '2x1' zone with 'The best no-code platform for...' CTA text plus a '| |' separator at the bottom of every page.",
+      "decision": "Model as the site-wide footer fragment, excluded from per-page block inventory.",
+      "rationale": "Identical across every captured page = global chrome, analogous to knack-announcement-bar.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C170 rc3", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "faq-answer-promoted-out-of-tree",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 52,
+      "trigger": "An FAQ [region] answer appears outside its nested question row, either as a same-level sibling of the answer list or as a top-level page node.",
+      "decision": "Fold back into the accordion block as the answer for its corresponding question.",
+      "rationale": "Artifact of overlay-promotion logic in the capture pipeline; occurs twice on this page (rc2c13c3 and rc2c15).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C170 rc2c13c3 'Yes. Role-based permissions le...'; rc2c15 'Yes, as an add-on for Pro and...'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Scheduling vertical landing page; two zones (rc2c2, rc2c6) are spacer/under-rendered rather than content; two FAQ answers were promoted out of the accordion tree."
+}

@@ -1,0 +1,46 @@
+{
+  "cluster_id": "C235",
+  "representative": "page__health-telehealth.json",
+  "sections": [
+    { "eds": "default-content", "items": ["rc1"], "note": "Leaked inline <script> text ('document.addEventListener(...)') rendered as visible content above the fold; excluded as noise." },
+    { "eds": "section", "style": "hero (bg image)", "items": ["rc2c1"], "note": "Hero heading/subhead/CTA over a full-bleed background image." },
+    { "eds": "default-content", "items": ["rc2c2c1"], "note": "'Telehealth workflows you can build' heading introducing the feature cards component." },
+    { "eds": "section", "items": ["rc2c2c2"], "note": "3x2 grid of workflow feature cards (Virtual Visits, scheduling, etc.)." },
+    { "eds": "section", "style": "colored panel", "items": ["rc2c3c1","rc2c3c2"], "note": "bg:color panel wrapping a heading + 4-item structured-data feature list." },
+    { "eds": "section", "items": ["rc2c4"], "note": "2x1 text+image row: 'Why teams build telehealth apps'." },
+    { "eds": "default-content", "items": ["rc2c5c1"], "note": "'Built to support healthcare compliance' heading." },
+    { "eds": "section", "items": ["rc2c5c2"], "note": "3x1 compliance feature cards (HIPAA Compliance, etc.)." },
+    { "eds": "default-content", "items": ["rc2c6c1"], "note": "'How a telehealth workflow runs' heading." },
+    { "eds": "section", "items": ["rc2c6c2"], "note": "5x1 numbered workflow-step cards." },
+    { "eds": "section", "style": "cta (bg color)", "items": ["rc2c7"], "note": "'Book a Demo / Request Free Trial' CTA banner with colored background." },
+    { "eds": "section", "items": ["rc2c8c1","rc2c8c2","rc4"], "note": "Telehealth FAQs accordion; first item's answer is exposed via an ARIA [region] node, others collapsed." },
+    { "eds": "default-content", "items": ["rc2c9"], "note": "Leaked CSS text node ('ul{ margin-left: 20px; } @media...') rendered visibly; noise." },
+    { "eds": "section", "style": "footer band", "items": ["rc3"], "note": "'The best no-code platform for...' footer CTA band, identical across pages -> global chrome." },
+    { "eds": "default-content", "items": ["rc5","rc3(inner)","rc4(inner)"], "note": "Cookie consent overlay (Decline/Accept) -> excluded per confirmed noise rule." }
+  ],
+  "blocks": ["cards", "columns", "cta", "accordion"],
+  "covered_by_rules": [
+    "leaked-css-text-node",
+    "full-width-image-behind-text-is-section-bg",
+    "background-container-is-section-style",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-footer-cta-band",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 86,
+      "trigger": "A sibling zone after the main content column containing 'The best no-code platform for...' text plus a thin '| |' bar, appearing identically at the bottom of nearly every page captured (page, solution-2, solution-3 templates).",
+      "decision": "Treat as global site footer chrome; exclude from per-page block inventory. Model once as a site-wide footer fragment, not repeated page content.",
+      "rationale": "Byte-identical text and position recur across unrelated templates (page, solution-2, solution-3), indicating shared footer markup rather than authored page content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C235 rc3 'The best no-code platform for...' + '| |'; identical rc2 zone in C236-C242", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Standard content-marketing page with two leaked script/CSS noise nodes and a partially-collapsed FAQ accordion; all patterns map to existing confirmed rules except the recurring footer CTA band."
+}

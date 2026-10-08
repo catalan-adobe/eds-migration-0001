@@ -1,0 +1,64 @@
+{
+  "cluster_id": "C44",
+  "representative": "integration__integrations-knack-activecampaign-integration.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "top nav bar" },
+    { "eds": "section", "style": "hero", "items": ["rc1c2c1"], "note": "hero heading (Integrate Knack with ActiveCampaign)" },
+    { "eds": "section", "style": "bg-color", "items": ["rc1c2c2c2", "rc1c2c2c3"], "note": "intro heading+paragraph on tinted bg (How Knack Flows Work)" },
+    { "eds": "section", "style": "steps", "items": ["rc1c2c3", "rc1c2c4", "rc1c2c5"], "note": "3-step process cards, one bg color per step -> steps block" },
+    { "eds": "default-content", "items": ["rc1c2c6"], "note": "heading+paragraph intro (Popular Knack + ActiveCampaign)" },
+    { "eds": "section", "items": ["rc1c2c7"], "note": "3x3 trigger/action card grid -> feature-grid block" },
+    { "eds": "section", "style": "bg-color", "items": ["rc1c2c9"], "note": "bg section wrapping 3x2 grid (Two-Way Contact & CRM Sync)" },
+    { "eds": "default-content", "items": ["rc1c2c10"], "note": "heading+paragraph intro (Triggers and Actions)" },
+    { "eds": "section", "items": ["rc1c2c11"], "note": "large 3x10 triggers/actions table -> integration-table block" },
+    { "eds": "section", "items": ["rc1c2c12c2"], "note": "small CTA button 'See All Triggers and Actions'" },
+    { "eds": "default-content", "items": ["rc1c2c13"], "note": "About ActiveCampaign text" },
+    { "eds": "section", "items": ["rc1c2c14"], "note": "'12 Ways to Improve Customer Experience' promo card" },
+    { "eds": "section", "style": "footer", "items": ["rc2"], "note": "footer tagline + link row" }
+  ],
+  "blocks": ["hero", "steps", "feature-grid", "integration-table", "cta-banner", "promo-card"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "minimize-block-cells",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "single-cta-button-is-default-content-link",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "default-content",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A lone small [bg:color] item (~64px tall) at the end of a content list holding only a single CTA label like 'See All Triggers and Actions'.",
+      "decision": "Model as a default-content link/button, not a dedicated block.",
+      "rationale": "Only one instance, no repeated structure; rejected alternative is a standalone 'cta-button' block, but that adds authoring overhead for a single link.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C44 rc1c2c12c2 [bg:color] 1220x64 'See All Triggers and Actions'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "bottom-of-page-related-content-card",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A single [3x1] card at the very bottom of an integration/solution page promoting an unrelated blog/resource topic (e.g. '12 Ways to Improve Customer Experience').",
+      "decision": "Model as a single-row 'promo-card' block rather than folding into a related-articles grid.",
+      "rationale": "Only one card appears (not a repeating grid); rejected alternative is treating it as a 1-row instance of a generic related-articles block, unconfirmed without more evidence across pages.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C44 rc1c2c14 [3x1] '12 Ways to Improve Customer Ex...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    }
+  ],
+  "notes": "Long-tail integration page: hero, an intro-band, a 3-step process, two content grids (trigger/action cards, large 3x10 table), a CTA button, and a closing promo card. Cookie overlay and nav/footer chrome excluded per confirmed rules."
+}

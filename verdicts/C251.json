@@ -1,0 +1,47 @@
+{
+  "cluster_id": "C251",
+  "representative": "solution__solutions-property-management.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions", "Business Need", "Work O..."], "note": "top nav bar rc1c1" },
+    { "eds": "section", "style": "hero", "items": ["heading: Build Property Management Soft...", "subtext/CTA"], "note": "hero intro rc1c2c1" },
+    { "eds": "section", "style": "trust-badges (candidate)", "items": [], "note": "blank 1280x126 zone below hero rc1c2c2, no captured content" },
+    { "eds": "default-content", "items": ["Create a Property Management S..."], "note": "plain content rc1c2c3" },
+    { "eds": "default-content", "items": ["Quickly Make Changes to Your P..."], "note": "rc1c2c4" },
+    { "eds": "default-content", "items": ["Ensure the Security of your Pr..."], "note": "rc1c2c5" },
+    { "eds": "section", "style": "bg-color", "items": ["feature-cards block: Real Estate Listings..."], "note": "rc1c2c6, background-container-is-section-style" },
+    { "eds": "section", "items": ["related-templates block (placeholder): Templates for Property Managem..."], "note": "rc1c2c7, likely under-rendered carousel" },
+    { "eds": "section", "items": ["heading: Unlock Knack's Key Features to...", "key-features block: 01. Centralized Platform..."], "note": "rc1c2c8" },
+    { "eds": "section", "style": "faq", "items": ["heading: FAQ", "faq-accordion block (10 Q&A rows)"], "note": "rc1c2c9" },
+    { "eds": "section", "items": ["heading: Additional Property Management...", "related-templates block: Real Estate Buyer Intake System..."], "note": "rc1c2c10" },
+    { "eds": "section", "style": "footer", "items": ["tagline: The best no-code platform for...", "footer link row"], "note": "rc2 footer" }
+  ],
+  "blocks": ["feature-cards", "related-templates", "key-features", "faq-accordion", "trust-badges"],
+  "covered_by_rules": ["background-container-is-section-style", "repeating-cards-are-one-block", "heading-then-component-same-section", "minimize-block-cells", "faq-accordion-block", "knack-cookie-notice-overlay"],
+  "proposed_rules": [
+    {
+      "id": "knack-trust-badge-strip",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A blank/under-rendered horizontal strip immediately below the hero on solution pages, sized like a badge row but with no captured text.",
+      "decision": "Model as a 'trust-badges' block (row of rating/logo badges) pending Phase 2 DOM confirmation; alternative considered was treating it as decorative spacer noise, rejected because position/size matches the known trust-badge pattern already proposed for other solution pages.",
+      "rationale": "Matches the existing proposed knack-trust-badge-strip pattern; blank capture is consistent with badge images not resolving in the visual-tree scan.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C251 rc1c2c2 [2x1] @0,932 1280x126 blank zone below hero", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "iframe-carousel-underrendered",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A 'Related/Other Templates' or mid-page 'Templates for X' carousel renders with only a heading and pagination controls, never the actual card content.",
+      "decision": "Flag for Phase 2 targeted DOM extraction of the carousel widget instead of concluding the section has no cards; model as a related-templates/related-content block whose items are loaded by a slider widget our minWidth capture under-renders.",
+      "rationale": "Recurs identically across template-detail and solution pages sampled in this batch; placeholder text confirms a widget the capture pipeline under-renders, not empty content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C251 rc1c2c7 'Templates for Property Managem...' with no repeated card text", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Standard solution-page layout: nav, hero, blank badge strip, three plain content blurbs, one feature-card grid, a mid-page template carousel placeholder, a numbered key-features block, FAQ accordion, a second (populated) related-templates grid, and footer."
+}

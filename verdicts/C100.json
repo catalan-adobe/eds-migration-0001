@@ -1,0 +1,70 @@
+{
+  "cluster_id": "C100",
+  "representative": "integration__integrations-knack-microsoft-dynamics-crm-365-integration.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions/Business Need/Work... mega-nav"], "note": "global top nav bar (rc1c1), no bg marker; treat as chrome" },
+    { "eds": "default-content", "style": "hero", "items": ["H1 Integrate Knack with Microsoft Dynamics CRM 365"], "note": "rc1c2c1, plain hero title, no bg" },
+    { "eds": "section", "style": "tinted (bg:color)", "items": ["H2 How Knack Flows Work", "intro paragraph"], "note": "rc1c2c2, background-container-is-section-style" },
+    { "eds": "section", "style": "steps", "items": ["Step 1: Select a Trigger", "Step 2: Set up an Action in Knack", "Step 3: Connect and Automate"], "note": "rc1c2c3-5, 3 stacked bg-tinted cards -> one steps block" },
+    { "eds": "section", "items": ["H2 Popular Knack + Microsoft Dynamics Automations", "intro", "3x3 automation card grid"], "note": "rc1c2c6+c7" },
+    { "eds": "section", "style": "bg:color feature highlight", "items": ["image", "Two-Way CRM Data Synchronization (3x2 text)"], "note": "rc1c2c9" },
+    { "eds": "section", "items": ["H2 Triggers and Actions", "intro", "3x5 trigger/action grid", "See All Triggers and Actions CTA"], "note": "rc1c2c10-12" },
+    { "eds": "default-content", "items": ["About Microsoft Dynamics CRM 365 (heading+paragraph)"], "note": "rc1c2c13" },
+    { "eds": "section", "items": ["10 No-Code Apps for Sales & Marketing (3x1 card)"], "note": "rc1c2c14, single related-article teaser" },
+    { "eds": "section", "style": "footer", "items": ["The best no-code platform for...", "| |"], "note": "rc2, global footer chrome" },
+    { "eds": "noise", "items": ["Decline overlay", "cookie consent box"], "note": "rc3/rc4, knack-cookie-notice-overlay" }
+  ],
+  "blocks": ["steps", "automation-cards", "feature-highlight", "triggers-actions-list", "related-article-card"],
+  "covered_by_rules": ["background-container-is-section-style", "heading-then-component-same-section", "repeating-cards-are-one-block", "minimize-block-cells", "knack-cookie-notice-overlay"],
+  "proposed_rules": [
+    {
+      "id": "knack-nav-bar-chrome",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A [2x1] bar at the very top of the page (y=0), full-width, listing nav categories, with no bg marker.",
+      "decision": "Treat as the global primary nav (nav.json equivalent), exclude from per-page block inventory.",
+      "rationale": "Identical position/content pattern across every captured page in this batch; not covered by knack-announcement-bar since it has no bg color.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C100 rc1c1 [2x1] 1280x74 'Solutions Business Need Work...'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-footer-cta-chrome",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "A bottom zone (rc2) with a repeated tagline 'The best no-code platform for...' plus a small link row, appearing after main content on every page.",
+      "decision": "Treat as the global footer fragment, exclude from per-page block inventory.",
+      "rationale": "Identical text/position across all sampled pages; site-wide chrome, not page content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C100 rc2c1/rc2c2 identical across C100-C105", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-integration-page-template",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "A page under /integrations/... following the fixed sequence: hero -> how-it-works(bg) -> 3 steps(bg) -> popular-automations grid -> feature-highlight(bg) -> triggers-actions grid -> CTA -> about-vendor -> optional related-article.",
+      "decision": "Recognize as a dedicated 'integration' page template authored with 4 canonical reusable blocks (steps, automation-cards, feature-highlight, triggers-actions-list) rather than bespoke per-page blocks.",
+      "rationale": "Structure and order recur identically across every integration__* page sampled (C100-C105). Rejected alternatives: (a) treat each section as one-off bespoke blocks per page - rejected, causes massive duplication across dozens of integration pages; (b) collapse the whole page into one mega block - rejected, violates minimize-block-cells and blocks reuse.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C100-C105 identical section ordering", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "related-article-teaser",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A single [3x1] card (not a repeated grid) teasing a blog/article near the page bottom.",
+      "decision": "Model as its own single-row 'related-article-card' block rather than folding into default-content.",
+      "rationale": "Recurs with identical shape (H2 + one [3x1] card) at the tail of several integration pages; keeping it a block preserves the image+title+link structure. Rejected alternatives: fold into surrounding default-content as an inline link (loses structure); treat as an extra automation-cards row (different content type).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C100 rc1c2c14 [3x1] '10 No-Code Apps for Sales & Ma...'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Standard 'integration' template page; every section maps cleanly via generic rules. No demo media or bottom CTA banner present in this instance."
+}

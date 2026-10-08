@@ -1,0 +1,39 @@
+{
+  "cluster_id": "C85",
+  "representative": "download__download-simple-product-catalog-template.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "top utility/solutions nav bar" },
+    { "eds": "default-content", "items": ["rc1c2c1"], "note": "hero heading: 'Product Catalog Template Excel...'" },
+    { "eds": "section", "items": ["rc1c2c2c1(bg,noise)", "rc1c2c2c2c1(default-content upgrade pitch)", "rc1c2c2c2c2(block:feature-list)"], "note": "upgrade pitch text + numbered '01./02./03.' feature list over a decorative background" },
+    { "eds": "section", "items": ["rc1c2c3(block:card-grid)"], "note": "repeating 3x1 icon/feature card grid, no captured text" },
+    { "eds": "default-content", "items": ["rc1c2c4(spacer)", "rc1c2c5", "rc1c2c6(spacer)"], "note": "'Install the Free Template App' CTA text" },
+    { "eds": "section", "style": "bg-color", "items": ["rc1c2c7c1(section bg)", "rc1c2c7c2(block:feature-list, variant)"], "note": "colored-background repeat of the feature list: 'Store Management Maintain a co...'" },
+    { "eds": "default-content", "items": ["rc1c2c8"], "note": "closing CTA heading: 'Get Started with Knack's Produ...'" },
+    { "eds": "section", "items": ["rc2c1", "rc2c2"], "note": "bottom marketing banner: 'The best no-code platform for...' + social icons" }
+  ],
+  "blocks": ["feature-list", "card-grid"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "decorative-graphics-are-noise",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "variant-is-css-not-new-block",
+    "minimize-block-cells",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "recurring-bottom-marketing-banner",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "An identical ~453px band at the very bottom of the page reading 'The best no-code platform for...' plus a small social-icon row, recurring unchanged across unrelated templates (download, integration, ebook-category).",
+      "decision": "Model as a site-wide footer fragment rendered on every page, not as per-page authored content. Alternative rejected: treating it as a normal page-ending CTA section authored per page (rejected because content and layout are byte-identical across templates, indicating global chrome rather than page content).",
+      "rationale": "Identical text/size across independently themed templates strongly indicates a shared footer/fragment injected site-wide rather than page-authored content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C85 rc2 identical to same node in C84/C86/C87/C89", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Same download-template layout family as C84: nav, hero, feature pitch, two feature-list instances, install CTA, closing CTA, bottom banner. Cookie overlay excluded per confirmed rule."
+}

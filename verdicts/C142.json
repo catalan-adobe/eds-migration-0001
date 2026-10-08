@@ -1,0 +1,54 @@
+{
+  "cluster_id": "C142",
+  "representative": "page-26__experts.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions / Business Need / Work On... nav bar (rc1c1)"], "note": "global site header nav, excluded from page content" },
+    { "eds": "default-content", "items": ["Expert Directory heading", "intro copy", "Sign In link"], "note": "rc1c2c1" },
+    { "eds": "section", "items": ["Keyword Search heading", "block: directory-filter (filter control + Search/Reset)"], "note": "rc1c2c2c1c2c1" },
+    { "eds": "section", "items": ["Showing 1-66 of 66", "block: expert-directory-cards (3x22, 66 cards)"], "note": "rc1c2c2c1c2c2" },
+    { "eds": "default-content", "items": ["Experts Login"], "note": "rc1c2c2c1c3, minor link" },
+    { "eds": "nav", "items": ["footer tagline + link row (rc2)"], "note": "global footer" },
+    { "eds": "nav", "items": ["cookie overlay (rc4/rc5)"], "note": "global chrome, excluded" }
+  ],
+  "blocks": ["directory-filter", "expert-directory-cards"],
+  "covered_by_rules": ["repeating-cards-are-one-block", "knack-cookie-notice-overlay"],
+  "proposed_rules": [
+    {
+      "id": "directory-filter-search-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A keyword-search input plus filter control and Search/Reset buttons sits directly above a large paged listing grid (expert/partner directory).",
+      "decision": "Model as its own 'filter/search' block, separate from and placed above the listing-cards block within the same section.",
+      "rationale": "Rejected alternatives: (a) folding filter controls into the listing block's header row — rejected because filters are a reusable form component, not per-row content; (b) treating search+grid as one combined block — rejected because it would force filter markup into every content row.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C142 rc1c2c2c1c2c1c1c2 'Search Reset', preceding rc1c2c2c1c2c2 66-card grid", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "offcanvas-hidden-duplicate-node",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A node positioned at a large negative x-coordinate (off-screen) duplicating text/heading already visible elsewhere on the page, typical of a hidden mobile drawer/menu twin.",
+      "decision": "Exclude from content inventory as noise; it is a hidden UI-state duplicate, not additional content.",
+      "rationale": "The tree walker captures elements outside the viewport that are only reachable via a hidden drawer state, not real page content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C142 rc3 @-1280,0 500x720 'Expert Directory' duplicating rc1c2c1c1 heading", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-global-footer-cta",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "Pair of [2x1] nodes at bottom of main content: tagline + pipe-separated link list.",
+      "decision": "Model as global site footer fragment; exclude from page block inventory.",
+      "rationale": "Recurs identically across unrelated templates.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C142 rc2c1 [2x1] tagline + rc2c2 [2x1] '| |'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Directory listing page: search/filter block above a 66-card expert grid; an off-canvas duplicate heading suggests a hidden mobile menu twin."
+}

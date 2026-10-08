@@ -1,0 +1,65 @@
+{
+  "cluster_id": "C165",
+  "representative": "page-37__pricing.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1 'Solutions Business Need Work O...'"], "note": "" },
+    { "eds": "default-content", "items": ["rc1c2c1 'Plans & Pricing' heading"], "note": "" },
+    { "eds": "block", "style": "pricing-table", "items": ["rc1c2c2c1 [2x2] Monthly/Yearly toggle", "rc1c2c2c2 promo copy"], "note": "billing toggle bundled into pricing-table cell per minimize-block-cells" },
+    { "eds": "block", "style": "callout-cards", "items": ["rc1c2c3c1 HIPAA plan link", "rc1c2c3c2 Agency plan link"], "note": "2 uniform link cards" },
+    { "eds": "block", "style": "pricing-table", "items": ["rc1c2c4c1 plan header row", "rc1c2c4c2 core-capabilities comparison rows", "rc1c2c4c3-c12 collapsible feature category rows"], "note": "comparison table with expandable categories" },
+    { "eds": "block", "style": "accordion", "items": ["rc1c2c5c1 8 Q rows + regions", "rc1c2c5c2 heading", "stray rc1c2c5c3 answer"], "note": "FAQ; one answer promoted next to unrelated heading" },
+    { "eds": "block", "style": "logo-strip", "items": ["rc1c2c6c1 'Trusted by users...' ", "rc1c2c6c2 [13x4] logo grid"], "note": "" },
+    { "eds": "default-content", "items": ["rc1c2c7 'Get Started in 30 seconds' CTA"], "note": "" },
+    { "eds": "noise", "items": ["rc1c2c8 leaked CSS '.gradeint_text...'"], "note": "excluded" },
+    { "eds": "section", "style": "footer fragment", "items": ["rc2 CTA + separator"], "note": "" },
+    { "eds": "noise", "items": ["rc3/rc4 cookie overlay"], "note": "excluded" }
+  ],
+  "blocks": ["pricing-table", "callout-cards", "accordion", "logo-strip", "nav", "footer"],
+  "covered_by_rules": [
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "faq-accordion-block",
+    "leaked-css-text-node",
+    "knack-cookie-notice-overlay",
+    "minimize-block-cells"
+  ],
+  "proposed_rules": [
+    {
+      "id": "plan-comparison-table-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "A pricing page body containing a plan-name header row ([Nx1]) followed by expandable feature-category rows ('+'/'−' toggles), each expanding to per-feature comparison rows across the same N plan columns.",
+      "decision": "Emit ONE 'pricing-table' block: header row = plan names, one row per feature category, one sub-row per feature when expanded. Rejected alternatives: (a) treat each category as its own accordion block (loses the shared plan-column structure), (b) flatten into plain markdown table (loses expand/collapse authoring).",
+      "rationale": "This is a distinct, site-specific interactive comparison-table pattern not covered by repeating-cards-are-one-block (not uniform cards) nor faq-accordion-block (not Q&A).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C165 rc1c2c4 header row + 11 core-capability rows + 10 collapsible category rows", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "site-footer-cta-is-global-fragment",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A '2x1' zone with 'The best no-code platform for...' CTA text plus a '| |' separator at the bottom of every page.",
+      "decision": "Model as the site-wide footer fragment, excluded from per-page block inventory.",
+      "rationale": "Identical across every captured page = global chrome, analogous to knack-announcement-bar. Rejected: per-page footer block.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C165 rc2", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "faq-answer-promoted-out-of-tree",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 52,
+      "trigger": "An FAQ [region] answer appears as a sibling of an unrelated heading instead of nested under its own question row.",
+      "decision": "Fold back into the accordion block as the answer for its corresponding question.",
+      "rationale": "Artifact of overlay-promotion logic in the capture pipeline, not real content structure.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C165 rc1c2c5c3 'You own it!...' next to 'What Makes Knack Different?' heading", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Pricing page: plan comparison table with toggles, callout cards, FAQ, logo strip, CTA; global footer/cookie chrome."
+}

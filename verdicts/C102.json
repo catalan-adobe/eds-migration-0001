@@ -1,0 +1,45 @@
+{
+  "cluster_id": "C102",
+  "representative": "integration__integrations-knack-slack.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions/Business Need/Work... mega-nav"], "note": "rc1c1, global top nav chrome" },
+    { "eds": "default-content", "style": "hero", "items": ["H1 Do More in Knack. Stay Connected..."], "note": "rc1c2c1" },
+    { "eds": "section", "style": "tinted (bg:color)", "items": ["H2 How Knack Flows Works", "intro", "demo media (336px)"], "note": "rc1c2c2, includes embedded demo image/video (c5)" },
+    { "eds": "section", "style": "steps", "items": ["Select a Trigger from Knack", "Add an Action in Slack", "Connect and Automate"], "note": "rc1c2c3-5, 3 stacked bg-tinted cards -> steps block" },
+    { "eds": "section", "items": ["H2 Set Up Your Knack and Slack Workflow", "intro", "3x2 automation card grid"], "note": "rc1c2c6+c7" },
+    { "eds": "section", "style": "bg:color feature highlight", "items": ["image", "Automated Notifications (3x2 text)"], "note": "rc1c2c9" },
+    { "eds": "section", "items": ["H2 Triggers and Actions", "intro", "3x3 trigger/action grid", "See All Triggers and Actions CTA"], "note": "rc1c2c10-12" },
+    { "eds": "default-content", "items": ["About Slack (heading+paragraph)"], "note": "rc1c2c13, last content item, no related-article teaser or trailing banner" },
+    { "eds": "section", "style": "footer", "items": ["The best no-code platform for...", "| |"], "note": "rc2, global footer chrome" },
+    { "eds": "noise", "items": ["Decline overlay", "cookie consent box"], "note": "rc3/rc4, knack-cookie-notice-overlay" }
+  ],
+  "blocks": ["how-it-works-media", "steps", "automation-cards", "feature-highlight", "triggers-actions-list"],
+  "covered_by_rules": ["background-container-is-section-style", "heading-then-component-same-section", "repeating-cards-are-one-block", "minimize-block-cells", "knack-cookie-notice-overlay"],
+  "proposed_rules": [
+    {
+      "id": "knack-nav-bar-chrome",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A [2x1] bar at the very top of the page (y=0), full-width, listing nav categories, with no bg marker.",
+      "decision": "Treat as the global primary nav, exclude from per-page block inventory.",
+      "rationale": "Recurs identically across all sampled pages.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C102 rc1c1 [2x1] 1280x74", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-integration-page-template",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "A page under /integrations/... following hero -> how-it-works(bg[+media]) -> 3 steps(bg) -> automation grid -> feature-highlight(bg) -> triggers-actions grid -> CTA -> about-vendor.",
+      "decision": "Recognize as the shared 'integration' page template with canonical reusable blocks.",
+      "rationale": "This page is the minimal-tail variant of the template (ends right after about-vendor, no related-article or bottom banner). Rejected alternatives: bespoke per-page blocks (duplication); single mega-block.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C102 full section order vs C100/C101/C103-C105", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Shortest integration-page variant in this batch: ends at about-vendor with no related-article teaser and no trailing CTA banner."
+}

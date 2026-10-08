@@ -1,0 +1,59 @@
+{
+  "cluster_id": "C163",
+  "representative": "page-35__health-security.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1 (leaked JS text, nav failed to render)"], "note": "nav slot; content is a JS source leak, not real nav copy" },
+    { "eds": "section", "style": "bg-image hero", "items": ["rc2c1 heading+CTA over image"], "note": "hero bg image" },
+    { "eds": "default-content", "items": ["rc2c2c1-3 heading/text", "rc2c2c4 [4x1] encrypted-connection cards"], "note": "heading + 4-card feature grid" },
+    { "eds": "default-content", "items": ["rc2c3 HIPAA package two-col feature"], "note": "" },
+    { "eds": "default-content", "items": ["rc2c4 certifications/privacy two-col feature"], "note": "" },
+    { "eds": "default-content", "items": ["rc2c5 authentication two-col feature"], "note": "" },
+    { "eds": "default-content", "items": ["rc2c6c1-2 heading/text", "rc2c6c3 [5x1] TLS/security cards"], "note": "heading + 5-card feature grid" },
+    { "eds": "default-content", "items": ["rc2c7 availability/uptime two-col feature"], "note": "" },
+    { "eds": "default-content", "items": ["rc2c8 people/process two-col feature"], "note": "" },
+    { "eds": "default-content", "items": ["rc2c9 team-support two-col feature"], "note": "" },
+    { "eds": "section", "style": "bg-color CTA", "items": ["rc2c10 CTA text"], "note": "" },
+    { "eds": "default-content", "items": ["rc2c11c1 heading + bullet list of security controls"], "note": "" },
+    { "eds": "block", "style": "accordion", "items": ["rc2c11c2-c8 8 Q rows", "regions c9-c14 + stray rc4 answer"], "note": "FAQ accordion, one stray answer node promoted to page level" },
+    { "eds": "section", "style": "footer fragment", "items": ["rc3 CTA + separator"], "note": "" },
+    { "eds": "noise", "items": ["rc5 cookie overlay"], "note": "excluded" }
+  ],
+  "blocks": ["cards", "accordion", "nav", "footer"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style",
+    "faq-accordion-block",
+    "leaked-css-text-node",
+    "knack-cookie-notice-overlay",
+    "minimize-block-cells"
+  ],
+  "proposed_rules": [
+    {
+      "id": "site-footer-cta-is-global-fragment",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A '2x1' zone with 'The best no-code platform for...' CTA text plus a '| |' separator, ~453-487px tall, at the bottom of every page.",
+      "decision": "Model as the site-wide footer fragment, excluded from per-page block inventory.",
+      "rationale": "Identical across every captured page = global chrome, like the confirmed knack-announcement-bar rule for the header. Rejected alternative: emit as a per-page 'footer' block (would duplicate identical content on every page).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C163 rc3", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "faq-answer-promoted-out-of-tree",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 52,
+      "trigger": "A [region] node with content matching an FAQ answer appears as a top-level page sibling (e.g. rc4) instead of nested under its question row.",
+      "decision": "Fold it back into the accordion block as the answer for its corresponding question; do not treat as separate content.",
+      "rationale": "Artifact of the page-tree capture's overlay-promotion logic, which lifts elements whose rendered box falls outside their DOM parent's bounds.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C163 rc4 'No. Data in Knack Health appli...'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Standard Knack Health long-form page: hero, alternating feature/two-col sections, CTA band, FAQ accordion, global footer/cookie chrome."
+}

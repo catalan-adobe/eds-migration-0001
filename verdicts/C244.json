@@ -1,0 +1,78 @@
+{
+  "cluster_id": "C244",
+  "representative": "solution-4__solutions-work-orders.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "top nav bar" },
+    { "eds": "default-content", "items": ["rc1c2c1"], "note": "hero heading/intro text" },
+    { "eds": "section", "style": "trust-badges", "items": ["rc1c2c2c1", "rc1c2c2c2"], "note": "'Join users' heading + 5x2 badge grid" },
+    { "eds": "section", "items": ["rc1c2c3c2c1", "rc1c2c3c2c2"], "note": "'5 Reasons' heading + 3x2 numbered feature-cards grid" },
+    { "eds": "section", "style": "media-split", "items": ["rc1c2c4c1", "rc1c2c4c2"], "note": "bg:color + bg:image panel, no text captured" },
+    { "eds": "default-content", "items": ["rc1c2c5"], "note": "'Start Building with Knack's Wo...' callout" },
+    { "eds": "section", "items": ["rc1c2c6c1", "rc1c2c6c2", "rc1c2c6c3", "rc1c2c6c4", "rc1c2c6c5"], "note": "comparison heading/intro + feature-by-feature comparison table (header row + 9 data rows)" },
+    { "eds": "section", "style": "bg-color", "items": ["rc1c2c7c1", "rc1c2c7c2"], "note": "3x2 feature-cards grid on color background (Preventative Maintenance)" },
+    { "eds": "section", "items": ["rc1c2c8c1", "rc1c2c8c2"], "note": "FAQs heading + 8-row accordion" },
+    { "eds": "noise", "items": ["rc2"], "note": "global footer CTA band + link row" },
+    { "eds": "noise", "items": ["rc3", "rc4"], "note": "cookie consent overlay" }
+  ],
+  "blocks": ["trust-badges", "feature-cards", "comparison-table", "accordion"],
+  "covered_by_rules": [
+    "knack-cookie-notice-overlay",
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "faq-accordion-block",
+    "variant-is-css-not-new-block",
+    "minimize-block-cells"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-global-footer-band",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 87,
+      "trigger": "A recurring end-of-page zone (rc2) with a CTA heading and a pipe-only link row, identical at the bottom of every page.",
+      "decision": "Exclude from per-page block inventory; model as a global footer fragment/site-wide chrome, analogous to the confirmed knack-announcement-bar rule.",
+      "rationale": "Identical structure across every page examined in this batch.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "rc2c1/rc2c2 identical across C243-C250", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-trust-badge-strip",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "'Join ... users' heading immediately followed by a 5xN grid near the top of a solution page.",
+      "decision": "Emit as one 'trust-badges' block, one row per badge/item. Rejected alternative: a generic unnamed logo/card grid.",
+      "rationale": "Recurs with identical shape across multiple solution pages; reinforces the already-proposed rulebook candidate.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "rc1c2c2c1/rc1c2c2c2 [5x2]", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "split-image-panel-underrendered",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A [bg:color] panel next to a [bg:image] panel with zero captured text.",
+      "decision": "Flag for Phase 2 targeted extraction rather than treating as a pure decorative background. Rejected alternative: full-width-image-behind-text section mapping (no text to overlay was captured).",
+      "rationale": "minWidth capture likely collapsed responsive text normally accompanying the image panel; same pattern seen on C243 and C247.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "rc1c2c4c1 [bg:color] + rc1c2c4c2 [bg:image], no child text", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "feature-comparison-table-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 52,
+      "trigger": "A [4x1]-row header immediately followed by N [4x1]-row data cells forming a competitor feature comparison table (Feature | Knack | Competitor A | Competitor B).",
+      "decision": "Model as one 'comparison-table' block, header row + one row per feature. Rejected alternative: an HTML markdown table authored as default-content, since the row shape matches the generic repeating-cards-are-one-block pattern and benefits from block-level styling/decoration.",
+      "rationale": "The repeating [4x1] rows are structurally identical to the generic repeating-cards rule extended to tabular data.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "rc1c2c6c5c1 (header) + rc1c2c6c5c2c1..c9 (9 data rows)", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "solution-4 template adds a dedicated feature-comparison table not seen elsewhere in this batch; otherwise matches the standard solution-page skeleton (hero, trust badges, feature cards, FAQ, global chrome)."
+}

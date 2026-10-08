@@ -1,0 +1,42 @@
+{
+  "cluster_id": "C99",
+  "representative": "integration__integrations-knack-googledrive.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "top solutions/business nav row" },
+    { "eds": "section", "items": ["rc1c2c1"], "note": "H1 'Integrate Knack with Google Drive' hero title" },
+    { "eds": "section", "style": "bg:color", "items": ["rc1c2c2c1..c4 heading+text", "rc1c2c2c5 demo embed"], "note": "'How Knack Flows Works' intro over shared background, with blank demo/video region" },
+    { "eds": "section", "items": ["rc1c2c3", "rc1c2c4", "rc1c2c5"], "note": "3 uniform Step 1/2/3 cards, each own bg:color -> one steps block, 3 rows" },
+    { "eds": "section", "items": ["rc1c2c6 heading+text", "rc1c2c7 template grid"], "note": "'Connect Your Workflow Now' intro above [3x2] repeating template-card grid" },
+    { "eds": "section", "style": "bg:color", "items": ["rc1c2c9c2 feature highlight"], "note": "highlighted feature panel (Document Storage), [3x2] internal layout" },
+    { "eds": "section", "items": ["rc1c2c10 heading+text", "rc1c2c11 triggers/actions table"], "note": "'Triggers and Actions' intro above [3x4] repeating trigger/action grid" },
+    { "eds": "default-content", "items": ["rc1c2c12c2 CTA link"], "note": "'See All Triggers and Actions' bg:color link" },
+    { "eds": "default-content", "items": ["rc1c2c13 About Google Drive text"], "note": "partner description paragraph" },
+    { "eds": "section", "items": ["rc1c2c14c1 heading", "rc1c2c14c2 related content grid"], "note": "'Find Inspiration' intro above [3x1] related-article card row" },
+    { "eds": "section", "style": "bg:gradient", "items": ["rc1c2c15"], "note": "trailing full-width gradient zone with no child text; under-rendered content per pipeline rule" },
+    { "eds": "section", "style": "footer", "items": ["rc2c1 testimonial quote", "rc2c2 icon row"], "note": "closing testimonial + small icon pair" }
+  ],
+  "blocks": ["steps", "automation-templates", "video-embed", "feature-highlight", "triggers-actions-table", "related-content", "footer-quote"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "minimize-block-cells",
+    "knack-cookie-notice-overlay",
+    "underrendered-list-zone"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-integration-page-template",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "A page URL matches /integrations/integrations-knack-<partner> or /integrations-<partner>-knack and shows the recurring sequence: hero title, how-it-works intro+demo, 3-step block, automation-templates grid, feature-highlight panel, triggers/actions table, CTA link, about-partner text, related content, trailing gradient zone.",
+      "decision": "Model as a fixed page template with stable section/block order across all partner pages instead of deriving fresh boundaries per page.",
+      "rationale": "Keeps ~90 partner-integration pages consistent. Rejected alternative: independent per-page derivation, which would fragment identical structures into differently-named blocks.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C99 rc1c2c1-c15 matches the same sequence seen in C95-C98", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Matches the canonical Knack integration-page template; trailing gradient zone again matches the underrendered-list-zone pipeline rule."
+}

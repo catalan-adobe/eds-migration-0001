@@ -1,0 +1,33 @@
+{
+  "cluster_id": "C62",
+  "representative": "page-10__solution-inventory-why-knack-faq.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "Solutions/Business Need/Work nav bar" },
+    { "eds": "default-content", "items": ["rc1c2c1"], "note": "eyebrow 'Knack FAQ' + H1 + intro text" },
+    { "eds": "default-content", "items": ["rc1c2c3c1"], "note": "'Knack FAQs' section heading" },
+    { "eds": "section", "items": ["rc1c2c3c2"], "note": "[presentation] stack of 15 uniform 60px question rows -> FAQ accordion" },
+    { "eds": "section", "items": ["rc2"], "note": "global footer CTA banner" },
+    { "eds": "noise", "items": ["rc3","rc4"], "note": "cookie consent overlay" }
+  ],
+  "blocks": ["faq-accordion"],
+  "covered_by_rules": [
+    "faq-accordion-block",
+    "heading-then-component-same-section",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-footer-cta-fragment",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A [2x1] 'The best no-code platform for...' CTA heading + link row appears as a separate top-level row (rc2) below the main content wrapper on every page captured.",
+      "decision": "Model as a site-wide footer fragment/CTA, not per-page default-content or block.",
+      "rationale": "Identical text/position recurs across unrelated page templates (this dedicated FAQ page has almost no other content). Alternatives considered: per-page default-content (rejected, duplicative across all pages).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C62 rc2 identical to C60/C61 rc2", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "A dedicated single-purpose FAQ page: hero + one large accordion block (15 rows), no other components; the existing faq-accordion-block rule fully covers it."
+}

@@ -1,0 +1,55 @@
+{
+  "cluster_id": "C141",
+  "representative": "page-24__health-specialty-clinics.json",
+  "sections": [
+    { "eds": "section", "style": "bg-image", "items": ["heading: HIPAA-Compliant Software Built...", "CTA: Talk to Our Team / See Pricing", "underrendered zone rc2c1c3"], "note": "hero; rc2c1c3 (1186x81, no text) likely a logo/badge strip not captured" },
+    { "eds": "default-content", "items": ["Specialty clinics operate on w..."], "note": "rc2c2 paragraph" },
+    { "eds": "section", "items": ["heading", "block: feature-cards (3x2, 6 items)"], "note": "rc2c3" },
+    { "eds": "default-content", "items": ["Flexible Solutions for Your Specialty..."], "note": "rc2c4 2-col banner" },
+    { "eds": "section", "items": ["heading", "block: value-cards (3x1, 3 items)"], "note": "rc2c5" },
+    { "eds": "section", "items": ["heading", "block: testimonials (3x1)"], "note": "rc2c6" },
+    { "eds": "section", "items": ["heading", "block: case-study-spotlights (2 items)"], "note": "rc2c7" },
+    { "eds": "section", "style": "bg-color", "items": ["Ready to build a system that... CTA"], "note": "rc2c8" },
+    { "eds": "section", "items": ["Frequently Asked Questions heading", "block: faq-accordion (6 rows)"], "note": "rc2c9; several answers promoted out (rc2c9c7/c8, rc2c11, rc4)" },
+    { "eds": "nav", "items": ["footer tagline + link row (rc3)"], "note": "global footer" },
+    { "eds": "nav", "items": ["cookie overlay (rc5)"], "note": "global chrome, excluded" }
+  ],
+  "blocks": ["feature-cards", "value-cards", "testimonials", "case-study-spotlights", "faq-accordion"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "underrendered-list-zone",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay",
+    "leaked-css-text-node"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-global-footer-cta",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "Pair of [2x1] nodes at bottom of main content: tagline + pipe-separated link list.",
+      "decision": "Model as global site footer fragment; exclude from page block inventory.",
+      "rationale": "Recurs identically across unrelated templates, mirrors confirmed header-bar chrome pattern.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C141 rc3 [2x1] tagline + [2x1] '| |'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "faq-answer-promoted-to-root",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "FAQ accordion answers ([region]) rendered as siblings outside their question row, some at page root.",
+      "decision": "Fold back into the FAQ block as matching answer cells, not new sections.",
+      "rationale": "Overlay/absolute positioning during capture detaches expanded FAQ answers from their DOM parent.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C141 rc2c9c7, rc2c9c8, rc2c11, rc4 all [region]", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Same page-24 template as C140 with specialty-clinics content; includes a possibly underrendered logo strip in the hero and case-study spotlight cards."
+}

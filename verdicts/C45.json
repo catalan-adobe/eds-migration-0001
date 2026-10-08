@@ -1,0 +1,42 @@
+{
+  "cluster_id": "C45",
+  "representative": "page-11__tour-security.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "top nav bar" },
+    { "eds": "section", "style": "hero (bg image)", "items": ["rc1c2c1c2"], "note": "'Protect your Data with Top Security...' heading over full-bleed bg image" },
+    { "eds": "section", "items": ["rc1c2c2", "rc1c2c3", "rc1c2c4"], "note": "3 repeating [2x1] feature rows -> feature-row block" },
+    { "eds": "default-content", "items": ["rc1c2c5c1"], "note": "'More About Knack's Security Features' heading" },
+    { "eds": "section", "items": ["rc1c2c5c2"], "note": "5 uniform 60px rows (Data Privacy, Data Access, ...) -> accordion block" },
+    { "eds": "section", "style": "bg-gradient", "items": ["rc1c2c7"], "note": "empty bg-gradient zone, likely under-rendered CTA/newsletter component" },
+    { "eds": "section", "style": "footer", "items": ["rc2"], "note": "footer tagline + link row" }
+  ],
+  "blocks": ["hero", "feature-row", "accordion"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "faq-accordion-block",
+    "underrendered-list-zone",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "presentation-list-is-accordion-beyond-faq",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "block",
+      "status": "proposed",
+      "priority": 63,
+      "trigger": "A [presentation] container with N uniform ~60px rows sits under a non-FAQ heading (e.g. 'More About Knack's Security Features'), matching the structural signature of the confirmed faq-accordion-block rule but not literally an FAQ.",
+      "decision": "Extend faq-accordion-block's mapping (one accordion block, one row per item) to any uniform-row presentation list regardless of the heading wording.",
+      "rationale": "The structural DNA (uniform row height, [presentation] role, expandable-looking single-line items) is what defines the accordion, not the specific 'FAQ' label; rejected alternative is treating each row as a separate plain link list with no block.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C45 rc1c2c5c2 [presentation] 5x60px rows under 'More About Knack's Security Features'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    }
+  ],
+  "notes": "Solution/tour page with bg-image hero, 3 feature rows, a non-FAQ accordion list, and an empty gradient zone likely holding an under-rendered CTA."
+}

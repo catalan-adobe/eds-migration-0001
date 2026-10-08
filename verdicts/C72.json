@@ -1,0 +1,52 @@
+{
+  "cluster_id": "C72",
+  "representative": "use-case__use-cases-inventory-replenishment.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions / Business Need / Work O... nav"], "note": "rc1c1 [2x1] top nav bar" },
+    { "eds": "section", "style": "bg:image", "items": ["default-content: 'Inventory Replenishment, Min/M...'"], "note": "rc1c2c1c1 full-bleed hero image behind heading/CTA" },
+    { "eds": "default-content", "items": ["with role-based access without... (intro continuation)"], "note": "rc1c2c1c2c1" },
+    { "eds": "section", "style": "bg:gradient", "items": ["default-content: 'Who Needs Inventory Replenishm...'"], "note": "rc1c2c1c2c2c1" },
+    { "eds": "section", "style": "bg:gradient", "items": ["default-content: 'Problems that Inventory Replen...'"], "note": "rc1c2c1c2c2c2" },
+    { "eds": "section", "style": "bg:gradient", "items": ["default-content: 'Why Choose Knack for Your Inve...'"], "note": "rc1c2c1c2c2c3" },
+    { "eds": "section", "style": "bg:gradient", "items": ["default-content: 'Key Features of Effective Stoc...'"], "note": "rc1c2c1c2c2c4" },
+    { "eds": "section", "style": "bg:gradient", "items": ["default-content: 'Getting Started with Knack's I...'"], "note": "rc1c2c1c2c2c5" },
+    { "eds": "section", "style": "plain", "items": ["default-content: 'Inventory Management Software ...'", "block: faq-accordion (8 rows, first expanded)"], "note": "rc1c2c1c3 listitem/region-tagged Q&A stack" },
+    { "eds": "section", "style": "bg:gradient", "items": ["empty CTA band (under-rendered)"], "note": "rc1c2c2 493px, no captured text, precedes global footer" },
+    { "eds": "section", "style": "plain", "items": ["footer CTA: 'The best no-code platform for...'", "footer link row"], "note": "rc2 global footer CTA band" },
+    { "eds": "default-content", "items": [], "note": "rc3/rc4 cookie consent overlay excluded per knack-cookie-notice-overlay" }
+  ],
+  "blocks": ["faq-accordion"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "background-container-is-section-style",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "notes": "Use-case page built as five stacked gradient-background sections plus a hero and an accordion FAQ with listitem/region markup instead of the usual presentation container.",
+  "proposed_rules": [
+    {
+      "id": "empty-gradient-cta-band",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A full-width [bg:gradient] zone directly before the global footer with no captured text or child nodes.",
+      "decision": "Flag for Phase 2 targeted extraction; likely a final CTA banner whose copy/button fell below the minWidth capture rather than a genuinely empty section.",
+      "rationale": "Same failure mode as underrendered-list-zone, applied to a CTA band instead of a list grid.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C72 rc1c2c2 [bg:gradient] 1280x493, no child text", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "list-role-faq-accordion-variant",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "A vertical stack of question rows marked with [listitem]/[region] ARIA roles (instead of the [presentation] container used elsewhere), with the first item pre-expanded showing its full answer text.",
+      "decision": "Extend faq-accordion-block's trigger to also match this role-based variant; capture the visible expanded answer directly as the row's second cell instead of deferring it to Phase 2.",
+      "rationale": "Same content/structure as the confirmed faq-accordion-block pattern, just different underlying markup semantics. Rejected alternative: treating this as a new block type, which would duplicate an already-confirmed mapping for no structural reason.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C72 rc1c2c1c3c2 [listitem]/[region] rows, first row answer text visible", "added": "2026-09-04", "version": 1 }
+    }
+  ]
+}

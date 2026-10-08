@@ -1,0 +1,73 @@
+{
+  "cluster_id": "C167",
+  "representative": "page-39__health-behavioral-health.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1 (leaked JS text, nav failed to render)"], "note": "" },
+    { "eds": "section", "style": "bg-image hero", "items": ["rc2c1 'Custom apps for behavioral hea...'"], "note": "" },
+    { "eds": "section", "style": "bg-gradient", "items": ["rc2c2 'The Operational Gap in Behavio...'"], "note": "" },
+    { "eds": "default-content", "items": ["rc2c3c1 heading"], "note": "" },
+    { "eds": "block", "style": "cards", "items": ["rc2c3c2 [3x2] Referrals & Intake / etc. feature cards"], "note": "6-card grid" },
+    { "eds": "default-content", "items": ["rc2c4 'Built for Behavioral Health Co...' two-col feature"], "note": "" },
+    { "eds": "default-content", "items": ["rc2c5 [2x2] 'Secure by Design' feature grid"], "note": "" },
+    { "eds": "default-content", "items": ["rc2c6 'Works With Your Existing Syste...' two-col feature"], "note": "" },
+    { "eds": "default-content", "items": ["rc2c7 'Security and Control' two-col feature"], "note": "" },
+    { "eds": "structure", "items": ["rc2c8 empty bg-color zone, 968px, no rendered children"], "note": "flagged as under-rendered content, not empty" },
+    { "eds": "structure", "items": ["rc2c9 'Test a live app' short text over 337px zone"], "note": "likely an embedded app/iframe demo not captured" },
+    { "eds": "section", "style": "bg-color", "items": ["rc2c10 'Plans and Packages' + HIPAA Starter plan card + link"], "note": "" },
+    { "eds": "block", "style": "cards", "items": ["rc2c11 [3x1] 'Royal Free London NHS Foundati...'"], "note": "3-item logo/quote strip" },
+    { "eds": "section", "style": "bg-color CTA", "items": ["rc2c12 'Build systems that match how y...'"], "note": "" },
+    { "eds": "block", "style": "accordion", "items": ["rc2c13c1 heading", "rc2c13c2 6 Q rows + regions", "stray rc4 answer"], "note": "FAQ; one answer promoted to page level" },
+    { "eds": "section", "style": "footer fragment", "items": ["rc3 CTA + separator"], "note": "" },
+    { "eds": "noise", "items": ["rc5 cookie overlay"], "note": "excluded" }
+  ],
+  "blocks": ["cards", "accordion", "nav", "footer"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "background-container-is-section-style",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "faq-accordion-block",
+    "leaked-css-text-node",
+    "knack-cookie-notice-overlay",
+    "underrendered-list-zone"
+  ],
+  "proposed_rules": [
+    {
+      "id": "embedded-app-demo-placeholder",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "A zone with a short caption (e.g. 'Test a live app') but disproportionate height, suggesting an embedded interactive app/iframe was not captured by the minWidth snapshot.",
+      "decision": "Flag for Phase 2 targeted DOM extraction to identify the embed and model as an 'app-embed' block, rather than treating the caption alone as the section's content. Rejected alternative: accept the short caption as the full content (would drop the interactive demo).",
+      "rationale": "Height/content mismatch is a strong signal of lazy-loaded/iframe content invisible to the current capture method.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C167 rc2c9 'Test a live app' 337px tall with only one text line", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "site-footer-cta-is-global-fragment",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A '2x1' zone with 'The best no-code platform for...' CTA text plus a '| |' separator at the bottom of every page.",
+      "decision": "Model as the site-wide footer fragment, excluded from per-page block inventory.",
+      "rationale": "Identical across every captured page = global chrome, analogous to knack-announcement-bar.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C167 rc3", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "faq-answer-promoted-out-of-tree",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 52,
+      "trigger": "An FAQ [region] answer appears as a top-level page sibling instead of nested under its question row.",
+      "decision": "Fold back into the accordion block as the answer for its corresponding question.",
+      "rationale": "Artifact of overlay-promotion logic in the capture pipeline.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C167 rc4 'Most systems can be built with...'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Behavioral-health vertical landing page; two zones (rc2c8, rc2c9) look under-rendered rather than truly empty and need Phase 2 follow-up."
+}

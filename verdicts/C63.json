@@ -1,0 +1,29 @@
+{
+  "cluster_id": "C63",
+  "representative": "page-18__affiliates-dashboard.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "Solutions/Business Need/Work nav bar" },
+    { "eds": "section", "items": ["rc1c2"], "note": "Single 1280x528 zone holding raw text 'Affiliate Dashboard app_id=\"58...' -> an embedded live-app demo widget, not authored copy" },
+    { "eds": "section", "items": ["rc2"], "note": "global footer CTA banner" },
+    { "eds": "noise", "items": ["rc3","rc4"], "note": "cookie consent overlay" }
+  ],
+  "blocks": ["app-demo-embed"],
+  "covered_by_rules": [
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "embedded-app-iframe-inconsistent-capture",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "A template/app-demo page's main content zone renders as an app_id=\"...\" attribute string instead of visible UI, indicating the embedded live Knack app iframe did not render (cross-origin/lazy-load) during capture.",
+      "decision": "Do not treat the leaked attribute text as page copy. Flag the zone as an 'app-demo-embed' placeholder block and route to Phase 2 targeted capture/screenshot rather than importing the raw string. Alternatives considered: treat literally as default-content text (rejected - it's a source/DOM leak, not authored content); treat as noise and drop entirely (rejected - the embed itself is real, reusable page content, just under-rendered).",
+      "rationale": "Compare to cluster C64 (same page-18/page-4 template pair) where the equivalent zone DID render full app UI (dashboard table) - confirming this is a capture inconsistency, not a real content difference between pages.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C63 rc1c2 'Affiliate Dashboard app_id=\"58...' vs C64 rc1c2c1 fully-rendered dashboard/table", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Sparsest page in the batch; the entire body is an under-rendered app embed. Needs Phase 2 re-capture before authoring."
+}

@@ -1,0 +1,53 @@
+{
+  "cluster_id": "C95",
+  "representative": "integration__integrations-gmail-knack.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "top solutions/business nav row" },
+    { "eds": "section", "items": ["rc1c2c1"], "note": "H1 'Integrate Knack with Gmail' hero title" },
+    { "eds": "section", "style": "bg:color", "items": ["rc1c2c2c1..c4 heading+text", "rc1c2c2c5 demo embed"], "note": "'How Knack Flows Work' intro over a shared background, with a blank demo/video region" },
+    { "eds": "section", "items": ["rc1c2c3", "rc1c2c4", "rc1c2c5"], "note": "3 uniform Step 1/2/3 cards, each with its own bg:color -> one steps block, 3 rows" },
+    { "eds": "section", "items": ["rc1c2c6 heading+text", "rc1c2c7 template grid"], "note": "'Popular Knack + Gmail Automations' intro above a [3x2] repeating template-card grid" },
+    { "eds": "section", "style": "bg:color", "items": ["rc1c2c9c2 feature highlight"], "note": "single highlighted feature panel (Lead and Form Submission Follow up)" },
+    { "eds": "section", "items": ["rc1c2c10 heading+text", "rc1c2c11 triggers/actions table"], "note": "'Triggers and Actions' intro above a large [3x5] repeating trigger/action grid" },
+    { "eds": "default-content", "items": ["rc1c2c12c2 CTA link"], "note": "'See All Triggers and Actions' bg:color link" },
+    { "eds": "default-content", "items": ["rc1c2c13 About Gmail text"], "note": "partner description paragraph" },
+    { "eds": "section", "items": ["rc1c2c14 related content card"], "note": "[3x1] related-article teaser row" },
+    { "eds": "section", "style": "footer", "items": ["rc2c1 testimonial quote", "rc2c2 icon row"], "note": "closing testimonial + small icon pair" }
+  ],
+  "blocks": ["steps", "automation-templates", "video-embed", "feature-highlight", "triggers-actions-table", "related-content", "footer-quote"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "minimize-block-cells",
+    "knack-cookie-notice-overlay",
+    "decorative-graphics-are-noise"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-integration-page-template",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "A page URL matches the /integrations/integrations-<partner>-knack pattern and its tree shows the recurring sequence: hero title, 'How Knack Flows Work' intro+demo, 3-step walkthrough, automation-templates grid, feature-highlight panel, triggers/actions table, CTA link, about-partner text, related content.",
+      "decision": "Model this recurring sequence as a fixed page template with a stable section/block order, rather than re-deriving block boundaries independently on every partner page.",
+      "rationale": "Templatizing keeps ~90 partner-integration pages consistent and authorable. Rejected alternative: treat each integration page as bespoke content with independently-derived sections, which would produce inconsistent block naming/boundaries across otherwise identical pages.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C95 rc1c2c1-c14 matches the same sequence seen in C96-C99", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "media-embed-blank-capture",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "block",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A sizable childless leaf node (no text, no bg tag) sits inside a heading+text intro section where a product walkthrough demo/video is expected.",
+      "decision": "Model as a video/embed block placeholder; confirm actual media (video vs. animated screenshot) via Phase 2 DOM/src extraction since the visual-tree capture does not render <video>/canvas contents.",
+      "rationale": "The blank region recurs at a consistent size and position across all integration pages in this cluster, strongly indicating unrendered media rather than empty content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C95 rc1c2c2c5 1244x336, no text, no bg tag", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Canonical Knack integration-page template: hero + how-it-works + 3-step block + automation-templates grid + feature highlight + triggers table + about-partner text + related content + footer."
+}

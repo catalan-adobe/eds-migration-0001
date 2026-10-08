@@ -1,0 +1,64 @@
+{
+  "cluster_id": "C58",
+  "representative": "integration__integrations-google-calendar-knack-integration.json",
+  "sections": [
+    { "eds": "nav", "items": ["global nav bar"], "note": "rc1c1 [2x1] 1280x74" },
+    { "eds": "section", "items": ["default-content: H1 'Integrate Knack with Google Ca...'"], "note": "rc1c2c1" },
+    { "eds": "section", "style": "bg-color", "items": ["default-content: H2 'How Knack Flows Works' + intro"], "note": "rc1c2c2, heading+text only" },
+    { "eds": "section", "style": "bg-color", "items": ["block: steps (3 rows: Select a Trigger / Set up an Action / Connect and Automate)"], "note": "rc1c2c3, rc1c2c4, rc1c2c5, each [2x1][bg:color]" },
+    { "eds": "section", "items": ["default-content: H2 'Popular Knack + Google Calenda...' + intro", "block: recipe-cards ('Create Google Calendar events...')"], "note": "rc1c2c6 heading + rc1c2c7 [3x3] grid" },
+    { "eds": "section", "style": "bg-color", "items": ["block: feature-highlight ('Appointment and Booking Manage...')"], "note": "rc1c2c9c1 bg layer + rc1c2c9c2 [3x2] content" },
+    { "eds": "section", "items": ["default-content: H2 'Triggers and Actions' + intro", "block: trigger-action-cards", "default-content: 'See All Triggers and Actions' CTA link"], "note": "rc1c2c10 heading + rc1c2c11 [3x6] grid + rc1c2c12 badge link" },
+    { "eds": "section", "items": ["default-content: 'About Google Calendar...' text"], "note": "rc1c2c13 [2x1]" },
+    { "eds": "section", "items": ["block: related-articles ('Benefits of Using an Inventory...')"], "note": "rc1c2c14 [3x1] grid; heading folded into first item, same as C57" },
+    { "eds": "section", "items": ["default-content: footer tagline + separator row"], "note": "rc2" }
+  ],
+  "blocks": ["steps", "recipe-cards", "feature-highlight", "trigger-action-cards", "related-articles"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "decorative-graphics-are-noise",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "minimize-block-cells",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "global-nav-header-bar",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "A full-width bar at the very top of the page, above the hero, containing top-level menu labels ('Solutions Business Need Work O...'), present on every sampled page.",
+      "decision": "Map to the global nav/header fragment, not page content; exclude from the page's block inventory.",
+      "rationale": "Identical content and position across every packet analyzed indicates shared site chrome, not authored page content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C58 rc1c1 [2x1] 1280x74", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "global-footer-cta-fragment",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "A bottom-most sibling zone with a fixed marketing tagline ('The best no-code platform for...') plus a thin separator row.",
+      "decision": "Map to the global footer fragment; exclude from page-specific block inventory.",
+      "rationale": "Identical content/position on every sampled page = site-wide footer chrome.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C58 rc2 @0,7475 1280x453", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "related-articles-heading-fold",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "default-content",
+      "status": "proposed",
+      "priority": 45,
+      "trigger": "The related-articles/blog grid at the page bottom sometimes renders as a single [3xN] node whose first text run includes what is elsewhere a separate heading, instead of a distinct heading child node.",
+      "decision": "Treat the truncated leading text as the section heading (default-content) regardless of node structure; still emit the grid as ONE related-articles block. Rejected alternative: assume the heading is genuinely absent and omit it.",
+      "rationale": "Sibling pages with an identical component (C56, C59) show the heading as a distinct node, so its absence here is most likely a capture/DOM-collapsing artifact.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C58 rc1c2c14 [3x1] 1280x570 'Benefits of Using an Inventory...' with no separate heading child", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Same integration-landing layout as sibling clusters; no trailing empty gradient zone on this page."
+}

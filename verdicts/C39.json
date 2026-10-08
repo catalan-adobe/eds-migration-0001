@@ -1,0 +1,49 @@
+{
+  "cluster_id": "C39",
+  "representative": "use-case__use-cases-contract-repository.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1 nav bar"], "note": "global chrome" },
+    { "eds": "section", "style": "hero-image-bg", "items": ["rc1c2c1c1 heading over bg:image"], "note": "full-bleed image hero" },
+    { "eds": "default-content", "items": ["rc1c2c1c2c1 intro paragraph"], "note": "plain intro text" },
+    { "eds": "section", "style": "gradient-band", "items": ["rc1c2c1c2c2c1 Who Needs", "rc1c2c1c2c2c2 Problems", "rc1c2c1c2c2c3 Why Choose Knack"], "note": "3 heading+text zones, each own bg:gradient" },
+    { "eds": "section", "style": "gradient-cta", "items": ["rc1c2c1c2c2c4 Getting Started CTA"], "note": "CTA banner, own bg:gradient" },
+    { "eds": "section", "style": "faq", "items": ["rc1c2c1c3 FAQ heading + 8 listitems"], "note": "accordion; first item shows expanded [region] answer" },
+    { "eds": "section", "style": "gradient-band-empty", "items": ["rc1c2c2 empty bg:gradient zone"], "note": "no captured text/children" },
+    { "eds": "nav", "items": ["rc2 footer"], "note": "global chrome" }
+  ],
+  "blocks": ["faq-accordion"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "background-container-is-section-style",
+    "heading-then-component-same-section",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "empty-cta-zone-before-footer",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A full-width bg:gradient/bg:color zone directly above the footer with no captured text or child nodes.",
+      "decision": "Flag for Phase 2 targeted DOM extraction rather than treating as a pure decorative section background; likely a newsletter/CTA component that failed to render under the minWidth capture.",
+      "rationale": "Same empty zone recurs identically on this use-case template (see C259); pattern is template-wide, not one-off.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C39 rc1c2c2 [bg:gradient] 1280x493 with no child text", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-global-nav-footer-chrome",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "Identical top nav and bottom footer recur on every captured page.",
+      "decision": "Model as global header/footer fragments, excluded from the per-page section/block inventory.",
+      "rationale": "Recurs identically across all templates; not covered by existing noise rules.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C39 rc1c1, rc2c1, rc2c2", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Same structural pattern as C259 (use-case template): hero + intro + 3 gradient bands + CTA band + FAQ, before empty pre-footer band."
+}

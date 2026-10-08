@@ -1,0 +1,32 @@
+{
+  "cluster_id": "C176",
+  "representative": "page-4__meet-sales.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions", "Business", "Need", "Work On..."], "note": "global site nav" },
+    { "eds": "default-content", "items": ["heading: Meet With Sales", "text: Need help? Schedule..."], "note": "flattened single leaf node, no child structure captured" },
+    { "eds": "section", "items": ["scheduler-embed block (unresolved)"], "note": "primary page purpose is a scheduling widget (e.g. Calendly) whose iframe DOM is invisible to the capture tool" },
+    { "eds": "section", "style": "footer", "items": ["footer tagline", "footer links"], "note": "global footer chrome" }
+  ],
+  "blocks": ["scheduler-embed"],
+  "covered_by_rules": ["knack-cookie-notice-overlay"],
+  "proposed_rules": [
+    {
+      "id": "cross-origin-iframe-embed-blind-spot",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A page's main content area is a single flattened text leaf (heading+intro merged, no child structure) despite the page clearly hosting an interactive third-party embed (scheduling widget, chat, form).",
+      "decision": "Map the flattened leaf as default-content (heading + intro paragraph) and flag the embed itself as a distinct block (e.g. 'scheduler-embed') requiring Phase 2 manual identification of the embed provider/src, rather than assuming the page has no further content.",
+      "rationale": "Cross-origin iframes (Calendly-style schedulers, chat widgets, forms) render opaque to DOM-walking capture tools; the visual tree collapses everything into one leaf. Without flagging, the primary CTA/purpose of a 'Meet with Sales' page would be silently dropped from the EDS block inventory.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C176 rc1c2 single flattened 1280x1211 leaf with no children, text 'Meet With Sales Need help? Sch...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    }
+  ],
+  "notes": "Very small contact/sales page whose actual embedded scheduler is not visible in the DOM-walk; flagged for Phase 2 targeted extraction rather than treated as an empty page."
+}

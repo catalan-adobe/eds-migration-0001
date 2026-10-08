@@ -1,0 +1,42 @@
+{
+  "cluster_id": "C98",
+  "representative": "integration__integrations-knack-asana.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "top solutions/business nav row" },
+    { "eds": "section", "items": ["rc1c2c1"], "note": "H1 'Integrate Knack with Asana' hero title" },
+    { "eds": "section", "style": "bg:color", "items": ["rc1c2c2"], "note": "short intro text over shared background; no separate demo/video region rendered here" },
+    { "eds": "section", "items": ["rc1c2c3", "rc1c2c4", "rc1c2c5"], "note": "3 uniform Step 1/2/3 cards, each own bg:color -> one steps block, 3 rows" },
+    { "eds": "section", "items": ["rc1c2c6 heading+text", "rc1c2c7 template grid"], "note": "'Popular Knack + Asana Automations' intro above [3x2] repeating template-card grid" },
+    { "eds": "section", "style": "bg:color", "items": ["rc1c2c9c2 feature highlight"], "note": "highlighted feature panel (Task & Project Sync), [3x2] internal layout" },
+    { "eds": "section", "items": ["rc1c2c10 heading+text", "rc1c2c11 triggers/actions table"], "note": "'Triggers and Actions' intro above large [3x6] repeating trigger/action grid" },
+    { "eds": "default-content", "items": ["rc1c2c12c2 CTA link"], "note": "'See All Triggers and Actions' bg:color link" },
+    { "eds": "default-content", "items": ["rc1c2c13 About Asana text"], "note": "partner description paragraph" },
+    { "eds": "section", "items": ["rc1c2c14"], "note": "[3x1] comparison/related-article row ('Asana Integrations vs. Knack Integrations')" },
+    { "eds": "section", "style": "bg:gradient", "items": ["rc1c2c15"], "note": "trailing full-width gradient zone with no child text; under-rendered content per pipeline rule" },
+    { "eds": "section", "style": "footer", "items": ["rc2c1 testimonial quote", "rc2c2 icon row"], "note": "closing testimonial + small icon pair" }
+  ],
+  "blocks": ["steps", "automation-templates", "feature-highlight", "triggers-actions-table", "related-content", "footer-quote"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "minimize-block-cells",
+    "knack-cookie-notice-overlay",
+    "underrendered-list-zone"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-integration-page-template",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "A page URL matches /integrations/integrations-knack-<partner> or /integrations-<partner>-knack and shows the recurring sequence: hero title, intro, 3-step block, automation-templates grid, feature-highlight panel, triggers/actions table, CTA link, about-partner text, related content, trailing gradient zone.",
+      "decision": "Model as a fixed page template with stable section/block order across all partner pages instead of deriving fresh boundaries per page.",
+      "rationale": "Keeps ~90 partner-integration pages consistent. Rejected alternative: independent per-page derivation, which would fragment identical structures into differently-named blocks.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C98 rc1c2c1-c15 matches the same sequence seen in C95-C97, C99", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Matches the canonical Knack integration-page template but lacks the demo/embed sub-node seen on other partner pages (rc1c2c2 has only 3 children); trailing gradient zone again matches underrendered-list-zone."
+}

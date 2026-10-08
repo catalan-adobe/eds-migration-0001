@@ -1,0 +1,48 @@
+{
+  "cluster_id": "C138",
+  "representative": "page-23__careers.json",
+  "sections": [
+    { "eds": "section", "style": "image bg hero", "items": ["H1 Careers", "subtext We're looking for kindred spir..."], "note": "rc1c2c1c1 [bg:image] + rc1c2c1c2 heading; no explicit nav node captured on this page" },
+    { "eds": "section", "items": ["H2/paragraph Our Beginnings Every decision ..."], "note": "rc1c2c2" },
+    { "eds": "section", "style": "gradient bg", "items": ["testimonial quote block (One of my favorite things about...)"], "note": "rc1c2c3" },
+    { "eds": "section", "items": ["bg image", "H2 Remote work is our Backbone We...", "icon/benefit grid (3x2)"], "note": "rc1c2c4" },
+    { "eds": "section", "items": ["bg image", "benefit grid (3x2) Flexible Paid Vacation Take th..."], "note": "rc1c2c5" },
+    { "eds": "section", "style": "gradient bg", "items": ["H2 No open roles at the moment", "subtext Follow us on LinkedIn for the ...", "card No Current Openings Follow Us..."], "note": "rc1c2c6, heading text partially duplicated across sibling nodes" },
+    { "eds": "section", "style": "footer", "items": ["footer tagline", "footer link row"], "note": "rc2" }
+  ],
+  "blocks": ["testimonial-quote", "benefit-grid"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "background-container-is-section-style",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "marketing-feature-row-section",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "section",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A single-column [2x1] zone with an H2/paragraph and no repeating structure, sitting between other section types.",
+      "decision": "Map the row as its own section with default-content (H2+paragraph).",
+      "rationale": "Rejected alternative: fold into the adjacent testimonial or benefit-grid section — rejected because it is a standalone paragraph with no shared background or component, distinct page content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C138 rc1c2c2 'Our Beginnings Every decision ...'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "testimonial-quote-block",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "block",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "A quoted statement (curly quotes) followed by an attributed name/title, on a colored/gradient background.",
+      "decision": "Map as a dedicated testimonial/quote block; background per background-container-is-section-style.",
+      "rationale": "Recurs as a distinct, near-objective reusable component across multiple pages.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C138 rc1c2c3c2 'One of my favorite things abo...'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Careers page: no distinct nav node captured; the closing 'No open roles' card has its heading/subtext text repeated across two adjacent nodes, likely a duplicate-capture rather than genuinely duplicated content — worth a light Phase 2 check but not flagged as a separate rule."
+}

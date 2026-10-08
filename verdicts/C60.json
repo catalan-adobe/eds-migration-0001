@@ -1,0 +1,44 @@
+{
+  "cluster_id": "C60",
+  "representative": "integration__integrations-knack-quickbooks.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "Solutions/Business Need/Work nav bar" },
+    { "eds": "default-content", "items": ["rc1c2c1"], "note": "Hero H1 + intro text, no image bg" },
+    { "eds": "section", "style": "bg-color", "items": ["rc1c2c2"], "note": "'How Knack Flows Works' heading+text only, no component to split out" },
+    { "eds": "section", "style": "bg-color", "items": ["rc1c2c3","rc1c2c4","rc1c2c5"], "note": "3 step panels (Trigger/Action/Automate), same structure/variant" },
+    { "eds": "section", "items": ["rc1c2c6","rc1c2c7"], "note": "heading+intro then [3x2] feature card grid" },
+    { "eds": "section", "style": "bg-color", "items": ["rc1c2c9"], "note": "single showcase item with its own bg (Purchase Orders) -> block, not section-style" },
+    { "eds": "section", "items": ["rc1c2c10","rc1c2c11"], "note": "heading+intro then [3x4] triggers/actions grid" },
+    { "eds": "default-content", "items": ["rc1c2c12"], "note": "'See All Triggers and Actions' link/button" },
+    { "eds": "default-content", "items": ["rc1c2c13"], "note": "About Quickbooks [2x1] copy" },
+    { "eds": "section", "items": ["rc1c2c14"], "note": "blog teaser heading + [3x1] card" },
+    { "eds": "section", "style": "bg-gradient", "items": ["rc1c2c15"], "note": "decorative trailing gradient, no content" },
+    { "eds": "section", "items": ["rc2"], "note": "global footer CTA banner" },
+    { "eds": "noise", "items": ["rc3","rc4"], "note": "cookie consent overlay" }
+  ],
+  "blocks": ["steps", "feature-cards", "showcase", "triggers-actions-grid", "blog-teaser"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "decorative-graphics-are-noise",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "minimize-block-cells",
+    "variant-is-css-not-new-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-footer-cta-fragment",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A [2x1] 'The best no-code platform for...' CTA heading + link row appears as a separate top-level row (rc2) below the main content wrapper on every page captured so far.",
+      "decision": "Model as a site-wide footer fragment/CTA, not per-page default-content or block, so it's authored once and reused.",
+      "rationale": "Identical text and position recur across unrelated pages (integrations, FAQ, dashboard). Alternatives considered: per-page default-content block (rejected - duplicates content across every page) or a dedicated 'footer-cta' block per page (rejected - adds redundant authoring for global chrome).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C60 rc2 identical to C61/C62/etc rc2", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Standard integration-template page: hero, alternating step/feature panels, two card grids, blog teaser, decorative gradient, global footer. No FAQ block present here."
+}

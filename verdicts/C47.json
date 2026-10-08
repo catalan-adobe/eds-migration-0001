@@ -1,0 +1,16 @@
+{
+  "cluster_id": "C47",
+  "representative": "page-3__privacy.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "top nav bar" },
+    { "eds": "section", "items": ["rc1c2"], "note": "legal-nav sidebar (Terms of Service, Privacy Policy, ...) + long-form privacy policy body text (~13000px tall)" },
+    { "eds": "section", "style": "footer", "items": ["rc2"], "note": "footer tagline + link row" }
+  ],
+  "blocks": ["legal-nav"],
+  "covered_by_rules": [
+    "two-column-article-with-sidebar",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [],
+  "notes": "Long-form privacy/legal document sharing the same sidebar+article layout as C46; only body length differs across the cluster's 3 members."
+}

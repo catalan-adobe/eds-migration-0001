@@ -1,0 +1,34 @@
+{
+  "cluster_id": "C111",
+  "representative": "page-11__tour-workflow.json",
+  "sections": [
+    { "eds": "section", "items": ["No-Code Workflow Automations (H1+intro)"], "note": "hero" },
+    { "eds": "section", "items": ["feature row: Automate Workflows and Track...", "feature row: Expand and build more complex...", "feature row: Build your own No-Code workflow..."], "note": "3 uniform [2x1] feature rows -> one block" },
+    { "eds": "section", "style": "bg-color", "items": ["Visual UI Builder with Drag-an... [3x2] component"], "note": "bg-color wraps a feature-callout component" },
+    { "eds": "section", "items": ["FAQ heading", "3 Q&A rows"], "note": "faq accordion" },
+    { "eds": "section", "style": "bg-gradient", "items": [], "note": "empty band before footer" },
+    { "eds": "section", "items": ["footer tagline", "footer link row"], "note": "site footer" }
+  ],
+  "blocks": ["feature-list", "feature-callouts", "faq-accordion"],
+  "covered_by_rules": ["repeating-cards-are-one-block", "background-container-is-section-style", "faq-accordion-block", "knack-cookie-notice-overlay"],
+  "proposed_rules": [
+    {
+      "id": "pre-footer-empty-gradient-band",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A full-width [bg:gradient] or [bg:image] zone with zero captured child text, positioned as the last content zone immediately above the footer.",
+      "decision": "Flag for Phase 2 targeted extraction as a likely CTA banner (heading+button) rather than silently applying decorative-graphics-are-noise.",
+      "rationale": "Recurs across page-10/page-11 templates in the same position. Rejected alternative: treating it as pure decoration and dropping it.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C111 rc1c2c8 [bg:gradient] 1280x507 childless, directly above footer rc2",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    }
+  ],
+  "notes": "Same tour-page template family as C110 but with a bg-color feature-callout section instead of a carousel; one capture artifact flagged."
+}

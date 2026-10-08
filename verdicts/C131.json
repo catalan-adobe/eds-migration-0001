@@ -1,0 +1,66 @@
+{
+  "cluster_id": "C131",
+  "representative": "page-19__summer-sale.json",
+  "sections": [
+    { "eds": "nav", "items": ["global nav bar (Solutions/Business Need/Work...)"], "note": "rc1c1, recurring site chrome" },
+    { "eds": "section", "style": "gradient hero", "items": ["H1 Save over 65%...", "subtext + fine print", "product-picker widget (What would you like to build?)", "trial badge text", "empty CTA button row", "hero product image"], "note": "rc1c2c1, [bg:gradient] wrapper with nested [bg:gradient] widget and [bg:image] child image" },
+    { "eds": "section", "style": "gradient logo strip", "items": ["heading TRUSTED BY INNOVATIVE TEAMS...", "logo strip (repeating logos)"], "note": "rc1c2c2" },
+    { "eds": "section", "items": ["feature grid (3x2) Asset Management..."], "note": "rc1c2c3" },
+    { "eds": "section", "items": ["H2/paragraph COMBINE ALL YOUR DATA..."], "note": "rc1c2c4, alternating text row" },
+    { "eds": "section", "style": "color bg", "items": ["H2/paragraph WORK WITH THE TOOLS YOU LOVE..."], "note": "rc1c2c5" },
+    { "eds": "section", "items": ["H2/paragraph AUTOMATE AND SIMPLIFY...", "CTA link Start Building for free"], "note": "rc1c2c6" },
+    { "eds": "section", "style": "color bg", "items": ["H2/paragraph SUPERCHARGE YOUR BUILDING PROCESS..."], "note": "rc1c2c7" },
+    { "eds": "section", "items": ["H2/paragraph INVITE EVERYONE..."], "note": "rc1c2c8" },
+    { "eds": "section", "style": "color bg", "items": ["H2/paragraph BUILT-IN AUTHENTICATION...", "CTA link Start Building for free"], "note": "rc1c2c9" },
+    { "eds": "section", "items": ["eyebrow YOUR QUESTIONS, ANSWERED", "H2 FAQ", "faq accordion block (6 rows)"], "note": "rc1c2c10" },
+    { "eds": "section", "style": "footer", "items": ["footer tagline", "footer link row"], "note": "rc2" }
+  ],
+  "blocks": ["product-picker", "logo-strip", "feature-grid", "faq-accordion"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay",
+    "minimize-block-cells"
+  ],
+  "proposed_rules": [
+    {
+      "id": "marketing-feature-row-section",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "section",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A stack of single-column [2x1] zones each with an eyebrow/H2/paragraph, heights varying (not uniform), alternating down a long landing page, some with bg:color, some plain.",
+      "decision": "Map each row as its own section with default-content (eyebrow+H2+paragraph+optional CTA link); background-container-is-section-style handles the colored ones. Do not group rows into one repeating block.",
+      "rationale": "Rejected alternative: treat the whole stack as one repeating-cards block (repeating-cards-are-one-block) — rejected because row heights and content shapes differ significantly (626,545,730,518,567,510px), indicating distinct hand-authored sections, not uniform repeating items.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C131 rc1c2c4..rc1c2c9", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "product-picker-widget",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A nested [bg:gradient] widget directly below the hero headline offering multiple selectable build-type options.",
+      "decision": "Model as its own block (e.g. option-selector/tabs) inside the hero section, separate from the hero text default-content.",
+      "rationale": "Rejected alternative: fold the widget into the hero block as one cell — rejected because it is an interactive selector with its own repeating option structure, distinct from plain hero copy.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C131 rc1c2c1c2 [bg:gradient] 'What would you like to build?'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "empty-cta-row-underrendered",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 45,
+      "trigger": "A short, childless node (no text) sitting between confirmed content nodes, at a height/position consistent with a button/CTA row.",
+      "decision": "Flag for Phase 2 targeted DOM extraction to recover button label/link rather than treating as empty space.",
+      "rationale": "minWidth capture strips interactive button markup, leaving a blank placeholder node; dropping it would lose a CTA.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C131 rc1c2c1c4 @60,702 1160x45 empty", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Landing/promo page with a gradient hero, a widget-driven build-type picker, and a long stack of alternating feature rows before an FAQ accordion and footer."
+}

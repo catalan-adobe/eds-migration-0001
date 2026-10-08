@@ -1,0 +1,69 @@
+{
+  "cluster_id": "C189",
+  "representative": "page-6__health-compare-tadabase-vs-knack-health.json",
+  "sections": [
+    { "eds": "section", "style": "bg-image hero", "items": ["H1 'Knack Health vs. Tadabase...'", "intro text"], "note": "" },
+    { "eds": "default-content", "items": ["'Why Healthcare Teams Choose Knack' heading+text"], "note": "" },
+    { "eds": "section", "style": "comparison-highlights", "items": ["Tadabase column heading", "6 highlight rows", "Get Started CTA"], "note": "" },
+    { "eds": "section", "style": "comparison-table", "items": ["'Key Features and Benefits' heading", "Tadabase feature rows (6)", "Knack feature rows (6)"], "note": "two stacked columns of one logical vs-table" },
+    { "eds": "default-content", "items": ["'What Our Users Are Saying' heading", "testimonial quote"], "note": "" },
+    { "eds": "section", "style": "bg-image decorative", "items": [], "note": "decorative image" },
+    { "eds": "section", "style": "bg-color cta", "items": ["'Start Building Your Healthcare...' CTA"], "note": "" },
+    { "eds": "section", "items": ["use-case grid, 6 items (3x2)"], "note": "" },
+    { "eds": "section", "items": ["FAQ accordion, 6 Q&A rows"], "note": "faq-accordion-block" },
+    { "eds": "default-content", "note": "stray promoted FAQ-answer region (rc4) escaped its accordion parent", "items": ["'No. Knack Health is not an EHR...'"] },
+    { "eds": "section", "note": "global footer tagline bar (rc3)", "items": ["'The best no-code platform for...'"] },
+    { "eds": "default-content", "note": "cookie consent overlay (excluded)", "items": [] }
+  ],
+  "blocks": ["comparison-highlights", "comparison-table", "testimonial", "use-case-grid", "faq-accordion"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style",
+    "decorative-graphics-are-noise",
+    "variant-is-css-not-new-block",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay",
+    "leaked-css-text-node"
+  ],
+  "proposed_rules": [
+    {
+      "id": "stacked-vs-comparison-table-columns",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A single-competitor 'X vs Knack' page's comparison content renders as two separate stacked sections instead of one side-by-side two-column table.",
+      "decision": "Reassemble as ONE two-column comparison-table block (competitor column + Knack column matched by shared category labels) rather than two unrelated blocks.",
+      "rationale": "The tree captures responsive stacking of one logical comparison table at the minWidth viewport.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C189 rc2c4 (Tadabase column) vs rc2c5 (Knack column), same category labels in both", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "promoted-faq-answer-region",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A [region] node (FAQ/accordion answer text) appears as a top-level sibling of the page's main containers rather than nested inside its corresponding accordion question row.",
+      "decision": "Re-attach the region's text to the matching accordion row as its answer during Phase 2; never emit it as its own top-level section or block.",
+      "rationale": "The capture promotes absolutely-positioned accordion answer panels out of their DOM parent.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C189 rc4 [region] 'No. Knack Health is not an EHR...' sibling of rc3 footer, duplicating an FAQ answer from rc2c9 accordion", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-footer-cta-bar",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 66,
+      "trigger": "A full-width zone (~453px) immediately after the main content on every page, containing a fixed tagline ('The best no-code platform for...') and a divider/link row.",
+      "decision": "Treat as global site footer chrome; exclude from page inventory; model once as a site-wide fragment.",
+      "rationale": "Identical text/position recurs verbatim across every captured page.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C189 rc3c1c1 'The best no-code platform for...'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Same comparison-page pattern as C187/C188, with the same stacked-table and stray-region artifacts."
+}

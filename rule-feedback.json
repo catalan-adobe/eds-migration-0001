@@ -1,0 +1,208 @@
+{
+  "schema": "rule-promotion/v1",
+  "decisions": {
+    "footer-cta-chrome": {
+      "action": "accept",
+      "scope": "project",
+      "signoff": null,
+      "sites": [],
+      "note": ""
+    },
+    "nav-chrome": {
+      "action": "accept",
+      "scope": "project",
+      "signoff": null,
+      "sites": [],
+      "note": ""
+    },
+    "announcement-bar-chrome": {
+      "action": "accept",
+      "scope": "project",
+      "signoff": null,
+      "sites": [],
+      "note": ""
+    },
+    "leaked-source-code-text": {
+      "action": "accept",
+      "scope": "project",
+      "signoff": null,
+      "sites": [],
+      "note": ""
+    },
+    "empty-spacer-band": {
+      "action": "accept",
+      "scope": "pipeline",
+      "signoff": null,
+      "sites": [],
+      "note": ""
+    },
+    "faq-answer-promoted-by-capture": {
+      "action": "accept",
+      "scope": "pipeline",
+      "signoff": null,
+      "sites": [],
+      "note": ""
+    },
+    "content-underrendered-flag-phase2": {
+      "action": "accept",
+      "scope": "pipeline",
+      "signoff": null,
+      "sites": [],
+      "note": ""
+    },
+    "iframe-embed-blind-spot": {
+      "action": "accept",
+      "scope": "pipeline",
+      "signoff": null,
+      "sites": [],
+      "note": ""
+    },
+    "capture-failure-wrong-page": {
+      "action": "accept",
+      "scope": "pipeline",
+      "signoff": null,
+      "sites": [],
+      "note": ""
+    },
+    "offscreen-duplicate-node": {
+      "action": "accept",
+      "scope": "pipeline",
+      "signoff": null,
+      "sites": [],
+      "note": ""
+    },
+    "comparison-table-block": {
+      "action": "accept",
+      "scope": "project",
+      "signoff": "one comparison block; table/cards/list are variants (confirm cells in 3.5)",
+      "sites": [],
+      "note": ""
+    },
+    "template-gallery-block": {
+      "action": "accept",
+      "scope": "project",
+      "signoff": "one template-gallery block + separate CTA; carousel/grid/tabs are variants",
+      "sites": [],
+      "note": ""
+    },
+    "presentation-list-is-accordion": {
+      "action": "accept",
+      "scope": "project",
+      "signoff": null,
+      "sites": [],
+      "note": ""
+    },
+    "cta-banner-block": {
+      "action": "accept",
+      "scope": "project",
+      "signoff": "cta-banner block; a lone button in flow is a default-content link",
+      "sites": [],
+      "note": ""
+    },
+    "filter-listing-block": {
+      "action": "accept",
+      "scope": "project",
+      "signoff": "listing block; filter bar folded in for now, revisit in 3.5",
+      "sites": [],
+      "note": ""
+    },
+    "media-embed-block": {
+      "action": "accept",
+      "scope": "project",
+      "signoff": null,
+      "sites": [],
+      "note": ""
+    },
+    "alternating-feature-rows-block": {
+      "action": "accept",
+      "scope": "project",
+      "signoff": "one feature block; left/right alternation is a variant label",
+      "sites": [],
+      "note": ""
+    },
+    "testimonial-block": {
+      "action": "accept",
+      "scope": "project",
+      "signoff": null,
+      "sites": [],
+      "note": ""
+    },
+    "trust-badge-strip-block": {
+      "action": "accept",
+      "scope": "project",
+      "signoff": "DOM confirms distinct from logos: .g2-rating-right .logos-listing (rating strip) vs .splide.no-customer-slider (customer logos)",
+      "sites": [],
+      "note": "needs Phase 2 DOM before modeling"
+    },
+    "related-content-block": {
+      "action": "accept",
+      "scope": "project",
+      "signoff": null,
+      "sites": [],
+      "note": ""
+    },
+    "section-bg-behind-heading": {
+      "action": "accept",
+      "scope": "project",
+      "signoff": null,
+      "sites": [],
+      "note": ""
+    },
+    "two-column-body": {
+      "action": "accept",
+      "scope": "project",
+      "signoff": "article = default-content, sidebar = its own block, same section",
+      "sites": [],
+      "note": ""
+    },
+    "page-template-signature": {
+      "action": "accept",
+      "scope": "project",
+      "signoff": null,
+      "sites": [],
+      "note": ""
+    },
+    "page-body-as-prose": {
+      "action": "accept",
+      "scope": "project",
+      "signoff": "prose-only bodies map to default-content, not blocks",
+      "sites": [],
+      "note": ""
+    },
+    "how-it-works-steps-block": {
+      "action": "accept",
+      "scope": "project",
+      "signoff": null,
+      "sites": [],
+      "note": ""
+    },
+    "component-caption-order": {
+      "action": "accept",
+      "scope": "project",
+      "signoff": null,
+      "sites": [],
+      "note": ""
+    },
+    "faq-accordion-block": {
+      "action": "reject",
+      "scope": "generic",
+      "signoff": null,
+      "sites": [],
+      "note": "redundant: faq-accordion is a canonical block; presentation-list-is-accordion covers the rule"
+    },
+    "knack-pricing-category-rows-as-separate-blocks": {
+      "action": "reject",
+      "scope": "project",
+      "signoff": null,
+      "sites": [],
+      "note": "DOM refutes: pricing renders as one div .row grid of rows (no <table>), not separate blocks per category"
+    },
+    "web-form-is-form-block": {
+      "action": "accept",
+      "scope": "project",
+      "signoff": "model native + embedded forms as a form block",
+      "sites": [],
+      "note": ""
+    }
+  }
+}

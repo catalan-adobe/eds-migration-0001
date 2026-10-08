@@ -1,0 +1,41 @@
+{
+  "cluster_id": "C65",
+  "representative": "page-9__compare-knack-vs-airtable.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "Solutions/Business Need/Work nav bar" },
+    { "eds": "section", "style": "bg-image", "items": ["rc1c2c1"], "note": "full-bleed hero image behind 'Knack vs. Airtable' H1+text" },
+    { "eds": "default-content", "items": ["rc1c2c2"], "note": "'How Knack Wins at a Glance' [2x1] copy" },
+    { "eds": "section", "style": "bg-color", "items": ["rc1c2c3"], "note": "single item (heading+[3x2] reasons grid) with own bg -> block, not section-style" },
+    { "eds": "section", "items": ["rc1c2c4"], "note": "heading + 11-row [3x1] feature comparison table" },
+    { "eds": "section", "items": ["rc1c2c5"], "note": "blog/resources teaser heading + [3x1] card" },
+    { "eds": "default-content", "items": ["rc1c2c7"], "note": "'Create Your Account to Start Building' [2x1] CTA banner" },
+    { "eds": "section", "items": ["rc1c2c8"], "note": "FAQ heading + [presentation] 4-row accordion" },
+    { "eds": "section", "items": ["rc2"], "note": "global footer CTA banner" },
+    { "eds": "noise", "items": ["rc3","rc4"], "note": "cookie consent overlay" }
+  ],
+  "blocks": ["reasons-cards", "comparison-table", "blog-teaser", "faq-accordion"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "faq-accordion-block",
+    "minimize-block-cells",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-footer-cta-fragment",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A [2x1] 'The best no-code platform for...' CTA heading + link row appears as a separate top-level row (rc2) below the main content wrapper.",
+      "decision": "Model as a site-wide footer fragment/CTA, not per-page default-content or block.",
+      "rationale": "Identical text/position recurs across unrelated pages (integration, FAQ, comparison). Alternative considered: per-page default-content (rejected, duplicative).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C65 rc2 identical to C60/C61/C62 rc2", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Classic 'compare' landing page: image hero, reasons card grid, a long feature-by-feature comparison table (11 rows), blog teaser, CTA banner, and FAQ accordion."
+}

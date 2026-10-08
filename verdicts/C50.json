@@ -1,0 +1,19 @@
+{
+  "cluster_id": "C50",
+  "representative": "blog-category__blog-category-industry-legal.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "top nav bar" },
+    { "eds": "default-content", "items": ["rc1c2c1"], "note": "category title heading 'Legal'" },
+    { "eds": "section", "items": ["rc1c2c2"], "note": "[3x4] blog post card grid (12 posts) -> blog-post-grid block" },
+    { "eds": "section", "style": "bg-gradient", "items": ["rc1c2c3"], "note": "empty bg-gradient zone, likely under-rendered CTA/newsletter component" },
+    { "eds": "section", "style": "footer", "items": ["rc2"], "note": "footer tagline + link row" }
+  ],
+  "blocks": ["blog-post-grid"],
+  "covered_by_rules": [
+    "repeating-cards-are-one-block",
+    "underrendered-list-zone",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [],
+  "notes": "Same blog-category template as C49 with a fuller post grid (4 rows); identical trailing gradient zone pattern reused across category pages."
+}

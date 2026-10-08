@@ -1,0 +1,60 @@
+{
+  "cluster_id": "C88",
+  "representative": "ebook-category__ebook-category-healthcare.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "top utility/solutions nav bar" },
+    { "eds": "section", "items": ["rc1c2c1c1(default-content heading 'Common User Logos with Quotes')", "rc1c2c1c2(noise, leaked serialized data)"], "note": "heading followed by a leaked PHP serialized-array string, not real content" },
+    { "eds": "section", "items": ["rc1c2c2c1c1(block:category-filter)", "rc1c2c2c1c2(default-content 'Clear All')"], "note": "facet/category filter chip bar ('Industry Business Operations...') with a clear-all control" },
+    { "eds": "section", "items": ["rc1c2c2c2c1(block:ebook-card-grid)", "rc1c2c2c2c2(default-content 'Load More')"], "note": "3x3 repeating ebook/post card grid with a load-more control beneath" },
+    { "eds": "section", "style": "bg-gradient", "items": ["rc1c2c3"], "note": "trailing 507px gradient zone with no captured text/children" },
+    { "eds": "section", "items": ["rc2c1", "rc2c2"], "note": "bottom marketing banner: 'The best no-code platform for...' + social icons" }
+  ],
+  "blocks": ["category-filter", "ebook-card-grid"],
+  "covered_by_rules": [
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "background-container-is-section-style",
+    "minimize-block-cells",
+    "underrendered-list-zone",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "leaked-php-serialized-array-text",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 71,
+      "trigger": "A text node whose content is raw PHP serialized-array syntax (e.g. starts with 'a:N:{s:...' / WordPress ACF field-repeater dump), rendered visibly due to a template/escaping bug.",
+      "decision": "Exclude entirely from content and section analysis; it is a source-leak artifact analogous to leaked-css-text-node, not authorable page content.",
+      "rationale": "Same class of bug as the already-confirmed leaked-css-text-node rule (raw source rendered into the page), just a different leaking source (WordPress/ACF serialized data instead of CSS).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C88 rc1c2c1c2 'a:9:{s:8:\"location\";a:1:{i:0;a...'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "recurring-bottom-marketing-banner",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "An identical ~453px band at the very bottom of the page reading 'The best no-code platform for...' plus a small social-icon row, recurring unchanged across unrelated templates (download, integration, ebook-category).",
+      "decision": "Model as a site-wide footer fragment rendered on every page, not as per-page authored content. Alternative rejected: treating it as a normal page-ending CTA section authored per page (rejected because content and layout are byte-identical across templates, indicating global chrome rather than page content).",
+      "rationale": "Identical text/size across independently themed templates strongly indicates a shared footer/fragment injected site-wide rather than page-authored content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C88 rc2 identical to same node in C84/C85/C86/C87", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "listing-filter-widget-modeling",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 52,
+      "trigger": "A category/facet filter chip bar with a 'Clear All' control sitting above a repeating card listing (as opposed to a static content grid).",
+      "decision": "Model as a 'category-filter' block that ships JS-driven filtering behavior, distinct from the card-grid block it filters. Alternative rejected: folding the filter chips into the card-grid block itself (rejected because the filter is a reusable interactive control, not per-item content, and should be authorable/reusable independently).",
+      "rationale": "Filter UI is a functional widget rather than static content, and separating it keeps the card-grid block reusable on pages without filtering.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C88 rc1c2c2c1c1 [4x2] chip bar + rc1c2c2c1c2 'Clear All'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Category listing page: nav, mis-labeled heading zone with a leaked serialized-data artifact, category filter bar, 3x3 ebook card grid with load-more, an empty trailing gradient zone (flagged per underrendered-list-zone), and the recurring bottom banner."
+}

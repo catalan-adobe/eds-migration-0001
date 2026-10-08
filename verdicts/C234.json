@@ -1,0 +1,64 @@
+{
+  "cluster_id": "C234",
+  "representative": "page__health-pricing.json",
+  "sections": [
+    { "eds": "section", "items": ["heading (rc2c1c1)", "pricing-plan-cards block, 2 plans (rc2c1c2)"], "note": "heading-then-component-same-section + repeating-cards-are-one-block" },
+    { "eds": "section", "style": "bg-color", "items": ["heading (rc2c2c1)", "category summary/legend text (rc2c2c2)"], "note": "background-container-is-section-style, default-content only (no repeat marker on the legend text)" },
+    { "eds": "section", "items": ["heading (rc2c3c1)", "plan-feature-comparison block (rc2c3c2)"], "note": "heading-then-component-same-section" },
+    { "eds": "section", "style": "bg-color", "items": ["heading (rc2c4c1)", "plan-feature-comparison block (rc2c4c2)"], "note": "background-container-is-section-style; same block type as rc2c3, reused per category" },
+    { "eds": "section", "items": ["heading (rc2c5c1)", "plan-feature-comparison block (rc2c5c2)"], "note": "heading-then-component-same-section" },
+    { "eds": "section", "style": "bg-color", "items": ["heading (rc2c6c1)", "plan-feature-comparison block (rc2c6c2)"], "note": "background-container-is-section-style" },
+    { "eds": "section", "style": "bg-color", "items": ["CTA text (rc2c7)"], "note": "background-container-is-section-style, default-content only" },
+    { "eds": "section", "items": ["heading (rc2c8c1)", "faq-grid block, 9 items in 3x3 (rc2c8c2)"], "note": "repeating-cards-are-one-block; grid layout (not a vertical stack), so modeled as a card grid rather than faq-accordion-block" },
+    { "eds": "default-content", "items": ["footer tagline + separator (rc3c1c1/rc3c1c2)"], "note": "recurring global footer, see proposed footer rule" }
+  ],
+  "blocks": ["pricing-plan-cards", "plan-feature-comparison", "faq-grid"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "leaked-css-text-node",
+    "knack-cookie-notice-overlay",
+    "minimize-block-cells",
+    "variant-is-css-not-new-block"
+  ],
+  "proposed_rules": [
+    {
+      "id": "leaked-js-script-inline-text-node",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 71,
+      "trigger": "A top-of-page text node whose content is raw JS source (e.g. starts with 'document.addEventListener(\"DOM...') rendered visibly, analogous to the confirmed leaked-css-text-node pattern but for inline scripts.",
+      "decision": "Exclude entirely from block inventory; treat as a source-leak artifact identical in spirit to leaked-css-text-node.",
+      "rationale": "Rendered JS source is never authorable content; appears identically at rc1 on every page in this batch, including this pricing page.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C234 rc1 [3x1] 'document.addEventListener(\"DOM...'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-footer-tagline-boilerplate",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "A bottom-of-page block with 'The best no-code platform for...' tagline text and a following '| |' separator line, identical across many pages.",
+      "decision": "Treat as global site footer chrome; model as a site-wide fragment rather than page-specific default-content.",
+      "rationale": "Content and structure are byte-identical across unrelated pages, indicating shared footer markup rather than page content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C234 rc3c1c1/rc3c1c2 'The best no-code platform for...' + '| |'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-pricing-category-rows-as-separate-blocks",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "A pricing page repeats the same '[2x1] plan-name + feature-list' component under 5 separate category headings (Platform usage, Security & compliance, App building, Extensions, plus the top plan-cards block).",
+      "decision": "Model each category's comparison as its own instance of a single reusable 'plan-feature-comparison' block (5 instances, one per section), rather than merging all categories into one long master pricing table.",
+      "rationale": "Chosen because each category already sits in its own visually distinct section (alternating bg-color) with its own heading, matching heading-then-component-same-section; rejected alternative: a single all-categories pricing-table block with category as a row grouping, which would require a more complex block schema and lose the per-section heading authoring.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C234 rc2c3c2, rc2c4c2, rc2c5c2, rc2c6c2 all '[2x1] HIPAA Starter ...' under distinct category headings", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Cookie overlay (rc4) excluded per knack-cookie-notice-overlay. FAQ here renders as a 3x3 card grid rather than the vertical-stack accordion seen on C227-C233, so faq-accordion-block does not apply; modeled instead via the generic repeating-cards rule."
+}

@@ -1,0 +1,54 @@
+{
+  "cluster_id": "C249",
+  "representative": "solution__solutions-healthcare.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "top nav bar" },
+    { "eds": "default-content", "items": ["rc1c2c1"], "note": "hero heading/intro text (2x1)" },
+    { "eds": "section", "style": "bg-gradient", "items": ["rc1c2c2c2c1", "rc1c2c2c2c2"], "note": "testimonial callout: '$250,000+' stat heading + customer quote, on gradient background" },
+    { "eds": "default-content", "items": ["rc1c2c3"], "note": "'Building HIPAA-Ready Healthcare...' callout" },
+    { "eds": "default-content", "items": ["rc1c2c4"], "note": "'Make your Healthcare Management...' callout" },
+    { "eds": "default-content", "items": ["rc1c2c5"], "note": "'Leverage Fast, Cost-Effective...' callout" },
+    { "eds": "section", "style": "bg-color", "items": ["rc1c2c6c1", "rc1c2c6c2"], "note": "3x2 feature-cards grid on color background (Patient Portals)" },
+    { "eds": "default-content", "items": ["rc1c2c7c2"], "note": "'Pre-Built Healthcare Management...' callout (2x1)" },
+    { "eds": "section", "items": ["rc1c2c8c2c1", "rc1c2c8c2c2"], "note": "Additional No-Code AI Healthcare heading + 3x1 resource-cards grid" },
+    { "eds": "section", "items": ["rc1c2c9c1", "rc1c2c9c2"], "note": "'No-Code Healthcare Management' heading + 6-row accordion" },
+    { "eds": "noise", "items": ["rc2"], "note": "global footer CTA band + link row" },
+    { "eds": "noise", "items": ["rc3", "rc4"], "note": "cookie consent overlay" }
+  ],
+  "blocks": ["testimonial", "feature-cards", "resource-cards", "accordion"],
+  "covered_by_rules": [
+    "knack-cookie-notice-overlay",
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "faq-accordion-block",
+    "minimize-block-cells"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-global-footer-band",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 87,
+      "trigger": "A recurring end-of-page zone (rc2) with a CTA heading and a pipe-only link row, identical at the bottom of every page.",
+      "decision": "Exclude from per-page block inventory; model as a global footer fragment/site-wide chrome, analogous to the confirmed knack-announcement-bar rule.",
+      "rationale": "Identical structure across every page examined in this batch.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "rc2c1/rc2c2 identical across C243-C250", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "solution-testimonial-callout",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A gradient-background zone directly under the hero containing a single stat/savings heading (e.g. '$250,000+') plus a quoted customer testimonial.",
+      "decision": "Model as one 'testimonial' block (stat + quote cells) inside a gradient-styled section. Rejected alternative: splitting the stat and quote into two separate default-content items, since they form one authored customer-proof component reused elsewhere on the site.",
+      "rationale": "Distinct from the trust-badge-strip pattern (single testimonial vs. a row of N badges); already covered structurally by the confirmed background-container and heading-then-component rules, but the block name/shape itself is not yet codified.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "rc1c2c2c2c1 'Knack Builders Save $250,000+...' + rc1c2c2c2c2 quote, on [bg:gradient]", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "solution template variant swaps the trust-badge strip for a single testimonial/stat callout; otherwise matches the standard skeleton (feature cards, resource cards, FAQ accordion, global chrome)."
+}

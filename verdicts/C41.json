@@ -1,0 +1,55 @@
+{
+  "cluster_id": "C41",
+  "representative": "blog-post-4__blog.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1 nav bar"], "note": "global chrome" },
+    { "eds": "section", "style": "filter-bar", "items": ["rc1c2c1c1c1 4x2 filter chips (Industry/Business Need/Work O...)", "rc1c2c1c1c2 Clear All"], "note": "category/topic filter facets above the listing" },
+    { "eds": "section", "style": "card-grid", "items": ["rc1c2c1c2c1 3x3 post cards", "rc1c2c1c2c2 Load More"], "note": "repeating blog-post cards with pagination control" },
+    { "eds": "section", "style": "gradient-band-empty", "items": ["rc1c2c2 empty bg:gradient zone"], "note": "no captured text/children, same pre-footer pattern as use-case pages" },
+    { "eds": "nav", "items": ["rc2 footer"], "note": "global chrome" }
+  ],
+  "blocks": ["filter-bar", "card-grid"],
+  "covered_by_rules": [
+    "repeating-cards-are-one-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "category-filter-chip-bar",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A grid/row of filter chip options (e.g. Industry, Business Need, Work O...) with a 'Clear All' control, directly above a repeating card grid on listing/category pages (blog, ebook-category, use-case-2).",
+      "decision": "Model as a distinct 'filter-bar' block (facets), separate from the card-grid block it filters, rather than folding it into the card-grid block or treating it as page chrome.",
+      "rationale": "It is interactive listing content, not decoration or global chrome; rejected alternatives: (a) merging into the card-grid block (violates minimize-block-cells by conflating two different repeating structures), (b) treating as noise (it is authorable facet content).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C41 rc1c2c1c1c1 [4x2] + rc1c2c1c1c2 'Clear All'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "empty-cta-zone-before-footer",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A full-width bg:gradient/bg:color zone directly above the footer with no captured text or child nodes.",
+      "decision": "Flag for Phase 2 targeted DOM extraction rather than treating as a pure decorative section background.",
+      "rationale": "Same empty zone recurs on use-case pages (C259, C39) and here on a listing template, suggesting a site-wide newsletter/CTA component that the capture never renders.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C41 rc1c2c2 [bg:gradient] 1280x507 with no child text", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-global-nav-footer-chrome",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "Identical top nav and bottom footer recur on every captured page.",
+      "decision": "Model as global header/footer fragments, excluded from the per-page section/block inventory.",
+      "rationale": "Recurs identically across all templates; not covered by existing noise rules.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C41 rc1c1, rc2c1, rc2c2", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Listing/category page (blog-post-4 dominant, also ebook-category and use-case-2): filter chip facets, then a 3x3 post card grid with Load More, then the recurring empty pre-footer band."
+}

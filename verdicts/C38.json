@@ -1,0 +1,53 @@
+{
+  "cluster_id": "C38",
+  "representative": "template-detail-2__templates-construction-estimate-app.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1 nav bar"], "note": "global chrome" },
+    { "eds": "default-content", "items": ["rc1c2c1 title heading/subtext"], "note": "hero title, no bg" },
+    { "eds": "default-content", "items": ["rc1c2c2c2c1 'Key Features & Functionality' heading"], "note": "heading above feature grid" },
+    { "eds": "section", "style": "feature-grid", "items": ["rc1c2c2c2c2 01..0N numbered feature cards"], "note": "3x2 repeating cards" },
+    { "eds": "section", "style": "template-preview", "items": ["rc1c2c3c1 screenshot bg:image", "rc1c2c3c2 'List of Vendors' caption bg:gradient"], "note": "product screenshot + caption/label" },
+    { "eds": "section", "style": "noise", "items": ["rc1c2c4 '@media (min-width: 1200px) {...' leaked CSS"], "note": "excluded per leaked-css-text-node rule" },
+    { "eds": "section", "style": "bg-color-band", "items": ["rc1c2c5c2 3x2 feature-detail cards"], "note": "bg:color wraps repeating cards" },
+    { "eds": "section", "style": "faq", "items": ["rc1c2c6 'FAQs' heading + 5-row presentation list"], "note": "matches faq-accordion-block evidence exactly" },
+    { "eds": "section", "style": "related-carousel", "items": ["rc1c2c7 'Related Template Apps Previous...'"], "note": "repeating related-item cards" },
+    { "eds": "nav", "items": ["rc2 footer"], "note": "global chrome" }
+  ],
+  "blocks": ["feature-grid", "template-preview", "faq-accordion", "related-cards"],
+  "covered_by_rules": [
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style",
+    "heading-then-component-same-section",
+    "variant-is-css-not-new-block",
+    "leaked-css-text-node",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "template-app-preview-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A large product screenshot (bg:image) paired with a short caption/label (bg:gradient), on template-detail pages.",
+      "decision": "Model as a single 'template-preview' block combining screenshot and caption in minimal cells, not as a section background image.",
+      "rationale": "Same recurring component as C37/C43 download pages; rejected treating it as a hero background (image isn't overlaid with text) or as two independent blocks.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C38 rc1c2c3c1/rc1c2c3c2", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-global-nav-footer-chrome",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "Identical top nav and bottom footer recur on every captured page.",
+      "decision": "Model as global header/footer fragments, excluded from the per-page section/block inventory.",
+      "rationale": "Recurs identically across all templates; not covered by existing noise rules.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C38 rc1c1, rc2c1, rc2c2", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Template-detail-2: hero title, feature grid, screenshot+caption, a leaked-CSS noise node, bg-color feature-detail grid, FAQ accordion, related-template carousel."
+}

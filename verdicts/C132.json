@@ -1,0 +1,31 @@
+{
+  "cluster_id": "C132",
+  "representative": "page-20__app-templates.json",
+  "sections": [
+    { "eds": "nav", "items": ["global nav bar (Solutions/Business Need/Work...)"], "note": "rc1c1" },
+    { "eds": "section", "style": "image bg hero", "items": ["H1 App Templates", "subtext Explore hundreds of pre-built...", "empty CTA row"], "note": "rc1c2c1 [bg:image] with overlaid heading" },
+    { "eds": "section", "items": ["filter toolbar (Show All / Filter by Industry...)", "template card gallery (not captured)"], "note": "rc1c2c2, single 13575px-tall node with only filter-bar text, no child cards" },
+    { "eds": "section", "style": "footer", "items": ["footer tagline", "footer link row"], "note": "rc2" }
+  ],
+  "blocks": ["template-gallery"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "underrendered-list-zone",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "empty-cta-row-underrendered",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 45,
+      "trigger": "A short, childless node (no text) sitting right after hero heading/subtext, consistent with a button/CTA row.",
+      "decision": "Flag for Phase 2 targeted DOM extraction to recover button label/link rather than treating as empty space.",
+      "rationale": "minWidth capture strips interactive button markup, leaving a blank placeholder node.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C132 rc1c2c1c3 @16,307 1248x49 empty", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "App-templates gallery page: hero is well-formed, but the entire template grid below it collapsed to one giant node with only the filter-bar text — matches underrendered-list-zone; Phase 2 extraction needed to recover the actual template cards."
+}

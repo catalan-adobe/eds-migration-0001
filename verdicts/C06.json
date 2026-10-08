@@ -1,0 +1,36 @@
+{
+  "cluster_id": "C06",
+  "representative": "app-category__app-category-accounting.json",
+  "sections": [
+    { "eds": "section", "style": "announcement-bar", "items": ["default-content: promo text + link"], "note": "top bar, [bg:color], site chrome" },
+    { "eds": "nav", "items": ["site navigation"], "note": "global header, not page content" },
+    { "eds": "section", "items": ["default-content: H1 + intro", "block: tabs"], "note": "hero heading over a [tablist][6x1]; tab panel has [bg:image]" }
+  ],
+  "blocks": ["tabs", "footer-cta"],
+  "covered_by_rules": ["heading-then-component-same-section", "full-width-image-behind-text-is-section-bg"],
+  "proposed_rules": [
+    {
+      "id": "knack-announcement-bar",
+      "scope": "project",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 88,
+      "trigger": "A thin full-width bar at the very top of the page, above the nav, with a [bg:color] background and a short promo message + link (e.g. product announcement).",
+      "decision": "Treat as global site chrome (announcement bar), exclude from the page's block inventory. If retained, model as a site-wide fragment, not per-page content.",
+      "rationale": "Appears above the nav as a persistent marketing ribbon injected site-wide, not document content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C06 rc1c1c1 [2x1][bg:color] above nav", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "leaked-css-text-node",
+      "scope": "generic",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 72,
+      "trigger": "A text node whose content is raw CSS/JS source (starts with a comment like /* ... */ or contains selector/property syntax), rendered visibly due to an unclosed style/script or authoring error.",
+      "decision": "Exclude entirely. It is a source-leak artifact, never content.",
+      "rationale": "Raw stylesheet text rendered into the page is a bug in the source site, not authorable content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C06 rc1c2c2 '/* hero section starts*/ .grad...'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Confirms C06 mixing (app-category/testimonial/pricing) is one EDS structure: announcement-bar + nav + hero(tabs). Label differences are not template differences."
+}

@@ -1,0 +1,2882 @@
+{
+  "schema": "step2-feedback/v1",
+  "instructions": "Edit 'action' per cluster: accept (keep), review (needs a look), split (break apart in next run), merge_into (+target id), relabel (+label). Unchanged 'accept'/'review' entries are informational.",
+  "clusters": {
+    "C01": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "A",
+      "_size": 677,
+      "_templates": {
+        "blog-post": 614,
+        "blog-post-2": 57,
+        "blog-post-3": 2,
+        "blog-bird-knack.json": 1,
+        "blog-customer-support-ticketing.json": 1,
+        "blog-paypal-knack.json": 1,
+        "blog-vector-database.json": 1
+      }
+    },
+    "C02": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "A",
+      "_size": 205,
+      "_templates": {
+        "blog-tag": 205
+      }
+    },
+    "C03": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "A",
+      "_size": 91,
+      "_templates": {
+        "template-detail": 88,
+        "case-study": 3
+      }
+    },
+    "C04": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "A",
+      "_size": 42,
+      "_templates": {
+        "blog-post": 42
+      }
+    },
+    "C05": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "A",
+      "_size": 37,
+      "_templates": {
+        "blog-post": 37
+      }
+    },
+    "C06": {
+      "action": "review",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 31,
+      "_templates": {
+        "app-category": 21,
+        "testimonial": 5,
+        "pricing": 4,
+        "page-25": 1
+      }
+    },
+    "C07": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 29,
+      "_templates": {
+        "blog-post": 29
+      }
+    },
+    "C08": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 29,
+      "_templates": {
+        "template-category": 29
+      }
+    },
+    "C09": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 27,
+      "_templates": {
+        "blog-tag": 27
+      }
+    },
+    "C10": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 26,
+      "_templates": {
+        "blog-category": 26
+      }
+    },
+    "C11": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 26,
+      "_templates": {
+        "video": 26
+      }
+    },
+    "C12": {
+      "action": "review",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 24,
+      "_templates": {
+        "solution-category": 14,
+        "case-study-category": 9,
+        "page-4": 1
+      }
+    },
+    "C13": {
+      "action": "review",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 24,
+      "_templates": {
+        "solution-category": 19,
+        "case-study-category": 5
+      }
+    },
+    "C14": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 24,
+      "_templates": {
+        "video": 24
+      }
+    },
+    "C15": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 21,
+      "_templates": {
+        "integration": 21
+      }
+    },
+    "C16": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 16,
+      "_templates": {
+        "integration": 16
+      }
+    },
+    "C17": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 15,
+      "_templates": {
+        "case-study": 14,
+        "case-study-blakely-construction.json": 1
+      }
+    },
+    "C18": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 13,
+      "_templates": {
+        "integration": 13
+      }
+    },
+    "C19": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 12,
+      "_templates": {
+        "case-study": 12
+      }
+    },
+    "C20": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 10,
+      "_templates": {
+        "video": 10
+      }
+    },
+    "C21": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 7,
+      "_templates": {
+        "blog-category": 7
+      }
+    },
+    "C22": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 7,
+      "_templates": {
+        "blog-category": 7
+      }
+    },
+    "C23": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 7,
+      "_templates": {
+        "blog-tag": 7
+      }
+    },
+    "C24": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 7,
+      "_templates": {
+        "template-detail-2": 7
+      }
+    },
+    "C25": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 7,
+      "_templates": {
+        "use-case": 6,
+        "use-case-3": 1
+      }
+    },
+    "C26": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 6,
+      "_templates": {
+        "blog-category": 6
+      }
+    },
+    "C27": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 6,
+      "_templates": {
+        "download": 6
+      }
+    },
+    "C28": {
+      "action": "review",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 6,
+      "_templates": {
+        "solution-2": 3,
+        "solution-3": 2,
+        "solution": 1
+      }
+    },
+    "C29": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 5,
+      "_templates": {
+        "blog-tag": 5
+      }
+    },
+    "C30": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 5,
+      "_templates": {
+        "download": 5
+      }
+    },
+    "C31": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 5,
+      "_templates": {
+        "integration": 5
+      }
+    },
+    "C32": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 5,
+      "_templates": {
+        "page-3": 4,
+        "page-4": 1
+      }
+    },
+    "C33": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 5,
+      "_templates": {
+        "page": 5
+      }
+    },
+    "C34": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 5,
+      "_templates": {
+        "video": 5
+      }
+    },
+    "C35": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "B",
+      "_size": 5,
+      "_templates": {
+        "video": 5
+      }
+    },
+    "C36": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 4,
+      "_templates": {
+        "case-study": 4
+      }
+    },
+    "C37": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 4,
+      "_templates": {
+        "download": 4
+      }
+    },
+    "C38": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 4,
+      "_templates": {
+        "template-detail-2": 4
+      }
+    },
+    "C39": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 4,
+      "_templates": {
+        "use-case": 4
+      }
+    },
+    "C40": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 4,
+      "_templates": {
+        "video": 4
+      }
+    },
+    "C41": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 3,
+      "_templates": {
+        "blog-post-4": 1,
+        "ebook-category": 1,
+        "use-case-2": 1
+      }
+    },
+    "C42": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 3,
+      "_templates": {
+        "case-study": 3
+      }
+    },
+    "C43": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 3,
+      "_templates": {
+        "download": 3
+      }
+    },
+    "C44": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 3,
+      "_templates": {
+        "integration": 3
+      }
+    },
+    "C45": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 3,
+      "_templates": {
+        "page-7": 2,
+        "page-11": 1
+      }
+    },
+    "C46": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 3,
+      "_templates": {
+        "page-3": 3
+      }
+    },
+    "C47": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 3,
+      "_templates": {
+        "page-3": 2,
+        "page-4": 1
+      }
+    },
+    "C48": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 3,
+      "_templates": {
+        "solution": 3
+      }
+    },
+    "C49": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "blog-category": 2
+      }
+    },
+    "C50": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "blog-category": 2
+      }
+    },
+    "C51": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "case-study": 2
+      }
+    },
+    "C52": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "download": 2
+      }
+    },
+    "C53": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "download": 2
+      }
+    },
+    "C54": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "download": 2
+      }
+    },
+    "C55": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "download": 2
+      }
+    },
+    "C56": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "integration": 2
+      }
+    },
+    "C57": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "integration": 2
+      }
+    },
+    "C58": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "integration": 2
+      }
+    },
+    "C59": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "integration": 2
+      }
+    },
+    "C60": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "integration": 2
+      }
+    },
+    "C61": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "integration": 2
+      }
+    },
+    "C62": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "page-10": 1,
+        "page-7": 1
+      }
+    },
+    "C63": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "page-18": 1,
+        "page-4": 1
+      }
+    },
+    "C64": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "page-18": 1,
+        "page-4": 1
+      }
+    },
+    "C65": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "page-9": 2
+      }
+    },
+    "C66": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "solution-2": 2
+      }
+    },
+    "C67": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "solution-2": 1,
+        "solution": 1
+      }
+    },
+    "C68": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "solution-3": 2
+      }
+    },
+    "C69": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "solution-3": 1,
+        "solution": 1
+      }
+    },
+    "C70": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "solution-4": 2
+      }
+    },
+    "C71": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "template-detail-2": 2
+      }
+    },
+    "C72": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 2,
+      "_templates": {
+        "use-case": 2
+      }
+    },
+    "C73": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "case-study": 1
+      }
+    },
+    "C74": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "case-study": 1
+      }
+    },
+    "C75": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "case-study": 1
+      }
+    },
+    "C76": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "case-study": 1
+      }
+    },
+    "C77": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "download": 1
+      }
+    },
+    "C78": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "download": 1
+      }
+    },
+    "C79": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "download": 1
+      }
+    },
+    "C80": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "download": 1
+      }
+    },
+    "C81": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "download": 1
+      }
+    },
+    "C82": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "download": 1
+      }
+    },
+    "C83": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "download": 1
+      }
+    },
+    "C84": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "download": 1
+      }
+    },
+    "C85": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "download": 1
+      }
+    },
+    "C86": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "download": 1
+      }
+    },
+    "C87": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "download": 1
+      }
+    },
+    "C88": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "ebook-category": 1
+      }
+    },
+    "C89": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "integration-2": 1
+      }
+    },
+    "C90": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "integration": 1
+      }
+    },
+    "C91": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "integration": 1
+      }
+    },
+    "C92": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "integration": 1
+      }
+    },
+    "C93": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "integration": 1
+      }
+    },
+    "C94": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "integration": 1
+      }
+    },
+    "C95": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "integration": 1
+      }
+    },
+    "C96": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "integration": 1
+      }
+    },
+    "C97": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "integration": 1
+      }
+    },
+    "C98": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "integration": 1
+      }
+    },
+    "C99": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "integration": 1
+      }
+    },
+    "C100": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "integration": 1
+      }
+    },
+    "C101": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "integration": 1
+      }
+    },
+    "C102": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "integration": 1
+      }
+    },
+    "C103": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "integration": 1
+      }
+    },
+    "C104": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "integration": 1
+      }
+    },
+    "C105": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "integration": 1
+      }
+    },
+    "C106": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-10": 1
+      }
+    },
+    "C107": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-10": 1
+      }
+    },
+    "C108": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-10": 1
+      }
+    },
+    "C109": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-11": 1
+      }
+    },
+    "C110": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-11": 1
+      }
+    },
+    "C111": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-11": 1
+      }
+    },
+    "C112": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-12": 1
+      }
+    },
+    "C113": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-12": 1
+      }
+    },
+    "C114": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-12": 1
+      }
+    },
+    "C115": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-13": 1
+      }
+    },
+    "C116": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-13": 1
+      }
+    },
+    "C117": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-13": 1
+      }
+    },
+    "C118": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-14": 1
+      }
+    },
+    "C119": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-14": 1
+      }
+    },
+    "C120": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-14": 1
+      }
+    },
+    "C121": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-15": 1
+      }
+    },
+    "C122": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-15": 1
+      }
+    },
+    "C123": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-15": 1
+      }
+    },
+    "C124": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-16": 1
+      }
+    },
+    "C125": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-16": 1
+      }
+    },
+    "C126": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-16": 1
+      }
+    },
+    "C127": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-17": 1
+      }
+    },
+    "C128": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-17": 1
+      }
+    },
+    "C129": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-17": 1
+      }
+    },
+    "C130": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-19": 1
+      }
+    },
+    "C131": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-19": 1
+      }
+    },
+    "C132": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-20": 1
+      }
+    },
+    "C133": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-20": 1
+      }
+    },
+    "C134": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-21": 1
+      }
+    },
+    "C135": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-21": 1
+      }
+    },
+    "C136": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-22": 1
+      }
+    },
+    "C137": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-22": 1
+      }
+    },
+    "C138": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-23": 1
+      }
+    },
+    "C139": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-23": 1
+      }
+    },
+    "C140": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-24": 1
+      }
+    },
+    "C141": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-24": 1
+      }
+    },
+    "C142": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-26": 1
+      }
+    },
+    "C143": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-27": 1
+      }
+    },
+    "C144": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-28": 1
+      }
+    },
+    "C145": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-29": 1
+      }
+    },
+    "C146": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-2": 1
+      }
+    },
+    "C147": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-2": 1
+      }
+    },
+    "C148": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-2": 1
+      }
+    },
+    "C149": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-2": 1
+      }
+    },
+    "C150": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-2": 1
+      }
+    },
+    "C151": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-2": 1
+      }
+    },
+    "C152": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-2": 1
+      }
+    },
+    "C153": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-2": 1
+      }
+    },
+    "C154": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-2": 1
+      }
+    },
+    "C155": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-2": 1
+      }
+    },
+    "C156": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-2": 1
+      }
+    },
+    "C157": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-2": 1
+      }
+    },
+    "C158": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-30": 1
+      }
+    },
+    "C159": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-31": 1
+      }
+    },
+    "C160": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-32": 1
+      }
+    },
+    "C161": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-33": 1
+      }
+    },
+    "C162": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-34": 1
+      }
+    },
+    "C163": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-35": 1
+      }
+    },
+    "C164": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-36": 1
+      }
+    },
+    "C165": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-37": 1
+      }
+    },
+    "C166": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-38": 1
+      }
+    },
+    "C167": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-39": 1
+      }
+    },
+    "C168": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-3": 1
+      }
+    },
+    "C169": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-3": 1
+      }
+    },
+    "C170": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-40": 1
+      }
+    },
+    "C171": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-41": 1
+      }
+    },
+    "C172": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-42": 1
+      }
+    },
+    "C173": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-43": 1
+      }
+    },
+    "C174": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-4": 1
+      }
+    },
+    "C175": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-4": 1
+      }
+    },
+    "C176": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-4": 1
+      }
+    },
+    "C177": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-5": 1
+      }
+    },
+    "C178": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-5": 1
+      }
+    },
+    "C179": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-5": 1
+      }
+    },
+    "C180": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-5": 1
+      }
+    },
+    "C181": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-5": 1
+      }
+    },
+    "C182": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-5": 1
+      }
+    },
+    "C183": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-5": 1
+      }
+    },
+    "C184": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-6": 1
+      }
+    },
+    "C185": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-6": 1
+      }
+    },
+    "C186": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-6": 1
+      }
+    },
+    "C187": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-6": 1
+      }
+    },
+    "C188": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-6": 1
+      }
+    },
+    "C189": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-6": 1
+      }
+    },
+    "C190": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-6": 1
+      }
+    },
+    "C191": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-7": 1
+      }
+    },
+    "C192": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-7": 1
+      }
+    },
+    "C193": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-7": 1
+      }
+    },
+    "C194": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-8": 1
+      }
+    },
+    "C195": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-8": 1
+      }
+    },
+    "C196": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-8": 1
+      }
+    },
+    "C197": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-8": 1
+      }
+    },
+    "C198": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-8": 1
+      }
+    },
+    "C199": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-9": 1
+      }
+    },
+    "C200": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-9": 1
+      }
+    },
+    "C201": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page-9": 1
+      }
+    },
+    "C202": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C203": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C204": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C205": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C206": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C207": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C208": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C209": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C210": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C211": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C212": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C213": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C214": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C215": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C216": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C217": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C218": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C219": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C220": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C221": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C222": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C223": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C224": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C225": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C226": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C227": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C228": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C229": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C230": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C231": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C232": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C233": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C234": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C235": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "page": 1
+      }
+    },
+    "C236": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "solution-2": 1
+      }
+    },
+    "C237": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "solution-2": 1
+      }
+    },
+    "C238": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "solution-2": 1
+      }
+    },
+    "C239": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "solution-2": 1
+      }
+    },
+    "C240": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "solution-3": 1
+      }
+    },
+    "C241": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "solution-3": 1
+      }
+    },
+    "C242": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "solution-3": 1
+      }
+    },
+    "C243": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "solution-3": 1
+      }
+    },
+    "C244": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "solution-4": 1
+      }
+    },
+    "C245": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "solution-5": 1
+      }
+    },
+    "C246": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "solution-6": 1
+      }
+    },
+    "C247": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "solution-7": 1
+      }
+    },
+    "C248": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "solution": 1
+      }
+    },
+    "C249": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "solution": 1
+      }
+    },
+    "C250": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "solution": 1
+      }
+    },
+    "C251": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "solution": 1
+      }
+    },
+    "C252": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "template-detail-2": 1
+      }
+    },
+    "C253": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "template-detail-2": 1
+      }
+    },
+    "C254": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "template-detail-2": 1
+      }
+    },
+    "C255": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "template-detail-2": 1
+      }
+    },
+    "C256": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "template-detail-3": 1
+      }
+    },
+    "C257": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "use-case": 1
+      }
+    },
+    "C258": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "use-case": 1
+      }
+    },
+    "C259": {
+      "action": "accept",
+      "target": null,
+      "label": null,
+      "note": "",
+      "_tier": "C",
+      "_size": 1,
+      "_templates": {
+        "use-case": 1
+      }
+    }
+  }
+}

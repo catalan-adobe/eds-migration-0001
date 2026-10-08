@@ -1,0 +1,19 @@
+{
+  "cluster_id": "C257",
+  "representative": "use-case__use-cases-customer-support-portal.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions", "Business Need", "Work O..."], "note": "top nav bar rc1c1" },
+    { "eds": "section", "style": "hero-bg-image", "items": ["heading/text: Solutions Use Cases Customer S..."], "note": "rc1c2c1c1 [bg:image] full-bleed background image behind hero copy" },
+    { "eds": "default-content", "style": "bg-gradient", "items": ["Who Is This Customer Support P..."], "note": "rc1c2c1c2c1" },
+    { "eds": "default-content", "style": "bg-gradient", "items": ["Common Support Challenges Solv..."], "note": "rc1c2c1c2c2" },
+    { "eds": "default-content", "style": "bg-gradient", "items": ["Key Benefits of Using Knack fo..."], "note": "rc1c2c1c2c3" },
+    { "eds": "default-content", "style": "bg-gradient", "items": ["How Knack Helped EduBridge Imp..."], "note": "rc1c2c1c2c4" },
+    { "eds": "section", "style": "faq", "items": ["heading: FAQs: Building a Customer Supp...", "faq-accordion block (4 Q&A rows, mostly collapsed)"], "note": "rc1c2c1c3" },
+    { "eds": "section", "style": "bg-gradient", "items": [], "note": "rc1c2c2 blank 1280x493 zone before footer, no captured content \u2014 decorative" },
+    { "eds": "section", "style": "footer", "items": ["tagline: The best no-code platform for...", "footer link row"], "note": "rc2 footer" }
+  ],
+  "blocks": ["faq-accordion"],
+  "covered_by_rules": ["full-width-image-behind-text-is-section-bg", "background-container-is-section-style", "heading-then-component-same-section", "faq-accordion-block", "decorative-graphics-are-noise", "knack-cookie-notice-overlay"],
+  "proposed_rules": [],
+  "notes": "use-case template: hero-image intro, four stacked gradient-background copy sections, an FAQ accordion (answers mostly collapsed except the first), a blank trailing gradient zone before the footer, and the standard cookie overlay excluded as noise."
+}

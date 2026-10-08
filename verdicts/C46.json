@@ -1,0 +1,16 @@
+{
+  "cluster_id": "C46",
+  "representative": "page-3__compliance-contact.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "top nav bar" },
+    { "eds": "section", "items": ["rc1c2"], "note": "legal-nav sidebar (Terms of Service, Privacy Policy, ...) + compliance-contact body text" },
+    { "eds": "section", "style": "footer", "items": ["rc2"], "note": "footer tagline + link row" }
+  ],
+  "blocks": ["legal-nav"],
+  "covered_by_rules": [
+    "two-column-article-with-sidebar",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [],
+  "notes": "Short legal/compliance page: a policy links sidebar block alongside the page body, matching the project's two-column-article-with-sidebar convention."
+}

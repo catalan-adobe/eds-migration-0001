@@ -1,0 +1,57 @@
+{
+  "cluster_id": "C252",
+  "representative": "template-detail-2__templates-job-scheduling.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions", "Business Need", "Work O..."], "note": "top nav bar rc1c1" },
+    { "eds": "section", "style": "hero", "items": ["heading: Leverage this Template App To ..."], "note": "hero intro rc1c2c1" },
+    { "eds": "section", "items": ["heading: Key Features & Functionality", "key-features block: 01. Dynamic Work Order Form Ca..."], "note": "rc1c2c2" },
+    { "eds": "section", "items": ["screenshot-carousel block (blank capture)", "cta-banner block: Start Building with Template"], "note": "rc1c2c3" },
+    { "eds": "section", "items": ["heading: Seamlessly Customize the Templ...", "text: Use our interactive demo to se...", "interactive-demo block (blank embed)"], "note": "rc1c2c4 + rc1c2c12 (same y-offset, likely the embed for the promised demo)" },
+    { "eds": "section", "style": "bg-color", "items": ["feature-cards block: Maintenance Management Streaml..."], "note": "rc1c2c6" },
+    { "eds": "section", "items": ["heading: Traditional Tools vs. Knack", "text: Knack wins over traditional...", "comparison-table block (4 rows)"], "note": "rc1c2c8" },
+    { "eds": "section", "style": "faq", "items": ["heading: FAQs", "faq-accordion block (6 Q&A rows)"], "note": "rc1c2c10" },
+    { "eds": "section", "items": ["related-templates block (placeholder, literal '<iframe' leak): Related Template Apps..."], "note": "rc1c2c11" },
+    { "eds": "section", "style": "footer", "items": ["tagline: The best no-code platform for...", "footer link row"], "note": "rc2 footer" }
+  ],
+  "blocks": ["key-features", "screenshot-carousel", "cta-banner", "interactive-demo", "feature-cards", "comparison-table", "faq-accordion", "related-templates"],
+  "covered_by_rules": ["background-container-is-section-style", "repeating-cards-are-one-block", "heading-then-component-same-section", "minimize-block-cells", "variant-is-css-not-new-block", "faq-accordion-block", "knack-cookie-notice-overlay"],
+  "proposed_rules": [
+    {
+      "id": "iframe-carousel-underrendered",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A 'Related/Other Templates' carousel renders with only a heading and a literal leaked '<iframe' tag instead of real card content.",
+      "decision": "Flag for Phase 2 targeted DOM extraction rather than concluding the section is empty; the widget is embedded via iframe and the visual-tree capture did not resolve its content.",
+      "rationale": "The literal '<iframe' text leaking into the extracted copy is direct evidence the carousel is an iframe embed our capture pipeline could not render, matching the same placeholder pattern seen (without the literal tag) on other template-detail pages.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C252 rc1c2c11c2 'Related Template Apps <iframe ...'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "template-screenshot-carousel-then-cta",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "Template-detail pages show a multi-column zone of app screenshots (often blank/no captured text) immediately followed by a [bg:color] 'Build/Start Building with the Template' banner.",
+      "decision": "Model as two blocks in the same section: a 'screenshot-carousel' block (one row per screen) and a separate 'cta-banner' block; alternative of merging both into one 'template-preview' block was rejected because the CTA banner also recurs standalone elsewhere on these pages.",
+      "rationale": "Recurs with the same carousel+banner shape across every template-detail page sampled, indicating a reusable site-specific block pairing rather than one-off content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C252 rc1c2c3 [3x2] blank + [bg:color] 'Start Building with Template'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "interactive-demo-iframe-embed",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "A heading/subtext inviting the user to 'use our interactive demo' is followed by a same-sized blank region with no captured content.",
+      "decision": "Model as a single-item 'interactive-demo' embed block (iframe src as the only cell); alternative of dropping the blank region as noise was rejected because the preceding copy explicitly promises an interactive demo.",
+      "rationale": "The adjacent copy references an interactive demo by name, so the blank capture is a real embed the pipeline could not render, not decoration.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C252 rc1c2c4 heading + rc1c2c12 blank 1220x885 region at same y-offset", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "template-detail-2 layout with two extras not seen elsewhere in this batch: an interactive-demo embed and a Traditional-vs-Knack comparison table."
+}

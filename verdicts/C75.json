@@ -1,0 +1,28 @@
+{
+  "cluster_id": "C75",
+  "representative": "case-study__case-study-royal-free-london-nhs-foundation-trust.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions / Business Need / Work O... nav"], "note": "rc1c1 [2x1] top nav bar" },
+    { "eds": "default-content", "items": ["Royal Free London NHS Foundati... (title + intro)"], "note": "rc1c2c1 case-study title zone" },
+    { "eds": "default-content", "items": ["Amir Gander, Tissue Access for... (full article body, under-rendered)"], "note": "rc1c2c2 [2x1] single 3404px text node covering the whole article" },
+    { "eds": "section", "style": "plain", "items": ["footer CTA: 'The best no-code platform for...'", "footer link row"], "note": "rc2 global footer CTA band" },
+    { "eds": "default-content", "items": [], "note": "rc3/rc4 cookie consent overlay excluded per knack-cookie-notice-overlay" }
+  ],
+  "blocks": [],
+  "covered_by_rules": ["knack-cookie-notice-overlay"],
+  "notes": "Same collapsed-body case-study pattern as C73/C74: nav, title, one giant body text node, footer.",
+  "proposed_rules": [
+    {
+      "id": "collapsed-case-study-body",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A case-study page whose entire post-title content is captured as a single oversized leaf node (several thousand px tall) with only a truncated text preview and no distinct heading/paragraph/image children.",
+      "decision": "Flag for Phase 2 targeted DOM extraction to recover the actual paragraph/heading/pull-quote/image structure before mapping to default-content; do not conclude the article is literally one paragraph.",
+      "rationale": "minWidth/visual-tree capture flattens long-form rich-text bodies into one text node when internal elements lack strong layout breaks. Recurs identically across all sampled case-study pages (C73, C74, C75), reinforcing it is a capture artifact, not per-page content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C75 rc1c2c2 [2x1] @74,679 1133x3404, single quoted text preview", "added": "2026-09-04", "version": 1 }
+    }
+  ]
+}

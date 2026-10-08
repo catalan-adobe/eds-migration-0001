@@ -1,0 +1,53 @@
+{
+  "cluster_id": "C197",
+  "representative": "page-8__health-solutions.json",
+  "sections": [
+    { "eds": "section", "style": "noise", "items": ["rc1"], "note": "leaked raw JS ('document.addEventListener(\"DOM...') rendered as visible text" },
+    { "eds": "section", "style": "hero (bg:image)", "items": ["rc2c1c1", "rc2c1c2"], "note": "'Build healthcare apps that mat...' heading + 'Book a Demo' CTA over bg image" },
+    { "eds": "section", "items": ["rc2c2c1", "rc2c2c2"], "note": "'Explore by use case' + 4x4 (16-item) use-case card grid" },
+    { "eds": "section", "style": "cards (bg:color)", "items": ["rc2c3c1", "rc2c3c2"], "note": "'What you can build with Knack Health' + 4x1 feature cards" },
+    { "eds": "section", "items": ["rc2c4c1", "rc2c4c2"], "note": "'Designed to support healthcare...' + 3x1 compliance cards" },
+    { "eds": "section", "style": "cta (bg:color)", "items": ["rc2c5"], "note": "'Book a Demo / Request Free Trial' two-button CTA banner (default-content, not a block)" },
+    { "eds": "section", "items": ["rc2c6c1", "rc2c6c2", "rc4"], "note": "'Healthcare app use cases FAQs' accordion, ~6 Q/A pairs; answer regions show overlapping coordinates (see proposed pipeline rule)" },
+    { "eds": "section", "style": "noise", "items": ["rc2c7"], "note": "leaked raw CSS ('ul{ margin-left: 20px; } @media...') rendered as visible text" },
+    { "eds": "section", "style": "footer chrome", "items": ["rc3"], "note": "recurring footer CTA band" },
+    { "eds": "section", "style": "noise", "items": ["rc5"], "note": "cookie consent overlay (Decline/Accept)" }
+  ],
+  "blocks": ["cards", "faq-accordion"],
+  "covered_by_rules": [
+    "leaked-css-text-node",
+    "full-width-image-behind-text-is-section-bg",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "background-container-is-section-style",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-footer-cta-band",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 85,
+      "trigger": "A recurring full-width footer zone at the bottom of nearly every page: a fixed marketing tagline ('The best no-code platform for...') followed by a thin row whose only rendered text is pipe separators ('| |'), indicating a collapsed footer link list.",
+      "decision": "Treat as global site-wide footer chrome, excluded from the page's own block inventory (model as a shared fragment, same treatment as nav/cookie overlay). Flag the '| |' row for Phase 2 to recover the actual footer link labels.",
+      "rationale": "Identical structure recurs unchanged across every sampled page, matching the existing site-chrome precedent. Rejected alternative: model it as a page-level 'cta' block, but content is byte-identical across pages so it is chrome, not authored content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C197 rc3 (rc3c1c1 tagline, rc3c1c2 '| |' row)", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "accordion-answer-coordinate-collision",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "An FAQ/accordion zone where answer 'region' nodes for different questions share overlapping or duplicate bounding-box coordinates with a later question's closed row, because only one accordion panel was expanded at capture time.",
+      "decision": "Reconstruct FAQ rows using DOM/list order (top-to-bottom question sequence), not pixel coordinates. Do not treat duplicated-coordinate regions as separate content items or drop them as noise.",
+      "rationale": "The single-snapshot capture records only one expanded accordion state, so an expanded answer's bounding box overlaps a subsequent closed question's box; coordinate-based parsing alone risks misattributing or duplicating content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C197 rc2c6c2c3/c4/c5 duplicated by rc2c6c2c7/c8/c9 and rc4, all at overlapping @47,4430-4662 coordinates", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Marketing/product landing page with leaked JS/CSS source text (bug in source site) and an FAQ accordion whose captured coordinates overlap due to a single expanded-panel snapshot."
+}

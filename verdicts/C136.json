@@ -1,0 +1,66 @@
+{
+  "cluster_id": "C136",
+  "representative": "page-22__health-crm-for-healthcare-organizations.json",
+  "sections": [
+    { "eds": "section", "style": "image bg hero", "items": ["H1/paragraph A HIPAA-compliant CRM built fo..."], "note": "rc2c1 [bg:image]" },
+    { "eds": "section", "items": ["H2 See It in Action", "embedded product video"], "note": "rc2c2" },
+    { "eds": "section", "items": ["H2/paragraph A Better Way to Manage Healthc..."], "note": "rc2c3" },
+    { "eds": "section", "items": ["H2/paragraph Common Healthcare CRM Challeng..."], "note": "rc2c4" },
+    { "eds": "section", "items": ["H2/paragraph How Knack Powers Healthcare Re..."], "note": "rc2c5" },
+    { "eds": "section", "items": ["H2/paragraph Key CRM Capabilities (and How ..."], "note": "rc2c6" },
+    { "eds": "section", "items": ["H2/paragraph Designed for Healthcare Organi..."], "note": "rc2c7" },
+    { "eds": "section", "items": ["H2/paragraph Built for Security & Complianc..."], "note": "rc2c8" },
+    { "eds": "section", "items": ["H2/paragraph Transparent Costs, No IT Depar..."], "note": "rc2c9" },
+    { "eds": "section", "style": "color bg", "items": ["CTA banner Ready to get started? Get in t..."], "note": "rc2c10" },
+    { "eds": "section", "items": ["faq accordion block (~12 rows, question/answer nodes dislocated)"], "note": "rc2c11 + rc4, answer [region] nodes appear detached/duplicated relative to their question rows" },
+    { "eds": "section", "style": "footer", "items": ["footer tagline", "footer link row"], "note": "rc3" }
+  ],
+  "blocks": ["embedded-video", "faq-accordion"],
+  "covered_by_rules": [
+    "leaked-css-text-node",
+    "full-width-image-behind-text-is-section-bg",
+    "heading-then-component-same-section",
+    "background-container-is-section-style",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "marketing-feature-row-section",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "section",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A stack of single-column [2x1] zones each with an H2/paragraph, heights varying (374-766px), alternating down the page.",
+      "decision": "Map each row as its own section with default-content (H2+paragraph). Do not group rows into one repeating block.",
+      "rationale": "Rejected alternative: repeating-cards-are-one-block — rejected because the seven rows vary widely in height and content shape, indicating distinct authored sections.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C136 rc2c3..rc2c9", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "embedded-video-block",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "block",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "A heading like 'See It in Action' / 'Watch a demo' directly above a large media region with no repeating-card structure.",
+      "decision": "Map the heading as default-content and the media region as a dedicated video/embed block, distinct from a plain image block.",
+      "rationale": "Video embeds have different authoring needs (embed URL vs asset) than static images; conflating them with the generic image-in-flow rule would lose that distinction.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C136 rc2c2 'See It in Action Watch a Knack...'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "detached-faq-answer-nodes",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 46,
+      "trigger": "An FAQ accordion whose answer [region] nodes are captured as siblings at coordinates matching a different question row than their own, or promoted to a top-level root sibling (e.g. rc4).",
+      "decision": "During Phase 2, re-pair each [region] answer with its nearest preceding question row by reading order rather than trusting coordinate overlap; do not drop the root-level stray [region] node.",
+      "rationale": "The overlay-promotion pass in the tree walker appears to have detached/duplicated answer nodes from their question rows, producing coordinate collisions that would corrupt a naive row-by-row pairing.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C136 rc2c11c3/c8 both @173,6343; rc2c11c4/c9 both @173,6401; rc4 [region] stray at root", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Vertical/solution page with a leaked inline script at the top, a HIPAA-CRM hero, seven alternating feature rows, a filled CTA banner, and an FAQ accordion whose answer nodes were captured out of order relative to their questions."
+}

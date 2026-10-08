@@ -1,0 +1,165 @@
+# EDS Migration Rulebook — Generic layer
+#
+# Universal EDS authoring conventions. Good for any website migration.
+# Loaded into every LLM-backed pipeline step alongside the project layer.
+#
+# --- Rule schema -----------------------------------------------------------
+#   id:            stable slug, unique across all scopes (kebab-case)
+#   scope:         generic | project | pipeline   (this file is always generic)
+#   decision_type: convention | team-decision     (team-decision needs human sign-off)
+#   category:      section | block | default-content | noise | structure
+#   status:        confirmed | proposed           (only confirmed is applied in prod)
+#   priority:      integer, higher wins within a scope (default 50)
+#   trigger:       natural-language description of WHEN the rule applies (for the LLM)
+#   decision:      natural-language description of the EDS mapping to produce (for the LLM)
+#   rationale:     WHY — the EDS philosophy behind the rule (for humans + LLM context)
+#   examples:      optional positive/negative illustrations
+#   provenance:    where the rule came from (origin, added, version; sites for generic)
+#
+# scope: generic is EARNED, never self-declared by a scan. A rule reaches generic only
+# after the same mapping is confirmed on >=2 distinct sites (provenance.sites) + sign-off.
+# ---------------------------------------------------------------------------
+
+version: 1
+
+rules:
+  - id: background-container-is-section-style
+    scope: generic
+    category: section
+    status: confirmed
+    priority: 80
+    trigger: >
+      A visually cohesive zone has a background color, gradient, or image applied to a
+      container that wraps two or more independent content items (e.g. a heading followed
+      by a component, or several blocks stacked vertically).
+    decision: >
+      Do NOT treat the zone as a single block. Emit a section boundary around it, map each
+      inner item to its own EDS item (default-content for headings/text, a block for each
+      component), and represent the background via a section-metadata block with a style
+      label — not as part of any block.
+    rationale: >
+      In EDS, backgrounds on a region of the page are section styles applied to the section
+      wrapper as CSS classes. Wrapping content in a decorative block violates content-first
+      authoring and blocks reuse of the inner components.
+    examples:
+      positive: Heading + tabs component sharing one lavender background → section(style) + H2 + tabs block.
+      negative: A single card with its own background and rounded corners is a block, not a section.
+    provenance:
+      origin: hand-authored
+      added: 2026-09-04
+      version: 1
+
+  - id: decorative-graphics-are-noise
+    scope: generic
+    category: noise
+    status: confirmed
+    priority: 70
+    trigger: >
+      Background dots, shapes, blobs, gradients, or ornamental imagery that carry no
+      content meaning and exist purely for visual styling.
+    decision: >
+      Exclude from the block inventory entirely. If they belong to a section background,
+      fold them into the section style; otherwise ignore.
+    rationale: >
+      Decoration is CSS, not content. Importing it as content items pollutes the inventory
+      and the resulting EDS document.
+    provenance:
+      origin: hand-authored
+      added: 2026-09-04
+      version: 1
+
+  - id: repeating-cards-are-one-block
+    scope: generic
+    category: block
+    status: confirmed
+    priority: 75
+    trigger: >
+      A grid or row of visually uniform items (cards, logos, features, stats, team members)
+      repeating the same internal structure N times.
+    decision: >
+      Emit ONE block with N rows, not N separate blocks. Capture the per-item cell structure
+      once as the block's row pattern.
+    rationale: >
+      EDS blocks are tables where each row is one item. A repeating grid is the canonical
+      one-block-many-rows case.
+    provenance:
+      origin: hand-authored
+      added: 2026-09-04
+      version: 1
+
+  - id: heading-then-component-same-section
+    scope: generic
+    category: default-content
+    status: confirmed
+    priority: 65
+    trigger: >
+      A heading (and optional intro paragraph) sits immediately above a component and shares
+      the same visual region, with no intervening boundary or background change.
+    decision: >
+      Map the heading and intro as default-content, the component as its own block, both
+      inside the same section. Do not absorb the heading into the block.
+    rationale: >
+      Headings that introduce a component are page content, authored as plain markdown above
+      the block table. Absorbing them into the block reduces authorability and reuse.
+    provenance:
+      origin: hand-authored
+      added: 2026-09-04
+      version: 1
+
+  - id: full-width-image-behind-text-is-section-bg
+    scope: generic
+    category: section
+    status: confirmed
+    priority: 78
+    trigger: >
+      A full-bleed image sits behind text/CTAs (classic hero) rather than appearing inline
+      as a discrete content image.
+    decision: >
+      Represent the image as the section background via section-metadata, and map the
+      overlaid text/CTAs as default-content and/or a block. Do not emit an image block.
+    rationale: >
+      A background image is decoration bound to the section, not an inline content asset.
+    examples:
+      negative: An image sitting in the normal content flow with text above/below it IS an image block.
+    provenance:
+      origin: hand-authored
+      added: 2026-09-04
+      version: 1
+
+  - id: minimize-block-cells
+    scope: generic
+    category: block
+    status: confirmed
+    priority: 60
+    trigger: >
+      Deciding how many cells/columns a block table should have for a given component.
+    decision: >
+      Prefer the fewest cells that preserve the content. Combine an image + headings + text +
+      links into a single cell when the decorate function can lay them out from markup order,
+      rather than splitting each into its own cell.
+    rationale: >
+      EDS best practice favors minimal block tables; the decorate function derives layout from
+      content structure, keeping authoring simple and blocks flexible.
+    provenance:
+      origin: hand-authored
+      added: 2026-09-04
+      version: 1
+
+  - id: variant-is-css-not-new-block
+    scope: generic
+    category: block
+    status: confirmed
+    priority: 62
+    trigger: >
+      Two instances of the same block type differ only in appearance (color, alignment,
+      spacing, emphasis) while sharing the same content structure and cell count.
+    decision: >
+      Treat as one block with a variant label appended to the block name (e.g. `hero (dark)`),
+      not as a new block type. Variant labels become extra CSS classes.
+    rationale: >
+      EDS variants are CSS-only differentiators expressed as block-name labels. A new block
+      type is only warranted when the content structure (cell count/shape) genuinely differs.
+    provenance:
+      origin: hand-authored
+      added: 2026-09-04
+      version: 1

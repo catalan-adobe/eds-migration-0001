@@ -1,0 +1,41 @@
+{
+  "cluster_id": "C245",
+  "representative": "solution-5__solutions-online-database.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "top nav bar" },
+    { "eds": "default-content", "items": ["rc1c2c1"], "note": "hero heading/intro text" },
+    { "eds": "noise", "items": ["rc1c2c2"], "note": "empty 252px zone immediately after hero, in the exact slot other solution pages use for the trust-badge strip" },
+    { "eds": "default-content", "items": ["rc1c2c3"], "note": "feature callout: Online Database Software With..." },
+    { "eds": "default-content", "items": ["rc1c2c4"], "note": "feature callout: Secure your Online Database" },
+    { "eds": "default-content", "items": ["rc1c2c5"], "note": "feature callout: Online Database Software Lets..." },
+    { "eds": "default-content", "items": ["rc1c2c6"], "note": "feature callout: Configure your Online Database" },
+    { "eds": "default-content", "items": ["rc1c2c7"], "note": "feature callout: See Better ROI" },
+    { "eds": "section", "items": ["rc1c2c8c1", "rc1c2c8c2"], "note": "FAQs heading + 4-row accordion" },
+    { "eds": "section", "items": ["rc1c2c9c2c1", "rc1c2c9c2c2"], "note": "Additional Online Database Resources heading + 3x1 resource-cards grid" },
+    { "eds": "noise", "items": ["rc2"], "note": "global footer CTA band + link row" },
+    { "eds": "noise", "items": ["rc3", "rc4"], "note": "cookie consent overlay" }
+  ],
+  "blocks": ["resource-cards", "accordion"],
+  "covered_by_rules": [
+    "knack-cookie-notice-overlay",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "faq-accordion-block",
+    "underrendered-list-zone"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-global-footer-band",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 87,
+      "trigger": "A recurring end-of-page zone (rc2) with a CTA heading and a pipe-only link row, identical at the bottom of every page.",
+      "decision": "Exclude from per-page block inventory; model as a global footer fragment/site-wide chrome, analogous to the confirmed knack-announcement-bar rule.",
+      "rationale": "Identical structure across every page examined in this batch.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "rc2c1/rc2c2 identical across C243-C250", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Simplest page in the batch: no card grids or trust badges captured, only alternating text callouts, FAQ accordion, and a resource-cards grid; the trust-badge slot appears to have collapsed entirely (applied underrendered-list-zone)."
+}

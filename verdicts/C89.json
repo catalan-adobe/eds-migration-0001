@@ -1,0 +1,49 @@
+{
+  "cluster_id": "C89",
+  "representative": "integration-2__integrations-gravity-forms-knack-integration.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "top utility/solutions nav bar" },
+    { "eds": "default-content", "items": ["rc1c2c1"], "note": "hero heading: 'Integrate Knack with Gravity F...'" },
+    { "eds": "section", "style": "bg-color", "items": ["rc1c2c2c1", "rc1c2c2c2"], "note": "colored-background pair of items with no captured text (likely trigger/action icon pair), background-container-is-section-style applies" },
+    { "eds": "section", "items": ["rc1c2c3(block:integration-feature-row)", "rc1c2c4(block:integration-feature-row)", "rc1c2c5(block:integration-feature-row)"], "note": "three visually uniform [2x1][bg:color] 100px rows repeating an icon+text pattern" },
+    { "eds": "section", "items": ["rc1c2c6", "rc1c2c7", "rc1c2c8", "rc1c2c9(block:faq-accordion)"], "note": "stack of uniform ~50-64px rows terminating in a colored CTA row 'See All Triggers and Actions'; matches the FAQ/accordion row pattern" },
+    { "eds": "default-content", "items": ["rc1c2c10"], "note": "closing repeat of the hero heading text" },
+    { "eds": "section", "items": ["rc2c1", "rc2c2"], "note": "bottom marketing banner: 'The best no-code platform for...' + social icons" }
+  ],
+  "blocks": ["integration-feature-row", "faq-accordion"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "faq-accordion-block",
+    "minimize-block-cells",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "recurring-bottom-marketing-banner",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "An identical ~453px band at the very bottom of the page reading 'The best no-code platform for...' plus a small social-icon row, recurring unchanged across unrelated templates (download, integration, ebook-category).",
+      "decision": "Model as a site-wide footer fragment rendered on every page, not as per-page authored content. Alternative rejected: treating it as a normal page-ending CTA section authored per page (rejected because content and layout are byte-identical across templates, indicating global chrome rather than page content).",
+      "rationale": "Identical text/size across independently themed templates strongly indicates a shared footer/fragment injected site-wide rather than page-authored content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C89 rc2 identical to same node in C84-C87", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "integration-page-rows-missing-text",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "Multiple mid-page rows/pairs on an 'integration-2' template capture with no quoted text (rc1c2c2c1/c2, rc1c2c6, rc1c2c8) despite visible box structure, unlike the surrounding rows which do carry text.",
+      "decision": "Flag these rows for Phase 2 targeted DOM extraction rather than treating them as empty; they likely hold icon-labeled trigger/action pairs or accordion Q/A text that fell below the minWidth capture threshold.",
+      "rationale": "Structurally identical siblings elsewhere on the same page do carry text, so the blank rows are a capture gap, not real emptiness.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C89 rc1c2c2c1, rc1c2c2c2, rc1c2c6, rc1c2c8 have box geometry but no text", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Integration landing page: nav, hero, an icon-pair strip, a 3-row feature strip, an FAQ-like accordion ending in a CTA link, closing heading repeat, and the recurring bottom banner. Several mid-page rows lack captured text and are flagged for Phase 2."
+}

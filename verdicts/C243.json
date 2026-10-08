@@ -1,0 +1,81 @@
+{
+  "cluster_id": "C243",
+  "representative": "solution-3__solutions-inventory-management.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "top nav bar (Solutions/Business Need/Work Order dropdowns)" },
+    { "eds": "default-content", "items": ["rc1c2c1"], "note": "hero heading/intro text" },
+    { "eds": "section", "style": "trust-badges", "items": ["rc1c2c2c1", "rc1c2c2c2"], "note": "'Join of users' heading + 5x2 badge grid" },
+    { "eds": "section", "style": "media-split", "items": ["rc1c2c3c1", "rc1c2c3c2"], "note": "bg:color panel + bg:image panel, no text captured (likely under-rendered)" },
+    { "eds": "default-content", "items": ["rc1c2c4"], "note": "feature callout: Get Real-time Inventory Levels" },
+    { "eds": "default-content", "items": ["rc1c2c5"], "note": "feature callout: Collaborate on Inventory" },
+    { "eds": "default-content", "items": ["rc1c2c6"], "note": "feature callout: Create an Online Inventory" },
+    { "eds": "section", "style": "bg-color", "items": ["rc1c2c7c1", "rc1c2c7c2"], "note": "3x3 feature-cards grid on color background" },
+    { "eds": "default-content", "items": ["rc1c2c8"], "note": "feature callout: Configure your Database" },
+    { "eds": "default-content", "items": ["rc1c2c9"], "note": "feature callout: See Better ROI" },
+    { "eds": "section", "items": ["rc1c2c10c2c1", "rc1c2c10c2c2"], "note": "Additional Resources heading + 3x1 resource-cards grid" },
+    { "eds": "section", "items": ["rc1c2c11c1", "rc1c2c11c2"], "note": "FAQs heading + 3-row accordion" },
+    { "eds": "noise", "items": ["rc1c2c12"], "note": "empty 252px trailing spacer zone" },
+    { "eds": "noise", "items": ["rc2"], "note": "global footer CTA band + link row (site-wide chrome)" },
+    { "eds": "noise", "items": ["rc3", "rc4"], "note": "cookie consent overlay" }
+  ],
+  "blocks": ["trust-badges", "feature-cards", "resource-cards", "accordion"],
+  "covered_by_rules": [
+    "knack-cookie-notice-overlay",
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "faq-accordion-block",
+    "minimize-block-cells"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-global-footer-band",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 87,
+      "trigger": "A recurring end-of-page zone (rc2) with a CTA heading ('The best no-code platform for...') and a link row rendered as bare pipe separators, appearing identically at the bottom of every page above the cookie overlay.",
+      "decision": "Exclude entirely from per-page block inventory; model as a global footer fragment/site-wide chrome, analogous to the confirmed knack-announcement-bar rule.",
+      "rationale": "Identical structure recurs unchanged on this and every other page examined; it is not page-specific content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "rc2c1/rc2c2 identical across C243-C250", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-trust-badge-strip",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "'Join ... users' heading immediately followed by a 5xN grid near the top of a solution page.",
+      "decision": "Emit as one 'trust-badges' block, one row per badge/item. Rejected alternative: modeling as a generic logo/card grid without a dedicated block name.",
+      "rationale": "Recurs with identical shape across multiple solution pages in this batch (C243, C244, C246, C247, C248); reinforces the already-proposed rulebook candidate.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "rc1c2c2c1/rc1c2c2c2 [5x2]", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "split-image-panel-underrendered",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A section with a [bg:color] panel next to a [bg:image] panel, both with zero captured text, at a position where other pages in the same template family show real heading/paragraph text in an equivalent slot.",
+      "decision": "Flag for Phase 2 targeted extraction rather than concluding the zone is a pure decorative background. Rejected alternative: treating it as a plain full-width-image-behind-text section per the generic rule, since no text was captured to overlay.",
+      "rationale": "The minWidth capture likely collapsed responsive text that would normally accompany the image panel, matching the underrendered-list-zone pattern but for a split-image feature row rather than a card grid.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "rc1c2c3c1 [bg:color] + rc1c2c3c2 [bg:image], no child text", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "solution-page-trailing-spacer",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 45,
+      "trigger": "An empty 252px-tall zone with no text or children, appearing as the last content node before the global footer on a solution page.",
+      "decision": "Exclude from block inventory as a decorative spacer/divider.",
+      "rationale": "Exact 252px height recurs identically on multiple solution pages (C243, C247), consistent with a fixed site-wide spacer element rather than lost content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "rc1c2c12 @0,9416 1280x252, empty", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Standard solution-3 template: hero, trust badges, one under-rendered split-image panel, alternating feature callouts, one cards grid, resource cards, FAQ accordion, trailing spacer, global chrome."
+}

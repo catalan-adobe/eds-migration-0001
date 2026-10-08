@@ -1,0 +1,90 @@
+{
+  "cluster_id": "C182",
+  "representative": "page-5__health-operations-management.json",
+  "sections": [
+    { "eds": "section", "style": "hero", "items": ["H1 Build Custom Healthcare Operat...", "CTA buttons Book a Demo / Request Free Trial", "logos block (client trust strip)"], "note": "rc2c1 bg:image hero" },
+    { "eds": "section", "items": ["H2/para", "cards block (3x1 staff scheduling features)"], "note": "rc2c2" },
+    { "eds": "section", "items": ["H2 Healthcare Operations Features", "cards block (4x1)"], "note": "rc2c3" },
+    { "eds": "section", "items": ["H2 Unlimited Users. One Price...", "pricing-table block (header + 3 scenario rows)"], "note": "rc2c4" },
+    { "eds": "section", "items": ["H2 From Problem to Production in...", "steps block (4 items)"], "note": "rc2c5" },
+    { "eds": "section", "items": ["H2 Trusted by Healthcare Operatio...", "testimonial block (1 quote)"], "note": "rc2c6" },
+    { "eds": "section", "style": "bg-color", "items": ["H2/para Ready to Simplify Your Healthc...", "CTA buttons Talk to Our Team / See Pricing"], "note": "rc2c7" },
+    { "eds": "section", "items": ["H2 Frequently Asked Questions", "accordion block (7 Q/A rows)"], "note": "rc2c8" },
+    { "eds": "default-content", "items": ["footer tagline"], "note": "rc3, sitewide footer chrome, proposed rule" },
+    { "eds": "default-content", "items": ["cookie consent overlay"], "note": "rc5, excluded per confirmed rule" }
+  ],
+  "blocks": ["logos", "cards", "pricing-table", "steps", "testimonial", "accordion"],
+  "covered_by_rules": [
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "background-container-is-section-style",
+    "full-width-image-behind-text-is-section-bg",
+    "minimize-block-cells",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay",
+    "leaked-css-text-node"
+  ],
+  "proposed_rules": [
+    {
+      "id": "js-boilerplate-leak-node",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 71,
+      "trigger": "A text node at the very top of the tree (rc1) whose content is a raw JS boot snippet, e.g. starting with document.addEventListener(\"DOM...",
+      "decision": "Exclude entirely from block inventory; source-leak artifact analogous to leaked-css-text-node but for JS.",
+      "rationale": "Recurs identically at rc1 on every captured page in this batch; boilerplate script text rendered visibly due to a source bug, never content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C182 rc1 [3x1] 'document.addEventListener(\"DOM...'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "promoted-faq-answer-duplicate",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A [region] node containing FAQ answer text appears a second time as a sibling outside the main content flow (after the footer), duplicating text already nested under an accordion item.",
+      "decision": "Treat as a duplicate of the nested accordion answer already captured in the FAQ block; do not add as separate content.",
+      "rationale": "The page-tree capture promotes elements rendered outside their DOM parent (absolutely-positioned accordion panels), duplicating content already represented.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C182 rc4 duplicates rc2c8c2c11 answer text", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "sitewide-footer-chrome",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "A trailing rc3 zone with fixed text 'The best no-code platform for...' plus a pipe-separated link row, identical across pages.",
+      "decision": "Model as a sitewide footer fragment, not page content; exclude from per-page block inventory.",
+      "rationale": "Identical structure/text recurs at the same position on every page in this batch, indicating global template chrome.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C182 rc3c1c1/rc3c1c2", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "client-trust-logo-strip",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "A short 'Trusted by hundreds of healthcare teams...' statement paired with a client/partner logo row inside the hero.",
+      "decision": "Emit as its own logos-style block instance rather than folding into a generic hero CTA. Rejected alternatives: (a) treat the empty logo container as decorative noise since it renders with no text, (b) merge into a single hero block with the CTA buttons.",
+      "rationale": "Recurs across health-vertical hero zones as a trust element distinct from CTA buttons; the logo container itself renders empty in this capture (likely images loaded outside text extraction) but the text framing confirms intent.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C182 rc2c1c3 'Trusted by hundreds of healthc...' + empty rc2c1c3c2 1186x76 container", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "pricing-comparison-table-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 53,
+      "trigger": "A [4x1] grid whose first row is a bold header row (bg:color) and subsequent rows compare pricing scenarios (e.g. 'Scenario / Per-User Platforms / Sales-based Platforms / Knack') across N usage scenarios.",
+      "decision": "Model as a dedicated pricing-table block (header row + N data rows) rather than the generic repeating-cards block, since it is tabular pricing data, not visual cards. Rejected alternative: emit as a plain markdown table in default-content, losing the block's own styling/behavior.",
+      "rationale": "The header-row + data-row shape is structurally a comparison table, not a card grid; a dedicated block name better signals its authoring semantics to content editors.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C182 rc2c4c2 rows c1 (bg:color header) through c4 (scenario data)", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Operations-management page-5 variant adds a pricing-comparison table and a single testimonial quote not seen in the other page-5 clusters in this batch; otherwise follows the standard hero/features/FAQ pattern."
+}

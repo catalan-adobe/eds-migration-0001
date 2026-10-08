@@ -1,0 +1,50 @@
+{
+  "cluster_id": "C90",
+  "representative": "integration__integrations-bubble-knack.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc3"], "note": "'ProductResourcesCommunityExamp...' top nav" },
+    { "eds": "section", "style": "bg-color", "items": ["rc2c2c1c1c1(default-content hero heading 'Launch apps, not prototypes')", "rc2c2c1c1c2(block:stat-counters [3x1])", "rc2c2c1c1c3(block:logo-strip [7x1])", "rc2c2c1c2(underrendered zone, no text)"], "note": "hero: heading, stat counters, partner logo strip, trailing large empty bg zone" },
+    { "eds": "section", "style": "bg-color", "items": ["rc2c2c2"], "note": "'NATIVE MOBILE Take your ideas a...' heading/text panel" },
+    { "eds": "section", "items": ["rc2c2c3c1(block:testimonial-stat)", "rc2c2c3c2c1(default-content 'WHY BUBBLE?')", "rc2c2c3c2c2(block:step-list [5x1])"], "note": "testimonial stat + why-Bubble text + 5-step process list" },
+    { "eds": "section", "style": "bg-color", "items": ["rc2c2c4c2c1(default-content 'AI + NO-CODE How Bubble works')", "rc2c2c4c2c2(block:feature-cards, 3 items: Design/Data/Logic)"], "note": "how-it-works panel with 3-card feature grid" },
+    { "eds": "section", "style": "bg-color", "items": ["rc2c2c5"], "note": "'BUBBLE FOR EVERY BUSINESS Check...' heading/text panel" },
+    { "eds": "section", "items": ["rc2c2c6c1c1(default-content testimonial intro)", "rc2c2c6c1c1c2(block:testimonial-carousel)", "rc2c2c6c1c2(default-content 'Join millions of builders...')", "rc2c2c6c1c3(block:faq-accordion, 3 items)", "rc2c2c6c1c4(footer nav + copyright)"], "note": "testimonials, CTA text, FAQ accordion, footer links/copyright" }
+  ],
+  "blocks": ["stat-counters", "logo-strip", "testimonial-stat", "step-list", "feature-cards", "testimonial-carousel", "faq-accordion"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "faq-accordion-block",
+    "underrendered-list-zone",
+    "leaked-css-text-node",
+    "minimize-block-cells"
+  ],
+  "proposed_rules": [
+    {
+      "id": "off-domain-page-capture-scope-mismatch",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 90,
+      "trigger": "A page captured under a knack.com integration URL (e.g. /integrations/bubble-knack) renders content belonging entirely to a third-party marketing domain (here, bubble.io's own homepage: 'Bubble uses cookies', bubble.io nav, bubble.io footer) rather than any Knack-authored integration page.",
+      "decision": "Flag as an out-of-scope capture and exclude from the knack.com EDS migration inventory; do not model bubble.io's homepage as a Knack page section/block. Alternative rejected: mapping the captured structure as if it were the real Knack integration page (rejected because the content and domain chrome are demonstrably not Knack's, so any block inventory derived from it would import a competitor's marketing copy into the migration).",
+      "rationale": "The capture pipeline followed a redirect or loaded the wrong URL; treating third-party content as page content would corrupt the migration inventory.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C90 root contains 'Bubble uses cookies', bubble.io nav/footer, no Knack branding anywhere in the tree", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "duplicated-carousel-slides-in-capture",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "Two nodes with near-identical text and overlapping/duplicated bounding boxes (rc7/rc8, both 'Blown away by Bubble's AI assi...') appear promoted outside their DOM parent at nearly the same position.",
+      "decision": "Treat as clones of a single infinite-scroll/looping carousel, not as two distinct testimonials; collapse to one testimonial-carousel block instance.",
+      "rationale": "Carousel libraries often duplicate slide DOM nodes for seamless looping; counting both as unique content would double the row count.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C90 rc7 @-92,8872 and rc8 @1208,8872, both 1300x722 with identical leading text", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "This capture appears to be an off-domain page (bubble.io's own marketing homepage, not a Knack-authored integration page) — flagged as a pipeline capture-scope issue. Structural mapping above is provided for completeness but should not be imported into the Knack EDS migration without recapturing the correct URL."
+}

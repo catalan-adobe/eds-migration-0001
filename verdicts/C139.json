@@ -1,0 +1,62 @@
+{
+  "cluster_id": "C139",
+  "representative": "page-23__health-case-studies.json",
+  "sections": [
+    { "eds": "section", "style": "bg-image", "items": ["heading: See how real healthcare organizations..."], "note": "hero, image as section background" },
+    { "eds": "section", "items": ["block: case-study-cards (3x3 grid, 9 cards)"], "note": "rc2c2; preview text corrupted by a leaked CSS snippet, real card copy needs phase-2 recheck" },
+    { "eds": "default-content", "items": ["Built by teams, not developers..."], "note": "rc2c3 plain 2-col text banner" },
+    { "eds": "section", "style": "bg-color", "items": ["See how Knack Health could work..."], "note": "rc2c4 CTA banner on colored background" },
+    { "eds": "section", "items": ["Frequently Asked Questions heading", "block: faq-accordion (7 Q&A rows)"], "note": "rc2c5; one answer (rc4) promoted out to page root by overlay capture" },
+    { "eds": "nav", "items": ["footer tagline + pipe-separated link list (rc3)"], "note": "recurring site-wide footer, not page content" },
+    { "eds": "nav", "items": ["cookie consent overlay (rc5)"], "note": "global chrome, excluded" }
+  ],
+  "blocks": ["case-study-cards", "faq-accordion"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style",
+    "heading-then-component-same-section",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay",
+    "leaked-css-text-node"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-global-footer-cta",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A pair of [2x1] nodes at the very bottom of main content: first a marketing tagline (\"The best no-code platform for...\"), second a pipe-separated link list, appearing identically-structured across pages just before the cookie overlay.",
+      "decision": "Model as a global site footer fragment; exclude from the page's own block inventory.",
+      "rationale": "Mirrors the already-confirmed knack-announcement-bar treatment for header chrome; identical structural pair recurs at page bottom across unrelated templates.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C139 rc3 [2x1] tagline + [2x1] '| |' link row", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "faq-answer-promoted-to-root",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "An FAQ accordion's expanded answer ([region] node) appears as a page-root sibling instead of nested under its question row, overlapping the FAQ section's y-range.",
+      "decision": "Fold the promoted [region] back into the FAQ block as the answer cell for the nearest preceding unanswered question, rather than treating it as a separate section.",
+      "rationale": "Absolute/overlay positioning during capture separates FAQ answers from their DOM parent, splitting one logical accordion row across the tree.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C139 rc4 [region] @130,3375 overlapping rc2c5 FAQ range 2656-3445", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "grid-preview-text-leaked-css",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A repeating grid/card container ([NxM] tag) whose extracted preview text is raw CSS selector syntax rather than real card copy.",
+      "decision": "Still model the container as a repeating-cards block per the generic rule; do not exclude as noise. Flag for phase-2 targeted extraction since the preview text is unreliable.",
+      "rationale": "The text-preview extractor grabbed a leaked inline <style> node instead of the first real content node; the grid itself is legitimate content (case study cards).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C139 rc2c2 [3x3] preview '.elementor-21255 .elementor-el...'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Standard health-landing template: hero, case-study card grid, CTA banners, FAQ accordion, global footer/cookie chrome. Two capture artifacts found (leaked CSS text, promoted FAQ answer)."
+}

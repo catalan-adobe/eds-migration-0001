@@ -1,0 +1,52 @@
+{
+  "cluster_id": "C144",
+  "representative": "page-28__about.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions / Business Need / Work On... nav bar (rc1c1)"], "note": "global site header, excluded" },
+    { "eds": "section", "style": "bg-image", "items": ["About heading + intro copy"], "note": "rc1c2c1 hero" },
+    { "eds": "section", "items": ["is trusted by thousands... text", "block: customer-logos (5x2, 10 logos)"], "note": "rc1c2c2" },
+    { "eds": "section", "style": "bg-gradient", "items": ["block: stats (3x1, 3 items)"], "note": "rc1c2c3, 100,000+ Users..." },
+    { "eds": "section", "items": ["block: feature-cards (3x2, 6 items)"], "note": "rc1c2c4, Deliver Customer Trust..." },
+    { "eds": "section", "style": "bg-gradient", "items": ["Our team intro copy", "block: team-testimonial-carousel (4 rows)"], "note": "rc1c2c5; decorative photo-mosaic grids [99x90]/[8x47] are noise; carousel's other 3 panels (rc3, rc4, rc5) rendered off-screen to the right" },
+    { "eds": "section", "items": ["The History of Knack heading", "block: timeline-cards (3x3, 9 items)"], "note": "rc1c2c6" },
+    { "eds": "default-content", "items": ["Work at Knack Join our remote team..."], "note": "rc1c2c7 CTA banner" },
+    { "eds": "nav", "items": ["footer tagline + link row (rc2)"], "note": "global footer" },
+    { "eds": "nav", "items": ["cookie overlay (rc6/rc7)"], "note": "global chrome, excluded" }
+  ],
+  "blocks": ["customer-logos", "stats", "feature-cards", "team-testimonial-carousel", "timeline-cards"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style",
+    "decorative-graphics-are-noise",
+    "heading-then-component-same-section",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "hidden-tab-panel-promoted-offscreen",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "Inactive tab/carousel panels rendered off-canvas (large positive/negative x-offset) rather than display:none, causing capture to promote them to page root as separate [tabpanel] nodes sharing one [tablist].",
+      "decision": "Treat all [tabpanel] siblings tied to the same [tablist] as ONE carousel block with one row per panel, not as separate sections.",
+      "rationale": "The visible panel and off-screen panels are the same reusable testimonial carousel; splitting them into separate sections would duplicate one logical component.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C144 rc3/rc4/rc5 [tabpanel][2x1] at x=1140/2065/2990, paired with rc1c2c5c4 [tablist][4x1] pagination '1234'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-global-footer-cta",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "Pair of [2x1] nodes at bottom of main content: tagline + pipe-separated link list.",
+      "decision": "Model as global site footer fragment; exclude from page block inventory.",
+      "rationale": "Recurs identically across unrelated templates.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C144 rc2c1 [2x1] tagline + rc2c2 [2x1] '| |'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "About page: hero, logo grid, stats, feature grid, team section with decorative mosaic background and an off-screen-promoted testimonial carousel, history timeline, CTA."
+}

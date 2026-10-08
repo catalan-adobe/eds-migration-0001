@@ -1,0 +1,456 @@
+{
+  "pages_grounded": 44,
+  "status_counts": {
+    "grounded": 21,
+    "partial": 4,
+    "needs-richer-probe": 1
+  },
+  "blocks": [
+    {
+      "block": "faq-accordion",
+      "status": "grounded",
+      "shape": "accordion",
+      "builders": [
+        "elementor",
+        "wp-custom"
+      ],
+      "detector_count": 2,
+      "detectors": [
+        {
+          "builder": "elementor",
+          "anchor": ".e-n-accordion > details.e-n-accordion-item",
+          "pages": 18
+        },
+        {
+          "builder": "wp-custom",
+          "anchor": ".accordion > .accordion-item.faq-card",
+          "pages": 10
+        }
+      ]
+    },
+    {
+      "block": "cards",
+      "status": "grounded",
+      "shape": "grid",
+      "builders": [
+        "wp-custom"
+      ],
+      "detector_count": 2,
+      "detectors": [
+        {
+          "builder": "wp-custom",
+          "anchor": ".row.solution-lists > [class*=col-]",
+          "pages": 1
+        },
+        {
+          "builder": "wp-custom",
+          "anchor": ".row > [class*=col-] (generic Bootstrap grid)",
+          "pages": 22
+        }
+      ]
+    },
+    {
+      "block": "related-content",
+      "status": "grounded",
+      "shape": "grid",
+      "builders": [
+        "wp-custom"
+      ],
+      "detector_count": 2,
+      "detectors": [
+        {
+          "builder": "wp-custom",
+          "anchor": ".row.case-card-lists > [class*=col-]",
+          "pages": 16
+        },
+        {
+          "builder": "wp-custom",
+          "anchor": ".row.additional-recent-post-lists > [class*=col-]",
+          "pages": 7
+        }
+      ]
+    },
+    {
+      "block": "feature-grid",
+      "status": "grounded",
+      "shape": "grid",
+      "builders": [
+        "wp-custom"
+      ],
+      "detector_count": 1,
+      "detectors": [
+        {
+          "builder": "wp-custom",
+          "anchor": ".row.featured-call-lists > [class*=col-]",
+          "pages": 7
+        }
+      ]
+    },
+    {
+      "block": "listing",
+      "status": "grounded",
+      "shape": "grid",
+      "builders": [
+        "wp-custom"
+      ],
+      "detector_count": 2,
+      "detectors": [
+        {
+          "builder": "wp-custom",
+          "anchor": ".row.intergration-library > [class*=col-]",
+          "pages": 5
+        },
+        {
+          "builder": "wp-custom",
+          "anchor": ".row.integration-post-listing > [class*=col-]",
+          "pages": 1
+        }
+      ]
+    },
+    {
+      "block": "templates-gallery",
+      "status": "grounded",
+      "shape": "grid",
+      "builders": [
+        "wp-custom"
+      ],
+      "detector_count": 1,
+      "detectors": [
+        {
+          "builder": "wp-custom",
+          "anchor": ".row.template-post-listing > [class*=col-]",
+          "pages": 1
+        }
+      ]
+    },
+    {
+      "block": "carousel",
+      "status": "grounded",
+      "shape": "carousel",
+      "builders": [
+        "elementor",
+        "wp-custom"
+      ],
+      "detector_count": 3,
+      "detectors": [
+        {
+          "builder": "wp-custom",
+          "anchor": ".slick-list > .slick-slide",
+          "pages": 10
+        },
+        {
+          "builder": "wp-custom",
+          "anchor": ".splide__list > li.splide__slide",
+          "pages": 6
+        },
+        {
+          "builder": "elementor",
+          "anchor": ".swiper-wrapper > .swiper-slide",
+          "pages": 3
+        }
+      ]
+    },
+    {
+      "block": "presentation-list-is-accordion",
+      "status": "grounded",
+      "shape": "accordion",
+      "builders": [],
+      "detector_count": 1,
+      "detectors": [
+        {
+          "builder": "both",
+          "anchor": "same as faq-accordion \u2014 [role=presentation]/[details] is the accordion",
+          "pages": 28
+        }
+      ]
+    },
+    {
+      "block": "logos",
+      "status": "grounded",
+      "shape": "carousel",
+      "builders": [
+        "wp-custom"
+      ],
+      "detector_count": 1,
+      "detectors": [
+        {
+          "builder": "wp-custom",
+          "anchor": ".splide__list.no-customer-slider > li.splide__slide (customer logo slider)",
+          "pages": 6
+        }
+      ]
+    },
+    {
+      "block": "trust-badges",
+      "status": "grounded",
+      "shape": "strip",
+      "builders": [
+        "wp-custom"
+      ],
+      "detector_count": 1,
+      "detectors": [
+        {
+          "builder": "wp-custom",
+          "anchor": ".g2-rating-right .logos-listing (rating/badge strip \u2014 DISTINCT from logos)",
+          "pages": 6
+        }
+      ]
+    },
+    {
+      "block": "comparison-table",
+      "status": "grounded",
+      "shape": "div-grid (NOT html table)",
+      "builders": [],
+      "detector_count": 1,
+      "detectors": [
+        {
+          "builder": "both",
+          "anchor": "div/column comparison \u2014 the ONLY <table> elements on the site are cookie-consent noise; comparisons are .row/.col or Elementor columns",
+          "pages": 2
+        }
+      ]
+    },
+    {
+      "block": "pricing-table",
+      "status": "grounded",
+      "shape": "div-grid (NOT html table)",
+      "builders": [
+        "wp-custom"
+      ],
+      "detector_count": 1,
+      "detectors": [
+        {
+          "builder": "wp-custom",
+          "anchor": ".row pricing/plan rows (div-based, no <table>)",
+          "pages": 2
+        }
+      ]
+    },
+    {
+      "block": "case-study-callout",
+      "status": "grounded",
+      "shape": "grid",
+      "builders": [
+        "wp-custom"
+      ],
+      "detector_count": 1,
+      "detectors": [
+        {
+          "builder": "wp-custom",
+          "anchor": ".row.case-card-lists > [class*=col-] (shared with related-content)",
+          "pages": 16
+        }
+      ]
+    },
+    {
+      "block": "hero",
+      "status": "grounded",
+      "shape": "banner",
+      "builders": [
+        "elementor",
+        "wp-custom"
+      ],
+      "detector_count": 2,
+      "detectors": [
+        {
+          "builder": "wp-custom",
+          "anchor": ".page-banner-content-box",
+          "pages": 7
+        },
+        {
+          "builder": "elementor",
+          "anchor": ".elementor-element .health-hero-heading",
+          "pages": 9
+        }
+      ]
+    },
+    {
+      "block": "feature-split",
+      "status": "grounded",
+      "shape": "2-col row",
+      "builders": [
+        "wp-custom"
+      ],
+      "detector_count": 1,
+      "detectors": [
+        {
+          "builder": "wp-custom",
+          "anchor": ".row.align-items-center.directionRow > 2x[class*=col-]",
+          "pages": 8
+        }
+      ]
+    },
+    {
+      "block": "video-embed",
+      "status": "grounded",
+      "shape": "iframe",
+      "builders": [],
+      "detector_count": 1,
+      "detectors": [
+        {
+          "builder": "both",
+          "anchor": "iframe[src*=youtube.com] (also vimeo/wistia)",
+          "pages": 6
+        }
+      ]
+    },
+    {
+      "block": "form",
+      "status": "grounded",
+      "shape": "form",
+      "builders": [
+        "embed",
+        "wp-custom"
+      ],
+      "detector_count": 2,
+      "detectors": [
+        {
+          "builder": "embed",
+          "anchor": "form.hs-form-* (HubSpot embed, ~8 fields)",
+          "pages": 1
+        },
+        {
+          "builder": "wp-custom",
+          "anchor": "form.prompt-form (AI prompt box, 1 field)",
+          "pages": 3
+        }
+      ]
+    },
+    {
+      "block": "tabs",
+      "status": "grounded",
+      "shape": "tablist",
+      "builders": [
+        "elementor",
+        "wp-custom"
+      ],
+      "detector_count": 2,
+      "detectors": [
+        {
+          "builder": "elementor",
+          "anchor": ".e-n-tabs (.e-n-tabs-heading > [role=tab])",
+          "pages": 1
+        },
+        {
+          "builder": "wp-custom",
+          "anchor": "[role=tablist] hero tab switcher (app-category)",
+          "pages": 1
+        }
+      ]
+    },
+    {
+      "block": "nav",
+      "status": "grounded",
+      "shape": "chrome",
+      "builders": [],
+      "detector_count": 1,
+      "detectors": [
+        {
+          "builder": "both",
+          "anchor": "global <nav> \u2014 chrome, excluded from content (nav-chrome rule)",
+          "pages": 44
+        }
+      ]
+    },
+    {
+      "block": "footer",
+      "status": "grounded",
+      "shape": "chrome",
+      "builders": [],
+      "detector_count": 1,
+      "detectors": [
+        {
+          "builder": "both",
+          "anchor": "global <footer> \u2014 chrome (footer-cta-chrome rule)",
+          "pages": 44
+        }
+      ]
+    },
+    {
+      "block": "image",
+      "status": "grounded",
+      "shape": "inline media",
+      "builders": [],
+      "detector_count": 1,
+      "detectors": [
+        {
+          "builder": "both",
+          "anchor": "content <img>/<figure> in flow \u2014 default EDS image handling",
+          "pages": 44
+        }
+      ]
+    },
+    {
+      "block": "testimonial",
+      "status": "partial",
+      "shape": "carousel/grid",
+      "builders": [
+        "wp-custom"
+      ],
+      "detector_count": 1,
+      "detectors": [
+        {
+          "builder": "wp-custom",
+          "anchor": "quote in .row grid or splide slider \u2014 varies; not uniquely isolated by probe",
+          "pages": 0
+        }
+      ]
+    },
+    {
+      "block": "steps",
+      "status": "partial",
+      "shape": "grid",
+      "builders": [
+        "wp-custom"
+      ],
+      "detector_count": 1,
+      "detectors": [
+        {
+          "builder": "wp-custom",
+          "anchor": "numbered .row > .col grid \u2014 same structure as cards, content-differentiated",
+          "pages": 0
+        }
+      ]
+    },
+    {
+      "block": "steps-triggers-actions",
+      "status": "partial",
+      "shape": "grid/list",
+      "builders": [
+        "wp-custom"
+      ],
+      "detector_count": 1,
+      "detectors": [
+        {
+          "builder": "wp-custom",
+          "anchor": "trigger/action .row grid \u2014 content-differentiated variant of cards",
+          "pages": 0
+        }
+      ]
+    },
+    {
+      "block": "cta-banner",
+      "status": "partial",
+      "shape": "banner",
+      "builders": [
+        "wp-custom"
+      ],
+      "detector_count": 1,
+      "detectors": [
+        {
+          "builder": "wp-custom",
+          "anchor": ".row.banner-direction 2-col band (candidate) \u2014 needs content check vs feature-split",
+          "pages": 4
+        }
+      ]
+    },
+    {
+      "block": "stats",
+      "status": "needs-richer-probe",
+      "shape": "counters",
+      "builders": [],
+      "detector_count": 0,
+      "detectors": []
+    }
+  ]
+}

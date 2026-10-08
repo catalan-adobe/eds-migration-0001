@@ -1,0 +1,25 @@
+{
+  "cluster_id": "C12",
+  "representative": "case-study-category__case-study-category-features-field-services-construction.json",
+  "sections": [
+    { "eds": "nav", "items": ["site navigation"], "note": "global header" },
+    { "eds": "section", "items": ["default-content: H1 category title"], "note": "'Field Services & Construction'" },
+    { "eds": "section", "style": "gradient", "items": ["block: filtered-list (likely)"], "note": "[bg:gradient] zone, 507px, content under-rendered at minWidth=900 — needs Phase 2 DOM extraction to confirm" }
+  ],
+  "blocks": ["filtered-list"],
+  "covered_by_rules": ["background-container-is-section-style"],
+  "proposed_rules": [
+    {
+      "id": "underrendered-list-zone",
+      "scope": "generic",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "A category/listing page whose main zone is nearly empty in the visual tree (a single large bg zone with little text), indicating a card/list grid that fell below the minWidth capture threshold or loads lazily.",
+      "decision": "Flag for Phase 2 targeted DOM extraction rather than concluding the page is empty. The zone is a listing block (cards/tiles), not a section background alone.",
+      "rationale": "minWidth capture collapses fine-grained list items; treating the zone as empty would drop the page's primary content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C12 rc1c2c2 [bg:gradient] 1280x507 with no child text", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "solution-category + case-study-category cluster together correctly — same 'category landing' EDS structure. The page-4 straggler should be spot-checked. Primary content under-rendered; do not treat as a thin/empty page."
+}

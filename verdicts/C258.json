@@ -1,0 +1,23 @@
+{
+  "cluster_id": "C258",
+  "representative": "use-case__use-cases-invoice-tracking-system.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions", "Business Need", "Work O..."], "note": "top nav bar rc1c1" },
+    { "eds": "section", "style": "hero-bg-image", "items": ["heading/text: AP Invoice Tracking System & I..."], "note": "rc1c2c1c1 [bg:image] full-bleed background image behind hero copy" },
+    { "eds": "default-content", "items": ["Now you can build a complete w..."], "note": "rc1c2c1c2c1c1 [2x2] intro heading (rc1c2c1c2c1c2 blank 26h spacer is noise)" },
+    { "eds": "default-content", "style": "bg-gradient", "items": ["Who Needs Invoice Intake & AP ..."], "note": "rc1c2c1c2c2c1" },
+    { "eds": "default-content", "style": "bg-gradient", "items": ["What Can the Orders & Invoices..."], "note": "rc1c2c1c2c2c2" },
+    { "eds": "default-content", "style": "bg-gradient", "items": ["Problems that AP Invoice Track..."], "note": "rc1c2c1c2c2c3" },
+    { "eds": "default-content", "style": "bg-gradient", "items": ["Why Choose Knack for Your AP I..."], "note": "rc1c2c1c2c2c4" },
+    { "eds": "default-content", "style": "bg-gradient", "items": ["Key Features of Knack's Invoic..."], "note": "rc1c2c1c2c2c5" },
+    { "eds": "default-content", "style": "bg-gradient", "items": ["Upgrade to an Invoice App with..."], "note": "rc1c2c1c2c2c6" },
+    { "eds": "default-content", "style": "bg-gradient", "items": ["Getting Started with Knack's I..."], "note": "rc1c2c1c2c2c7" },
+    { "eds": "section", "style": "faq", "items": ["heading: Invoice Tracking App FAQs", "faq-accordion block (8 Q&A rows, mostly collapsed)"], "note": "rc1c2c1c3" },
+    { "eds": "section", "style": "bg-gradient", "items": [], "note": "rc1c2c2 blank 1280x493 zone before footer, no captured content \u2014 decorative" },
+    { "eds": "section", "style": "footer", "items": ["tagline: The best no-code platform for...", "footer link row"], "note": "rc2 footer" }
+  ],
+  "blocks": ["faq-accordion"],
+  "covered_by_rules": ["full-width-image-behind-text-is-section-bg", "background-container-is-section-style", "heading-then-component-same-section", "faq-accordion-block", "decorative-graphics-are-noise", "knack-cookie-notice-overlay"],
+  "proposed_rules": [],
+  "notes": "Same use-case template as C257 but longer: seven stacked gradient-background copy sections instead of four, and an 8-row FAQ. No new patterns beyond confirmed rules."
+}

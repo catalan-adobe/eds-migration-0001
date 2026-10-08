@@ -1,0 +1,3387 @@
+{
+  "verdicts_processed": 228,
+  "block_inventory": {
+    "accordion": [
+      "C163",
+      "C164",
+      "C165",
+      "C166",
+      "C167",
+      "C170",
+      "C179",
+      "C180",
+      "C181",
+      "C182",
+      "C183",
+      "C184",
+      "C185",
+      "C186",
+      "C235",
+      "C236",
+      "C237",
+      "C238",
+      "C239",
+      "C240",
+      "C241",
+      "C242",
+      "C243",
+      "C244",
+      "C245",
+      "C246",
+      "C247",
+      "C248",
+      "C249",
+      "C250",
+      "C28",
+      "C45"
+    ],
+    "ai-prompt-box": [
+      "C119",
+      "C120"
+    ],
+    "app-demo-embed": [
+      "C63"
+    ],
+    "audience-segments": [
+      "C115"
+    ],
+    "automation-cards": [
+      "C100",
+      "C101",
+      "C102",
+      "C103",
+      "C104",
+      "C105"
+    ],
+    "automation-templates": [
+      "C95",
+      "C96",
+      "C97",
+      "C98",
+      "C99"
+    ],
+    "automation-use-cases": [
+      "C211",
+      "C212",
+      "C213",
+      "C214",
+      "C215",
+      "C216",
+      "C217",
+      "C218"
+    ],
+    "badge-row": [
+      "C157"
+    ],
+    "benefit-cards": [
+      "C52",
+      "C53",
+      "C54",
+      "C55"
+    ],
+    "benefit-grid": [
+      "C138"
+    ],
+    "benefits-grid": [
+      "C117"
+    ],
+    "blog-post-grid": [
+      "C49",
+      "C50"
+    ],
+    "blog-teaser": [
+      "C60",
+      "C61",
+      "C65",
+      "C67"
+    ],
+    "callout-cards": [
+      "C165"
+    ],
+    "capabilities-list": [
+      "C117"
+    ],
+    "card-grid": [
+      "C155",
+      "C156",
+      "C157",
+      "C158",
+      "C41",
+      "C68",
+      "C84",
+      "C85",
+      "C87"
+    ],
+    "card-stack": [
+      "C92"
+    ],
+    "cards": [
+      "C109",
+      "C115",
+      "C147",
+      "C148",
+      "C149",
+      "C150",
+      "C153",
+      "C154",
+      "C163",
+      "C167",
+      "C170",
+      "C171",
+      "C172",
+      "C173",
+      "C177",
+      "C178",
+      "C179",
+      "C180",
+      "C181",
+      "C182",
+      "C183",
+      "C184",
+      "C185",
+      "C186",
+      "C195",
+      "C196",
+      "C197",
+      "C198",
+      "C199",
+      "C200",
+      "C201",
+      "C202",
+      "C235",
+      "C236",
+      "C237",
+      "C238",
+      "C239",
+      "C240",
+      "C242",
+      "C28"
+    ],
+    "case-study-callout": [
+      "C123"
+    ],
+    "case-study-card-grid": [
+      "C161"
+    ],
+    "case-study-cards": [
+      "C139"
+    ],
+    "case-study-highlight": [
+      "C127"
+    ],
+    "case-study-sidebar": [
+      "C42"
+    ],
+    "case-study-spotlights": [
+      "C141"
+    ],
+    "category-filter": [
+      "C174",
+      "C88"
+    ],
+    "columns": [
+      "C173",
+      "C235",
+      "C236",
+      "C237",
+      "C238",
+      "C239",
+      "C240",
+      "C241",
+      "C242"
+    ],
+    "commission-tiers": [
+      "C194"
+    ],
+    "comparison-highlights": [
+      "C187",
+      "C188",
+      "C189"
+    ],
+    "comparison-list": [
+      "C246"
+    ],
+    "comparison-matrix": [
+      "C190"
+    ],
+    "comparison-table": [
+      "C124",
+      "C125",
+      "C126",
+      "C143",
+      "C184",
+      "C185",
+      "C186",
+      "C187",
+      "C188",
+      "C189",
+      "C196",
+      "C199",
+      "C200",
+      "C202",
+      "C236",
+      "C244",
+      "C252",
+      "C65"
+    ],
+    "competitor-comparison-cards": [
+      "C143"
+    ],
+    "compliance badges": [
+      "C204",
+      "C205",
+      "C206",
+      "C207",
+      "C208",
+      "C209",
+      "C210"
+    ],
+    "compliance-badges": [
+      "C211",
+      "C212",
+      "C213",
+      "C214",
+      "C215",
+      "C216",
+      "C217",
+      "C218",
+      "C219",
+      "C220",
+      "C221",
+      "C222",
+      "C223",
+      "C224",
+      "C225",
+      "C226",
+      "C227",
+      "C228",
+      "C229",
+      "C230",
+      "C231",
+      "C232"
+    ],
+    "compliance-features": [
+      "C121"
+    ],
+    "contact-form": [
+      "C159"
+    ],
+    "cta": [
+      "C235"
+    ],
+    "cta-banner": [
+      "C121",
+      "C122",
+      "C123",
+      "C147",
+      "C148",
+      "C149",
+      "C150",
+      "C151",
+      "C152",
+      "C153",
+      "C154",
+      "C171",
+      "C172",
+      "C177",
+      "C178",
+      "C252",
+      "C253",
+      "C255",
+      "C256",
+      "C44",
+      "C94"
+    ],
+    "customer-logos": [
+      "C144"
+    ],
+    "customer-testimonial-carousel": [
+      "C145"
+    ],
+    "data-table": [
+      "C64"
+    ],
+    "directory-filter": [
+      "C142"
+    ],
+    "ebook-card-grid": [
+      "C88"
+    ],
+    "embedded-video": [
+      "C136"
+    ],
+    "event-card-grid": [
+      "C93"
+    ],
+    "expert-directory-cards": [
+      "C142"
+    ],
+    "faq accordion": [
+      "C203",
+      "C204",
+      "C205",
+      "C206",
+      "C207",
+      "C208",
+      "C209",
+      "C210"
+    ],
+    "faq-accordion": [
+      "C109",
+      "C110",
+      "C111",
+      "C113",
+      "C114",
+      "C115",
+      "C116",
+      "C117",
+      "C121",
+      "C122",
+      "C123",
+      "C124",
+      "C125",
+      "C126",
+      "C127",
+      "C128",
+      "C129",
+      "C130",
+      "C131",
+      "C134",
+      "C135",
+      "C136",
+      "C139",
+      "C140",
+      "C141",
+      "C145",
+      "C146",
+      "C147",
+      "C148",
+      "C149",
+      "C150",
+      "C151",
+      "C152",
+      "C153",
+      "C154",
+      "C155",
+      "C156",
+      "C157",
+      "C162",
+      "C171",
+      "C172",
+      "C173",
+      "C177",
+      "C178",
+      "C187",
+      "C188",
+      "C189",
+      "C190",
+      "C191",
+      "C192",
+      "C193",
+      "C194",
+      "C195",
+      "C197",
+      "C198",
+      "C200",
+      "C201",
+      "C202",
+      "C211",
+      "C212",
+      "C213",
+      "C214",
+      "C215",
+      "C216",
+      "C217",
+      "C218",
+      "C219",
+      "C220",
+      "C221",
+      "C222",
+      "C223",
+      "C224",
+      "C225",
+      "C226",
+      "C227",
+      "C228",
+      "C229",
+      "C230",
+      "C231",
+      "C232",
+      "C233",
+      "C251",
+      "C252",
+      "C253",
+      "C254",
+      "C255",
+      "C256",
+      "C257",
+      "C258",
+      "C259",
+      "C38",
+      "C39",
+      "C48",
+      "C62",
+      "C65",
+      "C66",
+      "C67",
+      "C68",
+      "C69",
+      "C70",
+      "C71",
+      "C72",
+      "C89",
+      "C90",
+      "C94"
+    ],
+    "faq-grid": [
+      "C234"
+    ],
+    "feature": [
+      "C28"
+    ],
+    "feature cards": [
+      "C203",
+      "C204",
+      "C205",
+      "C206",
+      "C207",
+      "C208",
+      "C209",
+      "C210"
+    ],
+    "feature-banner": [
+      "C118",
+      "C119",
+      "C120",
+      "C121",
+      "C122",
+      "C123"
+    ],
+    "feature-callouts": [
+      "C111"
+    ],
+    "feature-card-grid": [
+      "C70",
+      "C71",
+      "C94"
+    ],
+    "feature-cards": [
+      "C140",
+      "C141",
+      "C144",
+      "C243",
+      "C244",
+      "C246",
+      "C247",
+      "C248",
+      "C249",
+      "C250",
+      "C251",
+      "C252",
+      "C253",
+      "C254",
+      "C255",
+      "C60",
+      "C61",
+      "C90"
+    ],
+    "feature-comparison": [
+      "C227",
+      "C228",
+      "C229",
+      "C230",
+      "C231",
+      "C232"
+    ],
+    "feature-grid": [
+      "C116",
+      "C118",
+      "C119",
+      "C120",
+      "C121",
+      "C123",
+      "C124",
+      "C125",
+      "C126",
+      "C127",
+      "C128",
+      "C129",
+      "C130",
+      "C131",
+      "C134",
+      "C191",
+      "C227",
+      "C228",
+      "C229",
+      "C230",
+      "C231",
+      "C232",
+      "C37",
+      "C38",
+      "C43",
+      "C44",
+      "C48",
+      "C77",
+      "C78",
+      "C79",
+      "C80",
+      "C81",
+      "C82",
+      "C83"
+    ],
+    "feature-highlight": [
+      "C100",
+      "C101",
+      "C102",
+      "C103",
+      "C104",
+      "C105",
+      "C148",
+      "C52",
+      "C53",
+      "C54",
+      "C55",
+      "C56",
+      "C57",
+      "C58",
+      "C59",
+      "C95",
+      "C96",
+      "C97",
+      "C98",
+      "C99"
+    ],
+    "feature-list": [
+      "C110",
+      "C111",
+      "C115",
+      "C122",
+      "C123",
+      "C129",
+      "C137",
+      "C233",
+      "C84",
+      "C85",
+      "C86",
+      "C87"
+    ],
+    "feature-row": [
+      "C45",
+      "C48"
+    ],
+    "feature-split": [
+      "C116",
+      "C177",
+      "C178"
+    ],
+    "filter-bar": [
+      "C41"
+    ],
+    "filtered-list": [
+      "C12"
+    ],
+    "footer": [
+      "C163",
+      "C164",
+      "C165",
+      "C166",
+      "C167",
+      "C168",
+      "C169",
+      "C170"
+    ],
+    "footer-cta": [
+      "C06",
+      "C36"
+    ],
+    "footer-nav": [
+      "C92",
+      "C93",
+      "C94"
+    ],
+    "footer-quote": [
+      "C95",
+      "C96",
+      "C97",
+      "C98",
+      "C99"
+    ],
+    "form": [
+      "C166",
+      "C180"
+    ],
+    "get-started-cta-banner": [
+      "C77",
+      "C78",
+      "C79",
+      "C80",
+      "C81",
+      "C82",
+      "C83"
+    ],
+    "hero": [
+      "C147",
+      "C148",
+      "C149",
+      "C150",
+      "C151",
+      "C152",
+      "C153",
+      "C154",
+      "C227",
+      "C228",
+      "C229",
+      "C230",
+      "C231",
+      "C232",
+      "C233",
+      "C28",
+      "C44",
+      "C45",
+      "C48",
+      "C92",
+      "C94"
+    ],
+    "hero-image": [
+      "C171",
+      "C172",
+      "C177",
+      "C178"
+    ],
+    "how-it-works": [
+      "C118",
+      "C119",
+      "C120"
+    ],
+    "how-it-works-media": [
+      "C101",
+      "C102",
+      "C103",
+      "C105"
+    ],
+    "hubspot-form-embed": [
+      "C116"
+    ],
+    "icon-list": [
+      "C112"
+    ],
+    "icon-row": [
+      "C156"
+    ],
+    "icon-strip": [
+      "C116"
+    ],
+    "image": [
+      "C240",
+      "C241",
+      "C242"
+    ],
+    "import-banner": [
+      "C64"
+    ],
+    "integration-cards": [
+      "C129"
+    ],
+    "integration-directory-list": [
+      "C133"
+    ],
+    "integration-feature-row": [
+      "C89"
+    ],
+    "integration-logo-grid": [
+      "C233"
+    ],
+    "integration-table": [
+      "C44"
+    ],
+    "integrations-grid": [
+      "C117",
+      "C171",
+      "C177",
+      "C178"
+    ],
+    "integrations-list": [
+      "C172"
+    ],
+    "interactive-demo": [
+      "C252"
+    ],
+    "key-features": [
+      "C251",
+      "C252",
+      "C253",
+      "C254",
+      "C255",
+      "C256"
+    ],
+    "legal-nav": [
+      "C46",
+      "C47"
+    ],
+    "link-list": [
+      "C93"
+    ],
+    "listing-block": [
+      "C233"
+    ],
+    "login-cta": [
+      "C194"
+    ],
+    "logo strip": [
+      "C204",
+      "C205",
+      "C206",
+      "C207",
+      "C208",
+      "C209",
+      "C210"
+    ],
+    "logo-grid": [
+      "C137",
+      "C201"
+    ],
+    "logo-strip": [
+      "C130",
+      "C131",
+      "C165",
+      "C28",
+      "C66",
+      "C67",
+      "C90",
+      "C92",
+      "C93"
+    ],
+    "logos": [
+      "C179",
+      "C180",
+      "C181",
+      "C182",
+      "C183",
+      "C236",
+      "C237",
+      "C238",
+      "C239",
+      "C241",
+      "C242"
+    ],
+    "marquee-banner": [
+      "C130"
+    ],
+    "nav": [
+      "C163",
+      "C164",
+      "C165",
+      "C166",
+      "C167",
+      "C168",
+      "C169",
+      "C170"
+    ],
+    "newsletter-cards": [
+      "C107"
+    ],
+    "numbered-benefits-grid": [
+      "C77",
+      "C78",
+      "C79",
+      "C80",
+      "C81",
+      "C82",
+      "C83"
+    ],
+    "numbered-feature-grid": [
+      "C70",
+      "C71"
+    ],
+    "numbered-features": [
+      "C28"
+    ],
+    "numbered-reasons-grid": [
+      "C135",
+      "C137"
+    ],
+    "numbered-steps": [
+      "C193"
+    ],
+    "plan-feature-comparison": [
+      "C234"
+    ],
+    "portal-cards": [
+      "C127"
+    ],
+    "pricing-cards": [
+      "C127",
+      "C129",
+      "C140"
+    ],
+    "pricing-plan-cards": [
+      "C234"
+    ],
+    "pricing-table": [
+      "C118",
+      "C119",
+      "C120",
+      "C165",
+      "C182",
+      "C198"
+    ],
+    "pricing-tiers": [
+      "C121"
+    ],
+    "process-steps": [
+      "C115",
+      "C137"
+    ],
+    "product-picker": [
+      "C131"
+    ],
+    "promo-banner": [
+      "C92"
+    ],
+    "promo-card": [
+      "C44"
+    ],
+    "reason-cards": [
+      "C143",
+      "C145"
+    ],
+    "reasons-cards": [
+      "C65",
+      "C67"
+    ],
+    "recipe-cards": [
+      "C56",
+      "C57",
+      "C58",
+      "C59"
+    ],
+    "related-article-card": [
+      "C100",
+      "C101",
+      "C104",
+      "C105"
+    ],
+    "related-articles": [
+      "C56",
+      "C57",
+      "C58",
+      "C59"
+    ],
+    "related-cards": [
+      "C38"
+    ],
+    "related-content": [
+      "C95",
+      "C96",
+      "C97",
+      "C98",
+      "C99"
+    ],
+    "related-links": [
+      "C190"
+    ],
+    "related-templates": [
+      "C251",
+      "C252",
+      "C253",
+      "C254",
+      "C255",
+      "C256"
+    ],
+    "resource-card-grid": [
+      "C69"
+    ],
+    "resource-cards": [
+      "C194",
+      "C243",
+      "C245",
+      "C246",
+      "C247",
+      "C248",
+      "C249",
+      "C28",
+      "C48"
+    ],
+    "scheduler-embed": [
+      "C176"
+    ],
+    "screenshot-carousel": [
+      "C252",
+      "C253",
+      "C254",
+      "C255",
+      "C256"
+    ],
+    "screenshot-showcase": [
+      "C173"
+    ],
+    "screenshot-visual": [
+      "C68",
+      "C70"
+    ],
+    "showcase": [
+      "C60",
+      "C61"
+    ],
+    "stat-counters": [
+      "C90"
+    ],
+    "stats": [
+      "C144"
+    ],
+    "step-list": [
+      "C90"
+    ],
+    "steps": [
+      "C100",
+      "C101",
+      "C102",
+      "C103",
+      "C104",
+      "C105",
+      "C171",
+      "C172",
+      "C177",
+      "C178",
+      "C181",
+      "C182",
+      "C44",
+      "C56",
+      "C57",
+      "C58",
+      "C59",
+      "C60",
+      "C61",
+      "C95",
+      "C96",
+      "C97",
+      "C98",
+      "C99"
+    ],
+    "tabs": [
+      "C06",
+      "C164"
+    ],
+    "task-management-card-grid": [
+      "C69"
+    ],
+    "team-testimonial-carousel": [
+      "C144"
+    ],
+    "template-card-grid": [
+      "C160"
+    ],
+    "template-carousel": [
+      "C67"
+    ],
+    "template-download-cta": [
+      "C52",
+      "C53",
+      "C54",
+      "C55"
+    ],
+    "template-gallery": [
+      "C132",
+      "C69"
+    ],
+    "template-preview": [
+      "C37",
+      "C38",
+      "C43"
+    ],
+    "template-preview-install-cta": [
+      "C77",
+      "C78",
+      "C79",
+      "C80",
+      "C81",
+      "C82",
+      "C83"
+    ],
+    "template-preview-tabs": [
+      "C71"
+    ],
+    "template-showcase": [
+      "C48"
+    ],
+    "templates-carousel": [
+      "C110",
+      "C135",
+      "C28"
+    ],
+    "templates-grid": [
+      "C135"
+    ],
+    "testimonial": [
+      "C121",
+      "C122",
+      "C123",
+      "C124",
+      "C125",
+      "C126",
+      "C127",
+      "C129",
+      "C171",
+      "C172",
+      "C177",
+      "C178",
+      "C182",
+      "C187",
+      "C188",
+      "C189",
+      "C190",
+      "C191",
+      "C249",
+      "C48",
+      "C67",
+      "C94"
+    ],
+    "testimonial-carousel": [
+      "C118",
+      "C119",
+      "C120",
+      "C90"
+    ],
+    "testimonial-quote": [
+      "C137",
+      "C138"
+    ],
+    "testimonial-stat": [
+      "C90"
+    ],
+    "testimonials": [
+      "C140",
+      "C141",
+      "C143",
+      "C200",
+      "C202"
+    ],
+    "timeline-cards": [
+      "C144"
+    ],
+    "trigger-action-cards": [
+      "C56",
+      "C57",
+      "C58",
+      "C59"
+    ],
+    "triggers-actions-grid": [
+      "C60",
+      "C61"
+    ],
+    "triggers-actions-list": [
+      "C100",
+      "C101",
+      "C102",
+      "C103",
+      "C104",
+      "C105"
+    ],
+    "triggers-actions-table": [
+      "C95",
+      "C96",
+      "C97",
+      "C98",
+      "C99"
+    ],
+    "trust-badge-strip": [
+      "C122",
+      "C48",
+      "C68",
+      "C69",
+      "C70"
+    ],
+    "trust-badges": [
+      "C172",
+      "C243",
+      "C244",
+      "C246",
+      "C247",
+      "C248",
+      "C251"
+    ],
+    "trust-cards": [
+      "C140"
+    ],
+    "trust-logos": [
+      "C145"
+    ],
+    "use-case-cards": [
+      "C146",
+      "C219",
+      "C220",
+      "C221",
+      "C222",
+      "C223",
+      "C224",
+      "C225",
+      "C226"
+    ],
+    "use-case-grid": [
+      "C187",
+      "C188",
+      "C189",
+      "C191",
+      "C66"
+    ],
+    "use-case-showcase": [
+      "C67"
+    ],
+    "use-cases": [
+      "C118",
+      "C119",
+      "C120"
+    ],
+    "value-cards": [
+      "C141"
+    ],
+    "video": [
+      "C179",
+      "C181",
+      "C201",
+      "C40"
+    ],
+    "video-cards": [
+      "C108"
+    ],
+    "video-embed": [
+      "C117",
+      "C162",
+      "C171",
+      "C172",
+      "C173",
+      "C177",
+      "C178",
+      "C95",
+      "C96",
+      "C97",
+      "C99"
+    ],
+    "why-knack-features": [
+      "C145"
+    ]
+  },
+  "proposed_rules": [
+    {
+      "id": "knack-announcement-bar",
+      "scope": "project",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 88,
+      "trigger": "A thin full-width bar at the very top of the page, above the nav, with a [bg:color] background and a short promo message + link (e.g. product announcement).",
+      "decision": "Treat as global site chrome (announcement bar), exclude from the page's block inventory. If retained, model as a site-wide fragment, not per-page content.",
+      "rationale": "Appears above the nav as a persistent marketing ribbon injected site-wide, not document content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C06 rc1c1c1 [2x1][bg:color] above nav",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "leaked-css-text-node",
+      "scope": "generic",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 72,
+      "trigger": "A text node whose content is raw CSS/JS source (starts with a comment like /* ... */ or contains selector/property syntax), rendered visibly due to an unclosed style/script or authoring error.",
+      "decision": "Exclude entirely. It is a source-leak artifact, never content.",
+      "rationale": "Raw stylesheet text rendered into the page is a bug in the source site, not authorable content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C06 rc1c2c2 '/* hero section starts*/ .grad...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "knack-nav-bar-chrome",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A [2x1] bar at the very top of the page (y=0), full-width, listing nav categories, with no bg marker.",
+      "decision": "Treat as the global primary nav (nav.json equivalent), exclude from per-page block inventory.",
+      "rationale": "Identical position/content pattern across every captured page in this batch; not covered by knack-announcement-bar since it has no bg color.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C100 rc1c1 [2x1] 1280x74 'Solutions Business Need Work...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "knack-footer-cta-chrome",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "A bottom zone (rc2) with a repeated tagline 'The best no-code platform for...' plus a small link row, appearing after main content on every page.",
+      "decision": "Treat as the global footer fragment, exclude from per-page block inventory.",
+      "rationale": "Identical text/position across all sampled pages; site-wide chrome, not page content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C100 rc2c1/rc2c2 identical across C100-C105",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "knack-integration-page-template",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "A page under /integrations/... following the fixed sequence: hero -> how-it-works(bg) -> 3 steps(bg) -> popular-automations grid -> feature-highlight(bg) -> triggers-actions grid -> CTA -> about-vendor -> optional related-article.",
+      "decision": "Recognize as a dedicated 'integration' page template authored with 4 canonical reusable blocks (steps, automation-cards, feature-highlight, triggers-actions-list) rather than bespoke per-page blocks.",
+      "rationale": "Structure and order recur identically across every integration__* page sampled (C100-C105). Rejected alternatives: (a) treat each section as one-off bespoke blocks per page - rejected, causes massive duplication across dozens of integration pages; (b) collapse the whole page into one mega block - rejected, violates minimize-block-cells and blocks reuse.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C100-C105 identical section ordering",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "related-article-teaser",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A single [3x1] card (not a repeated grid) teasing a blog/article near the page bottom.",
+      "decision": "Model as its own single-row 'related-article-card' block rather than folding into default-content.",
+      "rationale": "Recurs with identical shape (H2 + one [3x1] card) at the tail of several integration pages; keeping it a block preserves the image+title+link structure. Rejected alternatives: fold into surrounding default-content as an inline link (loses structure); treat as an extra automation-cards row (different content type).",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C100 rc1c2c14 [3x1] '10 No-Code Apps for Sales & Ma...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "bottom-cta-banner-underrendered",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A final full-width [bg:gradient] zone at the very bottom of the main content (before the footer) with no captured text or child nodes.",
+      "decision": "Flag for Phase 2 targeted DOM extraction as a likely closing CTA banner rather than treating it as empty decoration; do not silently drop it from the block inventory.",
+      "rationale": "The minWidth capture collapsed this zone's content (text/CTA likely present but not rendered/captured); recurs across multiple pages in this batch (C101, C105, C106, C107) with the identical 1280x507 gradient signature.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C101 rc1c2c15 [bg:gradient] 1280x507, no children",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "pre-footer-empty-gradient-band",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A full-width [bg:gradient] or [bg:image] zone with zero captured child text, positioned as the last content zone immediately above the footer.",
+      "decision": "Flag for Phase 2 targeted extraction as a likely CTA banner (heading+button) rather than silently applying decorative-graphics-are-noise.",
+      "rationale": "Recurs identically across the page-10/page-11 templates in the same position with a reserved height, suggesting real CTA copy that failed to render at capture width, not intentional decoration. Rejected alternative: treating it as pure decoration and dropping it.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C108 rc1c2c2 [bg:gradient] 1280x507 with no child text, directly before footer rc2",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "promoted-nav-flyout-menu",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A [NxM] grid of category link labels rendered at a y-position overlapping the nav bar/hero rather than in normal document flow, indicating a hover/click-triggered dropdown promoted by the capture tool's overlay detection.",
+      "decision": "Fold into the nav section as a flyout/mega-menu note; exclude from the page's content block inventory.",
+      "rationale": "The node's absolute position (y=419, overlapping the hero at y=423) plus its category-label content matches a nav mega-menu, not page content. Rejected alternative: modeling it as a standalone 'mega-menu' block in the main content area.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C108 rc1c2c3 [4x2] @150,419 1000x112 overlapping hero at y=423",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "oversized-bg-bleed-artifact",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 48,
+      "trigger": "A [bg:color] node whose width is roughly double the page's captured viewport width (e.g. 2560 vs 1280) and whose y-range overlaps a card-grid section.",
+      "decision": "Fold into the section style of the overlapping card-grid section (background-container-is-section-style); do not list as separate content or a separate section.",
+      "rationale": "Width doubling indicates the extractor captured an underlying full-bleed background layer independent of the viewport crop, not a real 2560px-wide element on the live site.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C109 rc3/rc4/rc5 [bg:color] @0,831 / 0,1879 / 0,2959 2560x1676 overlapping rc1c2c3/c4/c5 card grids",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "template-carousel-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "A component whose captured text includes 'Previous'/'Next' (or similarly paired nav-control words) alongside a heading like 'X Templates', indicating a slider/carousel of preview cards.",
+      "decision": "Model as a dedicated carousel block, one row per slide, with the Previous/Next controls handled by the block's decorate function rather than authored per-row. Rejected alternative: treating it as a static repeating-cards grid, which would lose the slider behavior.",
+      "rationale": "Template previews are shown one at a time with explicit prev/next affordances, distinct from the always-visible grid pattern already covered by repeating-cards-are-one-block.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C110 rc1c2c5 'E-commerce Templates PreviousN...' component",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "error-redirect-page-structure",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 52,
+      "trigger": "A page whose main heading is a 404/'this page does not exist' style message with a short list of possible causes and no other page content.",
+      "decision": "Model the entire body as default-content (heading, intro paragraph, a 3-row icon-list block, closing paragraph); do not create a dedicated 'error-page' block since the copy is unique, one-off content. Rejected alternative: authoring a reusable 'error-page' block template.",
+      "rationale": "This is a single special-purpose page (redirect/404), not a repeating pattern needing a block abstraction.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C112 whole page-12 redirect tree: rc1c2c1..rc1c2c4",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "package-pricing-page-body-as-prose",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "default-content",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A pricing/'Package' landing page whose body is one long [2x1]-tagged text region describing the offering, with no repeating card/feature structure.",
+      "decision": "Map the body as plain default-content (headings + paragraphs) rather than a structured block; keep only the hero background and FAQ as modeled components. Rejected alternative: splitting the description into a 'package-details' block table.",
+      "rationale": "The content is continuous prose specific to this package, not a reusable multi-instance structure; forcing it into a block table would add authoring friction with no reuse benefit.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C113 rc1c2c2 [2x1] 'Our GovCloud offering is a hig...' 1024x967 single text region",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "promoted-faq-answer-regions-artifact",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "FAQ answer [region] nodes whose y-position falls after/overlapping the footer or other unrelated sections, caused by the capture tool promoting absolutely-positioned collapsed-accordion panels out of their DOM parent.",
+      "decision": "Reassign each stray [region] node to the answer cell of its matching question row inside the FAQ accordion block; do not treat as separate footer-area content.",
+      "rationale": "The regions' text ('Standard support helps you build...', 'Book a call with our team...') clearly answers earlier FAQ questions despite rendering below the footer/cookie overlay, confirming a positioning artifact rather than real page content in that location.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C115 rc4/rc5 [region] @70,6659 and @70,6728 1140x88, positioned after footer rc3 (ends 7191) and cookie overlay rc6",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "how-it-works-steps-as-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 53,
+      "trigger": "A 'How Does it Work?' heading followed by a component describing a sequential sign-up/onboarding flow (e.g. 'Sign your Knack Health plan...').",
+      "decision": "Model the steps component as a dedicated 'process-steps' block (one row per step) rather than plain default-content paragraphs, so the step sequence can be reused across other Knack Health vertical pages. Rejected alternative: leaving it as flowing default-content text.",
+      "rationale": "The 'how does it work' + step-sequence pattern is a recognizable component likely reused on sibling health-vertical landing pages, warranting a structured block rather than prose.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C115 rc2c2c1/rc2c2c2 'How Does it Work?' + [2x1] 'Sign your Knack Health plan...' 1206x595",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "leaked-embed-widget-script",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A tall content zone whose only captured text is a raw third-party embed initialization call (e.g. `hbspt.forms.create({...})`), indicating the widget's real markup (a form) did not render during headless capture.",
+      "decision": "Do not discard as plain noise (existing leaked-css-text-node targets stylesheet/script comment leaks, not unrendered widget calls). Treat the zone as a placeholder block (e.g. 'form' block referencing the embed) and flag for Phase 2 targeted DOM/network extraction to recover actual form fields.",
+      "rationale": "Rejected alternatives: (a) exclude entirely as noise like leaked-css-text-node \u2014 would silently drop a real contact form from the migrated page; (b) leave as default-content text \u2014 the raw JS is meaningless to authors. Flag-for-extraction preserves the content while acknowledging the capture limitation.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C116 rc1c2c4 'hbspt.forms.create({ region: ...' 1280x814 with no other text",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "in-hero-seasonal-promo-strip",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "default-content",
+      "status": "proposed",
+      "priority": 52,
+      "trigger": "A thin promotional text line ('Back to School Sale: Save 65%...') sitting inside the hero zone below the nav, above the H1, rather than as a page-wide bar above the nav.",
+      "decision": "Model as plain default-content text at the top of the hero section (a marketing line authors can edit/remove per campaign), not as the site-wide knack-announcement-bar (which is specifically above-nav chrome) and not as its own block.",
+      "rationale": "Rejected alternatives: (a) reuse knack-announcement-bar \u2014 rejected because that rule's trigger is specifically 'above the nav' global chrome, while this sits below nav inside page content and is campaign-specific, not persistent; (b) a dedicated 'promo-banner' block \u2014 rejected as overkill for a single text line with no distinct structure.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C119 rc1c2c1c2 'Back to School Sale: Save 65%...' 1280x36 below nav, above H1",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "underrendered-list-zone",
+      "scope": "generic",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "A category/listing page whose main zone is nearly empty in the visual tree (a single large bg zone with little text), indicating a card/list grid that fell below the minWidth capture threshold or loads lazily.",
+      "decision": "Flag for Phase 2 targeted DOM extraction rather than concluding the page is empty. The zone is a listing block (cards/tiles), not a section background alone.",
+      "rationale": "minWidth capture collapses fine-grained list items; treating the zone as empty would drop the page's primary content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C12 rc1c2c2 [bg:gradient] 1280x507 with no child text",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "promoted-faq-answer-node",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "An expanded FAQ answer ([region] node) appears as a sibling outside its accordion's parent container in the visual tree, instead of nested under its question, because the page-tree capture promotes absolutely/fixed-positioned open-accordion-panel elements out of their DOM parent.",
+      "decision": "When assembling the FAQ accordion block, re-attach any [region] node tagged as promoted-outside-parent to the question row it vertically aligns with (matched by Y-position/order), rather than treating it as a separate top-level section.",
+      "rationale": "This is an artifact of how our visual-tree capture promotes overlay-rendered elements (see page-tree skill's occlusion/promotion behavior), not a genuine site structure difference \u2014 the answer content still belongs to its question row.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C121 rc2c8c3 [region] and rc4 [region] both floating outside the rc2c8 accordion container",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "knack-footer-cta-fragment",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "A bottom-of-page block with the line 'The best no-code platform for ...' followed by a thin '| |' separator/social row, appearing verbatim at the end of nearly every captured page across templates.",
+      "decision": "Treat as global site footer chrome; exclude from per-page block inventory and model once as a shared footer fragment.",
+      "rationale": "Identical wording/layout recurs across compare, landing, and category templates \u2014 a shared footer partial, not page content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C124 rc3c1c1/c1c2 'The best no-code platform for...' + '| |'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "promoted-faq-answer-duplicate",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A [region] node appears as a top-level sibling of the root, outside its FAQ container, duplicating an answer already implied by a question row inside the FAQ block.",
+      "decision": "Fold the promoted region into its matching FAQ accordion row as the answer cell; do not emit as a separate block.",
+      "rationale": "page-tree promotes elements rendered outside their DOM parent (open accordion panel), duplicating content already covered by the FAQ accordion.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C124 rc4 [region] 'Knack. Knack's apps are produc...' top-level sibling of rc3",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "empty-bg-media-zone-needs-extraction",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A large full-width [bg:color]/[bg:gradient] zone mid-page (not a listing page) with no child text nodes, sized like a product screenshot or embedded video/widget.",
+      "decision": "Flag for Phase 2 targeted DOM/media extraction as an image or video block; do not conclude the zone is purely decorative background.",
+      "rationale": "Distinct from the confirmed underrendered-list-zone rule (which covers listing/card grids): here the empty zone sits inside a product narrative and most likely holds a screenshot or demo asset that failed to render at minWidth.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C128 rc2c2 [bg:color] 1280x968 with zero child text nodes",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "marquee-ticker-duplicate-collapse",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "Two adjacent [bg:color] containers each repeating the same short promo phrase many times (e.g. [2x16] 'Black Friday' x16), offset horizontally with negative/positive x coordinates, implementing a seamless CSS marquee/ticker loop.",
+      "decision": "Collapse both duplicate containers into ONE 'marquee-banner' block instance carrying the promo text once; do not emit 16x2 repeated rows nor two separate blocks.",
+      "rationale": "The duplication is a CSS infinite-scroll technique (content doubled for seamless looping), not distinct content items. Rejected alternatives: (a) apply the generic repeating-cards-are-one-block rule literally and emit a 32-row block \u2014 floods the block table with meaningless duplicates; (b) treat as decorative-graphics-are-noise and drop entirely \u2014 rejected because the promo text is meaningful, authorable page content (a sale campaign banner).",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C130 rc3/rc4 [2x16][bg:color] duplicate 'Black Friday' ticker at @-119,-19 and @137,-19",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "marketing-feature-row-section",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "section",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A stack of single-column [2x1] zones each with an eyebrow/H2/paragraph, heights varying (not uniform), alternating down a long landing page, some with bg:color, some plain.",
+      "decision": "Map each row as its own section with default-content (eyebrow+H2+paragraph+optional CTA link); background-container-is-section-style handles the colored ones. Do not group rows into one repeating block.",
+      "rationale": "Rejected alternative: treat the whole stack as one repeating-cards block (repeating-cards-are-one-block) \u2014 rejected because row heights and content shapes differ significantly (626,545,730,518,567,510px), indicating distinct hand-authored sections, not uniform repeating items.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C131 rc1c2c4..rc1c2c9",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "product-picker-widget",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A nested [bg:gradient] widget directly below the hero headline offering multiple selectable build-type options.",
+      "decision": "Model as its own block (e.g. option-selector/tabs) inside the hero section, separate from the hero text default-content.",
+      "rationale": "Rejected alternative: fold the widget into the hero block as one cell \u2014 rejected because it is an interactive selector with its own repeating option structure, distinct from plain hero copy.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C131 rc1c2c1c2 [bg:gradient] 'What would you like to build?'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "empty-cta-row-underrendered",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 45,
+      "trigger": "A short, childless node (no text) sitting between confirmed content nodes, at a height/position consistent with a button/CTA row.",
+      "decision": "Flag for Phase 2 targeted DOM extraction to recover button label/link rather than treating as empty space.",
+      "rationale": "minWidth capture strips interactive button markup, leaving a blank placeholder node; dropping it would lose a CTA.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C131 rc1c2c1c4 @60,702 1160x45 empty",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "detached-viewport-sized-node",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 40,
+      "trigger": "A root-level sibling node sized exactly to the viewport (e.g. 1280x720) positioned at 0,0, with no text and no clear relation to the surrounding content flow.",
+      "decision": "Treat as a capture artifact (likely a hidden video/lightbox modal or iframe promoted to root by the overlay-detection pass) \u2014 exclude from block inventory pending Phase 2 confirmation.",
+      "rationale": "Its size and position match viewport dimensions rather than any visible content region, suggesting it is DOM noise surfaced by the tree walker's overlay promotion, not authored page content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C133 rc3 @0,0 1280x720 (no text)",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "media-behind-heading-untagged",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "section",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A full-bleed sibling node with no text and no [bg:*] tag, immediately followed/overlapped by a narrower centered heading+paragraph node \u2014 same visual pattern as a background-image hero but implemented as an <img>/<video> element rather than CSS background.",
+      "decision": "Treat identically to full-width-image-behind-text-is-section-bg: the media becomes the section background/visual, the overlaid heading+paragraph becomes default-content. Do not emit a separate image block.",
+      "rationale": "The extraction tool only tags CSS background zones with [bg:*]; a full-bleed <img>/<video> element with no bg tag produces the same visual hero outcome and should be modeled the same way, not treated as an untagged empty node.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C134 rc1c2c1c1 (untagged, empty) + rc1c2c1c2 heading",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "pre-footer-cta-banner-underrendered",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 48,
+      "trigger": "A [bg:gradient] or [bg:color] zone of substantial height (~500px) positioned immediately before the footer, with no captured text.",
+      "decision": "Flag for Phase 2 targeted extraction \u2014 this is very likely a CTA banner (heading + button) whose text failed to render/capture, not decorative-only background.",
+      "rationale": "The same empty gradient band recurs at the same position (just above footer) across multiple pages; treating it as decoration-only risks dropping a real CTA.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C134 rc1c2c9 [bg:gradient] 1280x507, no text",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "templates-carousel-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 52,
+      "trigger": "A heading + card row accompanied by explicit Previous/Next controls in the same text node (a slider/carousel of template cards).",
+      "decision": "Model as a dedicated carousel block (one row per template card) retaining prev/next as block-level UI, not as page content.",
+      "rationale": "Rejected alternative: treat as a static repeating-cards grid (repeating-cards-are-one-block) \u2014 rejected because the explicit Previous/Next affordance signals a scrollable/paginated component whose behavior (not just layout) needs to survive migration.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C135 rc1c2c6c2 'Templates with Forms PreviousN...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "embedded-video-block",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "block",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "A heading like 'See It in Action' / 'Watch a demo' directly above a large media region with no repeating-card structure.",
+      "decision": "Map the heading as default-content and the media region as a dedicated video/embed block, distinct from a plain image block.",
+      "rationale": "Video embeds have different authoring needs (embed URL vs asset) than static images; conflating them with the generic image-in-flow rule would lose that distinction.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C136 rc2c2 'See It in Action Watch a Knack...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "detached-faq-answer-nodes",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 46,
+      "trigger": "An FAQ accordion whose answer [region] nodes are captured as siblings at coordinates matching a different question row than their own, or promoted to a top-level root sibling (e.g. rc4).",
+      "decision": "During Phase 2, re-pair each [region] answer with its nearest preceding question row by reading order rather than trusting coordinate overlap; do not drop the root-level stray [region] node.",
+      "rationale": "The overlay-promotion pass in the tree walker appears to have detached/duplicated answer nodes from their question rows, producing coordinate collisions that would corrupt a naive row-by-row pairing.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C136 rc2c11c3/c8 both @173,6343; rc2c11c4/c9 both @173,6401; rc4 [region] stray at root",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "testimonial-quote-block",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "block",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "A quoted statement (curly quotes) followed by an attributed name/title, standalone or on a colored/gradient background.",
+      "decision": "Map as a dedicated testimonial/quote block (quote text + attribution cells); background per background-container-is-section-style.",
+      "rationale": "Recurs as a distinct, near-objective reusable component across multiple pages \u2014 clearer authoring than folding it into generic default-content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C137 rc1c2c2c2 quote + 'David Dogan-Webb, CEO and Foun...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "knack-global-footer-cta",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A pair of [2x1] nodes at the very bottom of main content: first a marketing tagline (\"The best no-code platform for...\"), second a pipe-separated link list, appearing identically-structured across pages just before the cookie overlay.",
+      "decision": "Model as a global site footer fragment; exclude from the page's own block inventory.",
+      "rationale": "Mirrors the already-confirmed knack-announcement-bar treatment for header chrome; identical structural pair recurs at page bottom across unrelated templates.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C139 rc3 [2x1] tagline + [2x1] '| |' link row",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "faq-answer-promoted-to-root",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "An FAQ accordion's expanded answer ([region] node) appears as a page-root sibling instead of nested under its question row, overlapping the FAQ section's y-range.",
+      "decision": "Fold the promoted [region] back into the FAQ block as the answer cell for the nearest preceding unanswered question, rather than treating it as a separate section.",
+      "rationale": "Absolute/overlay positioning during capture separates FAQ answers from their DOM parent, splitting one logical accordion row across the tree.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C139 rc4 [region] @130,3375 overlapping rc2c5 FAQ range 2656-3445",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "grid-preview-text-leaked-css",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A repeating grid/card container ([NxM] tag) whose extracted preview text is raw CSS selector syntax rather than real card copy.",
+      "decision": "Still model the container as a repeating-cards block per the generic rule; do not exclude as noise. Flag for phase-2 targeted extraction since the preview text is unreliable.",
+      "rationale": "The text-preview extractor grabbed a leaked inline <style> node instead of the first real content node; the grid itself is legitimate content (case study cards).",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C139 rc2c2 [3x3] preview '.elementor-21255 .elementor-el...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "directory-filter-search-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A keyword-search input plus filter control and Search/Reset buttons sits directly above a large paged listing grid (expert/partner directory).",
+      "decision": "Model as its own 'filter/search' block, separate from and placed above the listing-cards block within the same section.",
+      "rationale": "Rejected alternatives: (a) folding filter controls into the listing block's header row \u2014 rejected because filters are a reusable form component, not per-row content; (b) treating search+grid as one combined block \u2014 rejected because it would force filter markup into every content row.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C142 rc1c2c2c1c2c1c1c2 'Search Reset', preceding rc1c2c2c1c2c2 66-card grid",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "offcanvas-hidden-duplicate-node",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A node positioned at a large negative x-coordinate (off-screen) duplicating text/heading already visible elsewhere on the page, typical of a hidden mobile drawer/menu twin.",
+      "decision": "Exclude from content inventory as noise; it is a hidden UI-state duplicate, not additional content.",
+      "rationale": "The tree walker captures elements outside the viewport that are only reachable via a hidden drawer state, not real page content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C142 rc3 @-1280,0 500x720 'Expert Directory' duplicating rc1c2c1c1 heading",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "comparison-table-as-single-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A multi-column feature-by-feature comparison table ([6x1] header row followed by [6x1] data rows) comparing Knack against competitors.",
+      "decision": "Model as ONE 'comparison-table' block with the header as the first row and each feature as a subsequent row (12 rows x 6 cols).",
+      "rationale": "Rejected alternatives: separate block per competitor column (breaks row-per-item authoring); default-content markdown table instead of a block (loses reusable component styling for repeated comparison tables across pages).",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C143 rc1c2c3c2c1 [6x1] header + rc1c2c3c2c2 12x [6x1] rows",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "hidden-tab-panel-promoted-offscreen",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "Inactive tab/carousel panels rendered off-canvas (large positive/negative x-offset) rather than display:none, causing capture to promote them to page root as separate [tabpanel] nodes sharing one [tablist].",
+      "decision": "Treat all [tabpanel] siblings tied to the same [tablist] as ONE carousel block with one row per panel, not as separate sections.",
+      "rationale": "The visible panel and off-screen panels are the same reusable testimonial carousel; splitting them into separate sections would duplicate one logical component.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C144 rc3/rc4/rc5 [tabpanel][2x1] at x=1140/2065/2990, paired with rc1c2c5c4 [tablist][4x1] pagination '1234'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "footer-logo-tagline-cta-strip",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A full-width strip immediately after main content and before the cookie overlay, containing an identical tagline (\"The best no-code platform for ...\") plus a row of partner-logo placeholders (rendered as bare \"| |\" text), appearing on every page with identical content.",
+      "decision": "Model as a global footer/CTA fragment excluded from per-page block inventory, mirroring how the announcement bar and cookie overlay are treated as site chrome. Alternative rejected: modeling it as a per-page 'logo-strip' block via repeating-cards-are-one-block, since content is identical across pages, not page-specific.",
+      "rationale": "Identical text and structure recur unchanged across all sampled pages; it is site-wide chrome, not authorable page content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C147 rc3c1c1/rc3c1c2 identical across C147-C154 packets",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "promoted-duplicate-faq-answer-node",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 45,
+      "trigger": "A [region] answer node appears a second time as a top-level page sibling (outside the FAQ accordion container) with text duplicating an answer already nested inside the accordion.",
+      "decision": "Exclude the duplicate top-level region from the block inventory; the content is already captured inside the faq-accordion block's nested rows.",
+      "rationale": "Absolute-positioned/expanded accordion answer panels get promoted out of their DOM parent by the capture tool, producing duplicate top-level nodes that are a capture artifact, not real page content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C147 rc4/rc5 duplicate 'Backups are designed...' and 'Long-term healthcare data...' also present nested under rc2c9c2",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "underrendered-embedded-demo-widget",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A content zone (e.g. 'See Knack in Action') has substantial height in the visual tree but no child nodes or only a short text preview, indicating an embedded interactive demo/widget (iframe or JS app) that fell below the minWidth capture or loads client-side.",
+      "decision": "Flag for Phase 2 targeted DOM/iframe extraction rather than treating the zone as empty text content; do not fold it silently into surrounding default-content.",
+      "rationale": "Interactive product demos are core marketing content that the minWidth capture cannot render as text; dropping them would misrepresent the page.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C151 rc2c2 @0,705 1280x706 with only a short heading preview and no children",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "migration-landing-page-template",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A page whose H1 reads 'Make your <competitor> app HIPAA compliant', with sections covering 'The Problem', 'What we migrate', 'Why Knack Health', a step/testimonial strip, and 'What to know upfront', targeting a specific no-code competitor (Base44, Lovable, etc.).",
+      "decision": "Treat as a distinct 'competitor migration' page template (variant of the generic solution-page template), reusing the same hero/cta-banner/faq-accordion blocks but with competitor-name as a template variable. Alternative rejected: modeling each competitor page as fully bespoke content, which would miss the reusable structure shared with C154.",
+      "rationale": "C153 and C154 are structurally identical apart from the competitor name (Base44 vs Lovable), indicating a templated landing-page family worth authoring once with a variable.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C153 vs C154 visual trees near-identical in structure and section order",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "leaked-js-boilerplate-in-nav-zone",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "A [3x1] zone at the very top of the page (y=0, ~80px tall, sized like the nav bar) contains raw JS source text (e.g. 'document.addEventListener(\"DOM...') instead of nav links.",
+      "decision": "Exclude the JS text from the block/content inventory. Recognize the real nav failed to capture at this position; flag for Phase 2 DOM-based nav re-extraction rather than concluding the page has no nav.",
+      "rationale": "The nav-sized bounding box containing JS source (not CSS) indicates the visual capture ran before script execution replaced placeholder markup with real nav; distinct from the confirmed leaked-css-text-node rule which covers CSS leaks elsewhere in the body.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C155 rc1 [3x1] 1280x80 'document.addEventListener(\"DOM...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "global-footer-cta-is-chrome",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A bottom-of-page zone starting with 'The best no-code platform for...' followed by a '| |' link row, identical across pages.",
+      "decision": "Model as a global site-wide footer fragment excluded from each page's per-page block inventory, same treatment as nav.",
+      "rationale": "Identical text/markup at the same position on every page is footer chrome, not page content. Alternatives rejected: authoring it as a per-page CTA/newsletter block (rejected because it never varies by page).",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C155 rc3 'The best no-code platform for...' + '| |'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "duplicate-promoted-faq-answer-node",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A stray [region] node appears as a top-level sibling near the end of the tree, at coordinates overlapping an already-captured FAQ accordion answer, duplicating its text.",
+      "decision": "Treat as a duplicate of the corresponding accordion answer already modeled inside the FAQ block; do not count as extra content.",
+      "rationale": "Absolutely-positioned answer panels get promoted out of their DOM parent by the capture tool and re-appear as an extra top-level node; this is a capture artifact, not additional content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C155 rc4 [region] 1186x66 duplicates an answer already inside rc2c10c2",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "empty-bg-only-zone-no-captured-content",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "A section-level container carries only a background style (image/gradient/color) and has zero child nodes/text in the visual tree.",
+      "decision": "Flag for Phase 2 targeted DOM extraction rather than assuming the zone is deliberately empty; likely a hero/CTA heading whose text fell outside the capture viewport or loaded late.",
+      "rationale": "A background-only container with literally no children, positioned where a hero heading is expected, is more likely under-rendered than intentionally blank decoration.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C160 rc2c1 [bg:image] 1280x422 with no children",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "promoted-filter-control-overlapping-grid",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 45,
+      "trigger": "A filter/dropdown control node's y-coordinate overlaps the start of the main listing grid it controls, indicating it was promoted out of its natural DOM position by the capture tool (e.g. an absolutely-positioned dropdown).",
+      "decision": "Keep the filter control as part of the listing block's UI (a filter bar above the grid) rather than as a separate section; alternative considered and rejected: treating it as an independent content section, which would misrepresent it as page content unrelated to the grid.",
+      "rationale": "Its content ('Industry Non-Profit Government...') and position adjacent to the grid indicate it is the grid's facet/filter control, not standalone content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C161 rc1c2c3 [2x1] @150,384 overlapping rc1c2c1 @0,388",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "site-footer-cta-is-global-fragment",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A '2x1' zone with 'The best no-code platform for...' CTA text plus a '| |' separator, ~453-487px tall, at the bottom of every page.",
+      "decision": "Model as the site-wide footer fragment, excluded from per-page block inventory.",
+      "rationale": "Identical across every captured page = global chrome, like the confirmed knack-announcement-bar rule for the header. Rejected alternative: emit as a per-page 'footer' block (would duplicate identical content on every page).",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C163 rc3",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "faq-answer-promoted-out-of-tree",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 52,
+      "trigger": "A [region] node with content matching an FAQ answer appears as a top-level page sibling (e.g. rc4) instead of nested under its question row.",
+      "decision": "Fold it back into the accordion block as the answer for its corresponding question; do not treat as separate content.",
+      "rationale": "Artifact of the page-tree capture's overlay-promotion logic, which lifts elements whose rendered box falls outside their DOM parent's bounds.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C163 rc4 'No. Data in Knack Health appli...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "tabbed-usecase-grid-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A [tablist] filter row (e.g. 'All Operations Clinical Support...') sits directly above a large [NxM] card grid, letting the visitor filter cards by category.",
+      "decision": "Emit ONE 'tabs' block with the tab labels as the header row and each card as a row tagged with its category; client JS filters visually. Rejected: modeling tabs and grid as two independent blocks (would break the filter wiring).",
+      "rationale": "The tablist and grid are functionally one interactive component; splitting them loses the filter relationship.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C164 rc2c4c2c1/c2 [tablist][5x1] over [3x4] grid",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "plan-comparison-table-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "A pricing page body containing a plan-name header row ([Nx1]) followed by expandable feature-category rows ('+'/'\u2212' toggles), each expanding to per-feature comparison rows across the same N plan columns.",
+      "decision": "Emit ONE 'pricing-table' block: header row = plan names, one row per feature category, one sub-row per feature when expanded. Rejected alternatives: (a) treat each category as its own accordion block (loses the shared plan-column structure), (b) flatten into plain markdown table (loses expand/collapse authoring).",
+      "rationale": "This is a distinct, site-specific interactive comparison-table pattern not covered by repeating-cards-are-one-block (not uniform cards) nor faq-accordion-block (not Q&A).",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C165 rc1c2c4 header row + 11 core-capability rows + 10 collapsible category rows",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "web-form-is-form-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "A vertical stack of labeled inputs (text, radio, textarea) ending in a submit control, forming an application/contact form.",
+      "decision": "Emit ONE 'form' block, one row per field (label + input type/placeholder), final row = submit. Rejected alternative: leave as raw inline HTML form with no block wrapper (loses EDS authoring/reuse for the field list).",
+      "rationale": "Recurring form structure on this site warrants a dedicated reusable block rather than page-specific markup.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C166 rc1c2c3c2 13 labeled fields + submit button",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "embedded-app-demo-placeholder",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "A zone with a short caption (e.g. 'Test a live app') but disproportionate height, suggesting an embedded interactive app/iframe was not captured by the minWidth snapshot.",
+      "decision": "Flag for Phase 2 targeted DOM extraction to identify the embed and model as an 'app-embed' block, rather than treating the caption alone as the section's content. Rejected alternative: accept the short caption as the full content (would drop the interactive demo).",
+      "rationale": "Height/content mismatch is a strong signal of lazy-loaded/iframe content invisible to the current capture method.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C167 rc2c9 'Test a live app' 337px tall with only one text line",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "region-promoted-node-reattach",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A node tagged [region] appears as a sibling far from its logical container (including near page root), with content matching an FAQ answer, embed, or panel elsewhere in the tree that lacks a matching child.",
+      "decision": "Re-associate the [region] node with its nearest matching placeholder/question by content adjacency and vertical position instead of treating it as separate/lost content; merge into the parent block's row.",
+      "rationale": "The page-tree capture promotes absolutely/fixed-positioned descendants out of their DOM parent to preserve visual position, fragmenting single content items (FAQ Q&A pairs) across non-adjacent nodes (rc2c12c2c7..c16, rc4). Without reattachment, answers are lost or double-counted.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C171 rc2c10c2c11..c16 and rc4 [region] answers positioned outside rc2c10's list order",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "bg-only-zone-is-embed-widget",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A section-sized [bg:color]/[bg:image] container with no descendant text, sitting directly under a 'Watch a Demo'/video-style heading.",
+      "decision": "Flag as an embedded video/demo widget that failed to render text at capture time; route to Phase 2 for iframe/video src extraction rather than treating as decorative background.",
+      "rationale": "Distinguishes this narrow case from the confirmed underrendered-list-zone rule (which targets listing/card grids); a video embed needs different Phase 2 handling.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C171 rc2c3c2 [bg:color] 1140x701 directly under 'Watch a Demo' heading",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "alternating-feature-rows-as-columns-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 61,
+      "trigger": "Three or more consecutive full-width [2x1] rows, each pairing a short headline+paragraph with an (uncaptured) image, alternating left/right emphasis, with no background differences between them.",
+      "decision": "Model as ONE 'columns' block with one row per feature (heading+text+image cell), relying on CSS to alternate left/right alignment, rather than one block per row or as three separate default-content sections.",
+      "rationale": "Chose a single reusable columns block over (a) treating each row as its own ad-hoc section/default-content, which would lose the repeating-component signal, and (b) a bespoke 'feature-row' block type distinct from the generic EDS 'columns' block, which would add an unneeded block type when the standard columns block already covers image+text alternation.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C173 rc1c2c5, rc1c2c6, rc1c2c7 (three consecutive [2x1] rows, Build Software Faster/Enrich Your Applications/Develop Apps with Faster Adoption)",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "alphabetical-glossary-is-default-content",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "default-content",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "A glossary/reference page structured as alphabetical letter groups, each containing multiple term+definition pairs (term as a small heading, definition as a paragraph), with spacer gaps between letters.",
+      "decision": "Map each letter as an H2 heading and each term as a bold lead-in/H3 with its definition as the following paragraph, authored as plain default-content in the page body. Do NOT create a dedicated 'glossary' block/table.",
+      "rationale": "Chose default-content over a repeating block (the generic repeating-cards-are-one-block pattern) because glossary entries have no card boundaries/background, the list is long (100+ terms) and open-ended, and authors edit definitions far more easily as flowing headings/paragraphs than as rows of a giant one-column block table. Rejected alternative: one 'glossary' block with one row per term.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C175 rc1c2c5..rc1c2c18, letters A,B,C,D,F,I,L,M,N,P,R,T,U,W each with 1-6 term/definition pairs",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "cross-origin-iframe-embed-blind-spot",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A page's main content area is a single flattened text leaf (heading+intro merged, no child structure) despite the page clearly hosting an interactive third-party embed (scheduling widget, chat, form).",
+      "decision": "Map the flattened leaf as default-content (heading + intro paragraph) and flag the embed itself as a distinct block (e.g. 'scheduler-embed') requiring Phase 2 manual identification of the embed provider/src, rather than assuming the page has no further content.",
+      "rationale": "Cross-origin iframes (Calendly-style schedulers, chat widgets, forms) render opaque to DOM-walking capture tools; the visual tree collapses everything into one leaf. Without flagging, the primary CTA/purpose of a 'Meet with Sales' page would be silently dropped from the EDS block inventory.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C176 rc1c2 single flattened 1280x1211 leaf with no children, text 'Meet With Sales Need help? Sch...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "js-boilerplate-leak-node",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 71,
+      "trigger": "A text node at the very top of the tree (rc1) whose content is a raw JS boot snippet, e.g. starting with document.addEventListener(\"DOM...",
+      "decision": "Exclude entirely from block inventory; source-leak artifact analogous to leaked-css-text-node but for JS.",
+      "rationale": "Recurs identically at rc1 on every captured page in this batch; it is boilerplate script text rendered visibly due to a source bug, never content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C179 rc1 [3x1] 'document.addEventListener(\"DOM...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "sitewide-footer-chrome",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "A trailing rc3 zone with fixed text 'The best no-code platform for...' plus a pipe-separated link row, identical in shape/position across pages.",
+      "decision": "Model as a sitewide footer fragment, not page content; exclude from per-page block inventory.",
+      "rationale": "Identical structure/text recurs at the same position on every page in this batch, indicating global template chrome rather than authored page content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C179 rc3c1c1/rc3c1c2",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "client-trust-logo-strip",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "A single-row [Nx1] band, often inside a bg:color wrapper, naming a specific enterprise client (e.g. 'Royal Free London NHS Foundation...') alongside logo imagery, distinct from the larger multi-row integrations logo grid.",
+      "decision": "Emit as its own logos-style block instance (one cell per client credential) rather than folding it into the generic integrations logo block. Rejected alternatives: (a) treat as decorative noise since it may render with little/no text, (b) merge with the integrations grid into a single combined logos block.",
+      "rationale": "It recurs across multiple health-vertical pages in a visually distinct single-row band with a trust/credibility framing rather than an integrations framing, worth distinguishing for content authors even though the underlying EDS mechanics are the same repeating-block pattern.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C180 rc2c7 [3x1][bg:color] 'Royal Free London NHS Foundati...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "pricing-comparison-table-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 53,
+      "trigger": "A [4x1] grid whose first row is a bold header row (bg:color) and subsequent rows compare pricing scenarios (e.g. 'Scenario / Per-User Platforms / Sales-based Platforms / Knack') across N usage scenarios.",
+      "decision": "Model as a dedicated pricing-table block (header row + N data rows) rather than the generic repeating-cards block, since it is tabular pricing data, not visual cards. Rejected alternative: emit as a plain markdown table in default-content, losing the block's own styling/behavior.",
+      "rationale": "The header-row + data-row shape is structurally a comparison table, not a card grid; a dedicated block name better signals its authoring semantics to content editors.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C182 rc2c4c2 rows c1 (bg:color header) through c4 (scenario data)",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "dual-competitor-comparison-zones",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A page-6 comparison template repeats the pattern 'competitor name label + list of [3x1] rows' twice in succession (rc2c3: detailed prose reasons, rc2c4: short feature-snapshot lines) before a third, richer alternating-background comparison zone (rc2c5).",
+      "decision": "Model both rc2c3 and rc2c4 as two instances of the same reusable comparison-table block type (differing only in row content/length), rather than inventing two distinct block types or merging them into one multi-column block. Rejected alternatives: (a) two distinct block types ('comparison-reasons' and 'comparison-snapshot'), (b) merge rc2c3+rc2c4 into a single wide comparison block spanning both zones.",
+      "rationale": "Both zones share the same shape (a competitor-name row followed by N one-line/one-paragraph rows) and only differ in content verbosity, matching the variant-is-css-not-new-block philosophy extended to block reuse rather than a new type per instance.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C184 rc2c3c1 vs rc2c4c2 both competitor-label + [3x1] row lists",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "stacked-vs-comparison-table-columns",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A single-competitor 'X vs Knack' page's comparison content renders as two separate stacked sections (competitor feature rows, then Knack feature rows with the same category labels and alternating row backgrounds) instead of one side-by-side two-column table.",
+      "decision": "Reassemble as ONE two-column comparison-table block at Phase 2 (competitor column + Knack column, matched by shared category labels: Security and Privacy, Ease of Use, Customization, Scalability, Pricing, Integrations) rather than treating the two stacks as unrelated blocks.",
+      "rationale": "The visual tree captures a responsive/mobile stacking of what is logically a single comparison table at the minWidth capture viewport; keeping them as two independent blocks would fragment one content unit.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C187 rc2c3/rc2c4 (Keragon column) vs rc2c5 (Knack column), identical category labels repeated in both",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "knack-footer-cta-bar",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 66,
+      "trigger": "A full-width zone (~453px) immediately after the main content on every page, containing a fixed tagline ('The best no-code platform for...') and a divider/link row ('| |'), identical in content and position across unrelated pages.",
+      "decision": "Treat as global site footer chrome; exclude from the page's block/section inventory. Model once as a site-wide footer fragment, not per-page content.",
+      "rationale": "Identical text and position recur verbatim across every captured page, indicating shared footer markup injected by the template rather than authored content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C187 rc3c1c1 'The best no-code platform for...' recurring across all batch-12 pages",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "promoted-faq-answer-region",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A [region] node (FAQ/accordion answer text) appears as a top-level sibling of the page's main containers rather than nested inside its corresponding accordion question row, duplicating/continuing content from an accordion elsewhere in the tree.",
+      "decision": "Do not treat as separate top-level content. Re-attach the region's text to the matching accordion row as its answer during Phase 2 reconciliation; never emit it as its own section or block.",
+      "rationale": "The capture promotes absolutely-positioned accordion answer panels (used for expand/collapse animation) out of their DOM parent, scattering answer text as stray top-level regions.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C188 rc4 [region] 'Knack. Knack's platform is des...' sibling of rc3 footer, duplicating an FAQ answer from rc2c9 accordion",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "solutions-category-subnav-tab-bar",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "A thin full-width bar (~74px) at the very top of Solutions-category pages, above the hero, listing category tab labels (e.g. 'Solutions Business Need Work O...').",
+      "decision": "Model as a local secondary-navigation landmark (nav section) distinct from the global site nav; exclude the shared tab labels from the page's authorable body content. Rejected alternative: treat it as a plain content block (tab list) reproduced per page \u2014 that would duplicate shared chrome across every Solutions page instead of a single reusable nav fragment.",
+      "rationale": "Appears identically positioned on multiple Solutions sub-pages (white-label-apps, affiliates), indicating a shared category navigation component rather than page-specific content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C193 rc1c1 [2x1] 'Solutions Business Need Work O...' @0,0 1280x74, also seen in C194 rc1c1",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "knack-footer-cta-band",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 85,
+      "trigger": "A recurring full-width footer zone at the bottom of nearly every page: a fixed marketing tagline ('The best no-code platform for...') followed by a thin row whose only rendered text is pipe separators ('| |'), indicating a collapsed footer link list.",
+      "decision": "Treat as global site-wide footer chrome, excluded from the page's own block inventory (model as a shared fragment, same treatment as nav/cookie overlay). Flag the '| |' row for Phase 2 to recover the actual footer link labels.",
+      "rationale": "Identical structure recurs unchanged across every sampled page, matching the existing site-chrome precedent. Rejected alternative: model it as a page-level 'cta' block, but content is byte-identical across pages so it is chrome, not authored content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C195 rc2 (rc2c1 tagline, rc2c2 '| |' row)",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "accordion-answer-coordinate-collision",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "An FAQ/accordion zone where answer 'region' nodes for different questions share overlapping or duplicate bounding-box coordinates with a later question's closed row, because only one accordion panel was expanded at capture time.",
+      "decision": "Reconstruct FAQ rows using DOM/list order (top-to-bottom question sequence), not pixel coordinates. Do not treat duplicated-coordinate regions as separate content items or drop them as noise.",
+      "rationale": "The single-snapshot capture records only one expanded accordion state, so an expanded answer's bounding box overlaps a subsequent closed question's box; coordinate-based parsing alone risks misattributing or duplicating content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C197 rc2c6c2c3/c4/c5 duplicated by rc2c6c2c7/c8/c9 and rc4, all at overlapping @47,4430-4662 coordinates",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "untagged-media-placeholder-zone",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A substantial-height content zone (no [bg:*] tag, no text, no labeled children) sitting inside an otherwise text-rich section, immediately following an intro heading+paragraph.",
+      "decision": "Flag for Phase 2 DOM inspection as a likely embedded video/screenshot/iframe rather than classifying it as decorative noise or an empty spacer; do not drop it from the content inventory.",
+      "rationale": "Tree capture only tags backgrounds and text; genuine inline media without a background marker renders as a blank node indistinguishable from a spacer, risking silent content loss. Rejected alternative: classify it as decorative-graphics-are-noise, but its size and placement right after a 'how it works' intro strongly suggest real content (a product demo), not decoration.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C201 rc1c2c5c3 @30,2260 1220x686, blank, following 'Building an App with AI is Easy' heading+paragraph",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "knack-footer-tagline-boilerplate",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A recurring footer zone with the tagline 'The best no-code platform for...' plus a thin '| |' separator node, present near the bottom of every page.",
+      "decision": "Model as global site-wide footer chrome (fragment), excluded from per-page block/content inventory.",
+      "rationale": "Rejected alternatives: (a) map as page-level default-content since it does carry text, (b) map as a dedicated 'footer' block. Chose fragment-exclusion because the exact same text recurs verbatim across unrelated pages, indicating shared site chrome rather than page-authored content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C203 rc3c1c1, rc3c1c2",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "knack-footer-tagline-band",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "section",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A full-width band below the main content ending in a bold tagline (\"The best no-code platform for ...\") followed by a thin divider row, recurring identically across health-integrations pages.",
+      "decision": "Model as the shared site footer fragment (default-content tagline + divider), not page-specific content; author once and reuse. Rejected alternative: treat as a page-level closing CTA block, since content is identical across every integration page and matches footer placement/position, not a per-page CTA.",
+      "rationale": "Identical tagline text and position recur across all captured health-integration pages, indicating shared site chrome (footer) rather than authored per-page content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C211 rc3c1c1/rc3c1c2 tagline+divider band",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "promoted-faq-answer-orphan-node",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "An FAQ accordion answer appears as a detached [region] node outside the accordion's own subtree (often below the footer or overlapping the cookie-banner y-range), rather than nested under its question row.",
+      "decision": "Fold the orphan [region] text back into its matching question's row in the faq-accordion block as the answer cell; do not model it as separate page content or a new section.",
+      "rationale": "Absolutely-positioned expand/collapse answer panels get promoted out of their DOM parent during capture (same overlay-promotion mechanism used for fixed navs/modals), splitting one logical Q&A pair across two tree locations that must be reconciled by matching y-position/order to the accordion.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C211 rc2c9 [region] + rc4 [region] (2 detached FAQ-answer nodes)",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "recurring-footer-chrome",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A bottom-of-page zone (rc3) with a tagline sentence ('The best no-code platform for ...') followed by a pipe-separated link list, identical across integration landing pages.",
+      "decision": "Treat as global site footer chrome, excluded from the page's per-page block inventory; model once as a site-wide footer fragment. (Rejected alternative: a per-page 'footer-links' block, which would duplicate identical content on every page.)",
+      "rationale": "Recurs verbatim across the health-integrations page family with identical structure, indicating shared site chrome rather than page-authored content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C219 rc3c1c1/rc3c1c2 tagline + '| |' link list",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "leaked-js-script-inline-text-node",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 71,
+      "trigger": "A top-of-page text node whose content is raw JS source (e.g. starts with 'document.addEventListener(\"DOM...') rendered visibly, analogous to the confirmed leaked-css-text-node pattern but for inline scripts.",
+      "decision": "Exclude entirely from block inventory; treat as a source-leak artifact identical in spirit to leaked-css-text-node.",
+      "rationale": "Rendered JS source is never authorable content; appears identically at rc1 on every integration-page capture in this batch.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C227 rc1 [3x1] 'document.addEventListener(\"DOM...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "faq-answer-region-position-collision",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A [region]-tagged FAQ answer node whose bounding box exactly overlaps a sibling question row's coordinates rather than sitting directly below its own question, because the capture froze an expanded/collapsed accordion state.",
+      "decision": "Reconstruct Q/A pairing by DOM/document order, not by on-screen position, when building the faq-accordion block rows.",
+      "rationale": "Positional overlap is a capture-time artifact of the accordion's absolute-positioned answer panel, not a real layout collision.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C227 rc2c7c2c3 @47,4763 vs rc2c7c2c6 [region] @47,4763 (identical offset)",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "knack-pricing-category-rows-as-separate-blocks",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "A pricing page repeats the same '[2x1] plan-name + feature-list' component under 5 separate category headings (Platform usage, Security & compliance, App building, Extensions, plus the top plan-cards block).",
+      "decision": "Model each category's comparison as its own instance of a single reusable 'plan-feature-comparison' block (5 instances, one per section), rather than merging all categories into one long master pricing table.",
+      "rationale": "Chosen because each category already sits in its own visually distinct section (alternating bg-color) with its own heading, matching heading-then-component-same-section; rejected alternative: a single all-categories pricing-table block with category as a row grouping, which would require a more complex block schema and lose the per-section heading authoring.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C234 rc2c3c2, rc2c4c2, rc2c5c2, rc2c6c2 all '[2x1] HIPAA Starter ...' under distinct category headings",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "comparison-table-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A two-column 'Traditional Solutions vs Knack' comparison with a header row and N aligned [2x1] rows contrasting a pain point against Knack's answer, followed by a CTA.",
+      "decision": "Emit ONE 'comparison-table' block with one row per pain-point pair (header row + N rows), and the trailing CTA as default-content/CTA link in the same section.",
+      "rationale": "Rejected alternatives: (a) a plain HTML table via default-content markdown table syntax -- loses the ability to style two distinct visual columns differently; (b) two separate 'cards' blocks (one per column) -- breaks the row-wise pairing that gives the comparison its meaning. A dedicated block preserves the paired-row semantics while staying table-per-item.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C236 rc1c2c8c3/c8c3c2 'Traditional SolutionsKnack' header + 4 paired rows",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "knack-global-footer-band",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 87,
+      "trigger": "A recurring end-of-page zone (rc2) with a CTA heading ('The best no-code platform for...') and a link row rendered as bare pipe separators, appearing identically at the bottom of every page above the cookie overlay.",
+      "decision": "Exclude entirely from per-page block inventory; model as a global footer fragment/site-wide chrome, analogous to the confirmed knack-announcement-bar rule.",
+      "rationale": "Identical structure recurs unchanged on this and every other page examined; it is not page-specific content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "rc2c1/rc2c2 identical across C243-C250",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "knack-trust-badge-strip",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "'Join ... users' heading immediately followed by a 5xN grid near the top of a solution page.",
+      "decision": "Emit as one 'trust-badges' block, one row per badge/item. Rejected alternative: modeling as a generic logo/card grid without a dedicated block name.",
+      "rationale": "Recurs with identical shape across multiple solution pages in this batch (C243, C244, C246, C247, C248); reinforces the already-proposed rulebook candidate.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "rc1c2c2c1/rc1c2c2c2 [5x2]",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "split-image-panel-underrendered",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A section with a [bg:color] panel next to a [bg:image] panel, both with zero captured text, at a position where other pages in the same template family show real heading/paragraph text in an equivalent slot.",
+      "decision": "Flag for Phase 2 targeted extraction rather than concluding the zone is a pure decorative background. Rejected alternative: treating it as a plain full-width-image-behind-text section per the generic rule, since no text was captured to overlay.",
+      "rationale": "The minWidth capture likely collapsed responsive text that would normally accompany the image panel, matching the underrendered-list-zone pattern but for a split-image feature row rather than a card grid.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "rc1c2c3c1 [bg:color] + rc1c2c3c2 [bg:image], no child text",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "solution-page-trailing-spacer",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 45,
+      "trigger": "An empty 252px-tall zone with no text or children, appearing as the last content node before the global footer on a solution page.",
+      "decision": "Exclude from block inventory as a decorative spacer/divider.",
+      "rationale": "Exact 252px height recurs identically on multiple solution pages (C243, C247), consistent with a fixed site-wide spacer element rather than lost content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "rc1c2c12 @0,9416 1280x252, empty",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "feature-comparison-table-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 52,
+      "trigger": "A [4x1]-row header immediately followed by N [4x1]-row data cells forming a competitor feature comparison table (Feature | Knack | Competitor A | Competitor B).",
+      "decision": "Model as one 'comparison-table' block, header row + one row per feature. Rejected alternative: an HTML markdown table authored as default-content, since the row shape matches the generic repeating-cards-are-one-block pattern and benefits from block-level styling/decoration.",
+      "rationale": "The repeating [4x1] rows are structurally identical to the generic repeating-cards rule extended to tabular data.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "rc1c2c6c5c1 (header) + rc1c2c6c5c2c1..c9 (9 data rows)",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "comparison-list-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 53,
+      "trigger": "A heading followed by a [list][NxM] node comparing options in short parallel text columns (e.g. 'Traditional ERP' vs 'Manual' vs 'Knack').",
+      "decision": "Model as one 'comparison-list' block, one column per option. Rejected alternative: plain default-content bullet list, since the [list][3x1]/[2x1] grid tagging indicates a structured multi-column layout better served by a block.",
+      "rationale": "Recurs twice on this page with consistent column-based structure, matching the repeating-cards-are-one-block spirit but for short comparison items rather than cards.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "rc1c2c9c2 [list][3x1], rc1c2c10c2 [list][2x1]",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "empty-bg-banner-zone-underrendered",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "A standalone [bg:gradient] or [bg:color] zone with substantial height (>300px) and zero captured text, positioned late in the page near the footer.",
+      "decision": "Flag for Phase 2 targeted extraction as a probable secondary CTA banner rather than assuming it is pure decoration. Rejected alternative: classifying it outright as noise/decorative-graphics, since its size and position match other pages' text-bearing CTA callouts.",
+      "rationale": "Height (493px) is inconsistent with the small fixed-height decorative spacers seen elsewhere, suggesting lost content rather than intentional blank space.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "rc1c2c16 [bg:gradient] @0,8994 1280x493, no children",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "solution-testimonial-callout",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A gradient-background zone directly under the hero containing a single stat/savings heading (e.g. '$250,000+') plus a quoted customer testimonial.",
+      "decision": "Model as one 'testimonial' block (stat + quote cells) inside a gradient-styled section. Rejected alternative: splitting the stat and quote into two separate default-content items, since they form one authored customer-proof component reused elsewhere on the site.",
+      "rationale": "Distinct from the trust-badge-strip pattern (single testimonial vs. a row of N badges); already covered structurally by the confirmed background-container and heading-then-component rules, but the block name/shape itself is not yet codified.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "rc1c2c2c2c1 'Knack Builders Save $250,000+...' + rc1c2c2c2c2 quote, on [bg:gradient]",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "iframe-carousel-underrendered",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A 'Related/Other Templates' or mid-page 'Templates for X' carousel renders with only a heading and pagination controls, never the actual card content.",
+      "decision": "Flag for Phase 2 targeted DOM extraction of the carousel widget instead of concluding the section has no cards; model as a related-templates/related-content block whose items are loaded by a slider widget our minWidth capture under-renders.",
+      "rationale": "Recurs identically across template-detail and solution pages sampled in this batch; placeholder text confirms a widget the capture pipeline under-renders, not empty content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C251 rc1c2c7 'Templates for Property Managem...' with no repeated card text",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "template-screenshot-carousel-then-cta",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "Template-detail pages show a multi-column zone of app screenshots (often blank/no captured text) immediately followed by a [bg:color] 'Build/Start Building with the Template' banner.",
+      "decision": "Model as two blocks in the same section: a 'screenshot-carousel' block (one row per screen) and a separate 'cta-banner' block; alternative of merging both into one 'template-preview' block was rejected because the CTA banner also recurs standalone elsewhere on these pages.",
+      "rationale": "Recurs with the same carousel+banner shape across every template-detail page sampled, indicating a reusable site-specific block pairing rather than one-off content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C252 rc1c2c3 [3x2] blank + [bg:color] 'Start Building with Template'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "interactive-demo-iframe-embed",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "A heading/subtext inviting the user to 'use our interactive demo' is followed by a same-sized blank region with no captured content.",
+      "decision": "Model as a single-item 'interactive-demo' embed block (iframe src as the only cell); alternative of dropping the blank region as noise was rejected because the preceding copy explicitly promises an interactive demo.",
+      "rationale": "The adjacent copy references an interactive demo by name, so the blank capture is a real embed the pipeline could not render, not decoration.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C252 rc1c2c4 heading + rc1c2c12 blank 1220x885 region at same y-offset",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "knack-global-nav-footer-chrome",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "Identical top nav (rc1c1 '[2x1] Solutions Business Need Work O...') and bottom footer (rc2: signup CTA + collapsed '| |' link row) recur on every captured page.",
+      "decision": "Model as global header/footer fragments, excluded from the per-page section/block inventory; footer's collapsed '| |' link row is a fragment authoring concern, not per-page content.",
+      "rationale": "Recurs identically across all templates in this migration; not covered by any existing noise/chrome rule (only cookie overlay and announcement bar are addressed).",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C259 rc1c1, rc2c1, rc2c2",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "empty-cta-zone-before-footer",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A full-width bg:gradient/bg:color zone directly above the footer with no captured text or child nodes.",
+      "decision": "Flag for Phase 2 targeted DOM extraction rather than treating as a pure decorative section background; likely a newsletter/CTA component that failed to render under the minWidth capture.",
+      "rationale": "Zone carries a distinct background but zero text, matching the under-rendering symptom already recognized for list zones, but here on non-listing (use-case) templates.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C259 rc1c2c2 [bg:gradient] 1280x493 with no child text",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "faq-accordion-block",
+      "scope": "generic",
+      "category": "block",
+      "status": "proposed",
+      "priority": 64,
+      "trigger": "A vertical stack of uniform question rows (each a short heading, often with an expand affordance), typically under an 'FAQ' heading; visual tree marks the container [presentation] with N equal-height children.",
+      "decision": "Emit ONE accordion block with one row per Q/A pair. The question is the row's first cell; the answer (may be collapsed/under-rendered) the second \u2014 confirm answer text via Phase 2.",
+      "rationale": "FAQ accordions are a canonical reusable block; each item is one row, matching EDS table-per-item authoring.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C28 rc1c2c10c2 [presentation] with 5 uniform 60px rows",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "alternating-feature-rows-are-one-block",
+      "scope": "generic",
+      "category": "block",
+      "status": "proposed",
+      "priority": 63,
+      "trigger": "A sequence of full-width [2x1] rows each pairing an image and a text column, where the image/text sides alternate down the page.",
+      "decision": "Treat every row as the same 'feature' block; express the left/right alternation as a variant label (e.g. feature (image-left)), not as distinct blocks.",
+      "rationale": "Alternating media rows are the same content structure mirrored via CSS \u2014 a variant, not a new block, per variant-is-css-not-new-block.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C28 rc1c2c4/c5/c6 consecutive [2x1] feature rows",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "two-column-article-with-sidebar",
+      "scope": "generic",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 66,
+      "trigger": "A content page whose body is a [2x1] split of a wide primary text column and a narrower secondary column (sidebar: author box, related links, CTA, TOC).",
+      "decision": "Map the primary column as default-content (headings, paragraphs, images in flow). Map the sidebar as its own block placed in the same section; EDS layout/CSS handles the two-column presentation. Do NOT emit the whole [2x1] as a single block.",
+      "rationale": "The two-column split is layout, not a content unit. Sidebar contents are a reusable block; the article is plain authorable content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C36 rc1c2c2 [2x1] article+sidebar; recurs on blog-post and case-study bodies",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "template-app-preview-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A large product screenshot (bg:image, [3x2]) followed immediately by an 'Install Free Template App' (or similar) CTA button, on download/template-detail pages.",
+      "decision": "Model as a single 'template-preview' block combining the screenshot image and CTA link in minimal cells, rather than as a section background image or two separate blocks.",
+      "rationale": "Recurs identically across download/template-detail templates; rejected alternatives: (a) full-width-image-behind-text-is-section-bg (doesn't fit \u2014 image isn't behind overlaid text, button sits below it), (b) two separate blocks for image and CTA (violates minimize-block-cells).",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C37 rc1c2c3c1/rc1c2c3c3; also seen in C38, C43",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "video-embed-placeholder",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "A blank rectangular zone (no text, no bg tag) directly under the nav on video-template pages, sized/positioned like a player.",
+      "decision": "Model as a single 'video' block (embed URL) rather than treating it as empty noise or an image block.",
+      "rationale": "Position and blank rendering is consistent with an iframe video embed whose content the DOM walker cannot read as text; rejected treating it as decorative noise since it's the primary content of a 'video' template.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C40 rc1c2c1 @140,360 1000x563 blank",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "flattened-mixed-content-zone",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A single tagged node (e.g. [2x1]) with unusually large height and truncated text spanning multiple distinct logical sections (e.g. article body followed by a 'Related Posts' heading), with no visible children in the captured tree.",
+      "decision": "Flag for Phase 2 targeted DOM extraction to split the zone into its real default-content (video description) and block (related-posts card grid) rather than modeling it as one opaque block.",
+      "rationale": "The tree walker collapsed nested structure into one 3636px-tall node; treating it as a single block would lose the card-grid/related-posts semantics.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C40 rc1c2c2 [2x1] 1000x3636 'Related Posts Secure Vibe Codi...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "category-filter-chip-bar",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A grid/row of filter chip options (e.g. Industry, Business Need, Work O...) with a 'Clear All' control, directly above a repeating card grid on listing/category pages (blog, ebook-category, use-case-2).",
+      "decision": "Model as a distinct 'filter-bar' block (facets), separate from the card-grid block it filters, rather than folding it into the card-grid block or treating it as page chrome.",
+      "rationale": "It is interactive listing content, not decoration or global chrome; rejected alternatives: (a) merging into the card-grid block (violates minimize-block-cells by conflating two different repeating structures), (b) treating as noise (it is authorable facet content).",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C41 rc1c2c1c1c1 [4x2] + rc1c2c1c1c2 'Clear All'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "single-cta-button-is-default-content-link",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "default-content",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A lone small [bg:color] item (~64px tall) at the end of a content list holding only a single CTA label like 'See All Triggers and Actions'.",
+      "decision": "Model as a default-content link/button, not a dedicated block.",
+      "rationale": "Only one instance, no repeated structure; rejected alternative is a standalone 'cta-button' block, but that adds authoring overhead for a single link.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C44 rc1c2c12c2 [bg:color] 1220x64 'See All Triggers and Actions'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "bottom-of-page-related-content-card",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A single [3x1] card at the very bottom of an integration/solution page promoting an unrelated blog/resource topic (e.g. '12 Ways to Improve Customer Experience').",
+      "decision": "Model as a single-row 'promo-card' block rather than folding into a related-articles grid.",
+      "rationale": "Only one card appears (not a repeating grid); rejected alternative is treating it as a 1-row instance of a generic related-articles block, unconfirmed without more evidence across pages.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C44 rc1c2c14 [3x1] '12 Ways to Improve Customer Ex...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "presentation-list-is-accordion-beyond-faq",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "block",
+      "status": "proposed",
+      "priority": 63,
+      "trigger": "A [presentation] container with N uniform ~60px rows sits under a non-FAQ heading (e.g. 'More About Knack's Security Features'), matching the structural signature of the confirmed faq-accordion-block rule but not literally an FAQ.",
+      "decision": "Extend faq-accordion-block's mapping (one accordion block, one row per item) to any uniform-row presentation list regardless of the heading wording.",
+      "rationale": "The structural DNA (uniform row height, [presentation] role, expandable-looking single-line items) is what defines the accordion, not the specific 'FAQ' label; rejected alternative is treating each row as a separate plain link list with no block.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C45 rc1c2c5c2 [presentation] 5x60px rows under 'More About Knack's Security Features'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "case-study-body-needs-phase2-decomposition",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "A case-study page whose entire body after the title collapses into a single very tall node (>3000px) with only concatenated text and no distinguishable pull-quotes, stat callouts, or images.",
+      "decision": "Flag for Phase 2 targeted DOM extraction to recover embedded rich content (quotes, stats, images) rather than concluding the case study is one plain-text block.",
+      "rationale": "The visual-tree capture/pruning flattens nested rich content in long-form case studies into a single text blob, the same failure mode as underrendered-list-zone but for article bodies rather than card grids.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C51 rc1c2c2 [2x1] 1133x4080 single node 'David Rock, CEO and Co-Founder...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "global-nav-header-bar",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "A full-width bar at the very top of the page, above the hero, containing top-level menu labels (e.g. 'Solutions Business Need Work O...'), present on every sampled page.",
+      "decision": "Map to the global nav/header fragment, not page content; exclude from the page's block inventory.",
+      "rationale": "Identical content and position across every packet analyzed indicates shared site chrome, not authored page content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C52 rc1c1 [2x1] 1280x74",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "global-footer-cta-fragment",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "A bottom-most sibling zone (outside the main content wrapper) with a fixed marketing tagline ('The best no-code platform for...') plus a thin separator row.",
+      "decision": "Map to the global footer fragment; exclude from page-specific block inventory.",
+      "rationale": "Identical content/position on every sampled page = site-wide footer chrome, not per-page content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C52 rc2 @0,5656 1280x453",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "knack-template-download-cta",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A large template/app preview screenshot immediately followed by a button labeled 'Install Free Template App', recurring on every download-template page.",
+      "decision": "Combine into ONE 'template-download' block: cell1 = preview image, cell2 = CTA link. Rejected alternatives: (a) separate image block + default-content link, (b) folding the preview into the hero as an extra image.",
+      "rationale": "The preview+button pairing is a distinct, identically-labeled reusable component specific to Knack's download pages, not generically covered by minimize-block-cells alone.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C52 rc1c2c3c1 [3x2][bg:image] 1220x961 + rc1c2c3c3 'Install Free Template App'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "related-articles-heading-fold",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "default-content",
+      "status": "proposed",
+      "priority": 45,
+      "trigger": "The related-articles/blog grid at the page bottom sometimes renders as a single [3xN] node whose first text run includes what is elsewhere a separate heading (e.g. 'Find Inspiration on the Knack Blog'), instead of a distinct heading child node.",
+      "decision": "Treat the truncated leading text as the section heading (default-content) regardless of whether the capture produced a separate node; still emit the grid as ONE related-articles block. Rejected alternative: assume the heading is genuinely absent and omit it.",
+      "rationale": "Sibling pages with an identical component show the heading as a distinct node, so its absence here is most likely a capture/DOM-collapsing artifact rather than a real content difference.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C57 rc1c2c14 [3x1] 1280x543 '10 No-Code Apps for Sales & Ma...' with no separate heading child, vs C56/C59 which have an explicit heading node",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "understated-step-card-text",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "Within a repeating 'steps' block, one or more sibling cards render as an empty [bg:color] box with zero children/text while an adjacent sibling card of the same set has full heading+body text.",
+      "decision": "Still emit ONE steps block (N rows) rather than dropping the blank rows; flag the missing step text for Phase 2 targeted DOM extraction instead of concluding the steps are content-free.",
+      "rationale": "The steps block elsewhere on the same site (C56\u2013C58) always carries full text per row; two blank 100px boxes here almost certainly reflect content clipped by the minWidth capture, not genuinely empty steps.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C59 rc1c2c3 and rc1c2c4 [2x1][bg:color] 1280x100 with no children, vs rc1c2c5 with full 'Connect and Automate' text",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "embedded-app-iframe-inconsistent-capture",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "A template/app-demo page's main content zone renders as an app_id=\"...\" attribute string instead of visible UI, indicating the embedded live Knack app iframe did not render (cross-origin/lazy-load) during capture.",
+      "decision": "Do not treat the leaked attribute text as page copy. Flag the zone as an 'app-demo-embed' placeholder block and route to Phase 2 targeted capture/screenshot rather than importing the raw string. Alternatives considered: treat literally as default-content text (rejected - it's a source/DOM leak, not authored content); treat as noise and drop entirely (rejected - the embed itself is real, reusable page content, just under-rendered).",
+      "rationale": "Compare to cluster C64 (same page-18/page-4 template pair) where the equivalent zone DID render full app UI (dashboard table) - confirming this is a capture inconsistency, not a real content difference between pages.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C63 rc1c2 'Affiliate Dashboard app_id=\"58...' vs C64 rc1c2c1 fully-rendered dashboard/table",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "template-gallery-carousel-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 52,
+      "trigger": "A 'Pre-Built Templates' zone with slider/carousel Previous/Next controls (text runs together as 'PreviousNe...' in capture) showcasing app template cards.",
+      "decision": "Model as a dedicated 'template-carousel' block with one row per template card, plus prev/next affordances handled by the block's decorate JS (not authored per-row). Alternatives considered: modeling as a plain repeating-cards grid (rejected - loses the carousel/slider interaction semantics visible in the source); modeling nav controls as separate default-content links (rejected - they are block chrome, not page content).",
+      "rationale": "Distinct from the generic repeating-cards-are-one-block case because of the slider navigation controls; recurs on solution pages featuring a template gallery.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C67 rc1c2c9 'Pre-Built Templates PreviousNe...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "screenshot-visual-color-backdrop",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A sibling pair [bg:color] immediately followed by [bg:image], both with no captured text, standing alone as a visual break between text sections on a solution page.",
+      "decision": "Model as a single 'screenshot visual' image block placed in its own section (the color shape is a decorative backdrop CSS effect, not a section-wide background it wraps other content in).",
+      "rationale": "Recurs verbatim across solution pages (this cluster's rc1c2c3, also C70 rc1c2c4) as a product-screenshot mockup with a color blob behind it. Rejected alternatives: (a) fold into background-container-is-section-style since the image is likely meaningful product content, not decoration to discard; (b) drop as decorative-graphics-are-noise for the same reason \u2014 the image itself carries content value even though its color backdrop does not.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C68 rc1c2c3 [bg:color]907h + [bg:image]982h, no text",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "solution-page-trailing-empty-zone",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "The last content zone before the global footer is captured as an empty container with no text or tagged children.",
+      "decision": "Flag for Phase 2 targeted DOM extraction rather than assuming the page ends abruptly; likely related-links or a secondary CTA that fell below the minWidth capture.",
+      "rationale": "Same failure mode as underrendered-list-zone but manifests as a blank trailing block rather than a list grid.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C68 rc1c2c11 @0,7270 1280x252 with no child text",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "component-then-caption-order",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 48,
+      "trigger": "A component (untagged container, likely an image carousel/gallery) is rendered directly above its descriptive heading/paragraph, reversing the usual heading-then-component order.",
+      "decision": "Still map the heading/paragraph as default-content and the component as its own block within the same section; do not reorder content authoring purely to match the generic rule's example order, since EDS markdown order should mirror DOM order.",
+      "rationale": "The generic heading-then-component-same-section rule assumes heading precedes component; here the DOM order is reversed. Alternative rejected: forcing heading-first authoring order to match the generic rule literally, which would misrepresent actual page flow and confuse content reviewers.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C69 rc1c2c10c1 (component, no text) above rc1c2c10c2 ('Project Management Templates f...')",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "template-preview-tab-strip",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 52,
+      "trigger": "A [3x1] row of short labeled items directly under a template-detail hero, where each label names a page of the template app (e.g. 'Invoices Page', 'Job Scheduling Page').",
+      "decision": "Model as a single 'template preview tabs' block (one row per tab/screenshot) rather than a generic marketing card grid.",
+      "rationale": "These items are likely navigational previews tied to one screenshot viewer, not standalone marketing cards. Rejected alternative: treating it as a plain repeating-cards-are-one-block card grid, which would lose the tab/viewer semantics and imply static duplicate cards instead of a single interactive component; needs human confirmation on whether interactivity should be preserved in EDS or flattened to a static image gallery.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C71 rc1c2c3 [3x1] 'Invoices Page Job Scheduling P...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "empty-gradient-cta-band",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A full-width [bg:gradient] zone directly before the global footer with no captured text or child nodes.",
+      "decision": "Flag for Phase 2 targeted extraction; likely a final CTA banner whose copy/button fell below the minWidth capture rather than a genuinely empty section.",
+      "rationale": "Same failure mode as underrendered-list-zone, applied to a CTA band instead of a list grid.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C72 rc1c2c2 [bg:gradient] 1280x493, no child text",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "list-role-faq-accordion-variant",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "A vertical stack of question rows marked with [listitem]/[region] ARIA roles (instead of the [presentation] container used elsewhere), with the first item pre-expanded showing its full answer text.",
+      "decision": "Extend faq-accordion-block's trigger to also match this role-based variant; capture the visible expanded answer directly as the row's second cell instead of deferring it to Phase 2.",
+      "rationale": "Same content/structure as the confirmed faq-accordion-block pattern, just different underlying markup semantics. Rejected alternative: treating this as a new block type, which would duplicate an already-confirmed mapping for no structural reason.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C72 rc1c2c1c3c2 [listitem]/[region] rows, first row answer text visible",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "collapsed-case-study-body",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A case-study page whose entire post-title content is captured as a single oversized leaf node (several thousand px tall) with only a truncated text preview and no distinct heading/paragraph/image children.",
+      "decision": "Flag for Phase 2 targeted DOM extraction to recover the actual paragraph/heading/pull-quote/image structure before mapping to default-content; do not conclude the article is literally one paragraph.",
+      "rationale": "minWidth/visual-tree capture flattens long-form rich-text bodies into one text node when internal elements lack strong layout breaks (no cards, uniform font size). Distinct from two-column-article-with-sidebar since no sidebar is present here.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C73 rc1c2c2 [2x1] @74,592 1133x5566, single quoted text preview",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "case-study-single-column-body",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 45,
+      "trigger": "A case-study page body node is tagged [2x1] by the layout-grid detector but the visual tree captures only a single text run under it, with no second column of distinct content (e.g. author box, sidebar CTA).",
+      "decision": "Model as one flowing default-content article body, not the confirmed two-column-article-with-sidebar pattern. Do not fabricate a sidebar block. Rejected alternative: apply two-column-article-with-sidebar and speculatively split the text into main+sidebar cells, which is not supported by the evidence captured.",
+      "rationale": "The [2x1] tag likely reflects a CSS grid wrapper that collapses to one visible column at this viewport, or an under-rendered second column; without visible sidebar content it would be speculative to invent one.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C76 rc1c2c2 [2x1] 1133x4857 single text run, no second column captured",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "template-preview-install-cta-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "On a download/template page, a full-width template preview image or screenshot ([2x1]/[3x1]/[3x2], sometimes [bg:image]) is immediately followed by an 'Install Free Template App' button.",
+      "decision": "Model the preview image and the install CTA as ONE composite block (image cell + CTA cell), not as a separate image block plus a standalone CTA/default-content link.",
+      "rationale": "Rejected alternatives: (a) split into a generic image block and a separate CTA link, which would obscure that the image and the button perform one paired action (install this exact template); (b) fold it into the numbered-benefits grid above it, rejected because it is a visually distinct zone with a different content shape (single media item, not a repeating card grid).",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C77 rc1c2c3 [3x2][bg:image] preview + rc1c2c3c3 [bg:color] 'Install Free Template App'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "get-started-cta-banner",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "block",
+      "status": "proposed",
+      "priority": 52,
+      "trigger": "A full-width '[2x1] Get Started with Knack's ___' banner naming the specific template/app, positioned directly before the footer on template/download pages.",
+      "decision": "Treat as a reusable CTA banner block parametrized by template name, not page-unique free text.",
+      "rationale": "Identical structural position, size class, and wording pattern recur across all sampled download-template pages, indicating a shared component rather than one-off copy.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C77 rc1c2c5 [2x1] 1280x613 'Get Started with Knack's Const...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "recurring-bottom-marketing-banner",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "An identical ~453px band at the very bottom of the page reading 'The best no-code platform for...' plus a small social-icon row, recurring unchanged across unrelated templates (download, integration, ebook-category).",
+      "decision": "Model as a site-wide footer fragment rendered on every page, not as per-page authored content. Alternative rejected: treating it as a normal page-ending CTA section authored per page (rejected because content and layout are byte-identical across templates, indicating global chrome rather than page content).",
+      "rationale": "Identical text/size across independently themed templates strongly indicates a shared footer/fragment injected site-wide rather than page-authored content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C84 rc2 identical to same node in C85/C86/C87/C89",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "leaked-php-serialized-array-text",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 71,
+      "trigger": "A text node whose content is raw PHP serialized-array syntax (e.g. starts with 'a:N:{s:...' / WordPress ACF field-repeater dump), rendered visibly due to a template/escaping bug.",
+      "decision": "Exclude entirely from content and section analysis; it is a source-leak artifact analogous to leaked-css-text-node, not authorable page content.",
+      "rationale": "Same class of bug as the already-confirmed leaked-css-text-node rule (raw source rendered into the page), just a different leaking source (WordPress/ACF serialized data instead of CSS).",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C88 rc1c2c1c2 'a:9:{s:8:\"location\";a:1:{i:0;a...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "listing-filter-widget-modeling",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 52,
+      "trigger": "A category/facet filter chip bar with a 'Clear All' control sitting above a repeating card listing (as opposed to a static content grid).",
+      "decision": "Model as a 'category-filter' block that ships JS-driven filtering behavior, distinct from the card-grid block it filters. Alternative rejected: folding the filter chips into the card-grid block itself (rejected because the filter is a reusable interactive control, not per-item content, and should be authorable/reusable independently).",
+      "rationale": "Filter UI is a functional widget rather than static content, and separating it keeps the card-grid block reusable on pages without filtering.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C88 rc1c2c2c1c1 [4x2] chip bar + rc1c2c2c1c2 'Clear All'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "integration-page-rows-missing-text",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "Multiple mid-page rows/pairs on an 'integration-2' template capture with no quoted text (rc1c2c2c1/c2, rc1c2c6, rc1c2c8) despite visible box structure, unlike the surrounding rows which do carry text.",
+      "decision": "Flag these rows for Phase 2 targeted DOM extraction rather than treating them as empty; they likely hold icon-labeled trigger/action pairs or accordion Q/A text that fell below the minWidth capture threshold.",
+      "rationale": "Structurally identical siblings elsewhere on the same page do carry text, so the blank rows are a capture gap, not real emptiness.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C89 rc1c2c2c1, rc1c2c2c2, rc1c2c6, rc1c2c8 have box geometry but no text",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "off-domain-page-capture-scope-mismatch",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 90,
+      "trigger": "A page captured under a knack.com integration URL (e.g. /integrations/bubble-knack) renders content belonging entirely to a third-party marketing domain (here, bubble.io's own homepage: 'Bubble uses cookies', bubble.io nav, bubble.io footer) rather than any Knack-authored integration page.",
+      "decision": "Flag as an out-of-scope capture and exclude from the knack.com EDS migration inventory; do not model bubble.io's homepage as a Knack page section/block. Alternative rejected: mapping the captured structure as if it were the real Knack integration page (rejected because the content and domain chrome are demonstrably not Knack's, so any block inventory derived from it would import a competitor's marketing copy into the migration).",
+      "rationale": "The capture pipeline followed a redirect or loaded the wrong URL; treating third-party content as page content would corrupt the migration inventory.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C90 root contains 'Bubble uses cookies', bubble.io nav/footer, no Knack branding anywhere in the tree",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "duplicated-carousel-slides-in-capture",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "Two nodes with near-identical text and overlapping/duplicated bounding boxes (rc7/rc8, both 'Blown away by Bubble's AI assi...') appear promoted outside their DOM parent at nearly the same position.",
+      "decision": "Treat as clones of a single infinite-scroll/looping carousel, not as two distinct testimonials; collapse to one testimonial-carousel block instance.",
+      "rationale": "Carousel libraries often duplicate slide DOM nodes for seamless looping; counting both as unique content would double the row count.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C90 rc7 @-92,8872 and rc8 @1208,8872, both 1300x722 with identical leading text",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "cloudflare-challenge-page-capture-failure",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 92,
+      "trigger": "The entire captured visual tree reduces to a 'Ray ID: ...' string and generic 'Performance & security by Cloudflare' copy, with no real page content \u2014 the signature of a Cloudflare bot-check/challenge interstitial rather than the actual target page.",
+      "decision": "Exclude entirely from the block inventory; do not attempt to derive sections/blocks from this capture. Flag the URL for Phase 2 recapture (with bot-detection bypass / different capture strategy) rather than concluding the page has no content. Alternative rejected: modeling the 'main'/'contentinfo' regions as real default-content (rejected because the text is a Cloudflare-generated interstitial, not the constantcontact/knack integration page).",
+      "rationale": "A Cloudflare challenge page is an artifact of how the capture was performed (no bypass for bot protection), not the real content of the target page; treating it as content would corrupt the migration inventory with zero actual page data.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C91 whole tree: rc1 [main] 'www.constantcontact.comPerform...', rc2 [contentinfo] 'Ray ID: a3587aaf0eb818e3Perfor...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "wrong-domain-capture-artifact",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 92,
+      "trigger": "The captured visual tree's content, branding, and nav are entirely for a third-party partner site (e.g. Datadog) rather than the expected Knack 'Integrate Knack with X' integration-page template (no Knack nav, no 'Integrate Knack with' hero title).",
+      "decision": "Do not use this tree to author the EDS integration page. Flag for re-capture: the crawler likely followed an outbound partner link or a redirect landed on the partner's own homepage instead of knack.com/integrations/integrations-datadog-knack.",
+      "rationale": "Ingesting an unrelated competitor/partner homepage as if it were Knack content would corrupt the block inventory and produce a nonsensical migrated page.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C92 rc1-rc6 all Datadog-branded (logo, product nav, DASH conference, Google Cloud ebook) with zero Knack chrome",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "offscreen-overflow-list-noise",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "A node's captured width vastly exceeds the page viewport width (e.g. 3459px / 3224px wide inside a 1280px viewport), typically a full alphabetical list packed on one line.",
+      "decision": "Exclude from the block inventory as a hidden/off-canvas element (e.g. an autocomplete or state-picker dropdown) captured despite not being visually presented; if the content is genuinely needed, re-extract via targeted DOM query rather than the visual-tree capture.",
+      "rationale": "Width far beyond the viewport is a strong signal the node is not part of the rendered page flow the visual-tree capture is meant to represent.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C93 rc6 3459x36 'AlabamaArizona...'; rc7 3224x36 'AlaskaArkansas...' both overflowing the 1280px viewport",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "media-embed-blank-capture",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "block",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A sizable childless leaf node (no text, no bg tag) sits inside a heading+text intro section where a product walkthrough demo/video is expected.",
+      "decision": "Model as a video/embed block placeholder; confirm actual media (video vs. animated screenshot) via Phase 2 DOM/src extraction since the visual-tree capture does not render <video>/canvas contents.",
+      "rationale": "The blank region recurs at a consistent size and position across all integration pages in this cluster, strongly indicating unrendered media rather than empty content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C95 rc1c2c2c5 1244x336, no text, no bg tag",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "cluster_id": "C155",
+  "representative": "page-2__health-modmed-knack.json",
+  "sections": [
+    { "eds": "nav", "items": ["nav-placeholder"], "note": "rc1 [3x1] top bar renders raw JS text ('document.addEventListener(\"DOM...') instead of nav links; treated as nav slot, flagged as capture artifact." },
+    { "eds": "section", "style": "image-bg hero", "items": ["h1+intro", "cta-link"], "note": "rc2c1 [bg:image]; heading+CTA overlay text mapped as default-content per full-width-image-behind-text-is-section-bg." },
+    { "eds": "section", "style": "gradient-bg", "items": ["heading", "body text"], "note": "rc2c2 [bg:gradient] 'Why Connect ModMed and Knack'." },
+    { "eds": "section", "items": ["heading", "body text"], "note": "rc2c3 'What You Can Build' plain content." },
+    { "eds": "section", "items": ["heading", "body text"], "note": "rc2c4 'Built for / How ModMed Actually...' plain content." },
+    { "eds": "section", "items": ["heading", "body text"], "note": "rc2c5 'Integration Approach' plain content." },
+    { "eds": "section", "style": "color-bg", "items": ["heading 'Common Use Cases'", "card-grid block (5 items)"], "note": "rc2c6 [bg:color]+[5x1] repeating use-case cards." },
+    { "eds": "section", "items": ["heading", "body text"], "note": "rc2c7 'Why Knack Health' plain content." },
+    { "eds": "section", "items": ["heading", "body text"], "note": "rc2c8 'Implementation' plain content." },
+    { "eds": "section", "style": "color-bg", "items": ["heading", "cta-link"], "note": "rc2c9 [bg:color] 'Need a workflow that fits your...' CTA banner." },
+    { "eds": "section", "items": ["heading 'ModMed Integration FAQs'", "faq-accordion block (12 Q&A)"], "note": "rc2c10 accordion; rc2c10c3 and rc4 stray answer duplicates folded into the same block, not counted separately." },
+    { "eds": "section", "style": "footer-cta", "items": ["footer text", "links"], "note": "rc3 recurring 'best no-code platform' footer; treated as global chrome." }
+  ],
+  "blocks": ["card-grid", "faq-accordion"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "full-width-image-behind-text-is-section-bg",
+    "minimize-block-cells",
+    "knack-cookie-notice-overlay",
+    "leaked-css-text-node",
+    "faq-accordion-block"
+  ],
+  "proposed_rules": [
+    {
+      "id": "leaked-js-boilerplate-in-nav-zone",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "A [3x1] zone at the very top of the page (y=0, ~80px tall, sized like the nav bar) contains raw JS source text (e.g. 'document.addEventListener(\"DOM...') instead of nav links.",
+      "decision": "Exclude the JS text from the block/content inventory. Recognize the real nav failed to capture at this position; flag for Phase 2 DOM-based nav re-extraction rather than concluding the page has no nav.",
+      "rationale": "The nav-sized bounding box containing JS source (not CSS) indicates the visual capture ran before script execution replaced placeholder markup with real nav; distinct from the confirmed leaked-css-text-node rule which covers CSS leaks elsewhere in the body.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C155 rc1 [3x1] 1280x80 'document.addEventListener(\"DOM...'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "global-footer-cta-is-chrome",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A bottom-of-page zone starting with 'The best no-code platform for...' followed by a '| |' link row, identical across pages.",
+      "decision": "Model as a global site-wide footer fragment excluded from each page's per-page block inventory, same treatment as nav.",
+      "rationale": "Identical text/markup at the same position on every page is footer chrome, not page content. Alternatives rejected: authoring it as a per-page CTA/newsletter block (rejected because it never varies by page).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C155 rc3 'The best no-code platform for...' + '| |'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "duplicate-promoted-faq-answer-node",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A stray [region] node appears as a top-level sibling near the end of the tree, at coordinates overlapping an already-captured FAQ accordion answer, duplicating its text.",
+      "decision": "Treat as a duplicate of the corresponding accordion answer already modeled inside the FAQ block; do not count as extra content.",
+      "rationale": "Absolutely-positioned answer panels get promoted out of their DOM parent by the capture tool and re-appear as an extra top-level node; this is a capture artifact, not additional content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C155 rc4 [region] 1186x66 duplicates an answer already inside rc2c10c2", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Standard Knack Health long-form marketing page: hero + 6 content sections + use-case cards + FAQ accordion + footer + cookie overlay; top nav zone and one FAQ answer are capture artifacts."
+}

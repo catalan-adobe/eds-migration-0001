@@ -1,0 +1,66 @@
+{
+  "cluster_id": "C128",
+  "representative": "page-17__health-product.json",
+  "sections": [
+    { "eds": "section", "style": "hero-bg-image", "items": ["heading: The Knack Health Platform..."], "note": "rc2c1" },
+    { "eds": "section", "style": "bg-color", "items": [], "note": "rc2c2 [bg:color] 1280x968, no child text — large empty media zone, see proposed pipeline rule" },
+    { "eds": "default-content", "items": ["heading: Our Healthcare App Platform In...", "CTA: Test a live app"], "note": "rc2c3" },
+    { "eds": "section", "items": ["heading: Our Healthcare App Software", "block: feature-grid"], "note": "rc2c4 [4x2] repeating cards" },
+    { "eds": "default-content", "items": ["heading+paragraph: How It Works"], "note": "rc2c5" },
+    { "eds": "default-content", "items": ["heading+paragraph: Healthcare Scheduling Software", "heading+paragraph: Security and Compliance"], "note": "rc2c6, two stacked [2x1] features" },
+    { "eds": "default-content", "items": ["paragraph: Traditional EHR systems...", "paragraph: Knack Health is not a replacement..."], "note": "rc2c7 [2x1]" },
+    { "eds": "default-content", "items": ["heading+paragraph: Build Apps With AI"], "note": "rc2c8" },
+    { "eds": "section", "style": "cta-banner", "items": ["default-content: See the Knack Health platform... CTA"], "note": "rc2c9 bg:color" },
+    { "eds": "section", "items": ["heading: Frequently Asked Questions (FAQ)", "block: faq-accordion"], "note": "rc2c10, 9 questions" },
+    { "eds": "default-content", "items": ["footer CTA + social row"], "note": "rc3 — global footer, see proposed rule" }
+  ],
+  "blocks": ["feature-grid", "faq-accordion"],
+  "covered_by_rules": [
+    "leaked-css-text-node",
+    "full-width-image-behind-text-is-section-bg",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-footer-cta-fragment",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "A bottom-of-page block with the line 'The best no-code platform for ...' followed by a thin '| |' separator/social row, appearing verbatim at the end of nearly every captured page across templates.",
+      "decision": "Treat as global site footer chrome; exclude from per-page block inventory and model once as a shared footer fragment.",
+      "rationale": "Identical wording/layout recurs across landing, compare, and category templates — a shared footer partial, not page content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C128 rc3c1c1/c1c2 'The best no-code platform for...' + '| |'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "empty-bg-media-zone-needs-extraction",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A large full-width [bg:color]/[bg:gradient] zone mid-page (not a listing page) with no child text nodes, sized like a product screenshot or embedded video/widget.",
+      "decision": "Flag for Phase 2 targeted DOM/media extraction as an image or video block; do not conclude the zone is purely decorative background.",
+      "rationale": "Distinct from the confirmed underrendered-list-zone rule (which covers listing/card grids): here the empty zone sits inside a product narrative and most likely holds a screenshot or demo asset that failed to render at minWidth.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C128 rc2c2 [bg:color] 1280x968 with zero child text nodes", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "promoted-faq-answer-duplicate",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A [region] node appears as a top-level sibling of the root, outside its FAQ container, duplicating an answer already implied by a question row inside the FAQ block.",
+      "decision": "Fold the promoted region into its matching FAQ accordion row as the answer cell; do not emit as a separate block.",
+      "rationale": "page-tree promotes elements rendered outside their DOM parent (open accordion panel), duplicating content already covered by the FAQ accordion.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C128 rc4 (nested c4c1-c4c3) [region] 'Knack Health is a healthcare a...' top-level sibling of rc3", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Product landing page. rc2c2 is a suspiciously empty 968px band right after the hero — likely a screenshot/demo video not captured; flagged for Phase 2 rather than dropped."
+}

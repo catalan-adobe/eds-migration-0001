@@ -1,0 +1,43 @@
+{
+  "cluster_id": "C238",
+  "representative": "solution-2__solutions-security-compliance.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "'Solutions / Business Need / Work O...' top nav bar." },
+    { "eds": "default-content", "items": ["rc1c2c1"], "note": "2x1 hero heading/subhead + image: 'Build No-Code Security & Compliance...'." },
+    { "eds": "default-content", "items": ["rc1c2c2c1"], "note": "'Trusted by ... to simplify security...' intro heading above logo strip." },
+    { "eds": "section", "items": ["rc1c2c2c2"], "note": "4x1 customer-logo grid." },
+    { "eds": "section", "items": ["rc1c2c3"], "note": "2x1 text+image row: 'Protect Sensitive Information...'." },
+    { "eds": "section", "items": ["rc1c2c4"], "note": "2x1 text+image row: 'Discover Unbeatable ROI...'." },
+    { "eds": "section", "items": ["rc1c2c5"], "note": "2x1 text+image row: 'Customize Your Compliance Platform...'." },
+    { "eds": "section", "items": ["rc1c2c6"], "note": "2x1 text+image row: 'Low-Code / No-Code Security Risk...'." },
+    { "eds": "section", "style": "colored panel", "items": ["rc1c2c7c1","rc1c2c7c2"], "note": "bg:color panel wrapping a 3x2 'Incident Reporting' feature card grid." },
+    { "eds": "section", "items": ["rc1c2c8"], "note": "Large (918px) zone with no captured child text -> likely a logo/badge or card grid that fell below the capture threshold; flagged for Phase 2 re-extraction rather than assumed empty." },
+    { "eds": "section", "items": ["rc1c2c9c1","rc1c2c9c2"], "note": "'No-code Security and Compliance FAQs' accordion." },
+    { "eds": "section", "style": "footer band", "items": ["rc2c1","rc2c2"], "note": "Global 'best no-code platform' footer CTA band." },
+    { "eds": "default-content", "items": ["rc3","rc4"], "note": "Cookie consent overlay -> noise." }
+  ],
+  "blocks": ["logos", "cards", "columns", "accordion"],
+  "covered_by_rules": [
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay",
+    "underrendered-list-zone"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-footer-cta-band",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 86,
+      "trigger": "A sibling zone after the main content column containing 'The best no-code platform for...' text plus a thin '| |' bar, appearing identically at the bottom of nearly every page captured.",
+      "decision": "Treat as global site footer chrome; exclude from per-page block inventory. Model once as a site-wide footer fragment, not repeated page content.",
+      "rationale": "Byte-identical text/position recurs across unrelated templates (page, solution-2, solution-3).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C238 rc2c1/rc2c2 identical to C235-C237, C239-C242", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "rc1c2c8 is a large childless zone typical of the pipeline's minWidth under-rendering; do not conclude it is empty page content."
+}

@@ -1,0 +1,656 @@
+{
+  "raw_proposed_rules": 131,
+  "canonical_rules": 29,
+  "rules": [
+    {
+      "id": "footer-cta-chrome",
+      "scope": "project",
+      "category": "noise",
+      "decision_type": "convention",
+      "status": "proposed",
+      "coverage": 17,
+      "members": [
+        "global-footer-cta-is-chrome",
+        "knack-footer-cta-band",
+        "knack-footer-cta-bar",
+        "knack-footer-cta-chrome",
+        "knack-footer-cta-fragment",
+        "knack-footer-tagline-boilerplate",
+        "knack-global-footer-band",
+        "knack-global-footer-cta",
+        "recurring-footer-chrome",
+        "sitewide-footer-chrome",
+        "footer-logo-tagline-cta-strip",
+        "knack-footer-tagline-band",
+        "global-footer-cta-fragment",
+        "site-footer-cta-is-global-fragment",
+        "knack-global-nav-footer-chrome",
+        "recurring-bottom-marketing-banner",
+        "global-nav-header-bar"
+      ],
+      "trigger": "A recurring pre-footer band with tagline/CTA (and the global footer) present on nearly every page.",
+      "decision": "Exclude from page block inventory; model once as global footer chrome/fragment.",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 17,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "nav-chrome",
+      "scope": "project",
+      "category": "noise",
+      "decision_type": "convention",
+      "status": "proposed",
+      "coverage": 2,
+      "members": [
+        "knack-nav-bar-chrome",
+        "promoted-nav-flyout-menu"
+      ],
+      "trigger": "Global top navigation bar / flyout menu present site-wide.",
+      "decision": "Exclude from page content; global nav chrome.",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 2,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "announcement-bar-chrome",
+      "scope": "project",
+      "category": "noise",
+      "decision_type": "convention",
+      "status": "proposed",
+      "coverage": 2,
+      "members": [
+        "knack-announcement-bar",
+        "in-hero-seasonal-promo-strip"
+      ],
+      "trigger": "Thin promo ribbon above the nav (announcement) or a seasonal promo strip inside the hero.",
+      "decision": "Exclude as site-wide marketing chrome / fragment, not page content.",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 2,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "leaked-source-code-text",
+      "scope": "project",
+      "category": "noise",
+      "decision_type": "convention",
+      "status": "proposed",
+      "coverage": 7,
+      "members": [
+        "leaked-css-text-node",
+        "js-boilerplate-leak-node",
+        "leaked-js-script-inline-text-node",
+        "leaked-php-serialized-array-text",
+        "leaked-js-boilerplate-in-nav-zone",
+        "grid-preview-text-leaked-css",
+        "leaked-embed-widget-script"
+      ],
+      "trigger": "A visible text node whose content is raw CSS/JS/PHP source or serialized data (comment syntax, selectors, script boilerplate).",
+      "decision": "Exclude entirely \u2014 source-leak artifact, never content. (Generic candidate; promote cross-site.)",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 7,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "empty-spacer-band",
+      "scope": "pipeline",
+      "category": "noise",
+      "decision_type": "convention",
+      "status": "proposed",
+      "coverage": 7,
+      "members": [
+        "solution-page-trailing-spacer",
+        "solution-page-trailing-empty-zone",
+        "pre-footer-empty-gradient-band",
+        "empty-gradient-cta-band",
+        "empty-cta-zone-before-footer",
+        "oversized-bg-bleed-artifact",
+        "detached-viewport-sized-node"
+      ],
+      "trigger": "A trailing/pre-footer background or gradient band with no captured content (decorative spacer or oversized bg bleed).",
+      "decision": "Treat as decorative spacer; fold into section style or ignore. Not a block.",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 7,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "faq-answer-promoted-by-capture",
+      "scope": "pipeline",
+      "category": "structure",
+      "decision_type": "convention",
+      "status": "proposed",
+      "coverage": 12,
+      "members": [
+        "accordion-answer-coordinate-collision",
+        "duplicate-promoted-faq-answer-node",
+        "faq-answer-promoted-out-of-tree",
+        "promoted-duplicate-faq-answer-node",
+        "promoted-faq-answer-regions-artifact",
+        "detached-faq-answer-nodes",
+        "faq-answer-promoted-to-root",
+        "faq-answer-region-position-collision",
+        "promoted-faq-answer-duplicate",
+        "promoted-faq-answer-node",
+        "promoted-faq-answer-orphan-node",
+        "promoted-faq-answer-region"
+      ],
+      "trigger": "FAQ accordion answers appear as detached/duplicated/root-promoted [region] nodes, colliding by coordinates, because they were expanded/animated at capture.",
+      "decision": "Reattach answers to their question rows; treat as one faq-accordion block. Dedupe promoted copies.",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 12,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "content-underrendered-flag-phase2",
+      "scope": "pipeline",
+      "category": "structure",
+      "decision_type": "convention",
+      "status": "proposed",
+      "coverage": 12,
+      "members": [
+        "bottom-cta-banner-underrendered",
+        "empty-bg-banner-zone-underrendered",
+        "empty-bg-media-zone-needs-extraction",
+        "empty-bg-only-zone-no-captured-content",
+        "empty-cta-row-underrendered",
+        "pre-footer-cta-banner-underrendered",
+        "untagged-media-placeholder-zone",
+        "split-image-panel-underrendered",
+        "underrendered-list-zone",
+        "integration-page-rows-missing-text",
+        "understated-step-card-text",
+        "iframe-carousel-underrendered"
+      ],
+      "trigger": "A zone is near-empty in the tree (bg-only / missing text / understated) because content fell below the minWidth capture or loads lazily.",
+      "decision": "Do NOT treat as empty. Flag for Phase 2 targeted DOM extraction of that zone.",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 12,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "iframe-embed-blind-spot",
+      "scope": "pipeline",
+      "category": "structure",
+      "decision_type": "convention",
+      "status": "proposed",
+      "coverage": 6,
+      "members": [
+        "bg-only-zone-is-embed-widget",
+        "cross-origin-iframe-embed-blind-spot",
+        "embedded-app-demo-placeholder",
+        "embedded-app-iframe-inconsistent-capture",
+        "media-embed-blank-capture",
+        "underrendered-embedded-demo-widget"
+      ],
+      "trigger": "A cross-origin iframe / embedded app-demo / media widget captured as a blank or placeholder zone.",
+      "decision": "Mark as an embed block; resolve the embed src via Phase 2, don't treat as empty.",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 6,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "capture-failure-wrong-page",
+      "scope": "pipeline",
+      "category": "structure",
+      "decision_type": "convention",
+      "status": "proposed",
+      "coverage": 4,
+      "members": [
+        "cloudflare-challenge-page-capture-failure",
+        "off-domain-page-capture-scope-mismatch",
+        "wrong-domain-capture-artifact",
+        "error-redirect-page-structure"
+      ],
+      "trigger": "The capture landed on a challenge page, redirect, or off-domain URL (Cloudflare, error redirect, scope mismatch).",
+      "decision": "Discard the capture; re-capture the intended URL. Not a page structure.",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 4,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "offscreen-duplicate-node",
+      "scope": "pipeline",
+      "category": "noise",
+      "decision_type": "convention",
+      "status": "proposed",
+      "coverage": 7,
+      "members": [
+        "offcanvas-hidden-duplicate-node",
+        "offscreen-overflow-list-noise",
+        "hidden-tab-panel-promoted-offscreen",
+        "region-promoted-node-reattach",
+        "duplicated-carousel-slides-in-capture",
+        "marquee-ticker-duplicate-collapse",
+        "promoted-filter-control-overlapping-grid"
+      ],
+      "trigger": "Offcanvas/hidden/offscreen duplicates or duplicated carousel/marquee slides promoted into the tree.",
+      "decision": "Dedupe against the visible instance; drop the hidden/offscreen copy.",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 7,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "comparison-table-block",
+      "scope": "project",
+      "category": "block",
+      "decision_type": "team-decision",
+      "status": "proposed",
+      "coverage": 8,
+      "members": [
+        "comparison-list-block",
+        "comparison-table-as-single-block",
+        "comparison-table-block",
+        "feature-comparison-table-block",
+        "plan-comparison-table-block",
+        "pricing-comparison-table-block",
+        "dual-competitor-comparison-zones",
+        "stacked-vs-comparison-table-columns"
+      ],
+      "trigger": "A feature/plan/competitor comparison rendered as a table, stacked columns, or comparison cards.",
+      "decision": "Model as one comparison block; table vs cards is a variant (resolve cell structure in 3.5). Alternatives: separate blocks per layout.",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 8,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "template-gallery-block",
+      "scope": "project",
+      "category": "block",
+      "decision_type": "team-decision",
+      "status": "proposed",
+      "coverage": 9,
+      "members": [
+        "template-app-preview-block",
+        "template-carousel-block",
+        "template-gallery-carousel-block",
+        "template-preview-tab-strip",
+        "template-screenshot-carousel-then-cta",
+        "templates-carousel-block",
+        "tabbed-usecase-grid-block",
+        "knack-template-download-cta",
+        "template-preview-install-cta-block"
+      ],
+      "trigger": "Template previews shown as a carousel, grid, tab strip, or screenshot showcase, often followed by an install/download CTA.",
+      "decision": "Model as a template-gallery block (+ separate CTA). Carousel/grid/tabs are variants. Alternatives: distinct blocks per presentation.",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 9,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "presentation-list-is-accordion",
+      "scope": "project",
+      "category": "block",
+      "decision_type": "convention",
+      "status": "proposed",
+      "coverage": 2,
+      "members": [
+        "list-role-faq-accordion-variant",
+        "presentation-list-is-accordion-beyond-faq"
+      ],
+      "trigger": "A [presentation]/list-role container of uniform rows that is an interactive accordion (beyond FAQ).",
+      "decision": "Model as an accordion block; the [presentation] role is the accordion, not a plain list.",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 2,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "cta-banner-block",
+      "scope": "project",
+      "category": "block",
+      "decision_type": "team-decision",
+      "status": "proposed",
+      "coverage": 2,
+      "members": [
+        "get-started-cta-banner",
+        "single-cta-button-is-default-content-link"
+      ],
+      "trigger": "A standalone CTA band (heading + button) that is page content (not the global footer CTA).",
+      "decision": "Model as a cta-banner block. A lone button in flow may instead be a default-content link. Alternatives: default-content vs block.",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 2,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "filter-listing-block",
+      "scope": "project",
+      "category": "block",
+      "decision_type": "team-decision",
+      "status": "proposed",
+      "coverage": 3,
+      "members": [
+        "category-filter-chip-bar",
+        "directory-filter-search-block",
+        "listing-filter-widget-modeling"
+      ],
+      "trigger": "A filterable directory/listing with a chip/search filter bar over a grid or list.",
+      "decision": "Model as a listing block; the filter bar may be part of it or its own block (confirm via Phase 2). Alternatives: split filter + list.",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 3,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "media-embed-block",
+      "scope": "project",
+      "category": "block",
+      "decision_type": "convention",
+      "status": "proposed",
+      "coverage": 4,
+      "members": [
+        "embedded-video-block",
+        "video-embed-placeholder",
+        "interactive-demo-iframe-embed",
+        "product-picker-widget"
+      ],
+      "trigger": "An embedded video, interactive demo, or product-picker widget.",
+      "decision": "Model as a media/embed block keyed on the embed source.",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 4,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "alternating-feature-rows-block",
+      "scope": "project",
+      "category": "block",
+      "decision_type": "team-decision",
+      "status": "proposed",
+      "coverage": 4,
+      "members": [
+        "alternating-feature-rows-as-columns-block",
+        "alternating-feature-rows-are-one-block",
+        "marketing-feature-row-section",
+        "screenshot-visual-color-backdrop"
+      ],
+      "trigger": "A sequence of full-width media+text rows with alternating sides.",
+      "decision": "One feature block; alternation is a variant label. Alternatives: columns block per row.",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 4,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "testimonial-block",
+      "scope": "project",
+      "category": "block",
+      "decision_type": "convention",
+      "status": "proposed",
+      "coverage": 2,
+      "members": [
+        "testimonial-quote-block",
+        "solution-testimonial-callout"
+      ],
+      "trigger": "A customer quote + attribution (single or callout).",
+      "decision": "Model as a testimonial block; carousel is a variant.",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 2,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "trust-badge-strip-block",
+      "scope": "project",
+      "category": "block",
+      "decision_type": "team-decision",
+      "status": "proposed",
+      "coverage": 2,
+      "members": [
+        "client-trust-logo-strip",
+        "knack-trust-badge-strip"
+      ],
+      "trigger": "A strip of third-party rating/trust logos with scores near the top of landing pages.",
+      "decision": "Model as a trust-badges block (row per badge). May be a variant of a generic logo strip. Alternatives: logos block.",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 2,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "related-content-block",
+      "scope": "project",
+      "category": "block",
+      "decision_type": "convention",
+      "status": "proposed",
+      "coverage": 3,
+      "members": [
+        "bottom-of-page-related-content-card",
+        "related-article-teaser",
+        "related-articles-heading-fold"
+      ],
+      "trigger": "A bottom-of-page grid of related article/resource teaser cards.",
+      "decision": "Model as a related-content block (cards linking elsewhere).",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 3,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "section-bg-behind-heading",
+      "scope": "project",
+      "category": "section",
+      "decision_type": "convention",
+      "status": "proposed",
+      "coverage": 2,
+      "members": [
+        "media-behind-heading-untagged",
+        "flattened-mixed-content-zone"
+      ],
+      "trigger": "A heading/component sitting on an untagged media/color backdrop spanning a region.",
+      "decision": "Represent the backdrop as a section style; map heading + component as separate items (background-container rule).",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 2,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "two-column-body",
+      "scope": "project",
+      "category": "structure",
+      "decision_type": "team-decision",
+      "status": "proposed",
+      "coverage": 4,
+      "members": [
+        "two-column-article-with-sidebar",
+        "case-study-single-column-body",
+        "collapsed-case-study-body",
+        "case-study-body-needs-phase2-decomposition"
+      ],
+      "trigger": "An article/case-study body as a wide primary column + narrow sidebar, or a single-column body needing decomposition.",
+      "decision": "Article = default-content, sidebar = its own block, same section. Alternatives: columns block. Decompose via Phase 2.",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 4,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "page-template-signature",
+      "scope": "project",
+      "category": "structure",
+      "decision_type": "convention",
+      "status": "proposed",
+      "coverage": 3,
+      "members": [
+        "knack-integration-page-template",
+        "migration-landing-page-template",
+        "solutions-category-subnav-tab-bar"
+      ],
+      "trigger": "A recurring whole-page skeleton for a section of the site (integration pages, migration landing, category subnav).",
+      "decision": "Record as a page-template signature to batch import; not a single block.",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 3,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "page-body-as-prose",
+      "scope": "project",
+      "category": "default-content",
+      "decision_type": "team-decision",
+      "status": "proposed",
+      "coverage": 2,
+      "members": [
+        "alphabetical-glossary-is-default-content",
+        "package-pricing-page-body-as-prose"
+      ],
+      "trigger": "A page whose body is mostly long-form prose (glossary, pricing package copy) with no repeating component.",
+      "decision": "Map the body as default-content (headings/paragraphs/lists), not blocks. Alternatives: extract embedded blocks if present.",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 2,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "how-it-works-steps-block",
+      "scope": "project",
+      "category": "block",
+      "decision_type": "convention",
+      "status": "proposed",
+      "coverage": 1,
+      "members": [
+        "how-it-works-steps-as-block"
+      ],
+      "trigger": "A numbered how-it-works / steps sequence.",
+      "decision": "Model as a steps block, one row per step.",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 1,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "component-caption-order",
+      "scope": "project",
+      "category": "structure",
+      "decision_type": "convention",
+      "status": "proposed",
+      "coverage": 1,
+      "members": [
+        "component-then-caption-order"
+      ],
+      "trigger": "A component followed by its caption/label in DOM order.",
+      "decision": "Preserve component-then-caption order when authoring the block/default-content.",
+      "provenance": {
+        "origin": "step2.2-consolidation",
+        "merged_from": 1,
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "faq-accordion-block",
+      "scope": "generic",
+      "category": "block",
+      "decision_type": "convention",
+      "status": "proposed",
+      "coverage": 1,
+      "members": [
+        "faq-accordion-block"
+      ],
+      "trigger": "A vertical stack of uniform question rows (each a short heading, often with an expand affordance), typically under an 'FAQ' heading; visual tree marks the container [presentation] with N equal-height children.",
+      "decision": "Emit ONE accordion block with one row per Q/A pair. The question is the row's first cell; the answer (may be collapsed/under-rendered) the second \u2014 confirm answer text via Phase 2.",
+      "provenance": {
+        "origin": "step2.2-consolidation-singleton",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "knack-pricing-category-rows-as-separate-blocks",
+      "scope": "project",
+      "category": "block",
+      "decision_type": "team-decision",
+      "status": "proposed",
+      "coverage": 1,
+      "members": [
+        "knack-pricing-category-rows-as-separate-blocks"
+      ],
+      "trigger": "A pricing page repeats the same '[2x1] plan-name + feature-list' component under 5 separate category headings (Platform usage, Security & compliance, App building, Extensions, plus the top plan-cards block).",
+      "decision": "Model each category's comparison as its own instance of a single reusable 'plan-feature-comparison' block (5 instances, one per section), rather than merging all categories into one long master pricing table.",
+      "provenance": {
+        "origin": "step2.2-consolidation-singleton",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "web-form-is-form-block",
+      "scope": "project",
+      "category": "block",
+      "decision_type": "team-decision",
+      "status": "proposed",
+      "coverage": 1,
+      "members": [
+        "web-form-is-form-block"
+      ],
+      "trigger": "A vertical stack of labeled inputs (text, radio, textarea) ending in a submit control, forming an application/contact form.",
+      "decision": "Emit ONE 'form' block, one row per field (label + input type/placeholder), final row = submit. Rejected alternative: leave as raw inline HTML form with no block wrapper (loses EDS authoring/reuse for the field list).",
+      "provenance": {
+        "origin": "step2.2-consolidation-singleton",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "cluster_id": "C71",
+  "representative": "template-detail-2__templates-construction-management.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions / Business Need / Work O... nav"], "note": "rc1c1 [2x1] top nav bar" },
+    { "eds": "default-content", "items": ["H1: Leverage this Template App To..."], "note": "rc1c2c1 hero heading" },
+    { "eds": "section", "style": "plain", "items": ["default-content: 'Key Features & Functionality'", "block: numbered-feature-grid (3x2)"], "note": "rc1c2c2 heading + '01. Comprehensive Budgeting...' cards" },
+    { "eds": "section", "style": "plain", "items": ["block: template-preview-tabs (3x1)"], "note": "rc1c2c3 'Invoices Page / Job Scheduling P...' labeled preview strip" },
+    { "eds": "default-content", "items": ["Knack's Free Construction Mana...", "Knack's Construction Managemen..."], "note": "rc1c2c4 two paragraphs, no separate component" },
+    { "eds": "section", "style": "bg:color", "items": ["block: feature-card-grid (3x2)"], "note": "rc1c2c5 'Finance Management Manage proj...' feature cards" },
+    { "eds": "section", "style": "plain", "items": ["default-content: 'FAQs'", "block: faq-accordion (5 rows)"], "note": "rc1c2c6 FAQ Q&A stack" },
+    { "eds": "default-content", "items": ["Other Customizable Template Ap... (under-rendered)"], "note": "rc1c2c7 plain container, likely a related-templates card grid not captured" },
+    { "eds": "section", "style": "plain", "items": ["footer CTA: 'The best no-code platform for...'", "footer link row"], "note": "rc2 global footer CTA band" },
+    { "eds": "default-content", "items": [], "note": "rc3/rc4 cookie consent overlay excluded per knack-cookie-notice-overlay" }
+  ],
+  "blocks": ["numbered-feature-grid", "template-preview-tabs", "feature-card-grid", "faq-accordion"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "minimize-block-cells",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay",
+    "underrendered-list-zone"
+  ],
+  "notes": "Template-detail page: feature grid, a labeled preview strip of template sub-pages, two-paragraph intro, feature-card grid, FAQ, and an under-rendered related-templates zone.",
+  "proposed_rules": [
+    {
+      "id": "template-preview-tab-strip",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 52,
+      "trigger": "A [3x1] row of short labeled items directly under a template-detail hero, where each label names a page of the template app (e.g. 'Invoices Page', 'Job Scheduling Page').",
+      "decision": "Model as a single 'template preview tabs' block (one row per tab/screenshot) rather than a generic marketing card grid.",
+      "rationale": "These items are likely navigational previews tied to one screenshot viewer, not standalone marketing cards. Rejected alternative: treating it as a plain repeating-cards-are-one-block card grid, which would lose the tab/viewer semantics and imply static duplicate cards instead of a single interactive component; needs human confirmation on whether interactivity should be preserved in EDS or flattened to a static image gallery.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C71 rc1c2c3 [3x1] 'Invoices Page Job Scheduling P...'", "added": "2026-09-04", "version": 1 }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "cluster_id": "C137",
+  "representative": "page-22__tour-integrations.json",
+  "sections": [
+    { "eds": "section", "items": ["H1/paragraph Built-In Native Automations wi..."], "note": "rc1c2c1, no explicit nav node captured on this page" },
+    { "eds": "section", "style": "gradient bg", "items": ["testimonial quote block (David Dogan-Webb, CEO)"], "note": "rc1c2c2" },
+    { "eds": "section", "items": ["bg image", "eyebrow/H2 5 Reasons to Choose Knack Flows", "numbered-reasons grid (3x2)"], "note": "rc1c2c3" },
+    { "eds": "section", "style": "color bg", "items": ["H2 How Knack Flows Works", "subtext", "screenshot image"], "note": "rc1c2c4" },
+    { "eds": "section", "items": ["process-steps block (3 rows: Choose a Trigger / Set Up an Action / Connect and Automate)"], "note": "rc1c2c5, rc1c2c6, rc1c2c7 — uniform [2x1][bg:color] rows" },
+    { "eds": "section", "items": ["feature block (4 rows: Native Automation / Instant In-App / Connect Multiple Apps / Set Your Own Schedule)"], "note": "rc1c2c9..rc1c2c12 — uniform heights (335-354px)" },
+    { "eds": "section", "items": ["integration logos grid (9x2)", "link See All Integrations"], "note": "rc1c2c13" },
+    { "eds": "section", "style": "gradient bg", "items": ["CTA banner (text not captured)"], "note": "rc1c2c14, empty gradient zone before footer" },
+    { "eds": "section", "style": "footer", "items": ["footer tagline", "footer link row"], "note": "rc2" }
+  ],
+  "blocks": ["testimonial-quote", "numbered-reasons-grid", "process-steps", "feature-list", "logo-grid"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "testimonial-quote-block",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "block",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "A quoted statement (curly quotes) followed by an attributed name/title, standalone or on a colored/gradient background.",
+      "decision": "Map as a dedicated testimonial/quote block (quote text + attribution cells); background per background-container-is-section-style.",
+      "rationale": "Recurs as a distinct, near-objective reusable component across multiple pages — clearer authoring than folding it into generic default-content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C137 rc1c2c2c2 quote + 'David Dogan-Webb, CEO and Foun...'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "pre-footer-cta-banner-underrendered",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 48,
+      "trigger": "A [bg:gradient]/[bg:color] zone of substantial height (~500px) immediately before the footer, with no captured text.",
+      "decision": "Flag for Phase 2 targeted extraction — likely a CTA banner whose text failed to render/capture.",
+      "rationale": "Same empty gradient band recurs at the same page position across multiple templates; treating it as decoration-only risks dropping a real CTA.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C137 rc1c2c14 [bg:gradient] 1280x507, no text", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Tour/integrations page: also lacks a captured nav node; the 3-row [2x1][bg:color] step cards and the 4-row uniform feature items were both mapped to repeating-cards-are-one-block (rejected treating them as distinct marketing-feature-row sections) because their heights are tightly clustered, unlike the taller varied rows seen on other pages."
+}

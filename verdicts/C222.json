@@ -1,0 +1,53 @@
+{
+  "cluster_id": "C222",
+  "representative": "page__health-integrations-epic-twilio.json",
+  "sections": [
+    { "eds": "nav", "items": ["nav (leaked JS text node in place)"], "note": "rc1 [3x1] 80px; visible text is a leaked JS source line, real nav markup not captured" },
+    { "eds": "section", "style": "image-bg", "items": ["heading+CTA", "trust line"], "note": "rc2c1 [bg:image] hero: rc2c1c1 heading/CTA, rc2c1c2 trust badges line" },
+    { "eds": "section", "style": "gradient-bg", "items": ["heading+capabilities intro"], "note": "rc2c2 [2x1][bg:gradient] 'What You Can Do When Epic Connects Twilio'" },
+    { "eds": "default-content", "items": ["heading+steps text"], "note": "rc2c3 'Set Up in Minutes. No Developers...' plain zone" },
+    { "eds": "section", "items": ["heading", "use-case-cards block"], "note": "rc2c4c1 heading + rc2c4c2 [2x2] 4-item use-case grid" },
+    { "eds": "section", "style": "color-bg", "items": ["heading+paragraph", "compliance-badges block"], "note": "rc2c5 [bg:color] HIPAA compliance zone + rc2c5c3 [5x1] badge row" },
+    { "eds": "section", "style": "color-bg", "items": ["heading", "CTA links"], "note": "rc2c6 [bg:color] 'Start building for free' + Book a Demo / Request Free Trial" },
+    { "eds": "section", "items": ["heading", "faq-accordion block"], "note": "rc2c7 FAQ zone, 5 Q rows in rc2c7c2; answers partly inline, partly promoted (rc4, rc5)" },
+    { "eds": "section", "style": "footer", "items": ["tagline", "footer links"], "note": "rc3 footer: tagline + pipe-separated link list" }
+  ],
+  "blocks": ["use-case-cards", "compliance-badges", "faq-accordion"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "full-width-image-behind-text-is-section-bg",
+    "minimize-block-cells",
+    "faq-accordion-block",
+    "leaked-css-text-node",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "promoted-faq-answer-region",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A FAQ accordion answer is rendered as a [region] node positioned outside its question's DOM subtree (surfacing as a page-root sibling like rc4/rc5) instead of nested under the question row.",
+      "decision": "Fold each promoted [region] answer back into the FAQ accordion block as the second cell of its matching question row, matched by vertical position, rather than emitting it as a separate block or default-content item.",
+      "rationale": "These are collapsed-accordion answers relocated by the capture tool's overlay/absolute-position promotion logic, not independent page content. Not addressed by the existing faq-accordion-block rule, which assumes inline nesting.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C222 rc4 [region] @47,4728 and rc5 [region] @47,4786 sit at page root, outside rc2c7c2 accordion container", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "recurring-footer-chrome",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A bottom-of-page zone (rc3) with a tagline sentence ('The best no-code platform for ...') followed by a pipe-separated link list, identical across integration landing pages.",
+      "decision": "Treat as global site footer chrome, excluded from the page's per-page block inventory; model once as a site-wide footer fragment. (Rejected alternative: a per-page 'footer-links' block, which would duplicate identical content on every page.)",
+      "rationale": "Recurs verbatim across the health-integrations page family with identical structure, indicating shared site chrome rather than page-authored content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C222 rc3c1c1/rc3c1c2 tagline + '| |' link list", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Standard Knack health-integration landing page (Epic + Twilio): hero + capability/steps zones + use-case grid + compliance + CTA + FAQ accordion + footer, plus global nav/cookie chrome."
+}

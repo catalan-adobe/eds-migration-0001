@@ -1,0 +1,64 @@
+{
+  "cluster_id": "C233",
+  "representative": "page__health-integrations.json",
+  "sections": [
+    { "eds": "section", "style": "bg-image", "items": ["hero heading/text (rc2c1)"], "note": "full-width-image-behind-text-is-section-bg" },
+    { "eds": "section", "items": ["heading (rc2c2c1)", "paragraph (rc2c2c2)", "feature-list block, 3 items (rc2c2c3)"], "note": "heading-then-component-same-section + repeating-cards-are-one-block" },
+    { "eds": "section", "items": ["'Advanced' heading (rc2c3c1)", "subheading (rc2c3c2)", "integration-logo-grid block, 9 items (rc2c3c3)"], "note": "heading-then-component-same-section + repeating-cards-are-one-block (3x3 grid)" },
+    { "eds": "section", "items": ["'All integrations' heading (rc2c4c1)", "listing-block: filter bar + integration cards (rc2c4c3)"], "note": "underrendered-list-zone: 4324px zone with only 'FILTER BY CATEGORY Show All...' text visible; card grid collapsed below minWidth capture, flag for Phase 2 DOM extraction" },
+    { "eds": "section", "style": "bg-color", "items": ["CTA text (rc2c5)"], "note": "background-container-is-section-style, default-content only" },
+    { "eds": "section", "items": ["8 FAQ headings (rc2c6c1..c8)", "faq-accordion block, 8 Q&A incl. floating answer regions rc2c6c9..c14 and rc4"], "note": "faq-accordion-block" },
+    { "eds": "default-content", "items": ["footer tagline + separator (rc3c1c1/rc3c1c2)"], "note": "recurring global footer, see proposed footer rule" }
+  ],
+  "blocks": ["hero", "feature-list", "integration-logo-grid", "listing-block", "faq-accordion"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "background-container-is-section-style",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "faq-accordion-block",
+    "underrendered-list-zone",
+    "leaked-css-text-node",
+    "knack-cookie-notice-overlay",
+    "minimize-block-cells"
+  ],
+  "proposed_rules": [
+    {
+      "id": "leaked-js-script-inline-text-node",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 71,
+      "trigger": "A top-of-page text node whose content is raw JS source (e.g. starts with 'document.addEventListener(\"DOM...') rendered visibly, analogous to the confirmed leaked-css-text-node pattern but for inline scripts.",
+      "decision": "Exclude entirely from block inventory; treat as a source-leak artifact identical in spirit to leaked-css-text-node.",
+      "rationale": "Rendered JS source is never authorable content; appears identically at rc1 on every page in this batch, including this listing page.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C233 rc1 [3x1] 'document.addEventListener(\"DOM...'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-footer-tagline-boilerplate",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "A bottom-of-page block with 'The best no-code platform for...' tagline text and a following '| |' separator line, identical across many pages.",
+      "decision": "Treat as global site footer chrome; model as a site-wide fragment rather than page-specific default-content.",
+      "rationale": "Content and structure are byte-identical across unrelated pages, indicating shared footer markup rather than page content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C233 rc3c1c1/rc3c1c2 'The best no-code platform for...' + '| |'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "faq-answer-region-position-collision",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A [region]-tagged FAQ answer node whose bounding box exactly overlaps a sibling question row's coordinates rather than sitting directly below its own question, because the capture froze an expanded/collapsed accordion state.",
+      "decision": "Reconstruct Q/A pairing by DOM/document order, not by on-screen position, when building the faq-accordion block rows.",
+      "rationale": "Positional overlap is a capture-time artifact of the accordion's absolute-positioned answer panel, not a real layout collision.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C233 rc2c6c3 @130,6990 vs rc2c6c9 [region] @130,6990 (identical offset)", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Cookie overlay (rc5) excluded per knack-cookie-notice-overlay. This is the integrations category/listing hub page (distinct dominant layout from the per-partner pages in C227-C232) with an underrendered listing zone requiring Phase 2 follow-up."
+}

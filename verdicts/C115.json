@@ -1,0 +1,53 @@
+{
+  "cluster_id": "C115",
+  "representative": "page-13__health-professional-services.json",
+  "sections": [
+    { "eds": "section", "style": "bg-image", "items": ["Knack Health Professional Serv... (H1+intro)"], "note": "hero" },
+    { "eds": "section", "items": ["How Does it Work? heading", "steps component: Sign your Knack Health plan..."], "note": "process-steps block" },
+    { "eds": "section", "items": ["What we can build for you heading", "cards grid [3x3]: Patient Intake and Scheduling..."], "note": "services grid" },
+    { "eds": "section", "style": "bg-color", "items": ["Who is it for? heading", "intro text", "audience-segments grid [4x1]: Teams rebuilding..."], "note": "bg-color wraps heading+text+grid" },
+    { "eds": "default-content", "items": ["What you get with professional... heading"], "note": "intro heading for following feature rows" },
+    { "eds": "section", "items": ["feature row: Dedicated Account Manager", "feature row: HIPAA Compliant Foundation", "feature row: Built by Product Experts", "feature row: Delivered on a Defined Timeline"], "note": "4 uniform [2x1] rows -> one block" },
+    { "eds": "section", "items": ["FAQ heading", "9 Q&A rows (some answer regions misplaced near footer)"], "note": "faq accordion" },
+    { "eds": "section", "items": ["footer tagline", "footer link row"], "note": "site footer" }
+  ],
+  "blocks": ["process-steps", "cards", "audience-segments", "feature-list", "faq-accordion"],
+  "covered_by_rules": ["full-width-image-behind-text-is-section-bg", "heading-then-component-same-section", "repeating-cards-are-one-block", "background-container-is-section-style", "faq-accordion-block", "leaked-css-text-node", "knack-cookie-notice-overlay"],
+  "proposed_rules": [
+    {
+      "id": "promoted-faq-answer-regions-artifact",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "FAQ answer [region] nodes whose y-position falls after/overlapping the footer or other unrelated sections, caused by the capture tool promoting absolutely-positioned collapsed-accordion panels out of their DOM parent.",
+      "decision": "Reassign each stray [region] node to the answer cell of its matching question row inside the FAQ accordion block; do not treat as separate footer-area content.",
+      "rationale": "The regions' text ('Standard support helps you build...', 'Book a call with our team...') clearly answers earlier FAQ questions despite rendering below the footer/cookie overlay, confirming a positioning artifact rather than real page content in that location.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C115 rc4/rc5 [region] @70,6659 and @70,6728 1140x88, positioned after footer rc3 (ends 7191) and cookie overlay rc6",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "how-it-works-steps-as-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 53,
+      "trigger": "A 'How Does it Work?' heading followed by a component describing a sequential sign-up/onboarding flow (e.g. 'Sign your Knack Health plan...').",
+      "decision": "Model the steps component as a dedicated 'process-steps' block (one row per step) rather than plain default-content paragraphs, so the step sequence can be reused across other Knack Health vertical pages. Rejected alternative: leaving it as flowing default-content text.",
+      "rationale": "The 'how does it work' + step-sequence pattern is a recognizable component likely reused on sibling health-vertical landing pages, warranting a structured block rather than prose.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C115 rc2c2c1/rc2c2c2 'How Does it Work?' + [2x1] 'Sign your Knack Health plan...' 1206x595",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    }
+  ],
+  "notes": "Richest page in this batch (page-13 template): a leaked JS console-log text node is excluded as noise, and stray FAQ-answer regions misplaced past the footer are a capture-promotion artifact rather than real trailing content."
+}

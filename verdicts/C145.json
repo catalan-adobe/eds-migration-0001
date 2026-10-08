@@ -1,0 +1,43 @@
+{
+  "cluster_id": "C145",
+  "representative": "page-29__base44-alternative.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions / Business Need / Work On... nav bar (rc1c1)"], "note": "global site header, excluded" },
+    { "eds": "section", "style": "bg-image", "items": ["eyebrow: The #1 Base44 Alternative...", "block: trust-logos"], "note": "rc1c2c1 hero; trust-logo strip aligns with existing proposed knack-trust-badge-strip rule (not yet confirmed)" },
+    { "eds": "section", "style": "bg-color", "items": ["WHY KNACK? heading", "block: why-knack-features (2x2, 4 items)"], "note": "rc1c2c3" },
+    { "eds": "section", "items": ["5 Reasons Why Knack is Better heading", "block: reason-cards (3x2, 6 items)"], "note": "rc1c2c4" },
+    { "eds": "default-content", "items": ["BUILD IN MINUTES eyebrow + Build an Editable App Instantly..."], "note": "rc1c2c5/6, 2-col feature banner" },
+    { "eds": "default-content", "items": ["BRAND-READY eyebrow + Front-End Polish Without a Front-End Team..."], "note": "rc1c2c8/10, same banner pattern as above" },
+    { "eds": "default-content", "items": ["AUTOMATION eyebrow + No-Code Workflows, Zero Extra Fees..."], "note": "rc1c2c11/12, same banner pattern" },
+    { "eds": "section", "style": "bg-color", "items": ["CUSTOMERS THRIVE / Success Stories heading", "block: customer-testimonial-carousel"], "note": "rc1c2c14, 5-item pagination" },
+    { "eds": "default-content", "items": ["READY TO MAKE THE SWITCH? + Start Building for Free CTA"], "note": "rc1c2c15/16" },
+    { "eds": "section", "items": ["Knack vs. Base44 FAQs heading", "block: faq-accordion (5 rows)"], "note": "rc1c2c17" },
+    { "eds": "nav", "items": ["footer tagline + link row (rc2)"], "note": "global footer" },
+    { "eds": "nav", "items": ["cookie overlay (rc3/rc4)"], "note": "global chrome, excluded" }
+  ],
+  "blocks": ["trust-logos", "why-knack-features", "reason-cards", "customer-testimonial-carousel", "faq-accordion"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay",
+    "variant-is-css-not-new-block"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-global-footer-cta",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "Pair of [2x1] nodes at bottom of main content: tagline + pipe-separated link list.",
+      "decision": "Model as global site footer fragment; exclude from page block inventory.",
+      "rationale": "Recurs identically across unrelated templates.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C145 rc2c1 [2x1] tagline + rc2c2 [2x1] '| |'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Comparison landing page (vs Base44) with the three eyebrow+2-col banners sharing one reusable banner block per variant-is-css-not-new-block; a 5-row FAQ uses [listitem] markup instead of the usual accordion container."
+}

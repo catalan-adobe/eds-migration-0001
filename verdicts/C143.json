@@ -1,0 +1,52 @@
+{
+  "cluster_id": "C143",
+  "representative": "page-27__compare.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions / Business Need / Work On... nav bar (rc1c1)"], "note": "global site header, excluded" },
+    { "eds": "section", "items": ["Compare Knack heading + copy"], "note": "rc1c2c1; rc1c2c1c1 is an untagged decorative background image" },
+    { "eds": "section", "items": ["6 Reasons Why Knack is the Best heading", "block: reason-cards (3x2, 6 items)"], "note": "rc1c2c2" },
+    { "eds": "section", "items": ["See Why Knack Beats Other... heading", "block: comparison-table (header row + 12 rows x 6 cols)"], "note": "rc1c2c3" },
+    { "eds": "default-content", "items": ["Create Your Account to Start Building..."], "note": "rc1c2c4 CTA banner" },
+    { "eds": "section", "items": ["block: competitor-comparison-cards (3x4, 12 items)"], "note": "rc1c2c5, Bubble/etc. comparison" },
+    { "eds": "section", "style": "bg-gradient", "items": ["block: testimonials (3x1)"], "note": "rc1c2c7, $250k+ saved/year quote" },
+    { "eds": "section", "style": "bg-gradient", "items": ["underrendered listing zone (1280x507, no text)"], "note": "rc1c2c8" },
+    { "eds": "nav", "items": ["footer tagline + link row (rc2)"], "note": "global footer" },
+    { "eds": "nav", "items": ["cookie overlay (rc3/rc4)"], "note": "global chrome, excluded" }
+  ],
+  "blocks": ["reason-cards", "comparison-table", "competitor-comparison-cards", "testimonials"],
+  "covered_by_rules": [
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style",
+    "underrendered-list-zone",
+    "decorative-graphics-are-noise",
+    "knack-cookie-notice-overlay",
+    "minimize-block-cells"
+  ],
+  "proposed_rules": [
+    {
+      "id": "comparison-table-as-single-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A multi-column feature-by-feature comparison table ([6x1] header row followed by [6x1] data rows) comparing Knack against competitors.",
+      "decision": "Model as ONE 'comparison-table' block with the header as the first row and each feature as a subsequent row (12 rows x 6 cols).",
+      "rationale": "Rejected alternatives: separate block per competitor column (breaks row-per-item authoring); default-content markdown table instead of a block (loses reusable component styling for repeated comparison tables across pages).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C143 rc1c2c3c2c1 [6x1] header + rc1c2c3c2c2 12x [6x1] rows", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-global-footer-cta",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "Pair of [2x1] nodes at bottom of main content: tagline + pipe-separated link list.",
+      "decision": "Model as global site footer fragment; exclude from page block inventory.",
+      "rationale": "Recurs identically across unrelated templates.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C143 rc2c1 [2x1] tagline + rc2c2 [2x1] '| |'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Comparison landing page: reason grid, feature comparison table, competitor card grid, testimonial. Bottom bg-gradient zone (1280x507, no text) matches the confirmed underrendered-list-zone pattern exactly."
+}

@@ -1,0 +1,78 @@
+{
+  "cluster_id": "C184",
+  "representative": "page-6__health-compare-airtable-vs-knack.json",
+  "sections": [
+    { "eds": "section", "style": "hero", "items": ["H1 Knack vs. Airtable Which no-co..."], "note": "rc2c1 bg:image hero" },
+    { "eds": "default-content", "items": ["Why Healthcare Teams Choose Kn... (text)"], "note": "rc2c2, single [2x1] statement" },
+    { "eds": "section", "items": ["comparison-table block (competitor label + 6 reason rows)", "CTA link Get Started"], "note": "rc2c3" },
+    { "eds": "section", "items": ["H2 Key Features and Benefits", "comparison-table block (competitor label + 6 feature-snapshot rows)"], "note": "rc2c4" },
+    { "eds": "section", "items": ["H2 Key Features and Benefits", "Security and Privacy (default-content)", "Ease of Use and Support (bg-color section + default-content)", "Customization (default-content)", "Time to Value and Scalability (bg-color section + default-content)", "Pricing (default-content)", "Integrations (bg-color section + default-content)", "H2 What Our Users Are Saying", "testimonial (default-content quote)"], "note": "rc2c5, alternating bg:color sub-zones each become their own section per background-container-is-section-style" },
+    { "eds": "section", "style": "bg-color", "items": ["CTA text Start Building Your Healthcare..."], "note": "rc2c7 (rc2c6 blank bg:image is noise, see below)" },
+    { "eds": "section", "items": ["cards block (3x2 patient-workflow use cases)"], "note": "rc2c8" },
+    { "eds": "section", "items": ["H2 Frequently Asked Questions: Kn...", "accordion block (5 Q/A rows)"], "note": "rc2c9" },
+    { "eds": "default-content", "items": ["footer tagline"], "note": "rc3, sitewide footer chrome, proposed rule" },
+    { "eds": "default-content", "items": ["cookie consent overlay"], "note": "rc5, excluded per confirmed rule" }
+  ],
+  "blocks": ["comparison-table", "cards", "accordion"],
+  "covered_by_rules": [
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "background-container-is-section-style",
+    "full-width-image-behind-text-is-section-bg",
+    "decorative-graphics-are-noise",
+    "minimize-block-cells",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "js-boilerplate-leak-node",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 71,
+      "trigger": "A text node at the very top of the tree (rc1) whose content is a raw JS boot snippet, e.g. starting with document.addEventListener(\"DOM...",
+      "decision": "Exclude entirely from block inventory; source-leak artifact analogous to leaked-css-text-node but for JS.",
+      "rationale": "Recurs identically at rc1 on every captured page in this batch; boilerplate script text rendered visibly due to a source bug, never content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C184 rc1 [3x1] 'document.addEventListener(\"DOM...'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "promoted-faq-answer-duplicate",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A [region] node containing FAQ answer text appears a second time as a sibling outside the main content flow (after the footer), duplicating text already nested under an accordion item.",
+      "decision": "Treat as a duplicate of the nested accordion answer already captured in the FAQ block; do not add as separate content.",
+      "rationale": "The page-tree capture promotes elements rendered outside their DOM parent (absolutely-positioned accordion panels), duplicating content already represented.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C184 rc4 duplicates rc2c9c3 answer text", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "sitewide-footer-chrome",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "A trailing rc3 zone with fixed text 'The best no-code platform for...' plus a pipe-separated link row, identical across pages.",
+      "decision": "Model as a sitewide footer fragment, not page content; exclude from per-page block inventory.",
+      "rationale": "Identical structure/text recurs at the same position on every page in this batch, indicating global template chrome.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C184 rc3c1c1/rc3c1c2", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "dual-competitor-comparison-zones",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A page-6 comparison template repeats the pattern 'competitor name label + list of [3x1] rows' twice in succession (rc2c3: detailed prose reasons, rc2c4: short feature-snapshot lines) before a third, richer alternating-background comparison zone (rc2c5).",
+      "decision": "Model both rc2c3 and rc2c4 as two instances of the same reusable comparison-table block type (differing only in row content/length), rather than inventing two distinct block types or merging them into one multi-column block. Rejected alternatives: (a) two distinct block types ('comparison-reasons' and 'comparison-snapshot'), (b) merge rc2c3+rc2c4 into a single wide comparison block spanning both zones.",
+      "rationale": "Both zones share the same shape (a competitor-name row followed by N one-line/one-paragraph rows) and only differ in content verbosity, matching the variant-is-css-not-new-block philosophy extended to block reuse rather than a new type per instance.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C184 rc2c3c1 vs rc2c4c2 both competitor-label + [3x1] row lists", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Comparison-template (page-6) page: two consecutive competitor comparison list zones map to the same reusable comparison-table block; a blank bg:image band (rc2c6) is treated as decorative noise rather than an under-rendered content zone since no text/heading anchors it."
+}

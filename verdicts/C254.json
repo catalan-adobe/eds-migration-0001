@@ -1,0 +1,44 @@
+{
+  "cluster_id": "C254",
+  "representative": "template-detail-2__templates-quality-control.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions", "Business Need", "Work O..."], "note": "top nav bar rc1c1" },
+    { "eds": "section", "style": "hero", "items": ["heading: Leverage this Template App To ..."], "note": "hero intro rc1c2c1" },
+    { "eds": "section", "items": ["heading: Key Features & Functionality", "key-features block: 01. Inspection Management Sche..."], "note": "rc1c2c2" },
+    { "eds": "section", "items": ["screenshot-carousel block: Compliance Standards Product D..."], "note": "rc1c2c3" },
+    { "eds": "noise", "items": [], "note": "rc1c2c4 leaked raw CSS text '@media (min-width: 1200px) { ...' \u2014 excluded per leaked-css-text-node" },
+    { "eds": "section", "style": "bg-color", "items": ["feature-cards block: Quality Audits Facilitate inte..."], "note": "rc1c2c5" },
+    { "eds": "section", "style": "faq", "items": ["heading: FAQs", "faq-accordion block (5 Q&A rows)"], "note": "rc1c2c6" },
+    { "eds": "section", "items": ["related-templates block (placeholder): Related Template Apps Looking ..."], "note": "rc1c2c7" },
+    { "eds": "section", "style": "footer", "items": ["tagline: The best no-code platform for...", "footer link row"], "note": "rc2 footer" }
+  ],
+  "blocks": ["key-features", "screenshot-carousel", "feature-cards", "faq-accordion", "related-templates"],
+  "covered_by_rules": ["background-container-is-section-style", "repeating-cards-are-one-block", "heading-then-component-same-section", "minimize-block-cells", "faq-accordion-block", "leaked-css-text-node", "knack-cookie-notice-overlay"],
+  "proposed_rules": [
+    {
+      "id": "iframe-carousel-underrendered",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A 'Related/Other Templates' carousel renders with only a heading and pagination controls, never the actual card content.",
+      "decision": "Flag for Phase 2 targeted DOM extraction rather than concluding the section is empty; model as a related-templates block whose items are loaded by a slider widget the minWidth capture under-renders.",
+      "rationale": "Same placeholder pattern recurs across every template-detail page sampled in this batch.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C254 rc1c2c7 'Related Template Apps Looking ...'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "template-screenshot-carousel-then-cta",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "Template-detail pages show a zone of screenshot/tab labels typically followed by a [bg:color] CTA banner (banner not directly visible on this page, likely obscured by the adjacent CSS leak).",
+      "decision": "Model rc1c2c3 as a 'screenshot-carousel' block; keep it separate from any CTA banner block per the pairing seen on sibling template-detail pages.",
+      "rationale": "This page's CTA banner appears to be missing/broken alongside the leaked CSS artifact, but the carousel shape matches the confirmed pattern on other pages in this cluster family.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C254 rc1c2c3 [3x1] 'Compliance Standards Product D...' directly followed by leaked CSS node rc1c2c4", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Same as sibling template-detail-2 pages, but the CTA banner appears to be swallowed by a source-side CSS leak (unclosed style tag) rendered as visible text; excluded as noise per the confirmed leaked-css-text-node rule."
+}

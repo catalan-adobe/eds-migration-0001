@@ -1,0 +1,56 @@
+{
+  "cluster_id": "C161",
+  "representative": "page-33__case-studies.json",
+  "sections": [
+    { "eds": "nav", "items": ["nav links"], "note": "rc1c1 [2x1] top nav renders correctly (no JS-leak artifact on this page)." },
+    { "eds": "section", "items": ["filter controls", "case-study-card-grid block (9 items, 3x3)", "load-more control"], "note": "rc1c2c1 filter bar + [3x3] repeating case-study cards + 'Load More' button." },
+    { "eds": "section", "style": "gradient-bg", "items": ["unknown content"], "note": "rc1c2c2 [bg:gradient] has zero captured children/text \u2014 likely an under-rendered CTA/testimonial banner." },
+    { "eds": "section", "items": ["filter-dropdown control"], "note": "rc1c2c3 [2x1] 'Industry Non-Profit Government...' filter dropdown, positioned overlapping the grid start \u2014 promoted out of flow, kept as part of the listing's filter UI." },
+    { "eds": "section", "style": "footer-cta", "items": ["footer text", "links"], "note": "rc2 recurring 'best no-code platform' footer; global chrome." }
+  ],
+  "blocks": ["case-study-card-grid"],
+  "covered_by_rules": [
+    "repeating-cards-are-one-block",
+    "minimize-block-cells",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "global-footer-cta-is-chrome",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A bottom-of-page zone starting with 'The best no-code platform for...' followed by a '| |' link row, identical across pages.",
+      "decision": "Model as a global site-wide footer fragment excluded from each page's per-page block inventory, same treatment as nav.",
+      "rationale": "Identical text/markup at the same position on every page is footer chrome, not page content. Alternatives rejected: authoring it as a per-page CTA/newsletter block (rejected because it never varies by page).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C161 rc2 'The best no-code platform for...' + '| |'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "empty-bg-only-zone-no-captured-content",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "A section-level container carries only a background style (image/gradient/color) and has zero child nodes/text in the visual tree.",
+      "decision": "Flag for Phase 2 targeted DOM extraction rather than assuming the zone is deliberately empty; likely a CTA/testimonial banner whose text fell outside the capture viewport or loaded late.",
+      "rationale": "A background-only container with literally no children is more likely under-rendered than intentionally blank decoration, especially between two content-bearing zones.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C161 rc1c2c2 [bg:gradient] 1280x507 with no children", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "promoted-filter-control-overlapping-grid",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 45,
+      "trigger": "A filter/dropdown control node's y-coordinate overlaps the start of the main listing grid it controls, indicating it was promoted out of its natural DOM position by the capture tool (e.g. an absolutely-positioned dropdown).",
+      "decision": "Keep the filter control as part of the listing block's UI (a filter bar above the grid) rather than as a separate section; alternative considered and rejected: treating it as an independent content section, which would misrepresent it as page content unrelated to the grid.",
+      "rationale": "Its content ('Industry Non-Profit Government...') and position adjacent to the grid indicate it is the grid's facet/filter control, not standalone content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C161 rc1c2c3 [2x1] @150,384 overlapping rc1c2c1 @0,388", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Case-studies index page: nav renders cleanly; the card grid, an under-rendered gradient banner, and a promoted filter control sit between the nav and the global footer."
+}

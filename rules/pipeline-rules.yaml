@@ -1,0 +1,109 @@
+# EDS Migration Rulebook — pipeline-rules scope
+# Auto-appended by promote-rules.py. See rules/README.md.
+
+version: 1
+
+rules:
+  - id: empty-spacer-band
+    scope: pipeline
+    decision_type: convention
+    category: noise
+    status: confirmed
+    priority: 50
+    trigger: >
+      A trailing/pre-footer background or gradient band with no captured content (decorative
+      spacer or oversized bg bleed).
+    decision: >
+      Treat as decorative spacer; fold into section style or ignore. Not a block.
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: faq-answer-promoted-by-capture
+    scope: pipeline
+    decision_type: convention
+    category: structure
+    status: confirmed
+    priority: 50
+    trigger: >
+      FAQ accordion answers appear as detached/duplicated/root-promoted [region] nodes,
+      colliding by coordinates, because they were expanded/animated at capture.
+    decision: >
+      Reattach answers to their question rows; treat as one faq-accordion block. Dedupe
+      promoted copies.
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: content-underrendered-flag-phase2
+    scope: pipeline
+    decision_type: convention
+    category: structure
+    status: confirmed
+    priority: 50
+    trigger: >
+      A zone is near-empty in the tree (bg-only / missing text / understated) because content
+      fell below the minWidth capture or loads lazily.
+    decision: >
+      Do NOT treat as empty. Flag for Phase 2 targeted DOM extraction of that zone.
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: iframe-embed-blind-spot
+    scope: pipeline
+    decision_type: convention
+    category: structure
+    status: confirmed
+    priority: 50
+    trigger: >
+      A cross-origin iframe / embedded app-demo / media widget captured as a blank or
+      placeholder zone.
+    decision: >
+      Mark as an embed block; resolve the embed src via Phase 2, don't treat as empty.
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: capture-failure-wrong-page
+    scope: pipeline
+    decision_type: convention
+    category: structure
+    status: confirmed
+    priority: 50
+    trigger: >
+      The capture landed on a challenge page, redirect, or off-domain URL (Cloudflare, error
+      redirect, scope mismatch).
+    decision: >
+      Discard the capture; re-capture the intended URL. Not a page structure.
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: offscreen-duplicate-node
+    scope: pipeline
+    decision_type: convention
+    category: noise
+    status: confirmed
+    priority: 50
+    trigger: >
+      Offcanvas/hidden/offscreen duplicates or duplicated carousel/marquee slides promoted
+      into the tree.
+    decision: >
+      Dedupe against the visible instance; drop the hidden/offscreen copy.
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1

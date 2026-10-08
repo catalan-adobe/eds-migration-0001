@@ -1,0 +1,27 @@
+{
+  "cluster_id": "C117",
+  "representative": "page-13__product-flows.json",
+  "sections": [
+    { "eds": "nav", "items": ["nav links [2x1]"], "note": "rc1c1" },
+    { "eds": "section", "style": "bg-color", "items": ["image placeholder", "H1 'Streamline your workflows with...'"], "note": "rc1c2c1 background-container-is-section-style" },
+    { "eds": "default-content", "items": ["image placeholder", "H2 'Knack Flows: Connect Your Tools...'", "paragraph", "'Try for Free' CTA", "screenshot/video placeholder"], "note": "rc1c2c2 product overview zone" },
+    { "eds": "default-content", "items": ["H2 'Knack Flows Overview'", "subtext", "4x3 integrations grid block", "'See All Connects/Integrations' CTA"], "note": "rc1c2c4" },
+    { "eds": "default-content", "items": ["H2 'Knack Flows Capabilities'"], "note": "rc1c2c6 heading only" },
+    { "eds": "block", "items": ["4 stacked 2x1 capability rows"], "note": "rc1c2c7-c10 repeating capability cards" },
+    { "eds": "default-content", "items": ["H2 'The Benefits of Integrating with...'", "paragraph", "3x2 benefits grid block"], "note": "rc1c2c11" },
+    { "eds": "block", "items": ["'FAQs' heading", "10-item accordion"], "note": "rc1c2c12" },
+    { "eds": "section", "items": ["'The best no-code platform...'", "'| |' link row"], "note": "rc2 footer" },
+    { "eds": "noise", "items": ["Decline button", "cookie consent box"], "note": "rc3/rc4 cookie overlay" }
+  ],
+  "blocks": ["integrations-grid", "capabilities-list", "benefits-grid", "faq-accordion", "video-embed"],
+  "covered_by_rules": [
+    "knack-cookie-notice-overlay",
+    "background-container-is-section-style",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "faq-accordion-block",
+    "minimize-block-cells"
+  ],
+  "proposed_rules": [],
+  "notes": "Long-form product feature page: overview + integrations grid + capabilities list + benefits grid + 10-item FAQ, all mapped with existing confirmed rules; no new patterns surfaced."
+}

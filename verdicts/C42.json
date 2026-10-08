@@ -1,0 +1,29 @@
+{
+  "cluster_id": "C42",
+  "representative": "case-study__case-study-dnaex.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1 nav bar"], "note": "global chrome" },
+    { "eds": "default-content", "items": ["rc1c2c1 company/industry header, [2x1]"], "note": "case-study header metadata (company, industry, healthcare tag)" },
+    { "eds": "section", "style": "two-column-article", "items": ["rc1c2c2 [2x1] 1133x4942 article body"], "note": "primary column = article default-content; secondary column = sidebar block, not decomposed in capture" }
+  ],
+  "blocks": ["case-study-sidebar"],
+  "covered_by_rules": [
+    "two-column-article-with-sidebar",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-global-nav-footer-chrome",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "Identical top nav and bottom footer recur on every captured page.",
+      "decision": "Model as global header/footer fragments, excluded from the per-page section/block inventory.",
+      "rationale": "Recurs identically across all templates; not covered by existing noise rules.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C42 rc1c1, rc2c1, rc2c2", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Case-study page matches the confirmed two-column-article-with-sidebar pattern almost verbatim (rc1c2c2 [2x1] evidence in the rulebook is the same node shape); the 4942px-tall body was not decomposed by the capture, so Phase 2 should confirm actual sidebar contents."
+}

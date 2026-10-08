@@ -1,0 +1,50 @@
+{
+  "cluster_id": "C201",
+  "representative": "page-9__tour-ai-app-builder.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "top nav bar" },
+    { "eds": "section", "style": "hero (bg:image)", "items": ["rc1c2c1"], "note": "'Build AI-powered apps in moments...' hero over bg image" },
+    { "eds": "section", "items": ["rc1c2c2c1", "rc1c2c2c2"], "note": "'Trusted by users' + 5x2 (10-item) customer logo grid" },
+    { "eds": "section", "style": "cards (bg)", "items": ["rc1c2c3c2c1", "rc1c2c3c2c2"], "note": "'Benefits of Building an AI-Powered App' + 3x2 numbered benefit cards" },
+    { "eds": "section", "items": ["rc1c2c5c1", "rc1c2c5c2", "rc1c2c5c3"], "note": "'Building an App with AI is Easy' heading+intro + a blank in-flow media zone (likely video/screenshot, flagged for Phase 2)" },
+    { "eds": "section", "style": "cards (bg:color)", "items": ["rc1c2c6c1", "rc1c2c6c2"], "note": "'Entrepreneurs & Startups...' 3x2 audience-segment cards" },
+    { "eds": "section", "items": ["rc1c2c7c1", "rc1c2c7c2"], "note": "'AI App Builder FAQs' + 4-item accordion" },
+    { "eds": "section", "style": "footer chrome", "items": ["rc2"], "note": "recurring footer CTA band" }
+  ],
+  "blocks": ["logo-grid", "cards", "video", "faq-accordion"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "background-container-is-section-style",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-footer-cta-band",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 85,
+      "trigger": "A recurring full-width footer zone at the bottom of nearly every page: a fixed marketing tagline ('The best no-code platform for...') followed by a thin row whose only rendered text is pipe separators ('| |'), indicating a collapsed footer link list.",
+      "decision": "Treat as global site-wide footer chrome, excluded from the page's own block inventory (model as a shared fragment, same treatment as nav/cookie overlay). Flag the '| |' row for Phase 2 to recover the actual footer link labels.",
+      "rationale": "Identical structure recurs unchanged across every sampled page, matching the existing site-chrome precedent. Rejected alternative: model it as a page-level 'cta' block, but content is byte-identical across pages so it is chrome, not authored content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C201 rc2 (rc2c1 tagline, rc2c2 '| |' row)", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "untagged-media-placeholder-zone",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A substantial-height content zone (no [bg:*] tag, no text, no labeled children) sitting inside an otherwise text-rich section, immediately following an intro heading+paragraph.",
+      "decision": "Flag for Phase 2 DOM inspection as a likely embedded video/screenshot/iframe rather than classifying it as decorative noise or an empty spacer; do not drop it from the content inventory.",
+      "rationale": "Tree capture only tags backgrounds and text; genuine inline media without a background marker renders as a blank node indistinguishable from a spacer, risking silent content loss. Rejected alternative: classify it as decorative-graphics-are-noise, but its size and placement right after a 'how it works' intro strongly suggest real content (a product demo), not decoration.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C201 rc1c2c5c3 @30,2260 1220x686, blank, following 'Building an App with AI is Easy' heading+paragraph", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Product tour page: hero, trust logo grid, benefit cards, a likely-video demo zone that renders blank in the capture, audience-segment cards, and FAQ."
+}

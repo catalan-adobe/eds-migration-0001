@@ -1,0 +1,30 @@
+{
+  "cluster_id": "C168",
+  "representative": "page-3__contact.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1 'Solutions Business Need Work O...'"], "note": "" },
+    { "eds": "section", "style": "bg-color", "items": ["rc1c2c1 background layer", "rc1c2c2 'Contact Us Book a Meeting Need...'"], "note": "single-zone contact CTA page" },
+    { "eds": "section", "style": "footer fragment", "items": ["rc2 CTA + separator"], "note": "" },
+    { "eds": "noise", "items": ["rc3/rc4 cookie overlay"], "note": "excluded" }
+  ],
+  "blocks": ["nav", "footer"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "site-footer-cta-is-global-fragment",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A '2x1' zone with 'The best no-code platform for...' CTA text plus a '| |' separator at the bottom of every page.",
+      "decision": "Model as the site-wide footer fragment, excluded from per-page block inventory.",
+      "rationale": "Identical across every captured page = global chrome, analogous to knack-announcement-bar.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C168 rc2", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Very small contact page: single CTA section ('Contact Us / Book a Meeting') plus nav, footer, cookie chrome. No unusual patterns."
+}

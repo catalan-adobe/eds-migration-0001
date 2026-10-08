@@ -1,0 +1,42 @@
+{
+  "cluster_id": "C122",
+  "representative": "page-15__health-hipaa-database.json",
+  "sections": [
+    { "eds": "noise", "items": ["'document.addEventListener(\"DOM...' raw JS"], "note": "rc1 leaked-css-text-node" },
+    { "eds": "default-content", "items": ["H1 'Build HIPAA-Compliant Healthca...'", "'Book a Demo' CTA", "trust bar 'Trusted by 500+ healthcare org...'"], "note": "rc2c1 hero, no bg tag; trust bar resembles proposed knack-trust-badge-strip" },
+    { "eds": "default-content", "items": ["H2 'Healthcare data doesn't belong...'", "3x1 feature-list block 'Patient Records & Portal...'"], "note": "rc2c2" },
+    { "eds": "default-content", "items": ["H2 'Healthcare Database Built-In'", "4x1 feature-list block"], "note": "rc2c3" },
+    { "eds": "block", "items": ["'Why Relational Database Matter...' 2x1"], "note": "rc2c4 feature-banner (variant)" },
+    { "eds": "default-content", "items": ["H2 'Trusted by Healthcare Operatio...'", "testimonial block (2x1)"], "note": "rc2c5" },
+    { "eds": "section", "style": "bg-color", "items": ["H2 'Build Your Healthcare Database...'", "CTA buttons (2x1) 'Book a Demo / Request Free Trial'"], "note": "rc2c6 background-container-is-section-style" },
+    { "eds": "block", "items": ["'FAQ' heading", "6-item accordion"], "note": "rc2c7 + floating region nodes rc2c7c3, rc4 merged into rows" },
+    { "eds": "noise", "items": ["'@media (max-width: 1280px) { #...' raw CSS"], "note": "rc2c8 leaked-css-text-node" },
+    { "eds": "section", "items": ["'The best no-code platform...'", "'| |' link row"], "note": "rc3 footer" },
+    { "eds": "noise", "items": ["Decline button", "cookie consent box"], "note": "rc5 cookie overlay" }
+  ],
+  "blocks": ["trust-badge-strip", "feature-list", "feature-banner", "testimonial", "cta-banner", "faq-accordion"],
+  "covered_by_rules": [
+    "leaked-css-text-node",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "variant-is-css-not-new-block",
+    "background-container-is-section-style",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "promoted-faq-answer-node",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "An expanded FAQ answer ([region] node) appears as a sibling outside its accordion's parent container in the visual tree, instead of nested under its question, because the page-tree capture promotes absolutely/fixed-positioned open-accordion-panel elements out of their DOM parent.",
+      "decision": "When assembling the FAQ accordion block, re-attach any [region] node tagged as promoted-outside-parent to the question row it vertically aligns with (matched by Y-position/order), rather than treating it as a separate top-level section.",
+      "rationale": "Same artifact observed in C121 (rc2c8c3/rc4) and again here (rc2c7c3/rc4); reinforces this is a systematic capture behavior, not page-specific content, and is a strong candidate for promotion to confirmed status once a third instance is reviewed.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C122 rc2c7c3 [region] and rc4 [region] both floating outside the rc2c7 accordion container", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "page-15 healthcare-solution template, near-identical structure to C121/C123 but without a hero background image; hero trust-bar strengthens the already-proposed knack-trust-badge-strip rule (not re-proposed here to avoid duplication)."
+}

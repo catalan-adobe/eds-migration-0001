@@ -1,0 +1,49 @@
+{
+  "cluster_id": "C259",
+  "representative": "use-case__use-cases-vendor-onboarding-portal.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1 nav bar"], "note": "global chrome, excluded from page content" },
+    { "eds": "section", "style": "hero-image-bg", "items": ["rc1c2c1c1 heading+subtext over bg:image"], "note": "full-bleed image hero" },
+    { "eds": "default-content", "items": ["rc1c2c1c2c1 intro paragraph"], "note": "plain intro text above the gradient bands" },
+    { "eds": "section", "style": "gradient-band", "items": ["rc1c2c1c2c2c1 Who Should You Use", "rc1c2c1c2c2c2 Problems", "rc1c2c1c2c2c3 Why Choose Knack"], "note": "3 heading+text zones, each own bg:gradient" },
+    { "eds": "section", "style": "gradient-cta", "items": ["rc1c2c1c2c2c4 Get Started CTA"], "note": "CTA banner, own bg:gradient" },
+    { "eds": "section", "style": "faq", "items": ["rc1c2c1c3 FAQ heading + 6 listitems"], "note": "accordion; first item shows expanded [region] answer" },
+    { "eds": "section", "style": "gradient-band-empty", "items": ["rc1c2c2 empty bg:gradient zone"], "note": "no captured text/children, likely under-rendered CTA/newsletter" },
+    { "eds": "nav", "items": ["rc2 footer signup + link row"], "note": "global chrome; rc2c2 '| |' text is collapsed footer links" }
+  ],
+  "blocks": ["faq-accordion"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "background-container-is-section-style",
+    "heading-then-component-same-section",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-global-nav-footer-chrome",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "Identical top nav (rc1c1 '[2x1] Solutions Business Need Work O...') and bottom footer (rc2: signup CTA + collapsed '| |' link row) recur on every captured page.",
+      "decision": "Model as global header/footer fragments, excluded from the per-page section/block inventory; footer's collapsed '| |' link row is a fragment authoring concern, not per-page content.",
+      "rationale": "Recurs identically across all templates in this migration; not covered by any existing noise/chrome rule (only cookie overlay and announcement bar are addressed).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C259 rc1c1, rc2c1, rc2c2", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "empty-cta-zone-before-footer",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A full-width bg:gradient/bg:color zone directly above the footer with no captured text or child nodes.",
+      "decision": "Flag for Phase 2 targeted DOM extraction rather than treating as a pure decorative section background; likely a newsletter/CTA component that failed to render under the minWidth capture.",
+      "rationale": "Zone carries a distinct background but zero text, matching the under-rendering symptom already recognized for list zones, but here on non-listing (use-case) templates.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C259 rc1c2c2 [bg:gradient] 1280x493 with no child text", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Use-case template: hero + intro + 3 gradient content bands + CTA band + FAQ accordion, all before the empty pre-footer band and global chrome."
+}

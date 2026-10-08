@@ -1,0 +1,64 @@
+{
+  "cluster_id": "C151",
+  "representative": "page-2__health-lab-management.json",
+  "sections": [
+    { "eds": "section", "style": "bg-image", "items": ["H1: HIPAA-Compliant Laboratory Management", "intro copy", "CTA"], "note": "hero (rc2c1)" },
+    { "eds": "default-content", "items": ["H2/text: See Knack in Action: Create Se... (rc2c2)"], "note": "large zone, no child nodes captured -> likely embedded interactive demo widget" },
+    { "eds": "default-content", "items": ["H2: What Is Research & Clinical Data Management (rc2c3)"] },
+    { "eds": "default-content", "items": ["H2: Why Effective Data Management Matters (rc2c4)"] },
+    { "eds": "default-content", "items": ["H2: What You Can Build with Knack (rc2c5)"] },
+    { "eds": "default-content", "items": ["H2: HIPAA & Regulatory Compliance (rc2c6)"] },
+    { "eds": "default-content", "items": ["H2: Who Knack Serves: Research Labs... (rc2c7)"] },
+    { "eds": "default-content", "items": ["H2: Why Choose Knack for HIPAA-Compliant Labs (rc2c8)"] },
+    { "eds": "section", "style": "bg-color", "items": ["Start Building for Free / Get in touch CTA (rc2c9)"], "note": "cta-banner section" },
+    { "eds": "section", "items": ["FAQ heading + 16-item accordion (rc2c10)"], "note": "faq-accordion-block, largest FAQ in batch" }
+  ],
+  "blocks": ["hero", "cta-banner", "faq-accordion"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "heading-then-component-same-section",
+    "background-container-is-section-style",
+    "minimize-block-cells",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "footer-logo-tagline-cta-strip",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A full-width strip immediately after main content and before the cookie overlay, containing an identical tagline (\"The best no-code platform for ...\") plus a row of partner-logo placeholders (rendered as bare \"| |\" text), appearing on every page with identical content.",
+      "decision": "Model as a global footer/CTA fragment excluded from per-page block inventory, mirroring the announcement bar and cookie overlay chrome. Alternative rejected: a per-page 'logo-strip' block via repeating-cards-are-one-block, since content is identical across every page, not page-specific.",
+      "rationale": "Identical text and structure recur unchanged across all sampled pages; it is site-wide chrome, not authorable page content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C151 rc3c1c1/rc3c1c2 identical across C147-C154 packets", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "promoted-duplicate-faq-answer-node",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 45,
+      "trigger": "A [region] answer node appears a second time as a top-level page sibling (outside the FAQ accordion container) with text duplicating an answer already nested inside the accordion.",
+      "decision": "Exclude the duplicate top-level regions from the block inventory; content already captured inside the faq-accordion block's nested rows.",
+      "rationale": "Absolute-positioned/expanded accordion answer panels get promoted out of their DOM parent by the capture tool, producing duplicate top-level nodes that are a capture artifact.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C151 rc4/rc5 duplicate answers also present nested under rc2c10c2", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "underrendered-embedded-demo-widget",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A content zone (e.g. 'See Knack in Action') has substantial height in the visual tree but no child nodes or only a short text preview, indicating an embedded interactive demo/widget (iframe or JS app) that fell below the minWidth capture or loads client-side.",
+      "decision": "Flag for Phase 2 targeted DOM/iframe extraction rather than treating the zone as empty text content; do not fold it silently into surrounding default-content.",
+      "rationale": "Interactive product demos are core marketing content that the minWidth capture cannot render as text; dropping them would misrepresent the page.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C151 rc2c2 @0,705 1280x706 with only a short heading preview and no children", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Longest FAQ in the batch (16 Q&A pairs) and an under-captured 'See Knack in Action' interactive demo zone; otherwise standard alternating-text template, no repeating card grids present."
+}

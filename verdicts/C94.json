@@ -1,0 +1,45 @@
+{
+  "cluster_id": "C94",
+  "representative": "integration__integrations-freshbooks-knack.json",
+  "sections": [
+    { "eds": "section", "items": ["rc1c1 hero heading", "rc1c2c1 hero visual", "rc1c2c2 trust rating text", "rc1c2c3 bg:color decorative panel"], "note": "Hero: heading+CTA beside rating snippet and a color accent panel" },
+    { "eds": "section", "items": ["rc1c3 feature grid"], "note": "[3x2] repeating feature cards (Invoicing, etc.)" },
+    { "eds": "section", "style": "bg:color", "items": ["rc1c4c1 bg:image visual", "rc1c4c2 plan/segment cards"], "note": "bg image + [4x1] freelancer plan cards" },
+    { "eds": "section", "style": "bg:color", "items": ["rc1c5 testimonial quote"], "note": "single testimonial" },
+    { "eds": "section", "items": ["rc1c6 reasons grid"], "note": "[3x2] repeating reason cards" },
+    { "eds": "section", "items": ["rc1c7 logo/stat strip"], "note": "[4x1] row, no text rendered" },
+    { "eds": "section", "items": ["rc1c8 feature grid 2"], "note": "[2x2] repeating cards" },
+    { "eds": "section", "items": ["rc1c9c1 support blurb", "rc1c9c2 support links"], "note": "heading+text then [3x1] link row" },
+    { "eds": "default-content", "items": ["rc1c10c1 FAQ heading"], "note": "heading above accordion" },
+    { "eds": "section", "items": ["rc1c10c2 FAQ rows"], "note": "8 uniform [2x1][bg:color] Q rows -> faq-accordion-block" },
+    { "eds": "section", "style": "bg:color", "items": ["rc1c11c1 CTA heading+button"], "note": "closing CTA banner" },
+    { "eds": "default-content", "items": ["rc1c12 locale label"], "note": "'United States' locale text" },
+    { "eds": "section", "style": "footer", "items": ["rc1c13c1 footer nav", "rc1c13c2 copyright"], "note": "footer link columns + legal line" },
+    { "eds": "nav", "items": ["rc4 announcement bar"], "note": "thin full-width promo bar above content, shape matches knack-announcement-bar" }
+  ],
+  "blocks": ["hero", "feature-card-grid", "testimonial", "faq-accordion", "cta-banner", "footer-nav"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay",
+    "knack-announcement-bar",
+    "decorative-graphics-are-noise",
+    "minimize-block-cells"
+  ],
+  "proposed_rules": [
+    {
+      "id": "wrong-domain-capture-artifact",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 92,
+      "trigger": "The captured tree is the partner's own homepage (FreshBooks: Invoicing, Small Business nav, FreshBooks branding) rather than the Knack integration-page template.",
+      "decision": "Flag for re-capture; do not author the EDS integration page from this tree.",
+      "rationale": "Same mis-capture pattern observed across this batch: crawler landed on freshbooks.com instead of knack.com/integrations/integrations-freshbooks-knack.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C94 rc1c1-rc1c13 entirely FreshBooks-branded content", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Capture is freshbooks.com's own homepage, not the Knack integration page; structural mapping applied anyway since the cookie overlay and announcement-bar shapes still match confirmed project rules."
+}

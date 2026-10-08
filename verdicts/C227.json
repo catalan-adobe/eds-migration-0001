@@ -1,0 +1,64 @@
+{
+  "cluster_id": "C227",
+  "representative": "page__health-integrations-modmed-outlook.json",
+  "sections": [
+    { "eds": "section", "style": "bg-image", "items": ["H1 + subhead + CTA (rc2c1c1)", "trust strip (rc2c1c2)"], "note": "hero: full-width-image-behind-text-is-section-bg" },
+    { "eds": "section", "style": "bg-gradient", "items": ["feature-comparison block (rc2c2)"], "note": "background-container-is-section-style" },
+    { "eds": "section", "items": ["Set Up in Minutes heading + steps text (rc2c3)"], "note": "plain default-content, no repeat marker" },
+    { "eds": "section", "items": ["heading (rc2c4c1)", "feature-grid block, 4 cards (rc2c4c2)"], "note": "heading-then-component-same-section + repeating-cards-are-one-block" },
+    { "eds": "section", "style": "bg-color", "items": ["heading+paragraph (rc2c5c1/c2)", "compliance-badges block, 5 items (rc2c5c3)"], "note": "background-container-is-section-style + repeating-cards-are-one-block" },
+    { "eds": "section", "style": "bg-color", "items": ["heading (rc2c6c1)", "CTA links: Book a Demo / Request Free Trial (rc2c6c2)"], "note": "CTA pair kept as default-content links, not a block" },
+    { "eds": "section", "items": ["FAQs heading (rc2c7c1)", "faq-accordion block, 5 Q&A (rc2c7c2)"], "note": "faq-accordion-block" },
+    { "eds": "default-content", "items": ["footer tagline + separator (rc3c1c1/rc3c1c2)"], "note": "recurring global footer, see proposed footer rule" }
+  ],
+  "blocks": ["hero", "feature-comparison", "feature-grid", "compliance-badges", "faq-accordion"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "background-container-is-section-style",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "faq-accordion-block",
+    "leaked-css-text-node",
+    "knack-cookie-notice-overlay",
+    "minimize-block-cells"
+  ],
+  "proposed_rules": [
+    {
+      "id": "leaked-js-script-inline-text-node",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 71,
+      "trigger": "A top-of-page text node whose content is raw JS source (e.g. starts with 'document.addEventListener(\"DOM...') rendered visibly, analogous to the confirmed leaked-css-text-node pattern but for inline scripts.",
+      "decision": "Exclude entirely from block inventory; treat as a source-leak artifact identical in spirit to leaked-css-text-node.",
+      "rationale": "Rendered JS source is never authorable content; appears identically at rc1 on every integration-page capture in this batch.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C227 rc1 [3x1] 'document.addEventListener(\"DOM...'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-footer-tagline-boilerplate",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "A bottom-of-page block with 'The best no-code platform for...' tagline text and a following '| |' separator line, identical across many pages.",
+      "decision": "Treat as global site footer chrome; model as a site-wide fragment rather than page-specific default-content.",
+      "rationale": "Content and structure are byte-identical across unrelated pages, indicating shared footer markup rather than page content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C227 rc3c1c1/rc3c1c2 'The best no-code platform for...' + '| |'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "faq-answer-region-position-collision",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A [region]-tagged FAQ answer node whose bounding box exactly overlaps a sibling question row's coordinates rather than sitting directly below its own question, because the capture froze an expanded/collapsed accordion state.",
+      "decision": "Reconstruct Q/A pairing by DOM/document order, not by on-screen position, when building the faq-accordion block rows.",
+      "rationale": "Positional overlap is a capture-time artifact of the accordion's absolute-positioned answer panel, not a real layout collision.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C227 rc2c7c2c3 @47,4763 vs rc2c7c2c6 [region] @47,4763 (identical offset)", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Cookie overlay (rc5) excluded per knack-cookie-notice-overlay. Page structure is a standard ModMed integration landing template; identical shape recurs across C227-C232 with only partner-name text differing."
+}

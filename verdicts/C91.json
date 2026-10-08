@@ -1,0 +1,25 @@
+{
+  "cluster_id": "C91",
+  "representative": "integration__integrations-constantcontact-knack.json",
+  "sections": [
+    { "eds": "default-content", "items": ["rc1"], "note": "[main] region text reduces to 'www.constantcontact.comPerform...' — a Cloudflare interstitial, not real page content" },
+    { "eds": "default-content", "items": ["rc2"], "note": "[contentinfo] region shows 'Ray ID: a3587aaf0eb818e3Perfor...' — Cloudflare challenge-page footer" }
+  ],
+  "blocks": [],
+  "covered_by_rules": [],
+  "proposed_rules": [
+    {
+      "id": "cloudflare-challenge-page-capture-failure",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 92,
+      "trigger": "The entire captured visual tree reduces to a 'Ray ID: ...' string and generic 'Performance & security by Cloudflare' copy, with no real page content — the signature of a Cloudflare bot-check/challenge interstitial rather than the actual target page.",
+      "decision": "Exclude entirely from the block inventory; do not attempt to derive sections/blocks from this capture. Flag the URL for Phase 2 recapture (with bot-detection bypass / different capture strategy) rather than concluding the page has no content. Alternative rejected: modeling the 'main'/'contentinfo' regions as real default-content (rejected because the text is a Cloudflare-generated interstitial, not the constantcontact/knack integration page).",
+      "rationale": "A Cloudflare challenge page is an artifact of how the capture was performed (no bypass for bot protection), not the real content of the target page; treating it as content would corrupt the migration inventory with zero actual page data.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C91 whole tree: rc1 [main] 'www.constantcontact.comPerform...', rc2 [contentinfo] 'Ray ID: a3587aaf0eb818e3Perfor...'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "This capture is a Cloudflare bot-challenge interstitial (Ray ID present, no real content), not the actual constantcontact-knack integration page. Recommend recapture before any EDS mapping is attempted for this URL."
+}

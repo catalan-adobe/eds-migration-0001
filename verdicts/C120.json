@@ -1,0 +1,27 @@
+{
+  "cluster_id": "C120",
+  "representative": "page-14__spreadsheets-not-cutting-it.json",
+  "sections": [
+    { "eds": "nav", "items": ["nav links [2x1]"], "note": "rc1c1" },
+    { "eds": "section", "items": ["H1 'Spreadsheets Not Cutting It?'", "subtext", "ai-prompt-box (bg:gradient card) 'What would you like to build?'"], "note": "rc1c2c1 hero zone, no bg tag on outer container" },
+    { "eds": "default-content", "items": ["H2 'How It Works'", "how-it-works steps block (2x1)"], "note": "rc1c2c2" },
+    { "eds": "section", "style": "bg-color", "items": ["2x2 feature grid block 'True No-Code, Drag-and-Drop...'"], "note": "rc1c2c3" },
+    { "eds": "default-content", "items": ["H2 'Popular Use Cases'"], "note": "rc1c2c5" },
+    { "eds": "block", "items": ["4 stacked 2x1 use-case rows"], "note": "rc1c2c7-c10 repeating cards" },
+    { "eds": "section", "style": "bg-color", "items": ["H2 'Pricing That Scales With You'", "pricing table block", "'Learn more...' link"], "note": "rc1c2c12" },
+    { "eds": "block", "items": ["'Enterprise-Grade Security' 2x1"], "note": "rc1c2c13 feature-banner (variant)" },
+    { "eds": "section", "style": "bg-color", "items": ["H2 'Join building with Knack...'", "H3 'What Our Customers Are Saying'", "testimonial carousel block"], "note": "rc1c2c14" },
+    { "eds": "section", "items": ["'The best no-code platform...'", "'| |' link row"], "note": "rc2 footer" },
+    { "eds": "noise", "items": ["Decline button", "cookie consent box"], "note": "rc3/rc4 cookie overlay" }
+  ],
+  "blocks": ["ai-prompt-box", "how-it-works", "feature-grid", "use-cases", "pricing-table", "feature-banner", "testimonial-carousel"],
+  "covered_by_rules": [
+    "knack-cookie-notice-overlay",
+    "background-container-is-section-style",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "variant-is-css-not-new-block"
+  ],
+  "proposed_rules": [],
+  "notes": "Simplest instance of the page-14 template (no promo banner, no top hero background image); identical block inventory to C118/C119 minus the hero image and promo strip."
+}

@@ -1,0 +1,49 @@
+{
+  "cluster_id": "C77",
+  "representative": "download__download-construction-budget-template.json",
+  "sections": [
+    { "eds": "nav", "items": ["nav links [2x1]"], "note": "rc1c1, global top nav bar" },
+    { "eds": "default-content", "items": ["H1/subtitle 'Construction Budget Management...'"], "note": "rc1c2c1 [2x1], hero title, standalone (no component pairing)" },
+    { "eds": "default-content", "items": ["H2 'The Benefits of Construction B...'", "paragraph 'Downloading this free construc...'"], "note": "rc1c2c2c2c1, upsell teaser heading+intro" },
+    { "eds": "block", "items": ["3x2 numbered benefit grid '01. Quick and Accurate Cost Es...'"], "note": "rc1c2c2c2c2, numbered-benefits grid" },
+    { "eds": "block", "items": ["template preview image [3x2][bg:image]", "'Install Free Template App' CTA"], "note": "rc1c2c3, preview + install CTA zone" },
+    { "eds": "section", "style": "bg:color", "items": ["3x2 feature grid 'Efficient Accurate Budget Plan...'"], "note": "rc1c2c4, feature grid on colored background" },
+    { "eds": "block", "items": ["'Get Started with Knack's Const...' CTA banner"], "note": "rc1c2c5 [2x1]" },
+    { "eds": "section", "style": "footer", "items": ["'The best no-code platform for...'", "'| |' link row"], "note": "rc2" },
+    { "eds": "noise", "items": ["Decline overlay", "cookie consent box"], "note": "rc3/rc4, knack-cookie-notice-overlay" }
+  ],
+  "blocks": ["numbered-benefits-grid", "template-preview-install-cta", "feature-grid", "get-started-cta-banner"],
+  "covered_by_rules": [
+    "knack-cookie-notice-overlay",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style"
+  ],
+  "proposed_rules": [
+    {
+      "id": "template-preview-install-cta-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "On a download/template page, a full-width template preview image or screenshot ([2x1]/[3x1]/[3x2], sometimes [bg:image]) is immediately followed by an 'Install Free Template App' button.",
+      "decision": "Model the preview image and the install CTA as ONE composite block (image cell + CTA cell), not as a separate image block plus a standalone CTA/default-content link.",
+      "rationale": "Rejected alternatives: (a) split into a generic image block and a separate CTA link, which would obscure that the image and the button perform one paired action (install this exact template); (b) fold it into the numbered-benefits grid above it, rejected because it is a visually distinct zone with a different content shape (single media item, not a repeating card grid).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C77 rc1c2c3 [3x2][bg:image] preview + rc1c2c3c3 [bg:color] 'Install Free Template App'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "get-started-cta-banner",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "block",
+      "status": "proposed",
+      "priority": 52,
+      "trigger": "A full-width '[2x1] Get Started with Knack's ___' banner naming the specific template/app, positioned directly before the footer on template/download pages.",
+      "decision": "Treat as a reusable CTA banner block parametrized by template name, not page-unique free text.",
+      "rationale": "Identical structural position, size class, and wording pattern recur across all sampled download-template pages, indicating a shared component rather than one-off copy.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C77 rc1c2c5 [2x1] 1280x613 'Get Started with Knack's Const...'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Standard download-template layout: nav, hero title, upsell teaser + numbered benefits, template preview/install CTA, feature grid on colored bg, get-started banner, footer, cookie overlay."
+}

@@ -1,0 +1,41 @@
+{
+  "cluster_id": "C195",
+  "representative": "page-8__become-an-expert-builder.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "top solutions/business-need nav bar" },
+    { "eds": "section", "style": "hero (bg:image)", "items": ["rc1c2c1c1", "rc1c2c1c2"], "note": "full-bleed bg image behind 'Knack Expert Builder Program' heading" },
+    { "eds": "default-content", "items": ["rc1c2c3"], "note": "'Unleash Your Potential by Building...' intro copy, plain text" },
+    { "eds": "section", "style": "cards (bg)", "items": ["rc1c2c4c1", "rc1c2c4c2"], "note": "'Client Referrals...' 3x2 benefit cards" },
+    { "eds": "section", "style": "cards (bg)", "items": ["rc1c2c5c2c1", "rc1c2c5c2c2"], "note": "'Why Become a Knack Expert Partner' heading + 3x2 numbered benefit cards" },
+    { "eds": "section", "items": ["rc1c2c6c1", "rc1c2c6c2"], "note": "FAQ heading + 2-item accordion" },
+    { "eds": "section", "items": ["rc1c2c7c1", "rc1c2c7c2"], "note": "'Resources' heading + 3 article cards" },
+    { "eds": "default-content", "items": ["rc1c2c9"], "note": "small link text 'Already a Knack Expert Builder...'" },
+    { "eds": "section", "style": "footer chrome", "items": ["rc2"], "note": "recurring footer CTA band, treated as global fragment" }
+  ],
+  "blocks": ["cards", "faq-accordion"],
+  "covered_by_rules": [
+    "knack-cookie-notice-overlay",
+    "full-width-image-behind-text-is-section-bg",
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "faq-accordion-block",
+    "decorative-graphics-are-noise",
+    "minimize-block-cells"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-footer-cta-band",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 85,
+      "trigger": "A recurring full-width footer zone at the bottom of nearly every page: a fixed marketing tagline ('The best no-code platform for...') followed by a thin row whose only rendered text is pipe separators ('| |'), indicating a collapsed footer link list.",
+      "decision": "Treat as global site-wide footer chrome, excluded from the page's own block inventory (model as a shared fragment, same treatment as nav/cookie overlay). Flag the '| |' row for Phase 2 to recover the actual footer link labels.",
+      "rationale": "Identical structure recurs unchanged across every sampled page, matching the existing site-chrome precedent. Rejected alternative: model it as a page-level 'cta' block, but content is byte-identical across pages so it is chrome, not authored content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C195 rc2 (rc2c1 tagline, rc2c2 '| |' row)", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Standard solution-page template: hero, two benefit-card grids, small FAQ, resource cards; footer band flagged as site chrome."
+}

@@ -1,0 +1,43 @@
+{
+  "cluster_id": "C70",
+  "representative": "solution-4__solutions-job-scheduling.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions / Business Need / Work O... nav"], "note": "rc1c1 [2x1] top nav bar" },
+    { "eds": "default-content", "items": ["H1 + intro: Build a Custom Job Scheduling..."], "note": "rc1c2c1 hero heading" },
+    { "eds": "section", "style": "plain", "items": ["default-content: 'Join the users who are buildin...'", "block: trust-badge-strip"], "note": "rc1c2c2 intro + [5x2] badge grid variant" },
+    { "eds": "section", "style": "plain", "items": ["default-content: '5 Reasons to Build Your Own Jo...'", "block: numbered-feature-grid (3x2)"], "note": "rc1c2c3 heading + '01. No-Code Customization...' cards" },
+    { "eds": "section", "style": "bg:color", "items": ["block: screenshot-visual"], "note": "rc1c2c4 bg:color + bg:image pair, no captured text" },
+    { "eds": "default-content", "items": ["Start Building with Knack's Jo..."], "note": "rc1c2c5 [2x1] heading" },
+    { "eds": "section", "style": "bg:color", "items": ["block: feature-card-grid (3x2)"], "note": "rc1c2c6 'Preventative Maintenance Sched...' feature cards" },
+    { "eds": "section", "style": "plain", "items": ["default-content: 'Why Choose Knack for Job Sched...' + intro paragraph", "block: numbered-feature-grid (3x2)"], "note": "rc1c2c7 heading+para + '01. Custom Workflows and Field...' cards" },
+    { "eds": "section", "style": "plain", "items": ["default-content: 'Job Scheduling FAQs'", "block: faq-accordion (5 rows)"], "note": "rc1c2c8 FAQ Q&A stack" },
+    { "eds": "section", "style": "plain", "items": ["footer CTA: 'The best no-code platform for...'", "footer link row"], "note": "rc2 global footer CTA band" },
+    { "eds": "default-content", "items": [], "note": "rc3/rc4 cookie consent overlay excluded per knack-cookie-notice-overlay" }
+  ],
+  "blocks": ["trust-badge-strip", "numbered-feature-grid", "screenshot-visual", "feature-card-grid", "faq-accordion"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "minimize-block-cells",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay",
+    "knack-trust-badge-strip",
+    "variant-is-css-not-new-block"
+  ],
+  "notes": "Near-identical layout to C68 with an extra numbered-feature-grid pair and confirms the screenshot-visual pattern (rc1c2c4) proposed on C68.",
+  "proposed_rules": [
+    {
+      "id": "screenshot-visual-color-backdrop",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A sibling pair [bg:color] immediately followed by [bg:image], both with no captured text, standing alone as a visual break between text sections on a solution page.",
+      "decision": "Model as a single 'screenshot visual' image block placed in its own section; the color shape is a decorative backdrop, not a wrapping section background for other items.",
+      "rationale": "Second confirmed occurrence (after C68 rc1c2c3) of this exact pair. Rejected alternatives: folding into background-container-is-section-style (image is real content) or decorative-graphics-are-noise (would drop the screenshot itself).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C70 rc1c2c4 [bg:color]826h + [bg:image]901h, no text", "added": "2026-09-04", "version": 1 }
+    }
+  ]
+}

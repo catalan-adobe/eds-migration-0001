@@ -1,0 +1,32 @@
+{
+  "cluster_id": "C113",
+  "representative": "page-12__pricing-govcloud-package.json",
+  "sections": [
+    { "eds": "section", "style": "bg-image", "items": ["GovCloud Package Build amazing... (H1+intro)"], "note": "hero, bg image behind heading" },
+    { "eds": "default-content", "items": ["Our GovCloud offering is a hig... (long-form body copy)"], "note": "package description prose" },
+    { "eds": "section", "items": ["FAQ heading", "2 Q&A rows"], "note": "faq accordion" },
+    { "eds": "section", "items": ["footer tagline", "footer link row"], "note": "site footer" }
+  ],
+  "blocks": ["faq-accordion"],
+  "covered_by_rules": ["full-width-image-behind-text-is-section-bg", "faq-accordion-block", "knack-cookie-notice-overlay"],
+  "proposed_rules": [
+    {
+      "id": "package-pricing-page-body-as-prose",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "default-content",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A pricing/'Package' landing page whose body is one long [2x1]-tagged text region describing the offering, with no repeating card/feature structure.",
+      "decision": "Map the body as plain default-content (headings + paragraphs) rather than a structured block; keep only the hero background and FAQ as modeled components. Rejected alternative: splitting the description into a 'package-details' block table.",
+      "rationale": "The content is continuous prose specific to this package, not a reusable multi-instance structure; forcing it into a block table would add authoring friction with no reuse benefit.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C113 rc1c2c2 [2x1] 'Our GovCloud offering is a hig...' 1024x967 single text region",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    }
+  ],
+  "notes": "Short pricing package page; body kept as prose, no capture artifacts observed."
+}

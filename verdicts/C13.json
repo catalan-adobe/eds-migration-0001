@@ -1,0 +1,31 @@
+{
+  "cluster_id": "C13",
+  "representative": "case-study-category__case-study-category-features-professional-services.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions / Business Need / Work O... top menu"], "note": "rc1c1 [2x1] primary site nav" },
+    { "eds": "default-content", "items": ["heading: Professional Services"], "note": "rc1c2c1, category page title" },
+    { "eds": "section", "style": "bg-gradient", "items": [], "note": "rc1c2c2 [bg:gradient] 1280x507, no child text — flagged, see confirmed pipeline rule" },
+    { "eds": "section", "style": "bg-gradient", "items": [], "note": "rc1c2c3 [bg:gradient] 1280x507, no child text — flagged, see confirmed pipeline rule" },
+    { "eds": "default-content", "items": ["footer CTA + social row"], "note": "rc2 — global footer, see proposed rule" }
+  ],
+  "blocks": [],
+  "covered_by_rules": [
+    "underrendered-list-zone",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-footer-cta-fragment",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "A bottom-of-page block with the line 'The best no-code platform for ...' followed by a thin '| |' separator/social row, appearing verbatim at the end of nearly every captured page across templates.",
+      "decision": "Treat as global site footer chrome; exclude from per-page block inventory and model once as a shared footer fragment.",
+      "rationale": "Identical wording/layout recurs across landing, compare, and category templates — a shared footer partial, not page content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C13 rc2c1/rc2c2 'The best no-code platform for...' + '| |'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Solution/case-study category page (24-page cluster, dominant template solution-category). Two large gradient zones under the title carry no text — this is the confirmed underrendered-list-zone pattern (category card grid collapsed by minWidth capture); block inventory (likely a 'solution-card-grid') must come from Phase 2 DOM extraction."
+}

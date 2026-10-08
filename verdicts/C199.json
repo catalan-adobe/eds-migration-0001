@@ -1,0 +1,37 @@
+{
+  "cluster_id": "C199",
+  "representative": "page-9__compare-knack-vs-caspio.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "top nav bar" },
+    { "eds": "default-content", "items": ["rc1c2c1c1", "rc1c2c1c2"], "note": "'Knack vs. Caspio' hero heading + subtext, no bg tag captured so no section-bg rule applies" },
+    { "eds": "default-content", "items": ["rc1c2c2"], "note": "'How Knack Wins at a Glance...' quote text" },
+    { "eds": "section", "style": "cards (bg)", "items": ["rc1c2c3c2c1", "rc1c2c3c2c2"], "note": "'6 Reasons Why Knack is Better' + 3x2 numbered benefit cards" },
+    { "eds": "section", "items": ["rc1c2c4c1", "rc1c2c4c2"], "note": "'See Why Knack Beats Caspio' + 11-row feature comparison table" },
+    { "eds": "section", "items": ["rc1c2c5c1", "rc1c2c5c2"], "note": "'Resources on Caspio Alternatives' + 3x1 article cards" },
+    { "eds": "default-content", "items": ["rc1c2c7"], "note": "'Create Your Account to Start Building...' CTA copy (no repeating structure, not a block)" },
+    { "eds": "section", "style": "footer chrome", "items": ["rc2"], "note": "recurring footer CTA band" }
+  ],
+  "blocks": ["cards", "comparison-table"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "knack-cookie-notice-overlay",
+    "minimize-block-cells"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-footer-cta-band",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 85,
+      "trigger": "A recurring full-width footer zone at the bottom of nearly every page: a fixed marketing tagline ('The best no-code platform for...') followed by a thin row whose only rendered text is pipe separators ('| |'), indicating a collapsed footer link list.",
+      "decision": "Treat as global site-wide footer chrome, excluded from the page's own block inventory (model as a shared fragment, same treatment as nav/cookie overlay). Flag the '| |' row for Phase 2 to recover the actual footer link labels.",
+      "rationale": "Identical structure recurs unchanged across every sampled page, matching the existing site-chrome precedent. Rejected alternative: model it as a page-level 'cta' block, but content is byte-identical across pages so it is chrome, not authored content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C199 rc2 (rc2c1 tagline, rc2c2 '| |' row)", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Comparison page nearly identical to C196/C200/C202 template; hero here lacks a captured bg tag so is modeled as plain default-content rather than a section-bg."
+}

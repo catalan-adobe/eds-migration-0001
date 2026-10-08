@@ -1,0 +1,36 @@
+{
+  "cluster_id": "C92",
+  "representative": "integration__integrations-datadog-knack.json",
+  "sections": [
+    { "eds": "section", "style": "hero", "items": ["rc2c1c1 heading+subtitle", "rc2c1c3 CTA row"], "note": "Hero title/subtitle with 2x1 CTA links; rc2c1c2 is a blank spacer" },
+    { "eds": "default-content", "items": ["rc2c2 customer trust text"], "note": "trust/logo strip copy, no image detail rendered" },
+    { "eds": "section", "style": "promo", "items": ["rc3 DASH 2026 recap banner"], "note": "[2x1] conference-recap promo block" },
+    { "eds": "section", "style": "bg:image", "items": ["rc4 ebook CTA"], "note": "full-bleed image behind ebook CTA text" },
+    { "eds": "section", "style": "bg:color", "items": ["rc5c1 products intro", "rc5c2 stacked promo cards"], "note": "products list heading/text plus 4 stacked promo panels (blog, security, careers, gradient newsletter CTA), each with its own bg" },
+    { "eds": "section", "style": "bg:color", "items": ["rc6c1 footer nav columns", "rc6c4 legal/locale row"], "note": "footer; rc6c2/rc6c3 are 1px decorative separators" }
+  ],
+  "blocks": ["hero", "logo-strip", "promo-banner", "card-stack", "footer-nav"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "full-width-image-behind-text-is-section-bg",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "decorative-graphics-are-noise",
+    "minimize-block-cells"
+  ],
+  "proposed_rules": [
+    {
+      "id": "wrong-domain-capture-artifact",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 92,
+      "trigger": "The captured visual tree's content, branding, and nav are entirely for a third-party partner site (e.g. Datadog) rather than the expected Knack 'Integrate Knack with X' integration-page template (no Knack nav, no 'Integrate Knack with' hero title).",
+      "decision": "Do not use this tree to author the EDS integration page. Flag for re-capture: the crawler likely followed an outbound partner link or a redirect landed on the partner's own homepage instead of knack.com/integrations/integrations-datadog-knack.",
+      "rationale": "Ingesting an unrelated competitor/partner homepage as if it were Knack content would corrupt the block inventory and produce a nonsensical migrated page.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C92 rc1-rc6 all Datadog-branded (logo, product nav, DASH conference, Google Cloud ebook) with zero Knack chrome", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "This capture appears to be the partner's own marketing homepage (datadog.com), not the Knack integration page — treated as a capture anomaly rather than representative integration-template content."
+}

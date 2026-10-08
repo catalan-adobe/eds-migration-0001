@@ -1,0 +1,32 @@
+{
+  "cluster_id": "C112",
+  "representative": "page-12__knack-redirect-page.json",
+  "sections": [
+    { "eds": "nav", "items": ["top nav bar"], "note": "site nav" },
+    { "eds": "section", "style": "bg-color", "items": ["Uh oh! This page does not exist... (heading+text)"], "note": "404 headline in a colored panel" },
+    { "eds": "section", "items": ["We're sorry... intro text", "icon-list: company page moved / page moved / URL incorrect", "If you believe this is in error... text"], "note": "error explanation copy + 3-item reasons list" },
+    { "eds": "section", "items": ["footer tagline", "footer link row"], "note": "site footer" }
+  ],
+  "blocks": ["icon-list"],
+  "covered_by_rules": ["background-container-is-section-style", "repeating-cards-are-one-block", "knack-cookie-notice-overlay"],
+  "proposed_rules": [
+    {
+      "id": "error-redirect-page-structure",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 52,
+      "trigger": "A page whose main heading is a 404/'this page does not exist' style message with a short list of possible causes and no other page content.",
+      "decision": "Model the entire body as default-content (heading, intro paragraph, a 3-row icon-list block, closing paragraph); do not create a dedicated 'error-page' block since the copy is unique, one-off content. Rejected alternative: authoring a reusable 'error-page' block template.",
+      "rationale": "This is a single special-purpose page (redirect/404), not a repeating pattern needing a block abstraction.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C112 whole page-12 redirect tree: rc1c2c1..rc1c2c4",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    }
+  ],
+  "notes": "Simple one-off 404/redirect page; the only reusable block is the small reasons icon-list."
+}

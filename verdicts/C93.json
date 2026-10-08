@@ -1,0 +1,45 @@
+{
+  "cluster_id": "C93",
+  "representative": "integration__integrations-eventbrite-knack.json",
+  "sections": [
+    { "eds": "section", "items": ["rc1 logo bar"], "note": "[3x1] brand strip; text contains a leaked SVG CSS class name" },
+    { "eds": "section", "style": "bg:image", "items": ["rc2 hero image"], "note": "full-bleed hero image, no overlaid text captured" },
+    { "eds": "section", "items": ["rc3c1 category tabs", "rc3c5c2 event card grid"], "note": "category nav + filter tabs above a [4x4] repeating event-card grid" },
+    { "eds": "section", "items": ["rc4c1 top destinations", "rc4c2 popular cities", "rc4c3 explore by state", "rc4c4 things to do nearby"], "note": "four repeating link-list widgets" },
+    { "eds": "section", "style": "bg:color", "items": ["rc5c1 footer nav", "rc5c2 copyright bar"], "note": "footer link columns + legal row" }
+  ],
+  "blocks": ["logo-strip", "event-card-grid", "link-list", "footer-nav"],
+  "covered_by_rules": [
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style",
+    "decorative-graphics-are-noise",
+    "minimize-block-cells"
+  ],
+  "proposed_rules": [
+    {
+      "id": "wrong-domain-capture-artifact",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 92,
+      "trigger": "The captured tree is the partner's own homepage (Eventbrite: music/nightlife categories, event listings, destination links) rather than the Knack integration-page template (no 'Integrate Knack with Eventbrite' hero, no Knack nav).",
+      "decision": "Flag for re-capture; do not author the EDS integration page from this tree.",
+      "rationale": "Same failure mode as other mis-captured integration pages in this batch: the crawler landed on eventbrite.com instead of knack.com/integrations/integrations-eventbrite-knack.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C93 rc1-rc5 entirely Eventbrite-branded content", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "offscreen-overflow-list-noise",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "A node's captured width vastly exceeds the page viewport width (e.g. 3459px / 3224px wide inside a 1280px viewport), typically a full alphabetical list packed on one line.",
+      "decision": "Exclude from the block inventory as a hidden/off-canvas element (e.g. an autocomplete or state-picker dropdown) captured despite not being visually presented; if the content is genuinely needed, re-extract via targeted DOM query rather than the visual-tree capture.",
+      "rationale": "Width far beyond the viewport is a strong signal the node is not part of the rendered page flow the visual-tree capture is meant to represent.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C93 rc6 3459x36 'AlabamaArizona...'; rc7 3224x36 'AlaskaArkansas...' both overflowing the 1280px viewport", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Capture appears to be eventbrite.com's own homepage rather than the Knack integration page, plus two off-viewport-width nodes suggesting a hidden dropdown was captured."
+}

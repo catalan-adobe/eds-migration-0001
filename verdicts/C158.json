@@ -1,0 +1,37 @@
+{
+  "cluster_id": "C158",
+  "representative": "page-30__partner.json",
+  "sections": [
+    { "eds": "nav", "items": ["nav links"], "note": "rc1c1 [2x1] top nav renders correctly (no JS-leak artifact on this page)." },
+    { "eds": "section", "style": "image-bg hero", "items": ["h1+intro"], "note": "rc1c2c1 [bg:image] 'Become a Knack Partner'." },
+    { "eds": "section", "items": ["heading 'Reasons to Become a Knack Partner'", "card-grid block (6 items, 3x2)"], "note": "rc1c2c2 heading + repeating reason cards." },
+    { "eds": "section", "style": "color-bg", "items": ["heading", "card-grid block (3 items)"], "note": "rc1c2c3 [bg:color] 'Join our Affiliate Program' + [3x1] repeating steps/cards." },
+    { "eds": "section", "items": ["heading", "body text"], "note": "rc1c2c4 'Join Knack\u2019s Extensive Network' plain content." },
+    { "eds": "section", "items": ["heading 'More Resources'", "card-grid block (3 items)"], "note": "rc1c2c5 'More Resources' + [3x1] repeating article-preview cards." },
+    { "eds": "section", "style": "footer-cta", "items": ["footer text", "links"], "note": "rc2 recurring 'best no-code platform' footer; global chrome." }
+  ],
+  "blocks": ["card-grid"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "full-width-image-behind-text-is-section-bg",
+    "minimize-block-cells",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "global-footer-cta-is-chrome",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A bottom-of-page zone starting with 'The best no-code platform for...' followed by a '| |' link row, identical across pages.",
+      "decision": "Model as a global site-wide footer fragment excluded from each page's per-page block inventory, same treatment as nav.",
+      "rationale": "Identical text/markup at the same position on every page is footer chrome, not page content. Alternatives rejected: authoring it as a per-page CTA/newsletter block (rejected because it never varies by page).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C158 rc2 'The best no-code platform for...' + '| |'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Partner recruitment page: hero + three repeating card grids (reasons, affiliate steps, resources) + footer; nav renders cleanly on this page unlike the other clusters in this batch."
+}

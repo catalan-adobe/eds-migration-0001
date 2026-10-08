@@ -1,0 +1,45 @@
+{
+  "cluster_id": "C237",
+  "representative": "solution-2__solutions-professional-services.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "'Solutions / Business Need / Work O...' top nav bar." },
+    { "eds": "default-content", "items": ["rc1c2c1"], "note": "2x1 hero heading/subhead + image: 'Build a Professional Services...'." },
+    { "eds": "default-content", "items": ["rc1c2c2c1"], "note": "'Trusted by ... professional services...' intro heading above logo strip." },
+    { "eds": "section", "items": ["rc1c2c2c2"], "note": "4x1 customer-logo grid." },
+    { "eds": "section", "items": ["rc1c2c3"], "note": "2x1 text+image row: 'Automate Professional Services...'." },
+    { "eds": "section", "items": ["rc1c2c4"], "note": "2x1 text+image row: 'Unite Professional Services Teams...'." },
+    { "eds": "section", "items": ["rc1c2c5"], "note": "2x1 text+image row: 'Scale Smarter With No-Code Apps...'." },
+    { "eds": "default-content", "items": ["rc1c2c6c2c1"], "note": "'Why Professional Services Choose...' heading + intro paragraph." },
+    { "eds": "section", "items": ["rc1c2c6c2c2"], "note": "3x2 numbered feature cards ('01. Tailored Workflows...')." },
+    { "eds": "section", "style": "colored panel", "items": ["rc1c2c7c1","rc1c2c7c2"], "note": "bg:color panel wrapping a 3x2 'CRM' feature card grid." },
+    { "eds": "section", "items": ["rc1c2c8c2"], "note": "2x1 text+image row: 'Templates for Professional Services'." },
+    { "eds": "default-content", "items": ["rc1c2c9c2c1"], "note": "'Additional Resources' heading." },
+    { "eds": "section", "items": ["rc1c2c9c2c2"], "note": "3x1 resource card." },
+    { "eds": "section", "items": ["rc1c2c10c1","rc1c2c10c2"], "note": "'Professional Services Software FAQs' accordion." },
+    { "eds": "section", "style": "footer band", "items": ["rc2c1","rc2c2"], "note": "Global 'best no-code platform' footer CTA band." },
+    { "eds": "default-content", "items": ["rc3","rc4"], "note": "Cookie consent overlay -> noise." }
+  ],
+  "blocks": ["logos", "cards", "columns", "accordion"],
+  "covered_by_rules": [
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-footer-cta-band",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 86,
+      "trigger": "A sibling zone after the main content column containing 'The best no-code platform for...' text plus a thin '| |' bar, appearing identically at the bottom of nearly every page captured.",
+      "decision": "Treat as global site footer chrome; exclude from per-page block inventory. Model once as a site-wide footer fragment, not repeated page content.",
+      "rationale": "Byte-identical text/position recurs across unrelated templates (page, solution-2, solution-3).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C237 rc2c1/rc2c2 identical to C235-C236 and C238-C242", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Fully covered by existing confirmed generic/project rules (logo strip, alternating text/image rows, numbered feature cards, colored panel, FAQ accordion); only the recurring footer band needs a new project rule."
+}

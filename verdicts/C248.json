@@ -1,0 +1,66 @@
+{
+  "cluster_id": "C248",
+  "representative": "solution__solutions-grants-management.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "top nav bar" },
+    { "eds": "default-content", "items": ["rc1c2c1"], "note": "hero heading/intro text" },
+    { "eds": "section", "style": "trust-badges", "items": ["rc1c2c2c1", "rc1c2c2c2"], "note": "'Join the users' heading + 5x1 badge grid" },
+    { "eds": "section", "items": ["rc1c2c3c2c1", "rc1c2c3c2c2"], "note": "'5 Key Benefits of Upgrading' heading + 3x2 numbered feature-cards grid" },
+    { "eds": "default-content", "items": ["rc1c2c4"], "note": "'How Louisiana State University...' case-study callout" },
+    { "eds": "section", "style": "bg-color", "items": ["rc1c2c5c1", "rc1c2c5c2"], "note": "3x2 feature-cards grid on color background (Government Agencies)" },
+    { "eds": "section", "items": ["rc1c2c6c2c1", "rc1c2c6c2c2"], "note": "Explore More Resources heading + 3x1 resource-cards grid" },
+    { "eds": "noise", "items": ["rc1c2c7"], "note": "empty 252px zone (no text/children)" },
+    { "eds": "section", "items": ["rc1c2c8c1", "rc1c2c8c2"], "note": "FAQs heading + 5-row accordion" },
+    { "eds": "noise", "items": ["rc2"], "note": "global footer CTA band + link row" },
+    { "eds": "noise", "items": ["rc3", "rc4"], "note": "cookie consent overlay" }
+  ],
+  "blocks": ["trust-badges", "feature-cards", "resource-cards", "accordion"],
+  "covered_by_rules": [
+    "knack-cookie-notice-overlay",
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "faq-accordion-block",
+    "variant-is-css-not-new-block",
+    "minimize-block-cells"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-global-footer-band",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 87,
+      "trigger": "A recurring end-of-page zone (rc2) with a CTA heading and a pipe-only link row, identical at the bottom of every page.",
+      "decision": "Exclude from per-page block inventory; model as a global footer fragment/site-wide chrome, analogous to the confirmed knack-announcement-bar rule.",
+      "rationale": "Identical structure across every page examined in this batch.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "rc2c1/rc2c2 identical across C243-C250", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-trust-badge-strip",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "'Join ... users' heading immediately followed by a 5xN grid near the top of a solution page.",
+      "decision": "Emit as one 'trust-badges' block, one row per badge/item. Rejected alternative: a generic unnamed logo/card grid.",
+      "rationale": "Recurs with identical shape across multiple solution pages in this batch.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "rc1c2c2c1/rc1c2c2c2 [5x1]", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "solution-page-trailing-spacer",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 45,
+      "trigger": "An empty 252px-tall zone with no text or children, appearing between content sections on a solution page.",
+      "decision": "Exclude from block inventory as a decorative spacer/divider.",
+      "rationale": "Exact 252px height recurs identically on multiple solution pages, consistent with a fixed site-wide spacer element.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "rc1c2c7 @0,5173 1280x252, empty", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Standard 'solution' template page: hero, trust badges, numbered benefit cards, case-study callout, feature-cards on background, resource cards, spacer, FAQ accordion, global chrome."
+}

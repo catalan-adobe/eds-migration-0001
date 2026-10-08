@@ -1,0 +1,28 @@
+{
+  "cluster_id": "C76",
+  "representative": "case-study__case-study-shalley-and-murray.json",
+  "sections": [
+    { "eds": "nav", "items": ["nav links [2x1]"], "note": "rc1c1, global top nav bar" },
+    { "eds": "default-content", "items": ["H1 'Shalley and Murray: How Knack t...'"], "note": "rc1c2c1, case-study title/eyebrow, no background or component pairing" },
+    { "eds": "default-content", "items": ["'From Calls to Courtrooms When...' full article body"], "note": "rc1c2c2 [2x1], single long-form text node; no sidebar content is present in the captured text so it is treated as one flowing article body, not a two-column split" },
+    { "eds": "section", "style": "footer", "items": ["'The best no-code platform for...'", "'| |' link row"], "note": "rc2, global footer chrome" },
+    { "eds": "noise", "items": ["Decline overlay", "cookie consent box"], "note": "rc3/rc4, knack-cookie-notice-overlay" }
+  ],
+  "blocks": [],
+  "covered_by_rules": ["knack-cookie-notice-overlay"],
+  "proposed_rules": [
+    {
+      "id": "case-study-single-column-body",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 45,
+      "trigger": "A case-study page body node is tagged [2x1] by the layout-grid detector but the visual tree captures only a single text run under it, with no second column of distinct content (e.g. author box, sidebar CTA).",
+      "decision": "Model as one flowing default-content article body, not the confirmed two-column-article-with-sidebar pattern. Do not fabricate a sidebar block. Rejected alternative: apply two-column-article-with-sidebar and speculatively split the text into main+sidebar cells, which is not supported by the evidence captured.",
+      "rationale": "The [2x1] tag likely reflects a CSS grid wrapper that collapses to one visible column at this viewport, or an under-rendered second column; without visible sidebar content it would be speculative to invent one.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C76 rc1c2c2 [2x1] 1133x4857 single text run, no second column captured", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Simple case-study template: nav, title, single long-form article body, footer, cookie overlay. No blocks or repeating grids detected."
+}

@@ -1,0 +1,54 @@
+{
+  "cluster_id": "C190",
+  "representative": "page-6__health-compare.json",
+  "sections": [
+    { "eds": "section", "style": "bg-image hero", "items": ["H1 'See Why Knack Is the Best No-Code...'"], "note": "" },
+    { "eds": "section", "items": ["comparison-matrix block, 17 rows x 7 competitor columns (Blaze.tech, Keragon, Airtable, Specode, ...)"], "note": "true side-by-side matrix, not stacked (multi-competitor overview page)" },
+    { "eds": "section", "items": ["related-links block, 3 items ('Knack vs Lovable', 'Knack vs Em...')"], "note": "related comparison-page links" },
+    { "eds": "default-content", "items": ["'Start Building Your Healthcare...' CTA"], "note": "" },
+    { "eds": "default-content", "items": ["'What Our Users Are Saying' heading", "testimonial quote"], "note": "" },
+    { "eds": "default-content", "items": ["'Healthcare App Builder FAQs' heading"], "note": "" },
+    { "eds": "section", "items": ["FAQ accordion, 5 Q&A rows"], "note": "faq-accordion-block" },
+    { "eds": "default-content", "note": "stray promoted FAQ-answer region (rc2c6), still nested under rc2 but out of accordion", "items": ["'With Knack, you can build a wide range...'"] },
+    { "eds": "section", "style": "bg-color cta", "items": ["'Ready to get started? Start bu...'"], "note": "" },
+    { "eds": "section", "note": "global footer tagline bar (rc3)", "items": ["'The best no-code platform for...'"] },
+    { "eds": "default-content", "note": "cookie consent overlay (excluded)", "items": [] }
+  ],
+  "blocks": ["comparison-matrix", "related-links", "testimonial", "faq-accordion"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay",
+    "leaked-css-text-node"
+  ],
+  "proposed_rules": [
+    {
+      "id": "promoted-faq-answer-region",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A [region] node (FAQ/accordion answer text) appears as a sibling of the page's main content containers rather than nested inside its corresponding accordion question row.",
+      "decision": "Re-attach the region's text to the matching accordion row as its answer during Phase 2; never emit it as its own section or block.",
+      "rationale": "The capture promotes absolutely-positioned accordion answer panels out of their DOM parent.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C190 rc2c6 [region] 'With Knack, you can build a wide range...' positioned inside the FAQ y-range but rendered as sibling of rc2c5 CTA", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-footer-cta-bar",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 66,
+      "trigger": "A full-width zone (~453px) immediately after the main content on every page, containing a fixed tagline and divider row.",
+      "decision": "Treat as global site footer chrome; exclude from page inventory; model once as a site-wide fragment.",
+      "rationale": "Identical text/position recurs verbatim across every captured page.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C190 rc3c1c1 'The best no-code platform for...'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Unlike the single-competitor vs-pages (C187-C189), this multi-competitor overview page renders one true side-by-side comparison matrix ([7x1] rows), so the stacked-table artifact does not apply here."
+}

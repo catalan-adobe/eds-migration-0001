@@ -1,0 +1,44 @@
+{
+  "cluster_id": "C255",
+  "representative": "template-detail-2__templates-telehealth-app.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions", "Business Need", "Work O..."], "note": "top nav bar rc1c1" },
+    { "eds": "section", "style": "hero", "items": ["heading: Use this Template App to Build..."], "note": "hero intro rc1c2c1" },
+    { "eds": "section", "items": ["heading: Three Portals, One Shared Data...", "text: Each user role sees a tailored...", "key-features block: 01. Patient Portal Dashboard..."], "note": "rc1c2c2" },
+    { "eds": "section", "items": ["screenshot-carousel block (blank capture)", "cta-banner block: Start Building with Template"], "note": "rc1c2c3" },
+    { "eds": "section", "style": "bg-color", "items": ["feature-cards block: Patient Profiles Store patient..."], "note": "rc1c2c5 (rc1c2c4 blank 25h spacer is noise)" },
+    { "eds": "section", "items": ["feature-cards block: Virtual Meeting Links Provider..."], "note": "rc1c2c7 (rc1c2c6 blank 30h spacer is noise; same block type as rc1c2c5, treated as variant per variant-is-css-not-new-block)" },
+    { "eds": "section", "style": "faq", "items": ["heading: Telehealth App FAQs", "faq-accordion block (6 Q&A rows)"], "note": "rc1c2c8" },
+    { "eds": "section", "items": ["related-templates block (placeholder): Other Templates PreviousNext..."], "note": "rc1c2c9" },
+    { "eds": "section", "style": "footer", "items": ["tagline: The best no-code platform for...", "footer link row"], "note": "rc2 footer" }
+  ],
+  "blocks": ["key-features", "screenshot-carousel", "cta-banner", "feature-cards", "faq-accordion", "related-templates"],
+  "covered_by_rules": ["background-container-is-section-style", "repeating-cards-are-one-block", "heading-then-component-same-section", "minimize-block-cells", "variant-is-css-not-new-block", "faq-accordion-block", "decorative-graphics-are-noise", "knack-cookie-notice-overlay"],
+  "proposed_rules": [
+    {
+      "id": "iframe-carousel-underrendered",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A 'Related/Other Templates' carousel renders with only a heading and pagination controls (e.g. 'PreviousNext 1 2 3'), never the actual card content.",
+      "decision": "Flag for Phase 2 targeted DOM extraction rather than concluding the section is empty; model as a related-templates block whose items are loaded by a slider widget the minWidth capture under-renders.",
+      "rationale": "Same placeholder pattern recurs across every template-detail page sampled in this batch.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C255 rc1c2c9 'Other Templates PreviousNext 1...'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "template-screenshot-carousel-then-cta",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "Template-detail pages show a blank multi-column screenshot zone immediately followed by a [bg:color] 'Start Building with Template' banner.",
+      "decision": "Model as a 'screenshot-carousel' block plus a separate 'cta-banner' block in the same section; rejected merging into one 'template-preview' block for the same reuse reasons noted on sibling pages.",
+      "rationale": "Recurs with the same carousel+banner shape across template-detail pages sampled.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C255 rc1c2c3 [3x2] blank + [bg:color] 'Start Building with Template'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Two consecutive feature-cards grids (Patient Profiles, Virtual Meeting Links) treated as two instances of the same block type per the generic variant rule."
+}

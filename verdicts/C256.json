@@ -1,0 +1,42 @@
+{
+  "cluster_id": "C256",
+  "representative": "template-detail-3__templates-customer-portal.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions", "Business Need", "Work O..."], "note": "top nav bar rc1c1" },
+    { "eds": "section", "style": "hero", "items": ["heading: Leverage this Template App To ..."], "note": "hero intro rc1c2c1" },
+    { "eds": "section", "items": ["heading: Key Features & Functionality", "key-features block: 01. Secure Customer Access Eac..."], "note": "rc1c2c2" },
+    { "eds": "section", "items": ["screenshot-carousel block: screenshot image + caption 'Business Manager: View Custome...'", "cta-banner block: Build with the Customer Portal..."], "note": "rc1c2c3" },
+    { "eds": "section", "style": "faq", "items": ["heading: FAQs", "faq-accordion block (5 Q&A rows)"], "note": "rc1c2c4" },
+    { "eds": "section", "items": ["related-templates block (placeholder): Related Template Apps Previous..."], "note": "rc1c2c5" },
+    { "eds": "section", "style": "footer", "items": ["tagline: The best no-code platform for...", "footer link row"], "note": "rc2 footer" }
+  ],
+  "blocks": ["key-features", "screenshot-carousel", "cta-banner", "faq-accordion", "related-templates"],
+  "covered_by_rules": ["background-container-is-section-style", "repeating-cards-are-one-block", "heading-then-component-same-section", "minimize-block-cells", "faq-accordion-block", "knack-cookie-notice-overlay"],
+  "proposed_rules": [
+    {
+      "id": "iframe-carousel-underrendered",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A 'Related/Other Templates' carousel renders with only a heading and pagination controls, never the actual card content.",
+      "decision": "Flag for Phase 2 targeted DOM extraction rather than concluding the section is empty; model as a related-templates block whose items are loaded by a slider widget the minWidth capture under-renders.",
+      "rationale": "Same placeholder pattern recurs across every template-detail page sampled in this batch.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C256 rc1c2c5 'Related Template Apps Previous...'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "template-screenshot-carousel-then-cta",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "Template-detail pages show a screenshot zone (here a captioned image inside a [4x2] wrapper) immediately followed by a [bg:color] 'Build with the Template' banner.",
+      "decision": "Model as a 'screenshot-carousel' block (image + caption row) plus a separate 'cta-banner' block; rejected merging into one block for the same reuse reasons noted on sibling pages.",
+      "rationale": "Recurs with the same carousel+banner shape across template-detail pages sampled; this instance is the shortest of the family (no separate comparison table or extra feature-cards section).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C256 rc1c2c3c1 [4x2] bg:image + bg:gradient caption, then [bg:color] 'Build with the Customer Portal...'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "template-detail-3 is a shorter variant of template-detail-2 (no extra feature-cards or comparison-table section); it is dominant_template 'template-detail-3' but structurally identical otherwise."
+}

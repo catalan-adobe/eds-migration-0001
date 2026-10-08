@@ -1,0 +1,44 @@
+{
+  "cluster_id": "C123",
+  "representative": "page-15__health-nonprofit.json",
+  "sections": [
+    { "eds": "noise", "items": ["'document.addEventListener(\"DOM...' raw JS"], "note": "rc1 leaked-css-text-node" },
+    { "eds": "section", "style": "bg-image", "items": ["H1 'HIPAA-Compliant Software Built...'", "CTA row 'Talk to Our Team / See Nonprofit...'"], "note": "rc2c1 full-width-image-behind-text-is-section-bg" },
+    { "eds": "default-content", "items": ["H2 'What Nonprofits Build With Kna...'", "3x2 feature grid block"], "note": "rc2c2" },
+    { "eds": "block", "items": ["'Designed for Organizations Lik...' 2x1"], "note": "rc2c3 feature-banner (variant)" },
+    { "eds": "default-content", "items": ["H2 'Why Health-Focused Nonprofits ...'", "3x1 feature-list block"], "note": "rc2c4" },
+    { "eds": "default-content", "items": ["H2 'Healthcare Professionals World...'", "testimonial block (3x1)"], "note": "rc2c5" },
+    { "eds": "default-content", "items": ["H2 'Trusted by Health-Focused Nonp...'", "case-study callout block (2x2)"], "note": "rc2c6 'Serve Minnesota uses Knack Hea...'" },
+    { "eds": "section", "style": "bg-color", "items": ["H2 'Ready to build a system your o...'", "subtext", "CTA buttons (2x1)"], "note": "rc2c7 background-container-is-section-style" },
+    { "eds": "block", "items": ["'HIPAA-compliant Software for N...' FAQ heading", "6-item accordion"], "note": "rc2c8 + floating region nodes rc2c8c3, rc4 merged into rows" },
+    { "eds": "noise", "items": ["'ul{ margin-left: 20px; } li{ m...' raw CSS"], "note": "rc2c9 leaked-css-text-node" },
+    { "eds": "section", "items": ["'The best no-code platform...'", "'| |' link row"], "note": "rc3 footer" },
+    { "eds": "noise", "items": ["Decline button", "cookie consent box"], "note": "rc5 cookie overlay" }
+  ],
+  "blocks": ["feature-grid", "feature-banner", "feature-list", "testimonial", "case-study-callout", "cta-banner", "faq-accordion"],
+  "covered_by_rules": [
+    "leaked-css-text-node",
+    "full-width-image-behind-text-is-section-bg",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "variant-is-css-not-new-block",
+    "background-container-is-section-style",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "promoted-faq-answer-node",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "An expanded FAQ answer ([region] node) appears as a sibling outside its accordion's parent container in the visual tree, instead of nested under its question, because the page-tree capture promotes absolutely/fixed-positioned open-accordion-panel elements out of their DOM parent.",
+      "decision": "When assembling the FAQ accordion block, re-attach any [region] node tagged as promoted-outside-parent to the question row it vertically aligns with (matched by Y-position/order), rather than treating it as a separate top-level section.",
+      "rationale": "Third consecutive page-15 instance (after C121, C122) of the same floating-region artifact (rc2c8c3/rc4 here); recommend promoting this pipeline rule to confirmed given the recurrence across the whole page-15 template family.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C123 rc2c8c3 [region] and rc4 [region] both floating outside the rc2c8 accordion container", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "page-15 healthcare-solution template variant for nonprofits, with a case-study callout block replacing the pricing-tiers block seen in C121; same recurring FAQ-answer-promotion capture artifact."
+}

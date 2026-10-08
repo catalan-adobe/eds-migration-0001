@@ -1,0 +1,141 @@
+{
+  "cluster_id": "C207",
+  "representative": "page__health-integrations-athenahealth-outlook.json",
+  "sections": [
+    {
+      "eds": "section",
+      "style": "bg-image",
+      "items": [
+        "rc2c1c1"
+      ],
+      "note": "Hero: headline + intro copy over full-bleed background image."
+    },
+    {
+      "eds": "section",
+      "items": [
+        "rc2c1c2"
+      ],
+      "blocks": [
+        "logo strip"
+      ],
+      "note": "'Trusted by hundreds of healthcare...' logo/trust strip, same section as hero."
+    },
+    {
+      "eds": "section",
+      "style": "bg-gradient",
+      "items": [
+        "rc2c2"
+      ],
+      "note": "'What You Can Do When athenahealth + X' capability copy over gradient background."
+    },
+    {
+      "eds": "default-content",
+      "items": [
+        "rc2c3"
+      ],
+      "note": "'Set Up in Minutes. No Developers...' plain text zone, no background."
+    },
+    {
+      "eds": "section",
+      "items": [
+        "rc2c4c1"
+      ],
+      "blocks": [
+        "feature cards"
+      ],
+      "note": "'What Healthcare Teams Automate' heading above a 2x2 automation-use-case card grid (rc2c4c2)."
+    },
+    {
+      "eds": "section",
+      "style": "bg-color",
+      "items": [
+        "rc2c5c1",
+        "rc2c5c2"
+      ],
+      "blocks": [
+        "compliance badges"
+      ],
+      "note": "HIPAA compliance heading + intro, plus a 5-item compliance badge row (rc2c5c3)."
+    },
+    {
+      "eds": "section",
+      "style": "bg-color",
+      "items": [
+        "rc2c6c1",
+        "rc2c6c2",
+        "rc2c6c3"
+      ],
+      "note": "CTA band: heading, subtext, and two CTA buttons (Book a Demo / Request Free Trial) as default-content links."
+    },
+    {
+      "eds": "section",
+      "items": [
+        "rc2c7c1"
+      ],
+      "blocks": [
+        "faq accordion"
+      ],
+      "note": "'FAQs: Connect athenahealth with X' heading above a 5-item accordion (rc2c7c2), including overlay-promoted answer nodes rc2c9 and rc4."
+    },
+    {
+      "eds": "default-content",
+      "items": [
+        "rc3c1"
+      ],
+      "note": "Site footer tagline + separator, recurring boilerplate across pages."
+    }
+  ],
+  "blocks": [
+    "logo strip",
+    "feature cards",
+    "compliance badges",
+    "faq accordion"
+  ],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "background-container-is-section-style",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "minimize-block-cells",
+    "faq-accordion-block",
+    "leaked-css-text-node",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "faq-answer-promoted-to-root",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "An FAQ answer node marked [region] appears as a sibling of the FAQ container (or at document root) instead of nested under its question, because the source DOM renders the open/absolute-positioned answer outside its accordion-item parent.",
+      "decision": "Re-attach the orphan [region] answer to the accordion row of the question it textually matches; do not treat it as separate page content or a new section.",
+      "rationale": "The visual-tree capture promotes elements rendered outside their DOM parent (overlays/fixed/absolute nodes); this is a capture-time positional artifact, not authored structure. Recurs identically across every athenahealth-integration page in this cluster family.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C207 rc2c9, rc4 (orphan [region] FAQ answer text)",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "knack-footer-tagline-boilerplate",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A recurring footer zone with the tagline 'The best no-code platform for...' plus a thin '| |' separator node, present near the bottom of every page.",
+      "decision": "Model as global site-wide footer chrome (fragment), excluded from per-page block/content inventory.",
+      "rationale": "Rejected alternatives: (a) map as page-level default-content since it does carry text, (b) map as a dedicated 'footer' block. Chose fragment-exclusion because the exact same text recurs verbatim across unrelated pages, indicating shared site chrome rather than page-authored content.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C207 rc3c1c1, rc3c1c2",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    }
+  ],
+  "notes": "Templated athenahealth-integration landing page: hero+logo strip, capability copy, use-case card grid, compliance badge row, CTA band, and a confirmed FAQ accordion; identical structure across the C204-C210 family, differing only in partner name/copy. Existing proposed rule 'knack-trust-badge-strip' already covers the logo-strip block, not re-proposed here."
+}

@@ -1,0 +1,49 @@
+{
+  "cluster_id": "C108",
+  "representative": "page-10__videos.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions/Business Need/Work... nav bar"], "note": "top nav; a promoted mega-menu overlay renders below/over it" },
+    { "eds": "section", "items": ["Clear All (filter control)", "video-cards grid [3x3]", "Load More button"], "note": "filterable video library listing" },
+    { "eds": "section", "style": "bg-gradient", "items": [], "note": "empty full-width gradient band directly above footer; likely under-rendered CTA" },
+    { "eds": "section", "items": ["footer tagline", "footer link row"], "note": "site footer" }
+  ],
+  "blocks": ["video-cards"],
+  "covered_by_rules": ["repeating-cards-are-one-block", "minimize-block-cells", "knack-cookie-notice-overlay"],
+  "proposed_rules": [
+    {
+      "id": "pre-footer-empty-gradient-band",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A full-width [bg:gradient] or [bg:image] zone with zero captured child text, positioned as the last content zone immediately above the footer.",
+      "decision": "Flag for Phase 2 targeted extraction as a likely CTA banner (heading+button) rather than silently applying decorative-graphics-are-noise.",
+      "rationale": "Recurs identically across the page-10/page-11 templates in the same position with a reserved height, suggesting real CTA copy that failed to render at capture width, not intentional decoration. Rejected alternative: treating it as pure decoration and dropping it.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C108 rc1c2c2 [bg:gradient] 1280x507 with no child text, directly before footer rc2",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "promoted-nav-flyout-menu",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "A [NxM] grid of category link labels rendered at a y-position overlapping the nav bar/hero rather than in normal document flow, indicating a hover/click-triggered dropdown promoted by the capture tool's overlay detection.",
+      "decision": "Fold into the nav section as a flyout/mega-menu note; exclude from the page's content block inventory.",
+      "rationale": "The node's absolute position (y=419, overlapping the hero at y=423) plus its category-label content matches a nav mega-menu, not page content. Rejected alternative: modeling it as a standalone 'mega-menu' block in the main content area.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C108 rc1c2c3 [4x2] @150,419 1000x112 overlapping hero at y=423",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    }
+  ],
+  "notes": "Standard nav+listing+footer page; two capture-artifact patterns flagged for Phase 2 (empty pre-footer band, promoted nav flyout)."
+}

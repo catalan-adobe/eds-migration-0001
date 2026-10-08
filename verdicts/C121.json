@@ -1,0 +1,44 @@
+{
+  "cluster_id": "C121",
+  "representative": "page-15__health-dentistry.json",
+  "sections": [
+    { "eds": "noise", "items": ["'document.addEventListener(\"DOM...' raw JS"], "note": "rc1 leaked-css-text-node" },
+    { "eds": "section", "style": "bg-image", "items": ["H1 'HIPAA-Compliant Software for D...'", "'Request a Demo' CTA"], "note": "rc2c1 full-width-image-behind-text-is-section-bg" },
+    { "eds": "default-content", "items": ["H2 'Dental and orthodontic practic...'", "subtext", "3x2 feature grid block 'Patient Referral Tracking...'"], "note": "rc2c2" },
+    { "eds": "block", "items": ["'Built for practices that need...' 2x1"], "note": "rc2c3 feature-banner (variant)" },
+    { "eds": "default-content", "items": ["H2 'HIPAA compliance built in...'", "3x1 compliance-features block"], "note": "rc2c4" },
+    { "eds": "default-content", "items": ["H2 'What our users are saying'", "testimonial block (3x1)"], "note": "rc2c5" },
+    { "eds": "default-content", "items": ["H2 'Plans and Packages'", "subtext", "pricing-tiers block (2x1)", "'See all pricing...' link"], "note": "rc2c6" },
+    { "eds": "section", "style": "bg-color", "items": ["H2 'Build the operational tools yo...'", "subtext", "'Talk to Our Team' CTA"], "note": "rc2c7 background-container-is-section-style" },
+    { "eds": "block", "items": ["'Dental and Orthodontic Software...' FAQ heading", "7-item accordion"], "note": "rc2c8 + floating region nodes rc2c8c3, rc4 merged into rows" },
+    { "eds": "noise", "items": ["'/* medium screen */ @media (mi...' raw CSS"], "note": "rc2c9 leaked-css-text-node" },
+    { "eds": "section", "items": ["'The best no-code platform...'", "'| |' link row"], "note": "rc3 footer" },
+    { "eds": "noise", "items": ["Decline button", "cookie consent box"], "note": "rc5 cookie overlay" }
+  ],
+  "blocks": ["feature-grid", "feature-banner", "compliance-features", "testimonial", "pricing-tiers", "cta-banner", "faq-accordion"],
+  "covered_by_rules": [
+    "leaked-css-text-node",
+    "full-width-image-behind-text-is-section-bg",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "variant-is-css-not-new-block",
+    "background-container-is-section-style",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "promoted-faq-answer-node",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "An expanded FAQ answer ([region] node) appears as a sibling outside its accordion's parent container in the visual tree, instead of nested under its question, because the page-tree capture promotes absolutely/fixed-positioned open-accordion-panel elements out of their DOM parent.",
+      "decision": "When assembling the FAQ accordion block, re-attach any [region] node tagged as promoted-outside-parent to the question row it vertically aligns with (matched by Y-position/order), rather than treating it as a separate top-level section.",
+      "rationale": "This is an artifact of how our visual-tree capture promotes overlay-rendered elements (see page-tree skill's occlusion/promotion behavior), not a genuine site structure difference — the answer content still belongs to its question row.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C121 rc2c8c3 [region] and rc4 [region] both floating outside the rc2c8 accordion container", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "page-15 healthcare-solution template: hero, feature grid, compliance/testimonial/pricing sections, CTA banner, FAQ accordion, footer. FAQ accordion has answer nodes rendered outside their row due to capture promotion of open panels."
+}

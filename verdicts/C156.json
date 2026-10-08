@@ -1,0 +1,54 @@
+{
+  "cluster_id": "C156",
+  "representative": "page-2__health-partners.json",
+  "sections": [
+    { "eds": "nav", "items": ["nav-placeholder"], "note": "rc1 [3x1] top bar renders raw JS text instead of nav links; capture artifact." },
+    { "eds": "section", "style": "image-bg hero", "items": ["h1+intro", "cta-link"], "note": "rc2c1 [2x1][bg:image] 'Build and deliver healthcare s...'." },
+    { "eds": "section", "items": ["heading", "body text", "icon-row block (6 items)"], "note": "rc2c2 heading+text above a [6x1] repeating feature/workflow row." },
+    { "eds": "section", "items": ["heading", "body text"], "note": "rc2c3 'A platform for building health...' plain content." },
+    { "eds": "section", "items": ["heading", "body text"], "note": "rc2c4 'Partner with Knack in three ways' plain content." },
+    { "eds": "section", "items": ["heading", "body text"], "note": "rc2c5 'Who the Knack Health partnership is for' plain content." },
+    { "eds": "section", "items": ["heading", "subtext", "card-grid block (6 items, 3x2)"], "note": "rc2c6 'What partners can build for' + repeating app-example cards." },
+    { "eds": "section", "items": ["heading", "body text"], "note": "rc2c7 'Why partners build on Knack' plain content." },
+    { "eds": "section", "style": "color-bg", "items": ["heading", "cta-link"], "note": "rc2c8 [bg:color] 'How to become a healthcare partner' CTA banner." },
+    { "eds": "section", "items": ["faq-accordion block (6 Q&A)"], "note": "rc2c9 accordion, starting with 'What is the Knack Health partner program?'." },
+    { "eds": "section", "style": "footer-cta", "items": ["footer text", "links"], "note": "rc3 recurring 'best no-code platform' footer; global chrome." }
+  ],
+  "blocks": ["icon-row", "card-grid", "faq-accordion"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "full-width-image-behind-text-is-section-bg",
+    "minimize-block-cells",
+    "knack-cookie-notice-overlay",
+    "faq-accordion-block"
+  ],
+  "proposed_rules": [
+    {
+      "id": "leaked-js-boilerplate-in-nav-zone",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "A [3x1] zone at the very top of the page (y=0, ~80px tall, sized like the nav bar) contains raw JS source text instead of nav links.",
+      "decision": "Exclude the JS text from the block/content inventory; flag for Phase 2 DOM-based nav re-extraction rather than concluding the page has no nav.",
+      "rationale": "The nav-sized bounding box containing JS source indicates the visual capture ran before script execution replaced placeholder markup with real nav; distinct from the confirmed leaked-css-text-node rule which covers CSS leaks.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C156 rc1 [3x1] 1280x80 'document.addEventListener(\"DOM...'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "global-footer-cta-is-chrome",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A bottom-of-page zone starting with 'The best no-code platform for...' followed by a '| |' link row, identical across pages.",
+      "decision": "Model as a global site-wide footer fragment excluded from each page's per-page block inventory, same treatment as nav.",
+      "rationale": "Identical text/markup at the same position on every page is footer chrome, not page content. Alternatives rejected: authoring it as a per-page CTA/newsletter block (rejected because it never varies by page).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C156 rc3 'The best no-code platform for...' + '| |'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Partner-marketing page follows the same nav-JS-leak + hero + content sections + card grids + FAQ + footer pattern as other Knack Health pages; no stray duplicate FAQ node observed here."
+}

@@ -1,0 +1,43 @@
+{
+  "cluster_id": "C133",
+  "representative": "page-20__integrations.json",
+  "sections": [
+    { "eds": "nav", "items": ["global nav bar (Solutions/Business Need/Work...)"], "note": "rc1c1" },
+    { "eds": "section", "style": "image bg hero", "items": ["H1 Native Integrations Directory", "subtext Through Knack Flows, you can i...", "empty CTA row"], "note": "rc1c2c1 [bg:image] with overlaid heading" },
+    { "eds": "section", "items": ["filter toolbar (Filter by Category / Show All...)", "integration card list (not captured)"], "note": "rc1c2c2, single 4324px-tall node with only filter-bar text, no child cards" },
+    { "eds": "section", "style": "footer", "items": ["footer tagline", "footer link row"], "note": "rc2" }
+  ],
+  "blocks": ["integration-directory-list"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "underrendered-list-zone",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "empty-cta-row-underrendered",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 45,
+      "trigger": "A short, childless node (no text) sitting right after hero heading/subtext, consistent with a button/CTA row.",
+      "decision": "Flag for Phase 2 targeted DOM extraction to recover button label/link rather than treating as empty space.",
+      "rationale": "minWidth capture strips interactive button markup, leaving a blank placeholder node.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C133 rc1c2c1c3 @16,328 1248x49 empty", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "detached-viewport-sized-node",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 40,
+      "trigger": "A root-level sibling node sized exactly to the viewport (e.g. 1280x720) positioned at 0,0, with no text and no clear relation to the surrounding content flow.",
+      "decision": "Treat as a capture artifact (likely a hidden video/lightbox modal or iframe promoted to root by the overlay-detection pass) — exclude from block inventory pending Phase 2 confirmation.",
+      "rationale": "Its size and position match viewport dimensions rather than any visible content region, suggesting it is DOM noise surfaced by the tree walker's overlay promotion, not authored page content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C133 rc3 @0,0 1280x720 (no text)", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Integrations directory page: hero is well-formed, but the integration list below collapsed to one giant filter-only node (underrendered-list-zone); an unexplained viewport-sized blank node also appears at root level, likely a capture artifact."
+}

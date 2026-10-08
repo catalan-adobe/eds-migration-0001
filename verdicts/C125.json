@@ -1,0 +1,42 @@
+{
+  "cluster_id": "C125",
+  "representative": "page-16__health-compare-drapcode-vs-knack.json",
+  "sections": [
+    { "eds": "section", "style": "hero-bg-image", "items": ["heading: Knack vs. DrapCode..."], "note": "rc2c1 full-bleed bg:image hero" },
+    { "eds": "default-content", "items": ["heading+paragraph: Why Healthcare Teams Choose Knack"], "note": "rc2c2" },
+    { "eds": "section", "items": ["default-content: DrapCode column header", "block: comparison-table (7 rows)", "default-content: Get Started CTA"], "note": "rc2c3, reasons-to-switch list + CTA" },
+    { "eds": "section", "items": ["heading: Key Features & Benefits", "block: comparison-table (7 rows)"], "note": "rc2c4, feature/benefit table" },
+    { "eds": "section", "style": "alternating-bg", "items": ["5x heading+paragraph pairs: Security, Ease of Use, Customization, Scalability, Pricing, Integrations"], "note": "rc2c5c1-c7, alternating bg:color sections" },
+    { "eds": "default-content", "items": ["heading: What Our Users Are Saying", "block: testimonial"], "note": "rc2c6" },
+    { "eds": "section", "style": "hero-bg-image", "items": [], "note": "rc2c7 [bg:image] no visible child text — under-rendered banner, likely decorative" },
+    { "eds": "section", "style": "cta-banner", "items": ["default-content: Start Building Your Healthcare... CTA"], "note": "rc2c8 bg:color" },
+    { "eds": "default-content", "items": ["block: feature-grid (Patient intake forms, Referral, ...)"], "note": "rc2c9 [3x2] repeating cards" },
+    { "eds": "section", "items": ["block: faq-accordion"], "note": "rc2c10, all answers nested properly, no root-level promotion in this capture" },
+    { "eds": "default-content", "items": ["footer CTA + social row"], "note": "rc3 — global footer, see proposed rule" }
+  ],
+  "blocks": ["comparison-table", "testimonial", "feature-grid", "faq-accordion"],
+  "covered_by_rules": [
+    "leaked-css-text-node",
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "full-width-image-behind-text-is-section-bg",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-footer-cta-fragment",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "A bottom-of-page block with the line 'The best no-code platform for ...' followed by a thin '| |' separator/social row, appearing verbatim at the end of nearly every captured page across templates.",
+      "decision": "Treat as global site footer chrome; exclude from per-page block inventory and model once as a shared footer fragment.",
+      "rationale": "Identical wording/layout recurs across compare, landing, and category templates — a shared footer partial, not page content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C125 rc3c1c1/c1c2 'The best no-code platform for...' + '| |'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Same compare-page template as C124/C126, but this capture has no orphaned top-level FAQ region — accordion answers stay nested. rc2c7 bg:image is an empty band, likely a decorative divider or under-rendered logo strip."
+}

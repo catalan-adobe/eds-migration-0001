@@ -1,0 +1,391 @@
+# EDS Migration Rulebook — Project layer (knack.com)
+#
+# Site-specific conventions discovered during THIS migration. Grown by promoting canonical
+# rules (from Step 2.2 consolidation) via promote-rules.py. Loaded alongside generic.yaml;
+# project rules take precedence on conflict.
+#
+# Same schema as generic.yaml. Every rule carries provenance to the step + evidence it came
+# from, so a reviewer can trace why it exists.
+
+version: 1
+
+rules:
+  # Confirmed pre-scan: the cookie/consent overlay is global chrome. Because this was already
+  # confirmed, the long-tail scan correctly did NOT re-propose it — the rulebook did its job.
+  - id: knack-cookie-notice-overlay
+    scope: project
+    decision_type: convention
+    category: noise
+    status: confirmed
+    priority: 90
+    trigger: >
+      A fixed-position cookie/consent overlay (small box, bottom-left, with a "Decline"
+      control and third-party cookie copy) present on most pages.
+    decision: >
+      Exclude entirely from block inventory and section analysis. It is chrome injected on
+      every page, not page content.
+    rationale: >
+      Consent overlays are global site chrome, never part of the imported document.
+    provenance:
+      origin: hand-authored
+      evidence: overlay nodes rc3/rc4 recurring across nearly all captured trees
+      added: 2026-09-04
+      version: 1
+  - id: footer-cta-chrome
+    scope: project
+    decision_type: convention
+    category: noise
+    status: confirmed
+    priority: 50
+    trigger: >
+      A recurring pre-footer band with tagline/CTA (and the global footer) present on nearly
+      every page.
+    decision: >
+      Exclude from page block inventory; model once as global footer chrome/fragment.
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: nav-chrome
+    scope: project
+    decision_type: convention
+    category: noise
+    status: confirmed
+    priority: 50
+    trigger: >
+      Global top navigation bar / flyout menu present site-wide.
+    decision: >
+      Exclude from page content; global nav chrome.
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: announcement-bar-chrome
+    scope: project
+    decision_type: convention
+    category: noise
+    status: confirmed
+    priority: 50
+    trigger: >
+      Thin promo ribbon above the nav (announcement) or a seasonal promo strip inside the
+      hero.
+    decision: >
+      Exclude as site-wide marketing chrome / fragment, not page content.
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: leaked-source-code-text
+    scope: project
+    decision_type: convention
+    category: noise
+    status: confirmed
+    priority: 50
+    trigger: >
+      A visible text node whose content is raw CSS/JS/PHP source or serialized data (comment
+      syntax, selectors, script boilerplate).
+    decision: >
+      Exclude entirely — source-leak artifact, never content. (Generic candidate; promote
+      cross-site.)
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: comparison-table-block
+    scope: project
+    decision_type: team-decision
+    category: block
+    status: confirmed
+    priority: 50
+    trigger: >
+      A feature/plan/competitor comparison rendered as a table, stacked columns, or comparison
+      cards.
+    decision: >
+      Model as one comparison block; table vs cards is a variant (resolve cell structure in
+      3.5). Alternatives: separate blocks per layout.
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: template-gallery-block
+    scope: project
+    decision_type: team-decision
+    category: block
+    status: confirmed
+    priority: 50
+    trigger: >
+      Template previews shown as a carousel, grid, tab strip, or screenshot showcase, often
+      followed by an install/download CTA.
+    decision: >
+      Model as a template-gallery block (+ separate CTA). Carousel/grid/tabs are variants.
+      Alternatives: distinct blocks per presentation.
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: presentation-list-is-accordion
+    scope: project
+    decision_type: convention
+    category: block
+    status: confirmed
+    priority: 50
+    trigger: >
+      A [presentation]/list-role container of uniform rows that is an interactive accordion
+      (beyond FAQ).
+    decision: >
+      Model as an accordion block; the [presentation] role is the accordion, not a plain list.
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: cta-banner-block
+    scope: project
+    decision_type: team-decision
+    category: block
+    status: confirmed
+    priority: 50
+    trigger: >
+      A standalone CTA band (heading + button) that is page content (not the global footer
+      CTA).
+    decision: >
+      Model as a cta-banner block. A lone button in flow may instead be a default-content
+      link. Alternatives: default-content vs block.
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: filter-listing-block
+    scope: project
+    decision_type: team-decision
+    category: block
+    status: confirmed
+    priority: 50
+    trigger: >
+      A filterable directory/listing with a chip/search filter bar over a grid or list.
+    decision: >
+      Model as a listing block; the filter bar may be part of it or its own block (confirm via
+      Phase 2). Alternatives: split filter + list.
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: media-embed-block
+    scope: project
+    decision_type: convention
+    category: block
+    status: confirmed
+    priority: 50
+    trigger: >
+      An embedded video, interactive demo, or product-picker widget.
+    decision: >
+      Model as a media/embed block keyed on the embed source.
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: alternating-feature-rows-block
+    scope: project
+    decision_type: team-decision
+    category: block
+    status: confirmed
+    priority: 50
+    trigger: >
+      A sequence of full-width media+text rows with alternating sides.
+    decision: >
+      One feature block; alternation is a variant label. Alternatives: columns block per row.
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: testimonial-block
+    scope: project
+    decision_type: convention
+    category: block
+    status: confirmed
+    priority: 50
+    trigger: >
+      A customer quote + attribution (single or callout).
+    decision: >
+      Model as a testimonial block; carousel is a variant.
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: related-content-block
+    scope: project
+    decision_type: convention
+    category: block
+    status: confirmed
+    priority: 50
+    trigger: >
+      A bottom-of-page grid of related article/resource teaser cards.
+    decision: >
+      Model as a related-content block (cards linking elsewhere).
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: section-bg-behind-heading
+    scope: project
+    decision_type: convention
+    category: section
+    status: confirmed
+    priority: 50
+    trigger: >
+      A heading/component sitting on an untagged media/color backdrop spanning a region.
+    decision: >
+      Represent the backdrop as a section style; map heading + component as separate items
+      (background-container rule).
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: two-column-body
+    scope: project
+    decision_type: team-decision
+    category: structure
+    status: confirmed
+    priority: 50
+    trigger: >
+      An article/case-study body as a wide primary column + narrow sidebar, or a single-column
+      body needing decomposition.
+    decision: >
+      Article = default-content, sidebar = its own block, same section. Alternatives: columns
+      block. Decompose via Phase 2.
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: page-template-signature
+    scope: project
+    decision_type: convention
+    category: structure
+    status: confirmed
+    priority: 50
+    trigger: >
+      A recurring whole-page skeleton for a section of the site (integration pages, migration
+      landing, category subnav).
+    decision: >
+      Record as a page-template signature to batch import; not a single block.
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: page-body-as-prose
+    scope: project
+    decision_type: team-decision
+    category: default-content
+    status: confirmed
+    priority: 50
+    trigger: >
+      A page whose body is mostly long-form prose (glossary, pricing package copy) with no
+      repeating component.
+    decision: >
+      Map the body as default-content (headings/paragraphs/lists), not blocks. Alternatives:
+      extract embedded blocks if present.
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: how-it-works-steps-block
+    scope: project
+    decision_type: convention
+    category: block
+    status: confirmed
+    priority: 50
+    trigger: >
+      A numbered how-it-works / steps sequence.
+    decision: >
+      Model as a steps block, one row per step.
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: component-caption-order
+    scope: project
+    decision_type: convention
+    category: structure
+    status: confirmed
+    priority: 50
+    trigger: >
+      A component followed by its caption/label in DOM order.
+    decision: >
+      Preserve component-then-caption order when authoring the block/default-content.
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1
+  - id: web-form-is-form-block
+    scope: project
+    decision_type: team-decision
+    category: block
+    status: confirmed
+    priority: 50
+    trigger: >
+      A vertical stack of labeled inputs (text, radio, textarea) ending in a submit control,
+      forming an application/contact form.
+    decision: >
+      Emit ONE 'form' block, one row per field (label + input type/placeholder), final row =
+      submit. Rejected alternative: leave as raw inline HTML form with no block wrapper (loses
+      EDS authoring/reuse for the field list).
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation-singleton
+      added: 2026-09-04
+      version: 1
+  - id: trust-badge-strip-block
+    scope: project
+    decision_type: team-decision
+    category: block
+    status: confirmed
+    priority: 50
+    trigger: >
+      A strip of third-party rating/trust logos with scores near the top of landing pages.
+    decision: >
+      Model as a trust-badges block (row per badge). May be a variant of a generic logo strip.
+      Alternatives: logos block.
+    rationale: >
+
+    provenance:
+      origin: step2.2-consolidation
+      added: 2026-09-04
+      version: 1

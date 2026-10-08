@@ -1,0 +1,32 @@
+{
+  "cluster_id": "C175",
+  "representative": "page-4__glossary.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions", "Business", "Need", "Work On..."], "note": "global site nav" },
+    { "eds": "default-content", "items": ["H1: Knack Glossary: No-Code Terms...", "intro: A handy reference for common terms..."], "note": "page title/intro" },
+    { "eds": "default-content", "items": ["letter groups A through W, each with term+definition pairs"], "note": "18 alphabetical letter sections (rc1c2c5..rc1c2c18), ~40 term/definition pairs; mapped as plain headings+paragraphs, not a block" },
+    { "eds": "section", "style": "footer", "items": ["footer tagline", "footer links"], "note": "global footer chrome" }
+  ],
+  "blocks": [],
+  "covered_by_rules": ["knack-cookie-notice-overlay"],
+  "proposed_rules": [
+    {
+      "id": "alphabetical-glossary-is-default-content",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "default-content",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "A glossary/reference page structured as alphabetical letter groups, each containing multiple term+definition pairs (term as a small heading, definition as a paragraph), with spacer gaps between letters.",
+      "decision": "Map each letter as an H2 heading and each term as a bold lead-in/H3 with its definition as the following paragraph, authored as plain default-content in the page body. Do NOT create a dedicated 'glossary' block/table.",
+      "rationale": "Chose default-content over a repeating block (the generic repeating-cards-are-one-block pattern) because glossary entries have no card boundaries/background, the list is long (100+ terms) and open-ended, and authors edit definitions far more easily as flowing headings/paragraphs than as rows of a giant one-column block table. Rejected alternative: one 'glossary' block with one row per term.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C175 rc1c2c5..rc1c2c18, letters A,B,C,D,F,I,L,M,N,P,R,T,U,W each with 1-6 term/definition pairs",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    }
+  ],
+  "notes": "Pure text glossary page; entire body maps cleanly to default-content (headings + paragraphs), no reusable component/block needed."
+}

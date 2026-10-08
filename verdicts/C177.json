@@ -1,0 +1,55 @@
+{
+  "cluster_id": "C177",
+  "representative": "page-5__health-base44.json",
+  "sections": [
+    { "eds": "section", "items": ["leaked JS text (document.addEventListener...)"], "note": "excluded, source-leak artifact" },
+    { "eds": "section", "style": "bg-image", "items": ["hero headline: The HIPAA-compliant backend bu..."], "note": "hero, bg image behind text [2x1]" },
+    { "eds": "default-content", "items": ["headline+subtext: You built something real...", "steps block (Keep your Base44 frontend, 3x1)"], "note": "intro copy above steps block" },
+    { "eds": "default-content", "items": ["heading: How Base44 and Knack Health work together..."], "note": "precedes feature/diagram component" },
+    { "eds": "section", "items": ["feature-split block (Build your data schema in Knack..., 2x1)"], "note": "diagram/screenshot + text" },
+    { "eds": "default-content", "items": ["heading: Watch the Tutorial: Connecting..."], "note": "precedes video embed" },
+    { "eds": "section", "items": ["video-embed block (bg:color, 1140x641, empty)"], "note": "tutorial video, not text-captured" },
+    { "eds": "default-content", "items": ["paragraph: The major cloud providers are...", "paragraph: Knack Health gives you the same..."], "note": "plain text, no component" },
+    { "eds": "default-content", "items": ["heading: What healthcare teams are building..."], "note": "precedes use-case cards" },
+    { "eds": "section", "items": ["cards block (3x2, Patient intake and onboarding...)"], "note": "use-case grid" },
+    { "eds": "section", "style": "bg-color", "items": ["cards block (4x2, HIPAA-compliant infrastructure...)"], "note": "feature grid, bg-container" },
+    { "eds": "default-content", "items": ["heading: Choose from and integrate with..."], "note": "precedes integrations grid" },
+    { "eds": "section", "items": ["integrations-grid block (3x2, Click to learn more)"], "note": "logo/integration cards" },
+    { "eds": "section", "items": ["testimonial block (Royal Free London NHS Foundation..., 3x1)"], "note": "single testimonial row" },
+    { "eds": "section", "style": "bg-color", "items": ["cta-banner (Already built something in Base44?)"], "note": "bg-container CTA" },
+    { "eds": "section", "style": "bg-color", "items": ["cta-banner (Talk to us about your Base44 app / Book a Demo)"], "note": "bg-container CTA with button" },
+    { "eds": "section", "items": ["faq-accordion block (7+ Q/A pairs)"], "note": "answers heavily fragmented as [region] siblings, some promoted to root (rc4)" },
+    { "eds": "section", "style": "footer", "items": ["footer tagline", "footer links"], "note": "global footer chrome" }
+  ],
+  "blocks": ["hero-image", "steps", "feature-split", "video-embed", "cards", "integrations-grid", "testimonial", "cta-banner", "faq-accordion"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "heading-then-component-same-section",
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "faq-accordion-block",
+    "leaked-css-text-node",
+    "knack-cookie-notice-overlay",
+    "variant-is-css-not-new-block"
+  ],
+  "proposed_rules": [
+    {
+      "id": "region-promoted-node-reattach",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A node tagged [region] appears as a sibling far from its logical container (including near page root), with content matching a collapsed FAQ answer that overlaps the y-coordinates of a different question's slot.",
+      "decision": "Re-associate each [region] node with its matching question by content adjacency rather than by tree position; merge into the parent block's row.",
+      "rationale": "Several answer regions here (rc2c12c2c7, c8, c9, rc2c12c3, rc4) occupy y-ranges overlapping other questions' slots, confirming the accordion's collapsed-panel DOM order does not match visual order after capture; a naive position-based join would misattribute answers to the wrong question.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C177 rc2c12c2c7 [region] @47,7182 overlapping rc2c12c2c3's question slot @47,7182; rc4 [region] at page root",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    }
+  ],
+  "notes": "Base44 + Knack Health co-marketing landing page; block inventory matches the C171/C172 solution-template family. FAQ answer regions are more heavily fragmented here than in prior clusters, reinforcing the region-promoted-node-reattach proposal."
+}

@@ -1,0 +1,49 @@
+{
+  "cluster_id": "C242",
+  "representative": "solution-3__solutions-event-management.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "'Solutions / Business Need / Work O...' top nav bar." },
+    { "eds": "default-content", "items": ["rc1c2c1"], "note": "Hero heading/subhead: 'Build Your Event App from Scratch...'." },
+    { "eds": "default-content", "items": ["rc1c2c2c1"], "note": "'Join the of users who are building...' intro heading above logo strip." },
+    { "eds": "section", "items": ["rc1c2c2c2"], "note": "5x2 customer-logo grid." },
+    { "eds": "section", "style": "colored visual panel", "items": ["rc1c2c3c1","rc1c2c3c2"], "note": "bg:color panel wrapping a bg:image product screenshot -> section background + image content." },
+    { "eds": "section", "items": ["rc1c2c4"], "note": "2x1 text+image row: 'Digitize your Event Experience...'." },
+    { "eds": "section", "items": ["rc1c2c5"], "note": "2x1 text+image row: 'Enhance Your Event Workflow with...'." },
+    { "eds": "section", "items": ["rc1c2c6"], "note": "2x1 text+image row: 'Maximize ROI with Knack's Scalable...'." },
+    { "eds": "section", "items": ["rc1c2c7"], "note": "2x1 text+image row: 'Cut Costs & Time: Build Your Event...'." },
+    { "eds": "section", "items": ["rc1c2c8"], "note": "2x1 text+image row: 'Add Mobile Barcode Scanning to...'." },
+    { "eds": "default-content", "items": ["rc1c2c9c2c1"], "note": "'Essential Features for Modern...' heading + two intro paragraphs." },
+    { "eds": "section", "items": ["rc1c2c9c2c2"], "note": "3x2 numbered feature cards ('01. Mobile Check-In & Barcode...')." },
+    { "eds": "section", "style": "colored panel", "items": ["rc1c2c10c1","rc1c2c10c2"], "note": "bg:color panel wrapping a 3x2 'Corporate Events & Conferences' feature card grid." },
+    { "eds": "section", "items": ["rc1c2c11c1","rc1c2c11c2"], "note": "'No-Code Event Management FAQs' accordion (6 questions)." },
+    { "eds": "section", "items": ["rc1c2c12"], "note": "252px zone with no captured child text between FAQ and resources -> likely a CTA/logo strip under the minWidth capture threshold; flagged for Phase 2 re-extraction." },
+    { "eds": "default-content", "items": ["rc1c2c13c2c1"], "note": "'Additional Event Management Resources' heading." },
+    { "eds": "section", "items": ["rc1c2c13c2c2"], "note": "3x1 resource card." },
+    { "eds": "section", "style": "footer band", "items": ["rc2c1","rc2c2"], "note": "Global 'best no-code platform' footer CTA band." },
+    { "eds": "default-content", "items": ["rc3","rc4"], "note": "Cookie consent overlay -> noise." }
+  ],
+  "blocks": ["logos", "cards", "columns", "accordion", "image"],
+  "covered_by_rules": [
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay",
+    "underrendered-list-zone"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-footer-cta-band",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 86,
+      "trigger": "A sibling zone after the main content column containing 'The best no-code platform for...' text plus a thin '| |' bar, appearing identically at the bottom of nearly every page captured.",
+      "decision": "Treat as global site footer chrome; exclude from per-page block inventory. Model once as a site-wide footer fragment, not repeated page content.",
+      "rationale": "Byte-identical text/position recurs across unrelated templates (page, solution-2, solution-3).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C242 rc2c1/rc2c2 identical to C235-C241", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Same 252px childless-zone signature as C239 (both solution-3 pages), reused as evidence for the confirmed underrendered-list-zone pipeline rule rather than treated as empty content."
+}

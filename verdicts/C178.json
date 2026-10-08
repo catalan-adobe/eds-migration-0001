@@ -1,0 +1,54 @@
+{
+  "cluster_id": "C178",
+  "representative": "page-5__health-claude.json",
+  "sections": [
+    { "eds": "section", "items": ["leaked JS text (document.addEventListener...)"], "note": "excluded, source-leak artifact" },
+    { "eds": "section", "style": "bg-image", "items": ["hero headline: The HIPAA-compliant backend fo..."], "note": "hero, bg image behind text [2x1]" },
+    { "eds": "default-content", "items": ["headline+subtext: Keep building in Claude. Go live...", "steps block (Your Claude frontend stays yours, 3x1)"], "note": "intro copy above steps block" },
+    { "eds": "default-content", "items": ["heading: How Claude and Knack Health work together..."], "note": "precedes feature/diagram component" },
+    { "eds": "section", "items": ["feature-split block (Build your data schema in Knack..., 2x1)"], "note": "diagram/screenshot + text" },
+    { "eds": "default-content", "items": ["heading: Watch a Demo: How to Connect Y..."], "note": "precedes video embed" },
+    { "eds": "section", "items": ["video-embed block (bg:color, 1140x701, empty)"], "note": "demo video, not text-captured" },
+    { "eds": "default-content", "items": ["paragraph: The major cloud providers are...", "paragraph: Knack Health gives you the same..."], "note": "plain text, no component" },
+    { "eds": "default-content", "items": ["heading: What healthcare teams are building..."], "note": "precedes use-case cards" },
+    { "eds": "section", "items": ["cards block (3x2, Patient intake and onboarding...)"], "note": "use-case grid" },
+    { "eds": "section", "style": "bg-color", "items": ["cards block (4x2, HIPAA-compliant infrastructure...)"], "note": "feature grid, bg-container" },
+    { "eds": "default-content", "items": ["heading: Choose from and integrate with..."], "note": "precedes integrations grid" },
+    { "eds": "section", "items": ["integrations-grid block (3x2, Click to learn more)"], "note": "logo/integration cards" },
+    { "eds": "section", "items": ["testimonial block (Royal Free London NHS Foundation..., 3x1)"], "note": "single testimonial row" },
+    { "eds": "section", "style": "bg-color", "items": ["cta-banner (Talk to us about your Claude app / Book a Demo)"], "note": "bg-container CTA with button" },
+    { "eds": "section", "items": ["faq-accordion block (6 Q/A pairs)"], "note": "answers fragmented as [region] siblings, some promoted to root (rc4)" },
+    { "eds": "section", "style": "footer", "items": ["footer tagline", "footer links"], "note": "global footer chrome" }
+  ],
+  "blocks": ["hero-image", "steps", "feature-split", "video-embed", "cards", "integrations-grid", "testimonial", "cta-banner", "faq-accordion"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "heading-then-component-same-section",
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "faq-accordion-block",
+    "leaked-css-text-node",
+    "knack-cookie-notice-overlay",
+    "variant-is-css-not-new-block"
+  ],
+  "proposed_rules": [
+    {
+      "id": "region-promoted-node-reattach",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A node tagged [region] appears as a sibling far from its logical container (including near page root), with content matching a collapsed FAQ answer.",
+      "decision": "Re-associate each [region] node with its matching question by content adjacency rather than by tree position; merge into the parent block's row.",
+      "rationale": "Same fragmentation pattern as sibling cluster C177 (identical page-5 template with Claude copy instead of Base44): answer regions (rc2c11c2c7..c9, rc4) sit outside the visible question list order.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C178 rc2c11c2c7 [region] answer at y=6738 overlapping rc2c11c2c3's question slot; rc4 [region] at page root",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    }
+  ],
+  "notes": "Claude + Knack Health variant of the C177 Base44 page-5 template; identical block set and structure, content swapped only (Claude vs Base44) per variant-is-css-not-new-block — one block/page pattern, not a distinct template."
+}

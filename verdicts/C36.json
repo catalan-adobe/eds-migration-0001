@@ -1,0 +1,25 @@
+{
+  "cluster_id": "C36",
+  "representative": "case-study__case-study-kinetic-events-staffing.json",
+  "sections": [
+    { "eds": "nav", "items": ["site navigation"], "note": "global header" },
+    { "eds": "section", "items": ["default-content: H1 + case-study meta"], "note": "rc1c2c1 title + client/author line" },
+    { "eds": "section", "items": ["default-content: article body", "block: aside (sidebar)"], "note": "rc1c2c2 [2x1] two-column: main article + sidebar" }
+  ],
+  "blocks": ["footer-cta"],
+  "covered_by_rules": [],
+  "proposed_rules": [
+    {
+      "id": "two-column-article-with-sidebar",
+      "scope": "generic",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 66,
+      "trigger": "A content page whose body is a [2x1] split of a wide primary text column and a narrower secondary column (sidebar: author box, related links, CTA, TOC).",
+      "decision": "Map the primary column as default-content (headings, paragraphs, images in flow). Map the sidebar as its own block placed in the same section; EDS layout/CSS handles the two-column presentation. Do NOT emit the whole [2x1] as a single block.",
+      "rationale": "The two-column split is layout, not a content unit. Sidebar contents are a reusable block; the article is plain authorable content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C36 rc1c2c2 [2x1] article+sidebar; recurs on blog-post and case-study bodies", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Pure case-study cluster with the canonical layout: header + two-column body. Distinct from C03's case studies that merged into template-detail — worth a spot-check on why those 3 differ. The two-column-with-sidebar pattern is generic and high-frequency (also underlies the blog-post cluster C01)."
+}

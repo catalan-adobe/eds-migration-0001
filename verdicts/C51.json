@@ -1,0 +1,34 @@
+{
+  "cluster_id": "C51",
+  "representative": "case-study__case-study-festimed.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "top nav bar" },
+    { "eds": "default-content", "items": ["rc1c2c1"], "note": "case study title 'How a Medical Events Company S...'" },
+    { "eds": "default-content", "items": ["rc1c2c2"], "note": "case study body text starting with 'David Rock, CEO and Co-Founder...' (~4080px tall, single flattened node)" },
+    { "eds": "section", "style": "footer", "items": ["rc2"], "note": "footer tagline + link row" }
+  ],
+  "blocks": [],
+  "covered_by_rules": [
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "case-study-body-needs-phase2-decomposition",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "A case-study page whose entire body after the title collapses into a single very tall node (>3000px) with only concatenated text and no distinguishable pull-quotes, stat callouts, or images.",
+      "decision": "Flag for Phase 2 targeted DOM extraction to recover embedded rich content (quotes, stats, images) rather than concluding the case study is one plain-text block.",
+      "rationale": "The visual-tree capture/pruning flattens nested rich content in long-form case studies into a single text blob, the same failure mode as underrendered-list-zone but for article bodies rather than card grids.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C51 rc1c2c2 [2x1] 1133x4080 single node 'David Rock, CEO and Co-Founder...'",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    }
+  ],
+  "notes": "Minimal case-study page: title + one large body node that likely hides embedded quotes/stats lost to capture pruning; no reusable blocks beyond default-content and site chrome."
+}

@@ -1,0 +1,57 @@
+{
+  "cluster_id": "C68",
+  "representative": "solution-3__solutions-asset-equipment-management.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions / Business Need / Work O... nav"], "note": "rc1c1 [2x1] top nav bar" },
+    { "eds": "default-content", "items": ["H1 + intro: Custom Equipment Management Solution"], "note": "rc1c2c1 hero heading, no bg image/CTA overlay captured" },
+    { "eds": "section", "style": "plain", "items": ["default-content: 'Join the ranks of users who trust Knack...'", "block: trust-badge-strip"], "note": "rc1c2c2 intro line + [5x1] badge grid" },
+    { "eds": "section", "style": "bg:color", "items": ["block: screenshot-visual"], "note": "rc1c2c3 bg:color + bg:image pair, no captured text" },
+    { "eds": "default-content", "items": ["Boost Profitability with Streamlined..."], "note": "rc1c2c4 [2x1] feature callout" },
+    { "eds": "default-content", "items": ["Improve Equipment Maintenance..."], "note": "rc1c2c5 [2x1] feature callout" },
+    { "eds": "default-content", "items": ["Build Equipment Management Sof..."], "note": "rc1c2c6 [2x1] feature callout" },
+    { "eds": "default-content", "items": ["Enhanced Equipment Inventory M..."], "note": "rc1c2c7 [2x1] feature callout" },
+    { "eds": "default-content", "items": ["Create Customized Equipment Ma... + intro paragraph"], "note": "rc1c2c8 heading+paragraph" },
+    { "eds": "section", "style": "plain", "items": ["default-content: 'Additional Equipment and Asset...'", "block: card-grid (3x1)"], "note": "rc1c2c9 heading + 'Inventory Management Dashboard...' feature cards" },
+    { "eds": "section", "style": "plain", "items": ["default-content: 'Equipment and Asset Management...'", "block: faq-accordion (11 rows)"], "note": "rc1c2c10 FAQ Q&A stack" },
+    { "eds": "default-content", "items": ["trailing empty zone"], "note": "rc1c2c11 252px, no captured text; likely under-rendered related-links/CTA" },
+    { "eds": "section", "style": "plain", "items": ["footer CTA: 'The best no-code platform for...'", "footer link row"], "note": "rc2 global footer CTA band" },
+    { "eds": "default-content", "items": [], "note": "rc3/rc4 cookie consent overlay excluded per knack-cookie-notice-overlay" }
+  ],
+  "blocks": ["trust-badge-strip", "screenshot-visual", "card-grid", "faq-accordion"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "minimize-block-cells",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay",
+    "knack-trust-badge-strip"
+  ],
+  "notes": "Standard solution-3 page: hero, trust badges, screenshot visual, four alternating text callouts, feature-card grid, FAQ accordion, global footer.",
+  "proposed_rules": [
+    {
+      "id": "screenshot-visual-color-backdrop",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A sibling pair [bg:color] immediately followed by [bg:image], both with no captured text, standing alone as a visual break between text sections on a solution page.",
+      "decision": "Model as a single 'screenshot visual' image block placed in its own section (the color shape is a decorative backdrop CSS effect, not a section-wide background it wraps other content in).",
+      "rationale": "Recurs verbatim across solution pages (this cluster's rc1c2c3, also C70 rc1c2c4) as a product-screenshot mockup with a color blob behind it. Rejected alternatives: (a) fold into background-container-is-section-style since the image is likely meaningful product content, not decoration to discard; (b) drop as decorative-graphics-are-noise for the same reason — the image itself carries content value even though its color backdrop does not.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C68 rc1c2c3 [bg:color]907h + [bg:image]982h, no text", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "solution-page-trailing-empty-zone",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "The last content zone before the global footer is captured as an empty container with no text or tagged children.",
+      "decision": "Flag for Phase 2 targeted DOM extraction rather than assuming the page ends abruptly; likely related-links or a secondary CTA that fell below the minWidth capture.",
+      "rationale": "Same failure mode as underrendered-list-zone but manifests as a blank trailing block rather than a list grid.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C68 rc1c2c11 @0,7270 1280x252 with no child text", "added": "2026-09-04", "version": 1 }
+    }
+  ]
+}

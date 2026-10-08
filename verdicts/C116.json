@@ -1,0 +1,42 @@
+{
+  "cluster_id": "C116",
+  "representative": "page-13__pricing-enterprise.json",
+  "sections": [
+    { "eds": "nav", "items": ["nav links [2x1]"], "note": "rc1c1 top nav bar" },
+    { "eds": "section", "style": "hero", "items": ["image placeholder", "H1 'No-Code for Enterprises...'"], "note": "rc1c2c1: image + heading pairing" },
+    { "eds": "default-content", "items": ["H2 'Enterprise-Level Knack Builder...'", "5x1 icon/badge strip block"], "note": "rc1c2c2 heading over repeating strip" },
+    { "eds": "default-content", "items": ["'Contact Sales' CTA"], "note": "rc1c2c3 standalone CTA link" },
+    { "eds": "block", "items": ["HubSpot form embed"], "note": "rc1c2c4 leaked forms.create() JS masking a real contact form" },
+    { "eds": "section", "items": ["image placeholder", "H2 'Get More from Knack'", "3x2 feature grid"], "note": "rc1c2c5" },
+    { "eds": "block", "items": ["'Enterprise for Governments' 2x1"], "note": "rc1c2c6 feature-split banner" },
+    { "eds": "block", "items": ["'Enterprise for Healthcare' 2x1"], "note": "rc1c2c7 feature-split banner, same block type as c6 (variant)" },
+    { "eds": "section", "items": ["empty bg zone"], "note": "rc1c2c8 1280x252 no text, likely logo cloud/decorative image" },
+    { "eds": "block", "items": ["FAQ heading", "2-item accordion"], "note": "rc1c2c9" },
+    { "eds": "section", "eds_note": "footer", "items": ["'The best no-code platform...'", "'| |' link row"], "note": "rc2 footer" },
+    { "eds": "noise", "items": ["Decline button", "cookie consent box"], "note": "rc3/rc4 cookie overlay" }
+  ],
+  "blocks": ["icon-strip", "hubspot-form-embed", "feature-grid", "feature-split", "faq-accordion"],
+  "covered_by_rules": [
+    "knack-cookie-notice-overlay",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "variant-is-css-not-new-block",
+    "faq-accordion-block",
+    "decorative-graphics-are-noise"
+  ],
+  "proposed_rules": [
+    {
+      "id": "leaked-embed-widget-script",
+      "scope": "pipeline",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A tall content zone whose only captured text is a raw third-party embed initialization call (e.g. `hbspt.forms.create({...})`), indicating the widget's real markup (a form) did not render during headless capture.",
+      "decision": "Do not discard as plain noise (existing leaked-css-text-node targets stylesheet/script comment leaks, not unrendered widget calls). Treat the zone as a placeholder block (e.g. 'form' block referencing the embed) and flag for Phase 2 targeted DOM/network extraction to recover actual form fields.",
+      "rationale": "Rejected alternatives: (a) exclude entirely as noise like leaked-css-text-node — would silently drop a real contact form from the migrated page; (b) leave as default-content text — the raw JS is meaningless to authors. Flag-for-extraction preserves the content while acknowledging the capture limitation.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C116 rc1c2c4 'hbspt.forms.create({ region: ...' 1280x814 with no other text", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Standard nav/hero/feature/FAQ/footer/cookie layout; main open question is the leaked HubSpot embed script occupying a large content zone."
+}

@@ -1,0 +1,47 @@
+{
+  "cluster_id": "C240",
+  "representative": "solution-3__solutions-custom-crm.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "'Solutions / Business Need / Work O...' top nav bar." },
+    { "eds": "default-content", "items": ["rc1c2c1"], "note": "Hero heading/subhead: 'Build a custom CRM Software Solution...'." },
+    { "eds": "section", "style": "decorative bg image", "items": ["rc1c2c2"], "note": "Full-width bg:image band with no captured text -> decorative/section background." },
+    { "eds": "section", "style": "colored visual panel", "items": ["rc1c2c3c1","rc1c2c3c2"], "note": "bg:color panel wrapping a bg:image product screenshot -> section background + image content." },
+    { "eds": "section", "items": ["rc1c2c4"], "note": "2x1 text+image row: 'Unite Your Sales Team with a CRM...'." },
+    { "eds": "section", "items": ["rc1c2c5"], "note": "2x1 text+image row: 'Achieve Operational Excellence...'." },
+    { "eds": "section", "items": ["rc1c2c6"], "note": "2x1 text+image row: 'Build a Feature-Rich Custom CRM...'." },
+    { "eds": "section", "items": ["rc1c2c7"], "note": "2x1 text+image row: 'Cut Costs by Building Your Custom CRM...'." },
+    { "eds": "section", "items": ["rc1c2c8"], "note": "2x1 text+image row: 'Jumpstart your Custom CRM Development...'." },
+    { "eds": "section", "style": "colored panel", "items": ["rc1c2c9c1","rc1c2c9c2"], "note": "bg:color panel wrapping a 3x2 'Sales Pipeline Management' feature card grid." },
+    { "eds": "default-content", "items": ["rc1c2c10c2c1"], "note": "'Advanced Capabilities for Your Custom CRM' heading + two intro paragraphs." },
+    { "eds": "section", "items": ["rc1c2c10c2c2"], "note": "3x6 numbered feature cards ('01. Real-Time Sales Pipeline Management...')." },
+    { "eds": "section", "items": ["rc1c2c11c1","rc1c2c11c2"], "note": "'Custom CRM FAQs' accordion, 9 questions." },
+    { "eds": "default-content", "items": ["rc1c2c12c2c1"], "note": "'Additional Resources on Custom CRM' heading." },
+    { "eds": "section", "items": ["rc1c2c12c2c2"], "note": "3x1 resource card." },
+    { "eds": "section", "style": "footer band", "items": ["rc2c1","rc2c2"], "note": "Global 'best no-code platform' footer CTA band." },
+    { "eds": "default-content", "items": ["rc3","rc4"], "note": "Cookie consent overlay -> noise." }
+  ],
+  "blocks": ["cards", "columns", "accordion", "image"],
+  "covered_by_rules": [
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style",
+    "decorative-graphics-are-noise",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-footer-cta-band",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 86,
+      "trigger": "A sibling zone after the main content column containing 'The best no-code platform for...' text plus a thin '| |' bar, appearing identically at the bottom of nearly every page captured.",
+      "decision": "Treat as global site footer chrome; exclude from per-page block inventory. Model once as a site-wide footer fragment, not repeated page content.",
+      "rationale": "Byte-identical text/position recurs across unrelated templates (page, solution-2, solution-3).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C240 rc2c1/rc2c2 identical to C235-C239, C241-C242", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Longest page in the batch but structurally identical to the other solution-2/3 pages: alternating text/image rows, colored feature panels, a numbered-capabilities grid, and a 9-item FAQ accordion, all covered by confirmed rules."
+}

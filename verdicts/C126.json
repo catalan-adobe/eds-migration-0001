@@ -1,0 +1,53 @@
+{
+  "cluster_id": "C126",
+  "representative": "page-16__health-compare-supabase-vs-knack-health.json",
+  "sections": [
+    { "eds": "section", "style": "hero-bg-image", "items": ["heading: Knack Health vs. Supabase..."], "note": "rc2c1 full-bleed bg:image hero" },
+    { "eds": "default-content", "items": ["heading+paragraph: Why Healthcare Teams Choose Knack"], "note": "rc2c2" },
+    { "eds": "section", "items": ["default-content: Supabase column header", "block: comparison-table (7 rows)", "default-content: Get Started CTA"], "note": "rc2c3, reasons-to-switch list + CTA" },
+    { "eds": "section", "items": ["heading: Key Features and Benefits", "block: comparison-table (7 rows)"], "note": "rc2c4, feature/benefit table" },
+    { "eds": "section", "style": "alternating-bg", "items": ["6x heading+paragraph pairs: Security, Ease of Use, Customization, Scalability, Pricing, Integrations", "block: testimonial"], "note": "rc2c5c1-c8, alternating bg:color sections" },
+    { "eds": "section", "style": "hero-bg-image", "items": [], "note": "rc2c6 [bg:image] empty band, no child text" },
+    { "eds": "section", "style": "cta-banner", "items": ["default-content: Start Building Your Healthcare... CTA"], "note": "rc2c7 bg:color" },
+    { "eds": "default-content", "items": ["block: feature-grid (Patient intake, Referral, ...)"], "note": "rc2c8 [3x2] repeating cards" },
+    { "eds": "section", "items": ["block: faq-accordion"], "note": "rc2c9 FAQ, 6 questions" },
+    { "eds": "default-content", "items": ["footer CTA + social row"], "note": "rc3 — global footer, see proposed rule" }
+  ],
+  "blocks": ["comparison-table", "testimonial", "feature-grid", "faq-accordion"],
+  "covered_by_rules": [
+    "leaked-css-text-node",
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "full-width-image-behind-text-is-section-bg",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-footer-cta-fragment",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "A bottom-of-page block with the line 'The best no-code platform for ...' followed by a thin '| |' separator/social row, appearing verbatim at the end of nearly every captured page across templates.",
+      "decision": "Treat as global site footer chrome; exclude from per-page block inventory and model once as a shared footer fragment.",
+      "rationale": "Identical wording/layout recurs across compare, landing, and category templates — a shared footer partial, not page content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C126 rc3c1c1/c1c2 'The best no-code platform for...' + '| |'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "promoted-faq-answer-duplicate",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A [region] node appears as a top-level sibling of the root, outside its FAQ container, duplicating an answer already implied by a question row inside the FAQ block.",
+      "decision": "Fold the promoted region into its matching FAQ accordion row as the answer cell; do not emit as a separate block.",
+      "rationale": "page-tree promotes elements rendered outside their DOM parent (open accordion panel), duplicating content already covered by the FAQ accordion.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C126 rc4 [region] 'Yes. Knack Health supports det...' top-level sibling of rc3", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Third instance of the compare-page template (C124/C125/C126). Also contains a second leaked-CSS text node (rc2c10 '.health-hero-heading u::after{...') as extra evidence for that confirmed rule."
+}

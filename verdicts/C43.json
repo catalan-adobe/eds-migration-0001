@@ -1,0 +1,49 @@
+{
+  "cluster_id": "C43",
+  "representative": "download__download-simple-hoa-management-template.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1 nav bar"], "note": "global chrome" },
+    { "eds": "default-content", "items": ["rc1c2c1 title heading, [2x1]"], "note": "plain page title, no bg" },
+    { "eds": "default-content", "items": ["rc1c2c2c2c1c1/c2 intro heading+paragraph"], "note": "intro above feature grid" },
+    { "eds": "section", "style": "feature-grid", "items": ["rc1c2c2c2c2 01..0N numbered feature cards"], "note": "3x2 repeating cards" },
+    { "eds": "section", "style": "template-preview", "items": ["rc1c2c3c1 screenshot area", "rc1c2c3c3 Install Free Template App CTA"], "note": "product screenshot + install CTA, same shape as C37/C38" },
+    { "eds": "section", "style": "bg-color-band", "items": ["rc1c2c4c2 3x2 feature-detail cards"], "note": "bg:color wraps repeating cards" },
+    { "eds": "default-content", "items": ["rc1c2c5 Get Started with Knack's HOA CTA"], "note": "closing CTA banner, [2x1], no bg" },
+    { "eds": "nav", "items": ["rc2 footer"], "note": "global chrome" }
+  ],
+  "blocks": ["feature-grid", "template-preview"],
+  "covered_by_rules": [
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style",
+    "heading-then-component-same-section",
+    "variant-is-css-not-new-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "template-app-preview-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A large product screenshot area followed immediately by an 'Install Free Template App' CTA button, on download/template-detail pages.",
+      "decision": "Model as a single 'template-preview' block combining the screenshot and CTA link in minimal cells.",
+      "rationale": "Same recurring component as C37 and C38; rejected modeling as section background image (button sits below, not overlaid) or as two independent blocks.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C43 rc1c2c3c1/rc1c2c3c3", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-global-nav-footer-chrome",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "Identical top nav and bottom footer recur on every captured page.",
+      "decision": "Model as global header/footer fragments, excluded from the per-page section/block inventory.",
+      "rationale": "Recurs identically across all templates; not covered by existing noise rules.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C43 rc1c1, rc2c1, rc2c2", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Same download-template shape as C37: title, intro+numbered feature grid, screenshot+install CTA, bg-color feature-detail grid, closing CTA banner."
+}

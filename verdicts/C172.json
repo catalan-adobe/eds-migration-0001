@@ -1,0 +1,67 @@
+{
+  "cluster_id": "C172",
+  "representative": "page-42__mcp.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions", "Business", "Need", "Work On..."], "note": "global site nav" },
+    { "eds": "section", "items": ["hero-image block (rc1c2c1, empty, no text)"], "note": "likely product screenshot/hero graphic, no text captured" },
+    { "eds": "section", "items": ["trust-badges block (Trusted by 100,000+ users HIPAA...)"], "note": "thin badge strip; matches existing proposed rule knack-trust-badge-strip" },
+    { "eds": "default-content", "items": ["heading+intro: Connect your AI coding tool...", "small link: Need HIPAA compliance?"], "note": "intro above steps block" },
+    { "eds": "section", "items": ["steps block (Step 1: Sign up for a Knack account...)"], "note": "2-col step component" },
+    { "eds": "section", "items": ["video-embed block (rc1c2c4, bg:color empty; promoted content rc3 [region][bg:image])"], "note": "embed content promoted out of DOM parent to root" },
+    { "eds": "default-content", "items": ["heading: Everything a real backend requires..."], "note": "precedes feature cards" },
+    { "eds": "section", "items": ["cards block (3x2, Hosted Relational Database...)"], "note": "feature grid" },
+    { "eds": "section", "items": ["testimonial block ($250k+ saved/year quote, 3x1)", "unresolved zone (rc1c2c6c2, empty)"], "note": "empty box below testimonial possibly logo strip, uncaptured" },
+    { "eds": "default-content", "items": ["heading: Built for apps that need to share..."], "note": "precedes integrations list" },
+    { "eds": "section", "items": ["integrations-list block (Record Change Logs, 700+ Native...)"], "note": "3x1 feature row" },
+    { "eds": "section", "items": ["cta-banner block (Start Free Trial / Book a Demo)"], "note": "two-button CTA banner" },
+    { "eds": "section", "items": ["faq-accordion block (6 Q/A pairs)"], "note": "answers rendered as [region] siblings some promoted to root (rc4)" },
+    { "eds": "section", "style": "footer", "items": ["footer tagline", "footer links"], "note": "global footer chrome" }
+  ],
+  "blocks": ["hero-image", "trust-badges", "steps", "video-embed", "cards", "testimonial", "integrations-list", "cta-banner", "faq-accordion"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "faq-accordion-block",
+    "leaked-css-text-node",
+    "knack-cookie-notice-overlay",
+    "minimize-block-cells"
+  ],
+  "proposed_rules": [
+    {
+      "id": "region-promoted-node-reattach",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A node tagged [region] appears as a sibling far from its logical container (including near page root), with content matching an embed or FAQ answer elsewhere in the tree that lacks a matching child.",
+      "decision": "Re-associate the [region] node with its nearest matching placeholder by content adjacency and vertical position rather than treating it as separate/lost content.",
+      "rationale": "Confirms the pattern also seen in C171: absolutely/fixed-positioned descendants (here a bg:image embed, and an FAQ answer) are promoted to root by the capture tool, fragmenting single logical content items.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C172 rc3 [region][bg:image] at root matching rc1c2c4 empty bg:color zone; rc4 [region] FAQ answer at root",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    },
+    {
+      "id": "bg-only-zone-is-embed-widget",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A section-sized [bg:color]/[bg:image] container with no descendant text, appearing inline mid-page between content sections.",
+      "decision": "Flag as an embedded video/demo widget requiring Phase 2 extraction rather than empty decoration.",
+      "rationale": "Same zone-type as C171's video embed; here the promoted [region] sibling (rc3) confirms it holds an image/embed rather than being truly empty.",
+      "provenance": {
+        "origin": "step2.1-longtail-scan",
+        "evidence": "C172 rc1c2c4 [bg:color] 1280x866, no descendant text",
+        "added": "2026-09-04",
+        "version": 1
+      }
+    }
+  ],
+  "notes": "Solution-landing template similar to C171 but for MCP; top trust-badge strip supplies second-instance evidence for the existing proposed rule knack-trust-badge-strip. Empty box below testimonial (rc1c2c6c2) left unresolved pending Phase 2."
+}

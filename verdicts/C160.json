@@ -1,0 +1,59 @@
+{
+  "cluster_id": "C160",
+  "representative": "page-32__health-templates.json",
+  "sections": [
+    { "eds": "nav", "items": ["nav-placeholder"], "note": "rc1 [3x1] top bar renders raw JS text instead of nav links; capture artifact." },
+    { "eds": "section", "style": "image-bg", "items": ["unknown hero content"], "note": "rc2c1 [bg:image] has zero captured children/text \u2014 likely an under-rendered hero heading/CTA, not intentionally empty." },
+    { "eds": "section", "items": ["template-card-grid block (filter + cards, under-rendered)"], "note": "rc2c2 [2x1] 1595px tall 'Show All Filter by Industry...' collapsed listing zone matches confirmed underrendered-list-zone pattern." },
+    { "eds": "section", "items": ["heading", "body text"], "note": "rc2c3 'Customizable Healthcare App Templates' plain content." },
+    { "eds": "section", "style": "color-bg", "items": ["heading", "cta-link"], "note": "rc2c4 [bg:color] 'Not sure where to start? Talk...' CTA banner." },
+    { "eds": "section", "style": "footer-cta", "items": ["footer text", "links"], "note": "rc3 recurring 'best no-code platform' footer; global chrome." }
+  ],
+  "blocks": ["template-card-grid"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "heading-then-component-same-section",
+    "minimize-block-cells",
+    "knack-cookie-notice-overlay",
+    "underrendered-list-zone"
+  ],
+  "proposed_rules": [
+    {
+      "id": "leaked-js-boilerplate-in-nav-zone",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "A [3x1] zone at the very top of the page (y=0, ~80px tall, sized like the nav bar) contains raw JS source text instead of nav links.",
+      "decision": "Exclude the JS text from the block/content inventory; flag for Phase 2 DOM-based nav re-extraction rather than concluding the page has no nav.",
+      "rationale": "The nav-sized bounding box containing JS source indicates the visual capture ran before script execution replaced placeholder markup with real nav; distinct from the confirmed leaked-css-text-node rule which covers CSS leaks.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C160 rc1 [3x1] 1280x80 'document.addEventListener(\"DOM...'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "global-footer-cta-is-chrome",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A bottom-of-page zone starting with 'The best no-code platform for...' followed by a '| |' link row, identical across pages.",
+      "decision": "Model as a global site-wide footer fragment excluded from each page's per-page block inventory, same treatment as nav.",
+      "rationale": "Identical text/markup at the same position on every page is footer chrome, not page content. Alternatives rejected: authoring it as a per-page CTA/newsletter block (rejected because it never varies by page).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C160 rc3 'The best no-code platform for...' + '| |'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "empty-bg-only-zone-no-captured-content",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "A section-level container carries only a background style (image/gradient/color) and has zero child nodes/text in the visual tree.",
+      "decision": "Flag for Phase 2 targeted DOM extraction rather than assuming the zone is deliberately empty; likely a hero/CTA heading whose text fell outside the capture viewport or loaded late.",
+      "rationale": "A background-only container with literally no children, positioned where a hero heading is expected, is more likely under-rendered than intentionally blank decoration.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C160 rc2c1 [bg:image] 1280x422 with no children", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Template-listing page: an under-rendered hero and an under-rendered filter/card grid both need Phase 2 re-capture; only the mid-page content and CTA banner are fully captured."
+}

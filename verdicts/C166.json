@@ -1,0 +1,47 @@
+{
+  "cluster_id": "C166",
+  "representative": "page-38__pricing-non-profit-package.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1 'Solutions Business Need Work O...'"], "note": "" },
+    { "eds": "section", "style": "bg-image banner", "items": ["rc1c2c1c1 decorative image", "rc1c2c1c2 'Knack Discounts We offer a 25%...'"], "note": "decorative image folded into section style" },
+    { "eds": "block", "style": "form", "items": ["Email", "First/Last name", "Account URL", "status radio", "Legal name", "Website URL", "Country/Region", "FEIN", "Incorporated address + street 2", "City/State/Zip", "App description textarea", "submit"], "note": "13-field discount-application webform" },
+    { "eds": "block", "style": "accordion", "items": ["rc1c2c4c1 'FAQ' heading", "rc1c2c4c2 2 collapsed Q rows"], "note": "answers not rendered (collapsed)" },
+    { "eds": "section", "style": "footer fragment", "items": ["rc2 CTA + separator"], "note": "" },
+    { "eds": "noise", "items": ["rc3/rc4 cookie overlay"], "note": "excluded" }
+  ],
+  "blocks": ["form", "accordion", "nav", "footer"],
+  "covered_by_rules": [
+    "decorative-graphics-are-noise",
+    "background-container-is-section-style",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay",
+    "minimize-block-cells"
+  ],
+  "proposed_rules": [
+    {
+      "id": "web-form-is-form-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "A vertical stack of labeled inputs (text, radio, textarea) ending in a submit control, forming an application/contact form.",
+      "decision": "Emit ONE 'form' block, one row per field (label + input type/placeholder), final row = submit. Rejected alternative: leave as raw inline HTML form with no block wrapper (loses EDS authoring/reuse for the field list).",
+      "rationale": "Recurring form structure on this site warrants a dedicated reusable block rather than page-specific markup.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C166 rc1c2c3c2 13 labeled fields + submit button", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "site-footer-cta-is-global-fragment",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A '2x1' zone with 'The best no-code platform for...' CTA text plus a '| |' separator at the bottom of every page.",
+      "decision": "Model as the site-wide footer fragment, excluded from per-page block inventory.",
+      "rationale": "Identical across every captured page = global chrome, analogous to knack-announcement-bar.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C166 rc2", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Non-profit pricing sub-page dominated by a discount-application form; small FAQ with collapsed answers; global footer/cookie chrome."
+}

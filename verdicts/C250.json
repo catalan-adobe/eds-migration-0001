@@ -1,0 +1,45 @@
+{
+  "cluster_id": "C250",
+  "representative": "solution__solutions-human-resources.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "top nav bar" },
+    { "eds": "default-content", "items": ["rc1c2c1"], "note": "hero heading/intro text (2x1)" },
+    { "eds": "section", "style": "bg-gradient", "items": ["rc1c2c2c2c1", "rc1c2c2c2c2"], "note": "'Let Knack Help You Rethink Your...' heading + 'Transform How HR Teams Work' subhead, on gradient background" },
+    { "eds": "default-content", "items": ["rc1c2c3"], "note": "'Automate the Work That Slows HR...' callout" },
+    { "eds": "default-content", "items": ["rc1c2c4"], "note": "'Build Processes That Match How...' callout" },
+    { "eds": "default-content", "items": ["rc1c2c5"], "note": "'Deliver Better Employee Experience...' callout" },
+    { "eds": "section", "style": "bg-color", "items": ["rc1c2c6c1", "rc1c2c6c2"], "note": "3x2 feature-cards grid on color background (Time to Hire)" },
+    { "eds": "default-content", "items": ["rc1c2c7"], "note": "'What You Can Build' callout" },
+    { "eds": "noise", "items": ["rc1c2c8"], "note": "'Built for HR Teams of Any Size' heading with no following component (likely collapsed logo/grid)" },
+    { "eds": "default-content", "items": ["rc1c2c9"], "note": "'Business Leaders & HR Executives...' callout (2x1)" },
+    { "eds": "default-content", "items": ["rc1c2c10"], "note": "'Launch Your HR App in Just a Few...' callout (2x1)" },
+    { "eds": "default-content", "items": ["rc1c2c11c1", "rc1c2c11c2"], "note": "'Your People Deserve Better HR' heading + intro paragraph" },
+    { "eds": "section", "items": ["rc1c2c12c1", "rc1c2c12c2"], "note": "Frequently Asked Questions heading + 4-row accordion" },
+    { "eds": "noise", "items": ["rc2"], "note": "global footer CTA band + link row" },
+    { "eds": "noise", "items": ["rc3", "rc4"], "note": "cookie consent overlay" }
+  ],
+  "blocks": ["feature-cards", "accordion"],
+  "covered_by_rules": [
+    "knack-cookie-notice-overlay",
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "faq-accordion-block",
+    "underrendered-list-zone"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-global-footer-band",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 87,
+      "trigger": "A recurring end-of-page zone (rc2) with a CTA heading and a pipe-only link row, identical at the bottom of every page.",
+      "decision": "Exclude from per-page block inventory; model as a global footer fragment/site-wide chrome, analogous to the confirmed knack-announcement-bar rule.",
+      "rationale": "Identical structure across every page examined in this batch.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "rc2c1/rc2c2 identical across C243-C250", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "solution template variant with no trust-badges or resource-cards grid; one heading (rc1c2c8) has no following component, matching the confirmed underrendered-list-zone pattern rather than a genuinely empty section."
+}

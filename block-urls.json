@@ -1,0 +1,508 @@
+{
+  "blocks": [
+    {
+      "block": "faq-accordion",
+      "coverage": 146,
+      "possible_variant_group": false,
+      "anchor_hint": ".component-faq-sec .accordion (role=presentation)",
+      "representative_urls": [
+        {
+          "cluster": "C109",
+          "url": "https://www.knack.com/solution-inventory/"
+        },
+        {
+          "cluster": "C110",
+          "url": "https://www.knack.com/tour/ecommerce/"
+        },
+        {
+          "cluster": "C111",
+          "url": "https://www.knack.com/tour/workflow/"
+        }
+      ]
+    },
+    {
+      "block": "cards",
+      "coverage": 116,
+      "possible_variant_group": true,
+      "anchor_hint": "a grid container with N uniform card children",
+      "representative_urls": [
+        {
+          "cluster": "C100",
+          "url": "https://www.knack.com/integrations/knack-microsoft-dynamics-crm-365-integration/"
+        },
+        {
+          "cluster": "C101",
+          "url": "https://www.knack.com/integrations/knack-openai/"
+        },
+        {
+          "cluster": "C102",
+          "url": "https://www.knack.com/integrations/knack-slack/"
+        }
+      ]
+    },
+    {
+      "block": "feature-grid",
+      "coverage": 66,
+      "possible_variant_group": true,
+      "anchor_hint": "feature section (icon + heading + text per item)",
+      "representative_urls": [
+        {
+          "cluster": "C100",
+          "url": "https://www.knack.com/integrations/knack-microsoft-dynamics-crm-365-integration/"
+        },
+        {
+          "cluster": "C101",
+          "url": "https://www.knack.com/integrations/knack-openai/"
+        },
+        {
+          "cluster": "C102",
+          "url": "https://www.knack.com/integrations/knack-slack/"
+        }
+      ]
+    },
+    {
+      "block": "feature-split",
+      "coverage": 21,
+      "possible_variant_group": true,
+      "anchor_hint": "[2x1] media + text split",
+      "representative_urls": [
+        {
+          "cluster": "C101",
+          "url": "https://www.knack.com/integrations/knack-openai/"
+        },
+        {
+          "cluster": "C102",
+          "url": "https://www.knack.com/integrations/knack-slack/"
+        },
+        {
+          "cluster": "C103",
+          "url": "https://www.knack.com/integrations/make/"
+        }
+      ]
+    },
+    {
+      "block": "testimonial",
+      "coverage": 40,
+      "possible_variant_group": true,
+      "anchor_hint": "quote + attribution",
+      "representative_urls": [
+        {
+          "cluster": "C118",
+          "url": "https://www.knack.com/ai-app-builder/"
+        },
+        {
+          "cluster": "C119",
+          "url": "https://www.knack.com/no-code-ai-app-builder-for-education/"
+        },
+        {
+          "cluster": "C120",
+          "url": "https://www.knack.com/spreadsheets-not-cutting-it/"
+        }
+      ]
+    },
+    {
+      "block": "cta-banner",
+      "coverage": 39,
+      "possible_variant_group": true,
+      "anchor_hint": "full-width band with heading + button(s)",
+      "representative_urls": [
+        {
+          "cluster": "C06",
+          "url": "https://www.knack.com/app-category/accounting/"
+        },
+        {
+          "cluster": "C121",
+          "url": "https://www.knack.com/health/dentistry/"
+        },
+        {
+          "cluster": "C122",
+          "url": "https://www.knack.com/health/hipaa-database/"
+        }
+      ]
+    },
+    {
+      "block": "hero",
+      "coverage": 25,
+      "possible_variant_group": false,
+      "anchor_hint": "top-of-page H1 + intro (+ media)",
+      "representative_urls": [
+        {
+          "cluster": "C147",
+          "url": "https://www.knack.com/health/hipaa-compliant-cold-storage/"
+        },
+        {
+          "cluster": "C148",
+          "url": "https://www.knack.com/health/hipaa-compliant-forms/"
+        },
+        {
+          "cluster": "C149",
+          "url": "https://www.knack.com/health/hipaa/"
+        }
+      ]
+    },
+    {
+      "block": "comparison-table",
+      "coverage": 27,
+      "possible_variant_group": true,
+      "anchor_hint": "row/column comparison of options",
+      "representative_urls": [
+        {
+          "cluster": "C124",
+          "url": "https://www.knack.com/health/compare/blazetech-vs-knack/"
+        },
+        {
+          "cluster": "C125",
+          "url": "https://www.knack.com/health/compare/drapcode-vs-knack/"
+        },
+        {
+          "cluster": "C126",
+          "url": "https://www.knack.com/health/compare/supabase-vs-knack-health/"
+        }
+      ]
+    },
+    {
+      "block": "steps",
+      "coverage": 42,
+      "possible_variant_group": true,
+      "anchor_hint": "ordered numbered items",
+      "representative_urls": [
+        {
+          "cluster": "C100",
+          "url": "https://www.knack.com/integrations/knack-microsoft-dynamics-crm-365-integration/"
+        },
+        {
+          "cluster": "C101",
+          "url": "https://www.knack.com/integrations/knack-openai/"
+        },
+        {
+          "cluster": "C102",
+          "url": "https://www.knack.com/integrations/knack-slack/"
+        }
+      ]
+    },
+    {
+      "block": "logos",
+      "coverage": 34,
+      "possible_variant_group": true,
+      "anchor_hint": "horizontal row of logos/icons",
+      "representative_urls": [
+        {
+          "cluster": "C116",
+          "url": "https://www.knack.com/pricing/enterprise/"
+        },
+        {
+          "cluster": "C130",
+          "url": "https://www.knack.com/black-friday-sale/"
+        },
+        {
+          "cluster": "C131",
+          "url": "https://www.knack.com/summer-sale/"
+        }
+      ]
+    },
+    {
+      "block": "trust-badges",
+      "coverage": 41,
+      "possible_variant_group": true,
+      "anchor_hint": "row of rating/compliance badges with scores",
+      "representative_urls": [
+        {
+          "cluster": "C122",
+          "url": "https://www.knack.com/health/hipaa-database/"
+        },
+        {
+          "cluster": "C172",
+          "url": "https://www.knack.com/mcp/"
+        },
+        {
+          "cluster": "C204",
+          "url": "https://www.knack.com/health/integrations/athenahealth-activecampaign/"
+        }
+      ]
+    },
+    {
+      "block": "pricing-table",
+      "coverage": 12,
+      "possible_variant_group": true,
+      "anchor_hint": "plan columns with price + feature list + CTA",
+      "representative_urls": [
+        {
+          "cluster": "C118",
+          "url": "https://www.knack.com/ai-app-builder/"
+        },
+        {
+          "cluster": "C119",
+          "url": "https://www.knack.com/no-code-ai-app-builder-for-education/"
+        },
+        {
+          "cluster": "C120",
+          "url": "https://www.knack.com/spreadsheets-not-cutting-it/"
+        }
+      ]
+    },
+    {
+      "block": "video-embed",
+      "coverage": 18,
+      "possible_variant_group": false,
+      "anchor_hint": "iframe/video player",
+      "representative_urls": [
+        {
+          "cluster": "C117",
+          "url": "https://www.knack.com/product-flows/"
+        },
+        {
+          "cluster": "C136",
+          "url": "https://www.knack.com/health/crm-for-healthcare-organizations/"
+        },
+        {
+          "cluster": "C162",
+          "url": "https://www.knack.com/health/clinical-trial-management/"
+        }
+      ]
+    },
+    {
+      "block": "carousel",
+      "coverage": 13,
+      "possible_variant_group": true,
+      "anchor_hint": "scrollable slide track",
+      "representative_urls": [
+        {
+          "cluster": "C110",
+          "url": "https://www.knack.com/tour/ecommerce/"
+        },
+        {
+          "cluster": "C131",
+          "url": "https://www.knack.com/summer-sale/"
+        },
+        {
+          "cluster": "C135",
+          "url": "https://www.knack.com/tour/forms/"
+        }
+      ]
+    },
+    {
+      "block": "steps-triggers-actions",
+      "coverage": 21,
+      "possible_variant_group": true,
+      "anchor_hint": "trigger \u2192 action pairs",
+      "representative_urls": [
+        {
+          "cluster": "C100",
+          "url": "https://www.knack.com/integrations/knack-microsoft-dynamics-crm-365-integration/"
+        },
+        {
+          "cluster": "C101",
+          "url": "https://www.knack.com/integrations/knack-openai/"
+        },
+        {
+          "cluster": "C102",
+          "url": "https://www.knack.com/integrations/knack-slack/"
+        }
+      ]
+    },
+    {
+      "block": "templates-gallery",
+      "coverage": 13,
+      "possible_variant_group": true,
+      "anchor_hint": "grid/tabs of template previews",
+      "representative_urls": [
+        {
+          "cluster": "C132",
+          "url": "https://www.knack.com/app-templates/"
+        },
+        {
+          "cluster": "C135",
+          "url": "https://www.knack.com/tour/forms/"
+        },
+        {
+          "cluster": "C251",
+          "url": "https://www.knack.com/solutions/property-management/"
+        }
+      ]
+    },
+    {
+      "block": "related-content",
+      "coverage": 46,
+      "possible_variant_group": true,
+      "anchor_hint": "grid of teaser cards linking elsewhere",
+      "representative_urls": [
+        {
+          "cluster": "C100",
+          "url": "https://www.knack.com/integrations/knack-microsoft-dynamics-crm-365-integration/"
+        },
+        {
+          "cluster": "C101",
+          "url": "https://www.knack.com/integrations/knack-openai/"
+        },
+        {
+          "cluster": "C104",
+          "url": "https://www.knack.com/integrations/salesforce-knack-integration/"
+        }
+      ]
+    },
+    {
+      "block": "listing",
+      "coverage": 15,
+      "possible_variant_group": true,
+      "anchor_hint": "filterable list/grid of many items",
+      "representative_urls": [
+        {
+          "cluster": "C117",
+          "url": "https://www.knack.com/product-flows/"
+        },
+        {
+          "cluster": "C12",
+          "url": "https://www.knack.com/case-study-category/features/field-services-construction/"
+        },
+        {
+          "cluster": "C133",
+          "url": "https://www.knack.com/integrations/"
+        }
+      ]
+    },
+    {
+      "block": "stats",
+      "coverage": 2,
+      "possible_variant_group": false,
+      "anchor_hint": "big-number + label repeated",
+      "representative_urls": [
+        {
+          "cluster": "C144",
+          "url": "https://www.knack.com/about/"
+        },
+        {
+          "cluster": "C90",
+          "url": "https://www.knack.com/integrations/bubble-knack/"
+        }
+      ]
+    },
+    {
+      "block": "form",
+      "coverage": 7,
+      "possible_variant_group": true,
+      "anchor_hint": "input fields + submit",
+      "representative_urls": [
+        {
+          "cluster": "C116",
+          "url": "https://www.knack.com/pricing/enterprise/"
+        },
+        {
+          "cluster": "C119",
+          "url": "https://www.knack.com/no-code-ai-app-builder-for-education/"
+        },
+        {
+          "cluster": "C120",
+          "url": "https://www.knack.com/spreadsheets-not-cutting-it/"
+        }
+      ]
+    },
+    {
+      "block": "tabs",
+      "coverage": 2,
+      "possible_variant_group": false,
+      "anchor_hint": "[tablist] + panels",
+      "representative_urls": [
+        {
+          "cluster": "C06",
+          "url": "https://www.knack.com/app-category/accounting/"
+        },
+        {
+          "cluster": "C164",
+          "url": "https://www.knack.com/health/epic-knack/"
+        }
+      ]
+    },
+    {
+      "block": "nav",
+      "coverage": 13,
+      "possible_variant_group": false,
+      "anchor_hint": "site nav",
+      "representative_urls": [
+        {
+          "cluster": "C163",
+          "url": "https://www.knack.com/health/security/"
+        },
+        {
+          "cluster": "C164",
+          "url": "https://www.knack.com/health/epic-knack/"
+        },
+        {
+          "cluster": "C165",
+          "url": "https://www.knack.com/pricing/"
+        }
+      ]
+    },
+    {
+      "block": "footer",
+      "coverage": 8,
+      "possible_variant_group": false,
+      "anchor_hint": "site footer",
+      "representative_urls": [
+        {
+          "cluster": "C163",
+          "url": "https://www.knack.com/health/security/"
+        },
+        {
+          "cluster": "C164",
+          "url": "https://www.knack.com/health/epic-knack/"
+        },
+        {
+          "cluster": "C165",
+          "url": "https://www.knack.com/pricing/"
+        }
+      ]
+    },
+    {
+      "block": "image",
+      "coverage": 3,
+      "possible_variant_group": false,
+      "anchor_hint": "content <img> in flow",
+      "representative_urls": [
+        {
+          "cluster": "C240",
+          "url": "https://www.knack.com/solutions/custom-crm/"
+        },
+        {
+          "cluster": "C241",
+          "url": "https://www.knack.com/solutions/customer-portal/"
+        },
+        {
+          "cluster": "C242",
+          "url": "https://www.knack.com/solutions/event-management/"
+        }
+      ]
+    },
+    {
+      "block": "case-study-callout",
+      "coverage": 3,
+      "possible_variant_group": true,
+      "anchor_hint": "highlighted case-study snippet",
+      "representative_urls": [
+        {
+          "cluster": "C123",
+          "url": "https://www.knack.com/health/nonprofit/"
+        },
+        {
+          "cluster": "C127",
+          "url": "https://www.knack.com/health/home-care/"
+        },
+        {
+          "cluster": "C42",
+          "url": "https://www.knack.com/case-study/dnaex/"
+        }
+      ]
+    },
+    {
+      "block": "card-stack",
+      "coverage": 1,
+      "possible_variant_group": false,
+      "anchor_hint": "",
+      "representative_urls": [
+        {
+          "cluster": "C92",
+          "url": "https://www.knack.com/integrations/datadog-knack/"
+        }
+      ]
+    }
+  ]
+}

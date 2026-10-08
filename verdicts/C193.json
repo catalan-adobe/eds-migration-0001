@@ -1,0 +1,54 @@
+{
+  "cluster_id": "C193",
+  "representative": "page-7__solutions-white-label-apps.json",
+  "sections": [
+    { "eds": "nav", "items": ["'Solutions Business Need Work O...' tab bar"], "note": "local Solutions-category sub-nav, ~74px, above hero" },
+    { "eds": "default-content", "items": ["H1 'Deliver Fully Branded App Expe...'"], "note": "text hero, no bg-image" },
+    { "eds": "default-content", "items": ["'Let Knack Help You Deliver Sea...' heading"], "note": "" },
+    { "eds": "section", "items": ["numbered-steps block, 3 items ('01. Offer a Premium Web App Ex...')"], "note": "heading-then-component" },
+    { "eds": "section", "style": "bg-gradient", "items": ["stat citation + footnote ('Companies with consistent bran...', '1Marq. (2019...')"], "note": "quote/stat, single item -> default-content, not a block" },
+    { "eds": "default-content", "items": ["'What You Can Customize' heading+text"], "note": "" },
+    { "eds": "default-content", "items": ["'Start Branding Your App in Jus...' heading+text"], "note": "" },
+    { "eds": "default-content", "items": ["'Built for Every Team and Indus...' heading+text"], "note": "" },
+    { "eds": "default-content", "items": ["'Your Brand. Your Platform. Pow...' CTA heading+text"], "note": "" },
+    { "eds": "default-content", "items": ["'Frequently Asked Questions' heading"], "note": "" },
+    { "eds": "section", "items": ["FAQ accordion, 3 Q&A rows"], "note": "faq-accordion-block" },
+    { "eds": "section", "note": "global footer tagline bar (rc2)", "items": ["'The best no-code platform for...'"] },
+    { "eds": "default-content", "note": "cookie consent overlay (excluded)", "items": [] }
+  ],
+  "blocks": ["numbered-steps", "faq-accordion"],
+  "covered_by_rules": [
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "solutions-category-subnav-tab-bar",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "A thin full-width bar (~74px) at the very top of Solutions-category pages, above the hero, listing category tab labels (e.g. 'Solutions Business Need Work O...').",
+      "decision": "Model as a local secondary-navigation landmark (nav section) distinct from the global site nav; exclude the shared tab labels from the page's authorable body content. Rejected alternative: treat it as a plain content block (tab list) reproduced per page — that would duplicate shared chrome across every Solutions page instead of a single reusable nav fragment.",
+      "rationale": "Appears identically positioned on multiple Solutions sub-pages (white-label-apps, affiliates), indicating a shared category navigation component rather than page-specific content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C193 rc1c1 [2x1] 'Solutions Business Need Work O...' @0,0 1280x74, also seen in C194 rc1c1", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-footer-cta-bar",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 66,
+      "trigger": "A full-width zone (~453px) immediately after the main content on every page, containing a fixed tagline and divider row.",
+      "decision": "Treat as global site footer chrome; exclude from page inventory; model once as a site-wide fragment.",
+      "rationale": "Identical text/position recurs verbatim across every captured page.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C193 rc2c1 'The best no-code platform for...'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Solutions-category landing page; introduces a local sub-nav tab bar not seen on the plain landing pages (C191/C192), captured as a new proposed rule."
+}

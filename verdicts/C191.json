@@ -1,0 +1,57 @@
+{
+  "cluster_id": "C191",
+  "representative": "page-7__health-hipaa-app-builder.json",
+  "sections": [
+    { "eds": "section", "style": "bg-image hero", "items": ["H1 'HIPAA-compliant app builder for...'"], "note": "" },
+    { "eds": "default-content", "items": ["'Teams use Knack Health to build...' heading"], "note": "" },
+    { "eds": "section", "items": ["use-case grid block, 6 items (3x2)"], "note": "Patient and client intake, Appointment..." },
+    { "eds": "default-content", "items": ["'Designed to support HIPAA-covered...' heading+text"], "note": "" },
+    { "eds": "default-content", "items": ["'as their HIPAA app builder' heading"], "note": "" },
+    { "eds": "section", "items": ["feature grid block, 8 items (4x2)"], "note": "Secure database, ..." },
+    { "eds": "default-content", "items": ["'Built for teams that need more...' heading+text"], "note": "" },
+    { "eds": "default-content", "items": ["'Trusted by Healthcare Professionals' heading", "testimonial quote"], "note": "" },
+    { "eds": "default-content", "items": ["'Frequently Asked Questions (FAQ)' heading"], "note": "" },
+    { "eds": "section", "items": ["FAQ accordion, 10 Q&A rows (one answer includes a nested sub-list)"], "note": "faq-accordion-block" },
+    { "eds": "section", "style": "bg-color cta", "items": ["'Ready to get started? Talk to...'"], "note": "" },
+    { "eds": "default-content", "note": "stray promoted FAQ-answer regions (rc2c9, rc2c10) escaped the accordion, still nested under rc2 but siblings of the CTA section", "items": ["'Knack Health includes:' + sub-list", "'You can request a demo or cont...'"] },
+    { "eds": "section", "note": "global footer tagline bar (rc3)", "items": ["'The best no-code platform for...'"] },
+    { "eds": "default-content", "note": "cookie consent overlay (excluded)", "items": [] }
+  ],
+  "blocks": ["use-case-grid", "feature-grid", "testimonial", "faq-accordion"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay",
+    "leaked-css-text-node"
+  ],
+  "proposed_rules": [
+    {
+      "id": "promoted-faq-answer-region",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A [region] node (FAQ/accordion answer text, sometimes with its own nested sub-list) appears as a sibling of the page's main content sections instead of nested inside its accordion question row.",
+      "decision": "Re-attach the region's text/sub-list to the matching accordion row as its answer during Phase 2; never emit it as its own section or block.",
+      "rationale": "The capture promotes absolutely-positioned accordion answer panels out of their DOM parent, here escaping two levels (rc2c9, rc2c10) to sit alongside the CTA section.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C191 rc2c9/rc2c10 [region] siblings of rc2c8 CTA, content duplicating/extending answers from the rc2c7 accordion", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-footer-cta-bar",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 66,
+      "trigger": "A full-width zone (~453px) immediately after the main content on every page, containing a fixed tagline and divider row.",
+      "decision": "Treat as global site footer chrome; exclude from page inventory; model once as a site-wide fragment.",
+      "rationale": "Identical text/position recurs verbatim across every captured page.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C191 rc3c1c1 'The best no-code platform for...'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Straightforward landing-page layout of heading+grid sections; the FAQ accordion has two badly-escaped answer regions promoted well outside the accordion container."
+}

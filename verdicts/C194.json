@@ -1,0 +1,53 @@
+{
+  "cluster_id": "C194",
+  "representative": "page-8__affiliates.json",
+  "sections": [
+    { "eds": "nav", "items": ["'Solutions Business Need Work O...' tab bar"], "note": "local Solutions-category sub-nav, shared with C193" },
+    { "eds": "default-content", "items": ["H1 'Join Knack's Affiliate Program...'"], "note": "text hero" },
+    { "eds": "section", "style": "bg-color", "items": ["'No Cap + Generous Commissions...' block, 3 items (3x1)"], "note": "background-container-is-section-style; repeating tier/commission items -> block" },
+    { "eds": "default-content", "items": ["'Sign Up in 3 Steps Increasing...' heading+text"], "note": "no distinct child nodes to confirm a separate block; kept as text" },
+    { "eds": "default-content", "items": ["'Resources for Affiliates' heading"], "note": "" },
+    { "eds": "section", "items": ["resource-cards block, 3 items ('10 No-Code Apps for Sales & Ma...')"], "note": "heading-then-component" },
+    { "eds": "default-content", "items": ["'FAQ' heading"], "note": "" },
+    { "eds": "section", "items": ["FAQ accordion, 5 Q&A rows"], "note": "faq-accordion-block" },
+    { "eds": "section", "items": ["'Already an affiliate?' login CTA card (divider + heading + subtext)"], "note": "small self-contained CTA block" },
+    { "eds": "default-content", "note": "empty spacer div, no text (rc1c2c7)", "items": [] },
+    { "eds": "section", "note": "global footer tagline bar (rc2)", "items": ["'The best no-code platform for...'"] },
+    { "eds": "default-content", "note": "cookie consent overlay (excluded)", "items": [] }
+  ],
+  "blocks": ["commission-tiers", "resource-cards", "faq-accordion", "login-cta"],
+  "covered_by_rules": [
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "solutions-category-subnav-tab-bar",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "A thin full-width bar (~74px) at the very top of Solutions-category pages, above the hero, listing category tab labels.",
+      "decision": "Model as a local secondary-navigation landmark distinct from the global nav; exclude from authorable body content. Rejected alternative: reproduce it as a per-page content block/tab list.",
+      "rationale": "Identical bar appears on both C193 (white-label-apps) and C194 (affiliates), indicating shared category-nav chrome.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C194 rc1c1 [2x1] 'Solutions Business Need Work O...' @0,0 1280x74, identical to C193 rc1c1", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-footer-cta-bar",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 66,
+      "trigger": "A full-width zone (~453px) immediately after the main content on every page, containing a fixed tagline and divider row.",
+      "decision": "Treat as global site footer chrome; exclude from page inventory; model once as a site-wide fragment.",
+      "rationale": "Identical text/position recurs verbatim across every captured page.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C194 rc2c1 'The best no-code platform for...'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Affiliates landing page shares the Solutions sub-nav pattern with C193; includes a small login CTA card and one empty spacer div (likely pure whitespace, no content lost)."
+}

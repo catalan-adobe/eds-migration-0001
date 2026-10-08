@@ -1,0 +1,19 @@
+{
+  "cluster_id": "C49",
+  "representative": "blog-category__blog-category-compare-bolt.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1"], "note": "top nav bar" },
+    { "eds": "default-content", "items": ["rc1c2c1"], "note": "category title heading 'Bolt'" },
+    { "eds": "section", "items": ["rc1c2c2"], "note": "[3x1] blog post card row -> blog-post-grid block (1 row, category has few posts)" },
+    { "eds": "section", "style": "bg-gradient", "items": ["rc1c2c3"], "note": "empty bg-gradient zone, likely under-rendered CTA/newsletter component" },
+    { "eds": "section", "style": "footer", "items": ["rc2"], "note": "footer tagline + link row" }
+  ],
+  "blocks": ["blog-post-grid"],
+  "covered_by_rules": [
+    "repeating-cards-are-one-block",
+    "underrendered-list-zone",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [],
+  "notes": "Sparsely-populated blog category page; the post grid has only one row and the same 1280x507 empty gradient zone seen elsewhere on the site flags for Phase 2 extraction."
+}

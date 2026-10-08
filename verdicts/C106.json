@@ -1,0 +1,39 @@
+{
+  "cluster_id": "C106",
+  "representative": "page-10__downloads.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions/Business Need/Work... mega-nav"], "note": "rc1c1, global top nav chrome" },
+    { "eds": "section", "style": "unresolved / under-rendered", "items": [], "note": "rc1c2c1 (117px, no text) and rc1c2c2 [bg:gradient] 1280x507 (no text) - main content zone captured almost empty; likely a downloads listing (title + card/list grid) that fell below the minWidth threshold" },
+    { "eds": "section", "style": "footer", "items": ["The best no-code platform for...", "| |"], "note": "rc2, global footer chrome" },
+    { "eds": "noise", "items": ["Decline overlay", "cookie consent box"], "note": "rc3/rc4, knack-cookie-notice-overlay" }
+  ],
+  "blocks": [],
+  "covered_by_rules": ["underrendered-list-zone", "knack-cookie-notice-overlay"],
+  "proposed_rules": [
+    {
+      "id": "knack-nav-bar-chrome",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A [2x1] bar at the very top of the page (y=0), full-width, listing nav categories, with no bg marker.",
+      "decision": "Treat as the global primary nav, exclude from per-page block inventory.",
+      "rationale": "Recurs identically across all sampled pages including this one.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C106 rc1c1 [2x1] 1280x74", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "bottom-cta-banner-underrendered",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A full-width [bg:gradient] zone with no captured text or child nodes taking up nearly the entire main content area of the page.",
+      "decision": "Flag for Phase 2 targeted DOM extraction; this page's entire content (a downloads/resource listing) fell below the minWidth capture, not just a trailing banner.",
+      "rationale": "The confirmed underrendered-list-zone rule already covers the near-empty main-zone pattern (exact 1280x507 gradient match to its own evidence); this cluster corroborates that the same signature also occurs as the page's ONLY content, reinforcing the need for Phase 2 re-extraction on page-10 templates specifically.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C106 rc1c2c2 [bg:gradient] 1280x507 with no child text, and rc1c2c1 117px empty heading zone", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Almost entirely under-rendered page-10 listing (Downloads); main zone matches the confirmed underrendered-list-zone signature exactly and needs Phase 2 DOM extraction to recover actual content."
+}

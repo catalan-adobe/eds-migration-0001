@@ -1,0 +1,61 @@
+{
+  "cluster_id": "C53",
+  "representative": "download__download-construction-project-management-template.json",
+  "sections": [
+    { "eds": "nav", "items": ["global nav bar"], "note": "rc1c1 [2x1] 1280x74" },
+    { "eds": "section", "items": ["default-content: H1 'Construction Project Management...' hero heading"], "note": "rc1c2c1" },
+    { "eds": "section", "style": "bg-color/panel", "items": ["default-content: H2 'The Benefits of Construction P...' + intro", "block: benefit-cards (3 numbered items)"], "note": "rc1c2c2 bg wrapper + centered content; [3x2] grid rc1c2c2c2c2" },
+    { "eds": "section", "items": ["block: template-download-cta (preview image + Install Free Template App button)"], "note": "rc1c2c3: [3x1] preview 1220x236 + button rc1c2c3c3" },
+    { "eds": "section", "style": "bg-color", "items": ["block: feature-highlight ('Task Management...')"], "note": "rc1c2c4c1 bg layer + rc1c2c4c2 [3x2] content" },
+    { "eds": "section", "items": ["default-content: 'Get Started with Knack's Construction Project...' closing CTA"], "note": "rc1c2c5 [2x1]" },
+    { "eds": "section", "items": ["default-content: footer tagline + separator row"], "note": "rc2" }
+  ],
+  "blocks": ["benefit-cards", "template-download-cta", "feature-highlight"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "decorative-graphics-are-noise",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "minimize-block-cells",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "global-nav-header-bar",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "A full-width bar at the very top of the page, above the hero, containing top-level menu labels ('Solutions Business Need Work O...'), present on every sampled page.",
+      "decision": "Map to the global nav/header fragment, not page content; exclude from the page's block inventory.",
+      "rationale": "Identical content and position across every packet analyzed indicates shared site chrome, not authored page content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C53 rc1c1 [2x1] 1280x74", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "global-footer-cta-fragment",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "A bottom-most sibling zone with a fixed marketing tagline ('The best no-code platform for...') plus a thin separator row.",
+      "decision": "Map to the global footer fragment; exclude from page-specific block inventory.",
+      "rationale": "Identical content/position on every sampled page = site-wide footer chrome.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C53 rc2 @0,4548 1280x453", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-template-download-cta",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A template/app preview screenshot immediately followed by a button labeled 'Install Free Template App', recurring on every download-template page.",
+      "decision": "Combine into ONE 'template-download' block: cell1 = preview image, cell2 = CTA link. Rejected alternatives: (a) separate image block + default-content link, (b) folding preview into hero.",
+      "rationale": "Identically-labeled reusable component specific to Knack's download pages, beyond generic minimize-block-cells guidance.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C53 rc1c2c3c1 [3x1] 1220x236 + rc1c2c3c3 'Install Free Template App'", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Same download-template layout as other clusters in this family: hero, benefits grid, preview+install CTA, feature-highlight panel, closing CTA."
+}

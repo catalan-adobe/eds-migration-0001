@@ -1,0 +1,70 @@
+{
+  "cluster_id": "C164",
+  "representative": "page-36__health-epic-knack.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1 (leaked JS text, nav failed to render)"], "note": "" },
+    { "eds": "section", "style": "bg-image hero", "items": ["rc2c1 'Build on Epic Data Without Wai...'"], "note": "" },
+    { "eds": "section", "style": "bg-gradient", "items": ["rc2c2 'Why Connect Epic and Knack Hea...'"], "note": "background-container wrapping heading+copy" },
+    { "eds": "default-content", "items": ["rc2c3 FHIR connector intro + comparison table"], "note": "table-like content kept inline as text/table" },
+    { "eds": "default-content", "items": ["rc2c4c1 heading 'What You Can Build...'"], "note": "" },
+    { "eds": "block", "style": "tabs", "items": ["rc2c4c2c1 [tablist] 5 tabs", "rc2c4c2c2 [3x4] use-case grid"], "note": "tab-filtered card grid" },
+    { "eds": "default-content", "items": ["rc2c5 'How the Integration Works' two-col feature"], "note": "" },
+    { "eds": "default-content", "items": ["rc2c6 'Why Knack Health' two-col feature"], "note": "" },
+    { "eds": "default-content", "items": ["rc2c7 'More Epic Data Types' + [5x1]/[4x1]/[3x1] item rows"], "note": "small repeating list rows, low cell counts" },
+    { "eds": "default-content", "items": ["rc2c8 'Implementation' two-col feature"], "note": "" },
+    { "eds": "section", "style": "bg-color CTA", "items": ["rc2c9 'Talk to the Knack Health Team'"], "note": "" },
+    { "eds": "block", "style": "accordion", "items": ["rc2c10c1 heading 'Epic Integration FAQs'", "rc2c10c2 11 Q rows + regions", "stray rc4 answer"], "note": "FAQ accordion; one answer promoted to page level" },
+    { "eds": "noise", "items": ["rc2c11 leaked CSS '.auto_w_stretch{...'"], "note": "" },
+    { "eds": "section", "style": "footer fragment", "items": ["rc3 CTA + separator"], "note": "" },
+    { "eds": "noise", "items": ["rc5 cookie overlay"], "note": "excluded" }
+  ],
+  "blocks": ["tabs", "accordion", "nav", "footer"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "background-container-is-section-style",
+    "heading-then-component-same-section",
+    "faq-accordion-block",
+    "leaked-css-text-node",
+    "knack-cookie-notice-overlay",
+    "minimize-block-cells"
+  ],
+  "proposed_rules": [
+    {
+      "id": "site-footer-cta-is-global-fragment",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A '2x1' zone with 'The best no-code platform for...' CTA text plus a '| |' separator at the bottom of every page.",
+      "decision": "Model as the site-wide footer fragment, excluded from per-page block inventory.",
+      "rationale": "Identical across every captured page = global chrome, analogous to knack-announcement-bar. Rejected: per-page footer block (duplicates identical content everywhere).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C164 rc3", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "faq-answer-promoted-out-of-tree",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 52,
+      "trigger": "An FAQ [region] answer appears as a top-level page sibling instead of nested under its question row.",
+      "decision": "Fold back into the accordion block as the answer for its question.",
+      "rationale": "Artifact of overlay-promotion logic lifting elements rendered outside their DOM parent bounds.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C164 rc4 'Knack Health provides a , incl...'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "tabbed-usecase-grid-block",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A [tablist] filter row (e.g. 'All Operations Clinical Support...') sits directly above a large [NxM] card grid, letting the visitor filter cards by category.",
+      "decision": "Emit ONE 'tabs' block with the tab labels as the header row and each card as a row tagged with its category; client JS filters visually. Rejected: modeling tabs and grid as two independent blocks (would break the filter wiring).",
+      "rationale": "The tablist and grid are functionally one interactive component; splitting them loses the filter relationship.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C164 rc2c4c2c1/c2 [tablist][5x1] over [3x4] grid", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Epic integration landing page: hero, feature sections, tabbed use-case grid, FAQ accordion, global footer/cookie chrome."
+}

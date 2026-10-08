@@ -1,0 +1,54 @@
+{
+  "cluster_id": "C146",
+  "representative": "page-2__health-athenahealth-knack.json",
+  "sections": [
+    { "eds": "section", "style": "bg-image", "items": ["heading: Extend Athenahealth with Custo...", "CTA: Talk to Us About athenahealth..."], "note": "hero" },
+    { "eds": "section", "style": "bg-gradient", "items": ["Why Connect Athenahealth and Knack..."], "note": "rc2c2 2-col banner" },
+    { "eds": "default-content", "items": ["What You Can Build..."], "note": "rc2c3" },
+    { "eds": "default-content", "items": ["How the Integration Works..."], "note": "rc2c4" },
+    { "eds": "section", "style": "bg-color", "items": ["Common Use Cases heading", "block: use-case-cards (5x1, 5 items)"], "note": "rc2c5" },
+    { "eds": "default-content", "items": ["Why Knack Health..."], "note": "rc2c6" },
+    { "eds": "default-content", "items": ["Implementation..."], "note": "rc2c7" },
+    { "eds": "section", "style": "bg-color", "items": ["Need a better workflow around... CTA"], "note": "rc2c8" },
+    { "eds": "section", "items": ["Athenahealth Integration FAQs heading", "block: faq-accordion (10 rows)"], "note": "rc2c9; 7 answers (rc2c9c11-17) plus rc4 promoted out of the accordion" },
+    { "eds": "nav", "items": ["footer tagline + link row (rc3)"], "note": "global footer" },
+    { "eds": "nav", "items": ["cookie overlay (rc5)"], "note": "global chrome, excluded" }
+  ],
+  "blocks": ["use-case-cards", "faq-accordion"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "background-container-is-section-style",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay",
+    "leaked-css-text-node"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-global-footer-cta",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "Pair of [2x1] nodes at bottom of main content: tagline + pipe-separated link list.",
+      "decision": "Model as global site footer fragment; exclude from page block inventory.",
+      "rationale": "Recurs identically across unrelated templates.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C146 rc3c1c1 [2x1] tagline + rc3c1c2 [2x1] '| |'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "faq-answer-promoted-to-root",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "FAQ accordion answers ([region]) rendered as siblings outside their question row, including one at page root.",
+      "decision": "Fold back into the FAQ block as matching answer cells instead of new sections.",
+      "rationale": "Overlay/absolute positioning during capture detaches expanded FAQ answers from their DOM parent.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C146 rc2c9c11-c17 [region] x7 plus rc4 [region] at page root", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Integration landing page (Athenahealth) with alternating 2-col text banners, a 5-item use-case card row, and a 10-row FAQ accordion whose answers are largely promoted out of their rows."
+}

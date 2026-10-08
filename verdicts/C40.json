@@ -1,0 +1,53 @@
+{
+  "cluster_id": "C40",
+  "representative": "video__video-connect-records-logged-in-user-knack.json",
+  "sections": [
+    { "eds": "nav", "items": ["rc1c1 nav bar"], "note": "global chrome" },
+    { "eds": "section", "style": "video-embed", "items": ["rc1c2c1 blank 1000x563 zone"], "note": "no text/bg tag; matches expected video-player size/position" },
+    { "eds": "section", "style": "flattened", "items": ["rc1c2c2 'Related Posts Secure Vibe Codi...' 1000x3636 zone"], "note": "single flat node spanning most of page height, no visible child structure" },
+    { "eds": "nav", "items": ["rc2 footer"], "note": "global chrome" }
+  ],
+  "blocks": ["video"],
+  "covered_by_rules": [
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "video-embed-placeholder",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "A blank rectangular zone (no text, no bg tag) directly under the nav on video-template pages, sized/positioned like a player.",
+      "decision": "Model as a single 'video' block (embed URL) rather than treating it as empty noise or an image block.",
+      "rationale": "Position and blank rendering is consistent with an iframe video embed whose content the DOM walker cannot read as text; rejected treating it as decorative noise since it's the primary content of a 'video' template.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C40 rc1c2c1 @140,360 1000x563 blank", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "flattened-mixed-content-zone",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A single tagged node (e.g. [2x1]) with unusually large height and truncated text spanning multiple distinct logical sections (e.g. article body followed by a 'Related Posts' heading), with no visible children in the captured tree.",
+      "decision": "Flag for Phase 2 targeted DOM extraction to split the zone into its real default-content (video description) and block (related-posts card grid) rather than modeling it as one opaque block.",
+      "rationale": "The tree walker collapsed nested structure into one 3636px-tall node; treating it as a single block would lose the card-grid/related-posts semantics.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C40 rc1c2c2 [2x1] 1000x3636 'Related Posts Secure Vibe Codi...'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "knack-global-nav-footer-chrome",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "Identical top nav and bottom footer recur on every captured page.",
+      "decision": "Model as global header/footer fragments, excluded from the per-page section/block inventory.",
+      "rationale": "Recurs identically across all templates; not covered by existing noise rules.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C40 rc1c1, rc2c1, rc2c2", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Video template is the thinnest page in this batch: a blank video-player zone plus one huge flattened zone that likely mixes description text with a Related Posts card grid; needs Phase 2 DOM extraction to separate them."
+}

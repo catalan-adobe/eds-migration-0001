@@ -1,0 +1,56 @@
+{
+  "cluster_id": "C129",
+  "representative": "page-17__health.json",
+  "sections": [
+    { "eds": "default-content", "items": ["announcement bar: Knack's MCP Server is here!..."], "note": "rc1c1 [bg:color] above nav — global chrome, covered by confirmed rule" },
+    { "eds": "section", "style": "hero-bg-image", "items": ["heading: Build HIPAA-compliant healthcare..."], "note": "rc2c1" },
+    { "eds": "section", "style": "bg-color", "items": ["heading: Why ?", "paragraph: not by configuration.", "paragraph intro", "block: feature-list (Encrypted data storage...)", "CTA: How Knack Health handles compl..."], "note": "rc2c2, [4x1] repeating list" },
+    { "eds": "section", "items": ["paragraph intro", "block: feature-grid (Patient and client intake...)", "default-content: Browse healthcare templates CTA"], "note": "rc2c3 [3x2]" },
+    { "eds": "default-content", "items": ["heading+paragraph: HIPAA-compliant security, built..."], "note": "rc2c4 [2x1], single feature" },
+    { "eds": "section", "items": ["paragraph: Choose from and integrate with...", "block: integration-cards (Click to learn more...)"], "note": "rc2c5 [3x2]" },
+    { "eds": "section", "style": "bg-color", "items": ["paragraph: Built something in Lovable, Ba..."], "note": "rc2c6" },
+    { "eds": "section", "style": "bg-color", "items": ["heading: Plans and Packages", "paragraph intro", "block: pricing-cards (HIPAA Starter...)", "default-content: See all pricing... link"], "note": "rc2c7 [2x1]" },
+    { "eds": "default-content", "items": ["block: testimonial (Royal Free London NHS Foundation...)"], "note": "rc2c8 [3x1]" },
+    { "eds": "section", "style": "cta-banner", "items": ["default-content: Build with confidence. Deliver..."], "note": "rc2c9 bg:color" },
+    { "eds": "section", "items": ["block: faq-accordion"], "note": "rc2c10, 13 questions, several answers promoted to root (rc4/rc5/rc6)" },
+    { "eds": "default-content", "items": ["footer CTA + social row"], "note": "rc3 — global footer, see proposed rule" }
+  ],
+  "blocks": ["feature-list", "feature-grid", "integration-cards", "pricing-cards", "testimonial", "faq-accordion"],
+  "covered_by_rules": [
+    "knack-announcement-bar",
+    "leaked-css-text-node",
+    "full-width-image-behind-text-is-section-bg",
+    "background-container-is-section-style",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-footer-cta-fragment",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "A bottom-of-page block with the line 'The best no-code platform for ...' followed by a thin '| |' separator/social row, appearing verbatim at the end of nearly every captured page across templates.",
+      "decision": "Treat as global site footer chrome; exclude from per-page block inventory and model once as a shared footer fragment.",
+      "rationale": "Identical wording/layout recurs across landing, compare, and category templates — a shared footer partial, not page content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C129 rc3c1c1/c1c2 'The best no-code platform for...' + '| |'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "promoted-faq-answer-duplicate",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 56,
+      "trigger": "A [region] node appears as a top-level sibling of the root, outside its FAQ container, duplicating an answer already implied by a question row inside the FAQ block.",
+      "decision": "Fold the promoted region into its matching FAQ accordion row as the answer cell; do not emit as a separate block.",
+      "rationale": "page-tree promotes elements rendered outside their DOM parent (open accordion panel), duplicating content already covered by the FAQ accordion.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C129 rc4/rc5/rc6 [region] nodes (3 promoted answers, incl. nested c4c1-c4c5) top-level siblings of rc3", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Main health solution landing page, richest template in this batch: announcement bar + hero + 5 feature/integration sections + pricing + testimonial + CTA + large 13-question FAQ with 3 promoted answers."
+}

@@ -1,0 +1,53 @@
+{
+  "cluster_id": "C130",
+  "representative": "page-19__black-friday-sale.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions / Business Need / Work O... top menu"], "note": "rc1c1 [2x1] primary site nav" },
+    { "eds": "section", "style": "bg-color", "items": ["heading: Try the AI App Builder for bus..."], "note": "rc1c2c1 hero" },
+    { "eds": "section", "style": "bg-gradient", "items": ["heading: TRUSTED BY INNOVATIVE TEAMS ACROSS...", "block: logo-strip"], "note": "rc1c2c2, repeating logo row" },
+    { "eds": "section", "items": ["block: feature-grid (Asset Management Modernize your...)"], "note": "rc1c2c3 [3x2]" },
+    { "eds": "default-content", "items": ["heading+paragraph: COMBINE ALL YOUR DATA Connect..."], "note": "rc1c2c4 [2x1]" },
+    { "eds": "section", "style": "bg-color", "items": ["heading+paragraph: WORK WITH THE TOOLS YOU LOVE..."], "note": "rc1c2c5 [2x1]" },
+    { "eds": "default-content", "items": ["heading+paragraph: AUTOMATE AND SIMPLIFY Flexible...", "CTA: Start Building for free"], "note": "rc1c2c6" },
+    { "eds": "section", "style": "bg-color", "items": ["heading+paragraph: SUPERCHARGE YOUR BUILDING PROC..."], "note": "rc1c2c7 [2x1]" },
+    { "eds": "default-content", "items": ["heading+paragraph: INVITE EVERYONE Unlimited User..."], "note": "rc1c2c8 [2x1]" },
+    { "eds": "section", "style": "bg-color", "items": ["heading+paragraph: BUILT-IN AUTHENTICATION, NO PL...", "CTA: Start Building for free"], "note": "rc1c2c9" },
+    { "eds": "section", "items": ["heading: YOUR QUESTIONS, ANSWERED / FAQ", "block: faq-accordion"], "note": "rc1c2c10, 6 listitem rows" },
+    { "eds": "default-content", "items": ["footer CTA + social row"], "note": "rc2 — global footer, see proposed rule" }
+  ],
+  "blocks": ["logo-strip", "feature-grid", "faq-accordion", "marquee-banner"],
+  "covered_by_rules": [
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style",
+    "heading-then-component-same-section",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-footer-cta-fragment",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 68,
+      "trigger": "A bottom-of-page block with the line 'The best no-code platform for ...' followed by a thin '| |' separator/social row, appearing verbatim at the end of nearly every captured page across templates.",
+      "decision": "Treat as global site footer chrome; exclude from per-page block inventory and model once as a shared footer fragment.",
+      "rationale": "Identical wording/layout recurs across landing, compare, and category templates — a shared footer partial, not page content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C130 rc2c1/rc2c2 'The best no-code platform for...' + '| |'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "marquee-ticker-duplicate-collapse",
+      "scope": "project",
+      "decision_type": "team-decision",
+      "category": "block",
+      "status": "proposed",
+      "priority": 54,
+      "trigger": "Two adjacent [bg:color] containers each repeating the same short promo phrase many times (e.g. [2x16] 'Black Friday' x16), offset horizontally with negative/positive x coordinates, implementing a seamless CSS marquee/ticker loop.",
+      "decision": "Collapse both duplicate containers into ONE 'marquee-banner' block instance carrying the promo text once; do not emit 16x2 repeated rows nor two separate blocks.",
+      "rationale": "The duplication is a CSS infinite-scroll technique (content doubled for seamless looping), not distinct content items. Rejected alternatives: (a) apply the generic repeating-cards-are-one-block rule literally and emit a 32-row block — floods the block table with meaningless duplicates; (b) treat as decorative-graphics-are-noise and drop entirely — rejected because the promo text is meaningful, authorable page content (a sale campaign banner).",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C130 rc3/rc4 [2x16][bg:color] duplicate 'Black Friday' ticker at @-119,-19 and @137,-19", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Landing page (page-19, black-friday-sale) reusing the standard homepage-style template (nav, hero, trust logos, feature sections, FAQ) plus a seasonal Black Friday marquee banner rendered as two duplicated ticker containers for a seamless scroll effect."
+}

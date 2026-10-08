@@ -1,0 +1,54 @@
+{
+  "cluster_id": "C140",
+  "representative": "page-24__health-med-spa.json",
+  "sections": [
+    { "eds": "section", "style": "bg-image", "items": ["heading: HIPAA-Compliant Software Built...", "CTA: Book a Demo"], "note": "hero" },
+    { "eds": "default-content", "items": ["intro paragraphs"], "note": "rc2c2c1-3" },
+    { "eds": "section", "items": ["block: feature-cards (3x2, 6 items)"], "note": "rc2c2c4 patient intake/records features" },
+    { "eds": "default-content", "items": ["Built for the operational realities..."], "note": "rc2c3 2-col banner" },
+    { "eds": "section", "items": ["HIPAA compliance built in heading", "block: trust-cards (3x1, 3 items)"], "note": "rc2c4 Signed BAA Included etc." },
+    { "eds": "section", "items": ["What our users are saying heading", "block: testimonials (3x1)"], "note": "rc2c5" },
+    { "eds": "section", "items": ["Plans and Packages heading", "block: pricing-cards (2x1)", "See all pricing link"], "note": "rc2c6" },
+    { "eds": "section", "style": "bg-color", "items": ["Give your med spa the compliance... CTA", "Request a Trial"], "note": "rc2c7" },
+    { "eds": "section", "items": ["heading", "block: faq-accordion (7 rows)"], "note": "rc2c8; two answers (rc4, rc5) plus rc2c8c3 promoted out of accordion" },
+    { "eds": "nav", "items": ["footer tagline + link row (rc3)"], "note": "global footer" },
+    { "eds": "nav", "items": ["cookie overlay (rc6)"], "note": "global chrome, excluded" }
+  ],
+  "blocks": ["feature-cards", "trust-cards", "testimonials", "pricing-cards", "faq-accordion"],
+  "covered_by_rules": [
+    "full-width-image-behind-text-is-section-bg",
+    "heading-then-component-same-section",
+    "repeating-cards-are-one-block",
+    "background-container-is-section-style",
+    "faq-accordion-block",
+    "knack-cookie-notice-overlay",
+    "leaked-css-text-node"
+  ],
+  "proposed_rules": [
+    {
+      "id": "knack-global-footer-cta",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "Pair of [2x1] nodes at bottom of main content: tagline + pipe-separated link list, identical structure across pages, before cookie overlay.",
+      "decision": "Model as global site footer fragment; exclude from page block inventory.",
+      "rationale": "Same pattern as knack-announcement-bar but at page bottom; recurs across unrelated templates.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C140 rc3 [2x1] tagline + [2x1] '| |'", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "faq-answer-promoted-to-root",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "FAQ accordion answer ([region]) rendered as a root-level or out-of-accordion sibling instead of nested in its question row.",
+      "decision": "Fold back into the FAQ block as the matching row's answer cell instead of a new section.",
+      "rationale": "Overlay/absolute positioning during capture detaches expanded FAQ answers from their DOM parent.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C140 rc4, rc5 [region] floating; rc2c8c3 [region] inside accordion but detached from its question row", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Med-spa landing template: hero, feature grid, trust/testimonial/pricing card rows, CTA banners, FAQ accordion, footer/cookie chrome. A leaked media-query CSS text node (rc2c9) is noise."
+}

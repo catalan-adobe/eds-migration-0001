@@ -1,0 +1,41 @@
+{
+  "cluster_id": "C107",
+  "representative": "page-10__newsletters.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions/Business Need/Work... mega-nav"], "note": "rc1c1, global top nav chrome" },
+    { "eds": "default-content", "items": ["H1 Knack Newsletters"], "note": "rc1c2c1c1" },
+    { "eds": "section", "items": ["3x5 newsletter card grid: 'Special Announcement Announcin...'"], "note": "rc1c2c1c2, repeating uniform cards -> newsletter-cards block" },
+    { "eds": "section", "style": "unresolved bg:gradient", "items": [], "note": "rc1c2c2 [bg:gradient] 1280x507 with no captured text/children - likely a final CTA banner under-rendered; flag for Phase 2" },
+    { "eds": "section", "style": "footer", "items": ["The best no-code platform for...", "| |"], "note": "rc2, global footer chrome" },
+    { "eds": "noise", "items": ["Decline overlay", "cookie consent box"], "note": "rc3/rc4, knack-cookie-notice-overlay" }
+  ],
+  "blocks": ["newsletter-cards"],
+  "covered_by_rules": ["repeating-cards-are-one-block", "heading-then-component-same-section", "knack-cookie-notice-overlay"],
+  "proposed_rules": [
+    {
+      "id": "knack-nav-bar-chrome",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "noise",
+      "status": "proposed",
+      "priority": 55,
+      "trigger": "A [2x1] bar at the very top of the page (y=0), full-width, listing nav categories, with no bg marker.",
+      "decision": "Treat as the global primary nav, exclude from per-page block inventory.",
+      "rationale": "Recurs identically across all sampled pages including this one.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C107 rc1c1 [2x1] 1280x74", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "bottom-cta-banner-underrendered",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 57,
+      "trigger": "A final full-width [bg:gradient] zone at the very bottom of the main content with no captured text or child nodes.",
+      "decision": "Flag for Phase 2 targeted DOM extraction as a likely closing CTA banner rather than treating it as empty decoration.",
+      "rationale": "Same 1280x507 gradient signature recurring across C101/C105/C106/C107; content was collapsed by the minWidth capture, not actually absent.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C107 rc1c2c2 [bg:gradient] 1280x507, no children", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "page-10 Newsletters listing page: newsletter cards grid maps cleanly via generic rules; trailing bg:gradient zone is the same recurring under-rendered banner seen on several other pages."
+}

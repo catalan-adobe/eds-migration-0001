@@ -1,0 +1,14 @@
+{
+  "cluster_id": "C174",
+  "representative": "page-4__ebooks.json",
+  "sections": [
+    { "eds": "nav", "items": ["Solutions", "Business", "Need", "Work On..."], "note": "global site nav" },
+    { "eds": "section", "items": ["category-filter block (All / Education / Healthcare)"], "note": "resource-library filter tabs, [3x1]" },
+    { "eds": "section", "items": ["listing zone flagged empty (no ebook cards captured below filters)"], "note": "matches confirmed underrendered-list-zone rule exactly" },
+    { "eds": "section", "style": "footer", "items": ["footer tagline", "footer links"], "note": "global footer chrome" }
+  ],
+  "blocks": ["category-filter"],
+  "covered_by_rules": ["underrendered-list-zone", "knack-cookie-notice-overlay"],
+  "proposed_rules": [],
+  "notes": "Ebooks resource-library listing page; only the category filter tabs rendered, the actual ebook card grid fell below the minWidth capture threshold, a direct match for the confirmed underrendered-list-zone rule so no new rule is proposed."
+}

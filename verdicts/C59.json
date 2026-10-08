@@ -1,0 +1,66 @@
+{
+  "cluster_id": "C59",
+  "representative": "integration__integrations-knack-microsoft-outlook.json",
+  "sections": [
+    { "eds": "nav", "items": ["global nav bar"], "note": "rc1c1 [2x1] 1280x74" },
+    { "eds": "section", "items": ["default-content: H1 'Integrate Knack with Microsoft...'"], "note": "rc1c2c1" },
+    { "eds": "section", "style": "bg-color", "items": ["default-content: H2 'How Knack Flows Works' + intro"], "note": "rc1c2c2, heading+text only" },
+    { "eds": "section", "style": "bg-color", "items": ["block: steps (3 rows: Select a Trigger / Set up an Action / Connect and Automate)"], "note": "rc1c2c3, rc1c2c4, rc1c2c5, each [2x1][bg:color]; rc1c2c3 and rc1c2c4 render with zero text (100px empty boxes) while rc1c2c5 has full text \u2014 flagged as likely under-rendered, not truly blank" },
+    { "eds": "section", "items": ["default-content: H2 'Connect Your Workflow Now' + intro", "block: recipe-cards ('Create Microsoft Outlook Email...')"], "note": "rc1c2c6 heading + rc1c2c7 [3x2] grid" },
+    { "eds": "section", "style": "bg-color", "items": ["block: feature-highlight ('Automated Email Notifications...')"], "note": "rc1c2c9c1 bg layer + rc1c2c9c2 [3x2] content" },
+    { "eds": "section", "items": ["default-content: H2 'Triggers and Actions' + intro", "block: trigger-action-cards", "default-content: 'See All Triggers and Actions' CTA link"], "note": "rc1c2c10 heading + rc1c2c11 [3x5] grid + rc1c2c12 badge link" },
+    { "eds": "section", "items": ["default-content: 'About Microsoft Outlook...' text"], "note": "rc1c2c13 [2x1]" },
+    { "eds": "section", "items": ["default-content: H2 'Find Inspiration on the Knack ...'", "block: related-articles ('How to Automate Invoice Proces...')"], "note": "rc1c2c14, explicit heading child + [3x1] grid" },
+    { "eds": "section", "style": "gradient", "items": ["FLAGGED: listing zone with no rendered text, deferred to Phase 2"], "note": "rc1c2c15 [bg:gradient] 1280x507, empty per underrendered-list-zone rule" },
+    { "eds": "section", "items": ["default-content: footer tagline + separator row"], "note": "rc2" }
+  ],
+  "blocks": ["steps", "recipe-cards", "feature-highlight", "trigger-action-cards", "related-articles"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "decorative-graphics-are-noise",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "minimize-block-cells",
+    "knack-cookie-notice-overlay",
+    "underrendered-list-zone"
+  ],
+  "proposed_rules": [
+    {
+      "id": "global-nav-header-bar",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "A full-width bar at the very top of the page, above the hero, containing top-level menu labels ('Solutions Business Need Work O...'), present on every sampled page.",
+      "decision": "Map to the global nav/header fragment, not page content; exclude from the page's block inventory.",
+      "rationale": "Identical content and position across every packet analyzed indicates shared site chrome, not authored page content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C59 rc1c1 [2x1] 1280x74", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "global-footer-cta-fragment",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "A bottom-most sibling zone with a fixed marketing tagline ('The best no-code platform for...') plus a thin separator row.",
+      "decision": "Map to the global footer fragment; exclude from page-specific block inventory.",
+      "rationale": "Identical content/position on every sampled page = site-wide footer chrome.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C59 rc2 @0,7414 1280x453", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "understated-step-card-text",
+      "scope": "pipeline",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 50,
+      "trigger": "Within a repeating 'steps' block, one or more sibling cards render as an empty [bg:color] box with zero children/text while an adjacent sibling card of the same set has full heading+body text.",
+      "decision": "Still emit ONE steps block (N rows) rather than dropping the blank rows; flag the missing step text for Phase 2 targeted DOM extraction instead of concluding the steps are content-free.",
+      "rationale": "The steps block elsewhere on the same site (C56\u2013C58) always carries full text per row; two blank 100px boxes here almost certainly reflect content clipped by the minWidth capture, not genuinely empty steps.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C59 rc1c2c3 and rc1c2c4 [2x1][bg:color] 1280x100 with no children, vs rc1c2c5 with full 'Connect and Automate' text", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Same integration-landing layout as sibling clusters, plus a trailing empty gradient zone (Phase 2) and two step cards likely clipped by the capture threshold."
+}

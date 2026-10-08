@@ -1,0 +1,54 @@
+{
+  "cluster_id": "C56",
+  "representative": "integration__integrations-bird-knack-integration.json",
+  "sections": [
+    { "eds": "nav", "items": ["global nav bar"], "note": "rc1c1 [2x1] 1280x74" },
+    { "eds": "section", "items": ["default-content: H1 'Bird and Knack Integration'"], "note": "rc1c2c1" },
+    { "eds": "section", "style": "bg-color", "items": ["default-content: H2 'How Knack Flows Work' + intro", "default-content: illustrative diagram image (no text)"], "note": "rc1c2c2; diagram at rc1c2c2c5 @18,1028 1244x336, no text" },
+    { "eds": "section", "style": "bg-color", "items": ["block: steps (3 rows: Select a Trigger / Set up an Action / Connect and Automate)"], "note": "rc1c2c3, rc1c2c4, rc1c2c5, each [2x1][bg:color]" },
+    { "eds": "section", "items": ["default-content: H2 'Popular Knack + Bird Automatio...' + intro", "block: recipe-cards ('Send SMS alerts...')"], "note": "rc1c2c6 heading + rc1c2c7 [3x2] grid" },
+    { "eds": "section", "style": "bg-color", "items": ["block: feature-highlight ('Instant Task Notifications...')"], "note": "rc1c2c9c1 bg layer + rc1c2c9c2 [3x2] content" },
+    { "eds": "section", "items": ["default-content: H2 'Triggers and Actions' + intro", "block: trigger-action-cards", "default-content: 'See All Triggers and Actions' CTA link"], "note": "rc1c2c10 heading + rc1c2c11 [3x2] grid + rc1c2c12 badge link" },
+    { "eds": "section", "items": ["default-content: 'About PayPal / Bird...' text"], "note": "rc1c2c13 [2x1]" },
+    { "eds": "section", "items": ["default-content: H2 'Find Inspiration on the Knack Blog'", "block: related-articles"], "note": "rc1c2c14, [3x1] grid" },
+    { "eds": "section", "style": "gradient", "items": ["FLAGGED: listing zone with no rendered text, deferred to Phase 2"], "note": "rc1c2c15 [bg:gradient] 1280x507, empty per underrendered-list-zone rule" },
+    { "eds": "section", "items": ["default-content: footer tagline + separator row"], "note": "rc2" }
+  ],
+  "blocks": ["steps", "recipe-cards", "feature-highlight", "trigger-action-cards", "related-articles"],
+  "covered_by_rules": [
+    "background-container-is-section-style",
+    "decorative-graphics-are-noise",
+    "repeating-cards-are-one-block",
+    "heading-then-component-same-section",
+    "minimize-block-cells",
+    "knack-cookie-notice-overlay",
+    "underrendered-list-zone"
+  ],
+  "proposed_rules": [
+    {
+      "id": "global-nav-header-bar",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 60,
+      "trigger": "A full-width bar at the very top of the page, above the hero, containing top-level menu labels ('Solutions Business Need Work O...'), present on every sampled page.",
+      "decision": "Map to the global nav/header fragment, not page content; exclude from the page's block inventory.",
+      "rationale": "Identical content and position across every packet analyzed indicates shared site chrome, not authored page content.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C56 rc1c1 [2x1] 1280x74", "added": "2026-09-04", "version": 1 }
+    },
+    {
+      "id": "global-footer-cta-fragment",
+      "scope": "project",
+      "decision_type": "convention",
+      "category": "structure",
+      "status": "proposed",
+      "priority": 58,
+      "trigger": "A bottom-most sibling zone with a fixed marketing tagline ('The best no-code platform for...') plus a thin separator row.",
+      "decision": "Map to the global footer fragment; exclude from page-specific block inventory.",
+      "rationale": "Identical content/position on every sampled page = site-wide footer chrome.",
+      "provenance": { "origin": "step2.1-longtail-scan", "evidence": "C56 rc2 @0,7400 1280x453", "added": "2026-09-04", "version": 1 }
+    }
+  ],
+  "notes": "Standard integration-landing layout: hero, intro w/ diagram, 3-step process, recipe grid, feature-highlight panel, triggers/actions grid, about text, related articles, and a trailing empty gradient zone flagged by the confirmed underrendered-list-zone rule for Phase 2 re-extraction."
+}
