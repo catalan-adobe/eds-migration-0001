@@ -115,3 +115,4 @@ chrome and elements move.
 | --- | --- | --- |
 | `bea7a44` (`mpipe-7.1`) | 7.1 | skeleton, setup, discover; live: 7271 URLs, 34 groups |
 | `2be09fd` (`mpipe-7.2`) | 7.2 | access (probe + prep → access.json), pick with selections |
+| `a4bbe26` (`mpipe-7.3`) | 7.3 | cache on the layer; live: 50 pages, 6.5 min, 0 failed |
