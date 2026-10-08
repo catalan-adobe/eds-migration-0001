@@ -117,3 +117,4 @@ chrome and elements move.
 | `2be09fd` (`mpipe-7.2`) | 7.2 | access (probe + prep → access.json), pick with selections |
 | `a4bbe26` (`mpipe-7.3`) | 7.3 | cache on the layer; live: 50 pages, 6.5 min, 0 failed |
 | `b52b2cf` (`mpipe-7.4`) | 7.4 | chrome on the layer; live: 44 trees, header + footer on all |
+| `a561f8f5` (`mpipe-7.6-report`) | 7.6 | report: views/report.md + report.html, the report step |
