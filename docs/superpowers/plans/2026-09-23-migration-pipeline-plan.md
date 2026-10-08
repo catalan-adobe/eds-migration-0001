@@ -118,3 +118,5 @@ chrome and elements move.
 | `a4bbe26` (`mpipe-7.3`) | 7.3 | cache on the layer; live: 50 pages, 6.5 min, 0 failed |
 | `b52b2cf` (`mpipe-7.4`) | 7.4 | chrome on the layer; live: 44 trees, header + footer on all |
 | `a561f8f5` (`mpipe-7.6-report`) | 7.6 | report: views/report.md + report.html, the report step |
+| `2683a59` (`mpipe-7.7a-shots`) | 7.7 | shots, too-tall, look-then-act, asset origins, fill |
+| `8a5eaa45` (`mpipe-7.8-triage`) | 7.8 | triage: System 1 level 1 beside chrome; live 44 normal |
