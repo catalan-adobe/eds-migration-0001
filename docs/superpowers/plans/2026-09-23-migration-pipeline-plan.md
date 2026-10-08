@@ -120,3 +120,4 @@ chrome and elements move.
 | `a561f8f5` (`mpipe-7.6-report`) | 7.6 | report: views/report.md + report.html, the report step |
 | `2683a59` (`mpipe-7.7a-shots`) | 7.7 | shots, too-tall, look-then-act, asset origins, fill |
 | `8a5eaa45` (`mpipe-7.8-triage`) | 7.8 | triage: System 1 level 1 beside chrome; live 44 normal |
+| `64ae2e5` | 7.8+ | empty as 4th question (0 flips); 247-page run: 242 normal, 1 review, 4 empty |
