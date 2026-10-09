@@ -123,3 +123,4 @@ chrome and elements move.
 | `64ae2e5` | 7.8+ | empty as 4th question (0 flips); 247-page run: 242 normal, 1 review, 4 empty |
 | `ef3b80f` (`mpipe-7.9-sessions`) | 7.9 | chrome N sessions, phase timings; 246 pages in 3.3 min |
 | `b3f690d` (`mpipe-7.11-chrome-rules`) | 7.11 | six-site bench; chrome rules; review 108 → 20 |
+| `5b59a3a` (`mpipe-7.12-choose`) | 7.12 | candidate sheet + choose; MIT footer, -14 one header |
