@@ -126,3 +126,6 @@ chrome and elements move.
 | `5b59a3a` (`mpipe-7.12-choose`) | 7.12 | candidate sheet + choose; MIT footer, -14 one header |
 | `04812d2` (`mpipe-7.13-verdicts`) | 7.13 | verdicts, annotation sheet, sample; 7 sheets |
 | `9983ba86` (`mpipe-7.14..16`) | 7.16 | band capture ported; structure iteration 1; review sheets |
+| `e1e85a2c` | 7.16a | three capture faults seen on one aem.live page: curtain (fixed > 300 px), scroll after prepare (pinned, scrolled dump fails), clip-path-hidden panel |
+| `6fc3b30c` (`mpipe-7.17-pixels`) | 7.17 | the picture checks the band capture: bg-mismatch / unpainted / unclaimed-ink; 557 pages, 9 flagged, 0 wrongly |
+| `2aa05b2a` (`mpipe-7.18-misread`) | 7.18 | check runs with the chrome step; `misread` reason; report "Picture"; brief |
