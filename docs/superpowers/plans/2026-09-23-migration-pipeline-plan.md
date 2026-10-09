@@ -129,3 +129,5 @@ chrome and elements move.
 | `e1e85a2c` | 7.16a | three capture faults seen on one aem.live page: curtain (fixed > 300 px), scroll after prepare (pinned, scrolled dump fails), clip-path-hidden panel |
 | `6fc3b30c` (`mpipe-7.17-pixels`) | 7.17 | the picture checks the band capture: bg-mismatch / unpainted / unclaimed-ink; 557 pages, 9 flagged, 0 wrongly |
 | `2aa05b2a` (`mpipe-7.18-misread`) | 7.18 | check runs with the chrome step; `misread` reason; report "Picture"; brief |
+| `d0f94b77` (`mpipe-7.19-bandage`) | 7.19 | the nine misread pages, each looked at: images pinned before the shot (NASA 214 → 8 broken, re-reads 18 → 0), re-read while growing, FREEZE, pseudo-element paint, `access rendering "<css>"` (aem.live reveal), broken image / embed named in the detail; 9 → 4 flags on 316 pages |
+| `6a0d78df` (`mpipe-7.20-misread-ref`) | 7.20 | `references/misread-pages.md`: what each detail is, the act, what the capture already does and why, how to look |
