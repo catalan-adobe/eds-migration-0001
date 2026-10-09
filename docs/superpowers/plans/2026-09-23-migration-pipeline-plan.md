@@ -125,3 +125,4 @@ chrome and elements move.
 | `b3f690d` (`mpipe-7.11-chrome-rules`) | 7.11 | six-site bench; chrome rules; review 108 → 20 |
 | `5b59a3a` (`mpipe-7.12-choose`) | 7.12 | candidate sheet + choose; MIT footer, -14 one header |
 | `04812d2` (`mpipe-7.13-verdicts`) | 7.13 | verdicts, annotation sheet, sample; 7 sheets |
+| `9983ba86` (`mpipe-7.14..16`) | 7.16 | band capture ported; structure iteration 1; review sheets |
