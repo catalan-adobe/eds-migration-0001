@@ -67,7 +67,25 @@ Where the work stands at the model switch, so nothing depends on a conversation.
    Chas Hoff page found two layout faults, fixed (`f92df2f4`); the user's conclusion, which
    the assistant shares: isolated fixes are not a method for levels 2..N.
 
-## The open question (decide before more code)
+## 2026-10-11: levels 2..N decided and built (`mpipe-7.24-structure-tree`)
+
+Decided with the user: level 1 is the cut (page → unqualified bands); qualification is
+iterative — every section is cut and qualified again with the same three kinds, nested
+sections allowed while digging (flattening to EDS's one level is a later phase); a fourth
+kind `layout` (parts side by side), decided by Clef (`is_layout`, asked only when the
+parts are side by side); block types out of scope. Built as `qualify(cut(x))` with no
+level-specific code; see the skill's `references/structure-method.md` for the cut, the
+rules, the digging, the numbers and the instability of near ties. Lab scripts copied to
+`docs/research/2026-10-11-structure-tree-*.mjs` (`tree-stats` per site, `score-l1` and
+`matrix-nodes` against Haiku, `cuts-check` level-1 cuts against stored ones).
+
+**Next: the user marks the reviews** (`<project>/migration/views/structure-judge-10.html`,
+a mark per node: ok / the kind it should be / wrong cut, with a note; "Export marks"
+downloads `structure-marks-judge-10.json`). Marks carry the wording hash. Then: a schema
+for the marks (decision layer), scores against them, and only then wording or rule
+changes. Near ties move with wording; single pages cannot tell which wording is better.
+
+## The open question (as of 2026-10-10, now answered above)
 
 Level 2 is not level 1 again: inside a section EDS has items — text runs, blocks, side
 columns — and depth is fixed (section → items → block rows → cells). The judgement needed
