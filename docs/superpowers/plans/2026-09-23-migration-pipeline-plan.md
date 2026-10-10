@@ -138,3 +138,9 @@ chrome and elements move.
 | `f92df2f4` | 7.22a | a section's layout is what opening it found; a grid's columns are not a side layout (NASA Chas Hoff, read by the user) |
 | `0091a4c7` (`mpipe-7.23-structure-ref`) | 7.23 | `references/structure-method.md`: how the method was chosen, level 1 settled, level 2 built not settled, the contract proposed; handoff `docs/handoffs/2026-10-10-structure-levels-handoff.md` |
 | `0a765804` (`mpipe-7.24-structure-tree`) | 7.24 | one operation at every depth: cut (tree's columns / stack / wrappers / layers carried), qualify (section, block, default content, layout — `is_layout` only side by side), dig until nothing is a container; checks of default content holding parts; schema `pages/structure@3` (tree); review with per-node marks exported as JSON; 70 pages, 895 questions, ≈ $0.005/page, 6 unresolved |
+| `43f278b8` | 7.25a | the access recipe's stealth script injected into every session (stored, never applied; myastrazeneca.ch CloudFront 502) |
+| `16905a2a` | 7.25b | a chosen chrome part at two DOM positions is two variants (`DETECT_VERSION 6`) |
+| `1a710767` | 7.25c | capture: fixed backgrounds scroll, overflow across clipped, a kept fixed header bar's background recorded (`CAPTURE_VERSION 12`); browser fixture test |
+| `0341c75f` | 7.25d | access: a rerun keeps a reader's overlays (`by: reader`) and rendering rules; `access rendering --remove` |
+| `73a230ed` | 7.25e | structure: prose runs at the first level, default runs on one ground, checks before merges, alike items (lists of cards) as one block |
+| `50bd2fe2` (`mpipe-7.25-bench-level3`) | 7.25 | seven new sites through the pipeline (`bench-level3`), reviews with marks; 70 pages, 1 361 questions, ≈ $0.005/page median |

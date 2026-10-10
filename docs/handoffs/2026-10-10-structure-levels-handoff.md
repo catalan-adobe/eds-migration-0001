@@ -85,6 +85,18 @@ downloads `structure-marks-judge-10.json`). Marks carry the wording hash. Then: 
 for the marks (decision layer), scores against them, and only then wording or rule
 changes. Near ties move with wording; single pages cannot tell which wording is better.
 
+## 2026-10-11: seven more sites (`mpipe-7.25-bench-level3`)
+
+`~/repos/ai/migration-tests/bench-level3/{astrazeneca,continental,wkndadv,aig,moose,gehc,jsw}`
+(myastrazeneca.ch, continental.com/en, wknd-adventures.com, aig.com, moosemountainvineyards
+.com, gehealthcare.com/en-us, jsw.in): discover → access (probe, prep, verified on three
+pages) → cache 50 (+5 audit), asset origins named and filled → chrome (choices on four
+sites) → triage → `judge-10` → structure → review at `migration/views/structure-judge-10
+.html`. Each site's notes say what was seen and done. The generic fixes are in the ledger
+(7.25a–e) and `references/structure-method.md` ("Seven more sites"). bench-level2 was NOT
+rerun: its captures are stale by version (12) and its structures predate 7.25e, so its
+reviews, and any marks on them, stay as they were.
+
 ## The open question (as of 2026-10-10, now answered above)
 
 Level 2 is not level 1 again: inside a section EDS has items — text runs, blocks, side
