@@ -43,6 +43,10 @@ export function factsOf(project) {
     unresolved: structures.filter(Boolean)
       .map((s) => walk(s.bands).filter((n) => n.unresolved).length),
     review: existsSync(path.join(m, 'views', `structure-${SAMPLE}.html`)),
+    // Judgement, not checked: what the agent named and wrote, beside the baseline's.
+    assetOrigins: read(path.join(m, 'migration.json'))?.source?.assetOrigins ?? [],
+    overlays: (read(path.join(m, 'website', 'access.json'))?.overlays ?? [])
+      .map((o) => `${o.action} ${o.selector}`),
   };
 }
 

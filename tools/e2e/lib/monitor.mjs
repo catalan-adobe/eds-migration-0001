@@ -35,6 +35,24 @@ export function readSessions(dir) {
   return out;
 }
 
+export const S1_PRICE = 0.24e-6; // System 1 (Clef) per input token; its output is free
+
+/**
+ * The input tokens System 1 read for the project: every triage run's (from its summary)
+ * and every page's structure (from its usage).
+ */
+export function systemOneTokens(project) {
+  const m = path.join(project, 'migration');
+  const triage = files(path.join(m, 'runs'), (f) => f.endsWith('-triage.json')
+    || /-triage-\d+\.json$/.test(f))
+    .map((f) => JSON.parse(readFileSync(f, 'utf8')).summary ?? '')
+    .reduce((n, s) => n + Number(/(\d+) input tokens/.exec(s)?.[1] ?? 0), 0);
+  const structure = files(path.join(m, 'pages'), (d) => d.startsWith('pag-'))
+    .map((d) => path.join(d, 'structure.candidates-system1.json')).filter((f) => existsSync(f))
+    .reduce((n, f) => n + (JSON.parse(readFileSync(f, 'utf8')).usage?.inputTokens ?? 0), 0);
+  return triage + structure;
+}
+
 /** The project's step states (as last written) and its runs, latest last. */
 export function readProject(project) {
   const m = path.join(project, 'migration');
@@ -70,11 +88,13 @@ export function snapshot({ project, sessionsDir, startedAt, now = new Date() }) 
   const sessions = readSessions(sessionsDir);
   const proj = readProject(project);
   const workflows = readWorkflows(project, sessions.files);
-  const cost = Object.values(sessions.cost).reduce((a, b) => a + b, 0)
+  const s1 = systemOneTokens(project);
+  const costByModel = { ...sessions.cost, ...(s1 ? { system1: s1 * S1_PRICE } : {}) };
+  const cost = Object.values(costByModel).reduce((a, b) => a + b, 0)
     + workflows.reduce((a, w) => a + w.cost, 0);
   return {
     at: now.toISOString(), minutes: Math.round((now - new Date(startedAt)) / 60000),
-    cost: Number(cost.toFixed(4)), costByModel: sessions.cost, turns: sessions.turns,
+    cost: Number(cost.toFixed(4)), costByModel, s1Tokens: s1, turns: sessions.turns,
     toolCalls: sessions.toolCalls, toolErrors: sessions.toolErrors, lastAt: sessions.lastAt,
     steps: proj.steps, progress: proj.progress, runs: proj.runs.length,
     // a detached worker's progress: the pages its latest run has done

@@ -4,7 +4,7 @@ import { mkdirSync, mkdtempSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { checks, factsOf } from './checks.mjs';
-import { readSessions, verdict } from './monitor.mjs';
+import { readSessions, systemOneTokens, verdict } from './monitor.mjs';
 import { runId, validate } from './prepare.mjs';
 import { leadPrompt } from './prompts.mjs';
 import { piArgs } from '../run.mjs';
@@ -109,4 +109,18 @@ test('a run: validated config, its id, the isolated pi command line, the lead pr
     assert.ok(prompt.includes(s), s);
   }
   assert.ok(prompt.indexOf('note report agent') < prompt.indexOf('the report step, last'));
+});
+
+test('systemOneTokens: triage runs\' summaries and the structures\' usage', () => {
+  const project = tmp();
+  const m = path.join(project, 'migration');
+  put(path.join(m, 'runs', 'run-20261011T100000Z-triage.json'),
+    { summary: '40 of 44 page(s) looked at (4 failed, 120000 input tokens); of all…' });
+  put(path.join(m, 'runs', 'run-20261011T100000Z-triage-2.json'),
+    { summary: '4 of 4 page(s) looked at (0 failed, 9000 input tokens); …' });
+  put(path.join(m, 'runs', 'run-20261011T090000Z-cache.json'), { summary: '5 input tokens' });
+  put(path.join(m, 'pages', 'pag-1', 'structure.candidates-system1.json'),
+    { usage: { inputTokens: 30000 } });
+  put(path.join(m, 'pages', 'pag-2', 'visual-tree.json'), {});
+  assert.equal(systemOneTokens(project), 159000);
 });
