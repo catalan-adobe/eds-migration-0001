@@ -6,6 +6,8 @@
 // docs/superpowers/specs/2026-10-11-e2e-harness-design.md.
 //
 //   node tools/e2e/run.mjs <config.json> [--root <runs dir>] [--interval <seconds>]
+//   node tools/e2e/run.mjs --finish <run dir>   (result and retrospective of a run whose
+//                                               harness died after its agent ended)
 import { spawn, execFileSync } from 'node:child_process';
 import {
   appendFileSync, createWriteStream, existsSync, readFileSync, writeFileSync,
@@ -41,6 +43,12 @@ function arg(name, fallback) {
 function supervise(args, { cwd, log, monitorFile, sessionsDir, startedAt, budget, interval }) {
   return new Promise((resolve) => {
     const out = createWriteStream(log, { flags: 'a' });
+    // A log that cannot be written (a full disk) is recorded, not fatal to the supervision.
+    out.on('error', (err) => {
+      try { appendFileSync(monitorFile, `${JSON.stringify({ logError: err.message })}\n`); } catch {
+        /* the monitor log is on the same disk: nothing more to do */
+      }
+    });
     const child = spawn('pi', args, { cwd, stdio: ['ignore', 'pipe', 'pipe'] });
     child.stdout.pipe(out);
     child.stderr.pipe(out);
@@ -66,28 +74,19 @@ function supervise(args, { cwd, log, monitorFile, sessionsDir, startedAt, budget
   });
 }
 
-async function main() {
-  const file = process.argv[2];
-  if (!file) throw new Error('usage: run.mjs <config.json> [--root <dir>] [--interval <s>]');
-  const config = validate(JSON.parse(readFileSync(file, 'utf8')));
-  const root = arg('--root', path.join(os.homedir(), 'repos/ai/migration-tests/e2e-runs'));
-  const interval = Number(arg('--interval', 60));
-  const run = prepare(config, { root });
-  const skills = SKILLS.map((s) => path.join(run.skillsDir, s))
-    .concat(path.join(WORKFLOWS, 'skills', 'workflow-authoring'));
-  const paths = {
-    config: path.join(run.e2e, 'config.json'), monitor: path.join(run.e2e, 'monitor.jsonl'),
-    sessions: path.join(run.e2e, 'sessions'), result: path.join(run.e2e, 'result.json'),
-    retro: path.join(run.e2e, 'retro.md'), project: run.dir,
-  };
-  console.log(`run ${run.id} in ${run.dir}`);
-  const ended = await supervise(piArgs({ model: config.models.lead, thinking: config.thinking,
-    project: run.dir, sessionsDir: paths.sessions, prompt: leadPrompt(config), skills }), {
-    cwd: run.dir, log: path.join(run.e2e, 'pi.log'), monitorFile: paths.monitor,
-    sessionsDir: paths.sessions, startedAt: run.config.startedAt, budget: config.budget,
-    interval,
-  });
-  // The state as the steps stand now; the agent has ended, nothing else writes it.
+/** The paths of a run's record, from its directory. */
+const pathsOf = (dir) => ({
+  config: path.join(dir, 'e2e', 'config.json'), monitor: path.join(dir, 'e2e', 'monitor.jsonl'),
+  sessions: path.join(dir, 'e2e', 'sessions'), result: path.join(dir, 'e2e', 'result.json'),
+  retro: path.join(dir, 'e2e', 'retro.md'), project: dir,
+});
+
+/**
+ * After the agent: the state as the steps stand, the result checks, the retrospective.
+ * `ended`: how the agent ended (from supervision, or rebuilt from the monitor log).
+ */
+async function finish(run, config, ended, interval) {
+  const paths = pathsOf(run.dir);
   const pipeline = path.join(run.skillsDir, 'migration-pipeline', 'scripts', 'pipeline.mjs');
   try {
     writeFileSync(path.join(run.e2e, 'state.txt'),
@@ -108,6 +107,41 @@ async function main() {
     budget: { usd: 5, hours: 1, stallMinutes: 15 }, interval,
   });
   console.log(`retrospective: ${paths.retro}`);
+}
+
+/** `--finish <run dir>`: a run whose harness died after its agent ended, finished. */
+async function finishOnly(dir, interval) {
+  const config = JSON.parse(readFileSync(path.join(dir, 'e2e', 'config.json'), 'utf8'));
+  const lines = readFileSync(path.join(dir, 'e2e', 'monitor.jsonl'), 'utf8').trim().split('\n')
+    .map((l) => JSON.parse(l));
+  const last = lines.filter((l) => l.cost !== undefined).at(-1);
+  const stop = lines.find((l) => l.stop)?.stop ?? null;
+  const run = { id: config.id, dir, e2e: path.join(dir, 'e2e'),
+    skillsDir: path.join(dir, '.agents', 'skills') };
+  await finish(run, config, { code: null, signal: 'harness died', stopped: stop,
+    cost: last?.cost ?? 0 }, interval);
+}
+
+async function main() {
+  const interval = Number(arg('--interval', 60));
+  const done = arg('--finish', null);
+  if (done) return finishOnly(path.resolve(done), interval);
+  const file = process.argv[2];
+  if (!file) throw new Error('usage: run.mjs <config.json> [--root <dir>] [--interval <s>]');
+  const config = validate(JSON.parse(readFileSync(file, 'utf8')));
+  const root = arg('--root', path.join(os.homedir(), 'repos/ai/migration-tests/e2e-runs'));
+  const run = prepare(config, { root });
+  const skills = SKILLS.map((s) => path.join(run.skillsDir, s))
+    .concat(path.join(WORKFLOWS, 'skills', 'workflow-authoring'));
+  const paths = pathsOf(run.dir);
+  console.log(`run ${run.id} in ${run.dir}`);
+  const ended = await supervise(piArgs({ model: config.models.lead, thinking: config.thinking,
+    project: run.dir, sessionsDir: paths.sessions, prompt: leadPrompt(config), skills }), {
+    cwd: run.dir, log: path.join(run.e2e, 'pi.log'), monitorFile: paths.monitor,
+    sessionsDir: paths.sessions, startedAt: run.config.startedAt, budget: config.budget,
+    interval,
+  });
+  return finish(run, config, ended, interval);
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

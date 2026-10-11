@@ -10,7 +10,7 @@
   "thinking": "medium",
   "skills": {
     "repo": "/Users/catalan/repos/adobe-skills/.worktrees/eds-content-pipeline",
-    "ref": "93dda57c4ca4b2908a8684f3fa2d3168ac82fbe3"
+    "ref": "f43299dfaabe7864db1b01957583051fe3a8e386"
   },
   "operator": "Cache 50 pages with 5 audits from excluded groups. Decide single pages and chrome as you see fit, and say why in a note.",
   "budget": {
