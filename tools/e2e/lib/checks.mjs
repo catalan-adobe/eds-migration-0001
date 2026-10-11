@@ -18,8 +18,9 @@ export function factsOf(project) {
   const table = read(path.join(m, 'pages', 'pages.json'));
   const fragments = read(path.join(m, 'website', 'fragments.json'))?.fragments ?? [];
   const partOf = new Map(fragments.map((f) => [f.id, f.part]));
-  const pages = (table?.pages ?? []).filter((p) => (
-    existsSync(path.join(m, 'pages', p.id, 'visual-tree.json'))));
+  // The pages still in the migration and read: a page decided out counts for nothing.
+  const pages = (table?.pages ?? []).filter((p) => p.verdict?.status !== 'out'
+    && existsSync(path.join(m, 'pages', p.id, 'visual-tree.json')));
   const parts = (p) => new Set((read(path.join(m, 'pages', p.id, 'composition.json'))
     ?.fragments ?? []).map((f) => partOf.get(f.ref)));
   const sample = read(path.join(m, 'pages', 'selections', `${SAMPLE}.json`));
@@ -33,6 +34,8 @@ export function factsOf(project) {
     misread: pages.filter((p) => (p.verdict?.reasons ?? []).some((r) => r.code === 'misread'))
       .length,
     sample: sample?.pages.length ?? 0,
+    sampleTriaged: (sample?.pages ?? []).filter((id) => (
+      existsSync(path.join(m, 'pages', id, 'triage.json')))).length,
     structured: structures.filter(Boolean).length,
     unresolved: structures.filter(Boolean)
       .map((s) => walk(s.bands).filter((n) => n.unresolved).length),
@@ -48,8 +51,8 @@ export function checks(f, { cost, budget }) {
   const list = [
     { id: 'steps', pass: !undone.length,
       value: undone.length ? `not done: ${undone}` : 'all done' },
-    { id: 'sample', pass: f.sample === 10 && f.structured === 10 && f.review,
-      value: `${f.structured}/${f.sample} structured,`
+    { id: 'sample', pass: f.sample === 10 && f.structured === 10 && f.sampleTriaged === 10
+      && f.review, value: `${f.structured}/${f.sample} structured, ${f.sampleTriaged} triaged,`
         + ` review ${f.review ? 'rendered' : 'missing'}` },
     { id: 'header', pass: share(f.withHeader, f.read) >= THRESHOLDS.chromeShare,
       value: share(f.withHeader, f.read), threshold: THRESHOLDS.chromeShare },

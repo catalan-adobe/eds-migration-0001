@@ -29,9 +29,10 @@ Headless. A step's worker runs detached; wait for it with \`sleep 60\` between t
 
 Where to stop. When discover, access, cache, chrome and triage are done:
 \`pipeline sample --count 10 --write judge-10\`, then \`pipeline structure judge-10\` (System 1
-env), then \`migration.mjs structure-review judge-10\`, then the report step. Then write one
-note — \`migration.mjs note report agent "<what you did, what you could not, what you
-decided and why>"\` — and end. If you cannot go on, write that note with why, and end.`;
+env), then \`migration.mjs structure-review judge-10\`. Then write one note —
+\`migration.mjs note report agent "<what you did, what you could not, what you decided and
+why>"\` — then the report step, last, so the report holds the note; and end. If a step
+cannot be done, do not go past it: write that note with why, and end.`;
 }
 
 /** What the retrospective agent is asked to write. */

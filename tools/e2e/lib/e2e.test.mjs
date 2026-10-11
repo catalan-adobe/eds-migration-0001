@@ -55,12 +55,15 @@ test('checks: steps, sample, chrome, misread, unresolved, budget — from the fi
   put(path.join(m, 'state.json'), { steps: ['discover', 'access', 'cache', 'chrome', 'triage']
     .map((id) => ({ id, state: 'done' })) });
   const ids = Array.from({ length: 10 }, (_, i) => `pag-00000000000${i}`);
-  put(path.join(m, 'pages', 'pages.json'), { pages: ids.map((id, i) => ({ id,
-    verdict: { reasons: i < 4 ? [{ code: 'misread', kind: 'flag' }] : [] } })) });
+  put(path.join(m, 'pages', 'pages.json'), { pages: [...ids.map((id, i) => ({ id,
+    verdict: { status: 'in', reasons: i < 4 ? [{ code: 'misread', kind: 'flag' }] : [] } })),
+  { id: 'pag-decided-out', verdict: { status: 'out', reasons: [] } }] });
+  put(path.join(m, 'pages', 'pag-decided-out', 'visual-tree.json'), {});
   put(path.join(m, 'website', 'fragments.json'), { fragments: [{ id: 'frg-h', part: 'header' },
     { id: 'frg-f', part: 'footer' }] });
   for (const [i, id] of ids.entries()) {
     put(path.join(m, 'pages', id, 'visual-tree.json'), {});
+    if (i > 0) put(path.join(m, 'pages', id, 'triage.json'), {});
     put(path.join(m, 'pages', id, 'composition.json'), { fragments: [{ ref: 'frg-h' },
       ...(i < 7 ? [{ ref: 'frg-f' }] : [])] });
     put(path.join(m, 'pages', id, 'structure.candidates-system1.json'), { bands: [
@@ -69,11 +72,11 @@ test('checks: steps, sample, chrome, misread, unresolved, budget — from the fi
   put(path.join(m, 'pages', 'selections', 'judge-10.json'), { pages: ids });
   put(path.join(m, 'views', 'structure-judge-10.html'), '<html></html>');
   const f = factsOf(project);
-  assert.deepEqual([f.read, f.withHeader, f.withFooter, f.misread, f.structured],
-    [10, 10, 7, 4, 10]);
+  assert.deepEqual([f.read, f.withHeader, f.withFooter, f.misread, f.structured,
+    f.sampleTriaged], [10, 10, 7, 4, 10, 9], 'the page decided out is not counted');
   const r = checks(f, { cost: 3, budget: { usd: 25 } });
   assert.deepEqual(Object.fromEntries(r.checks.map((c) => [c.id, c.pass])), { steps: true,
-    sample: true, header: true, footer: false, misread: false, unresolved: true, budget: true });
+    sample: false, header: true, footer: false, misread: false, unresolved: true, budget: true });
   assert.equal(r.pass, false);
 });
 
@@ -100,5 +103,8 @@ test('a run: validated config, its id, the isolated pi command line, the lead pr
   assert.equal(args.at(-1), 'go');
   const prompt = leadPrompt(config);
   for (const s of ['init --pages 50', '"Cache 50."', '--env-file=', 'background: false',
-    'adobe-llm/claude-haiku-5-5', 'structure judge-10']) assert.ok(prompt.includes(s), s);
+    'adobe-llm/claude-haiku-5-5', 'structure judge-10', 'do not go past it']) {
+    assert.ok(prompt.includes(s), s);
+  }
+  assert.ok(prompt.indexOf('note report agent') < prompt.indexOf('the report step, last'));
 });
