@@ -144,3 +144,4 @@ chrome and elements move.
 | `0341c75f` | 7.25d | access: a rerun keeps a reader's overlays (`by: reader`) and rendering rules; `access rendering --remove` |
 | `73a230ed` | 7.25e | structure: prose runs at the first level, default runs on one ground, checks before merges, alike items (lists of cards) as one block |
 | `50bd2fe2` (`mpipe-7.25-bench-level3`) | 7.25 | seven new sites through the pipeline (`bench-level3`), reviews with marks; 70 pages, 1 361 questions, ≈ $0.005/page median |
+| `6647b6e` ($W) | E2E-1 | e2e harness (`tools/e2e/run.mjs`); first run moose × Opus 5.5 (skills `50bd2fe`): 42 min, $3.61, FAIL on triage only — retro found the 1541 px → 5 px last triage slice (same 5 pages as bench-level3), protocol-relative asset origins neither counted nor stored, triage done before chrome, untriaged pages in `sample`; run dir `~/repos/ai/migration-tests/e2e-runs/moosemountainvineyards-com-opus-20261011T0914/e2e/retro.md` |
