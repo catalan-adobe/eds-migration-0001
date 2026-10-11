@@ -9,6 +9,7 @@ export const SAMPLE = 'judge-10';
 export const THRESHOLDS = { chromeShare: 0.8, misreadShare: 0.3, unresolvedPerPage: 2 };
 
 const read = (file) => (existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : null);
+const share = (n, d) => (d ? Number((n / d).toFixed(2)) : 0);
 const walk = (nodes) => nodes.flatMap((n) => [n, ...walk(n.children ?? [])]);
 
 /** The facts the checks read, from one project. */
@@ -18,11 +19,15 @@ export function factsOf(project) {
   const table = read(path.join(m, 'pages', 'pages.json'));
   const fragments = read(path.join(m, 'website', 'fragments.json'))?.fragments ?? [];
   const partOf = new Map(fragments.map((f) => [f.id, f.part]));
-  // Every page read: chrome is judged on all of them, a page decided out included —
-  // deciding the pages without a header out must not make the header look found.
-  const captured = (table?.pages ?? []).filter((p) => (
+  // Chrome is judged on the pages that are pages: still in, not parked by triage as a shell
+  // (empty, broken, unread). A page rightly decided out or parked must not count against
+  // it. Deciding the pages without a header out would pass the check: the share over every
+  // page read, and the count decided out, say so beside the baseline's.
+  const shell = (p) => (p.verdict?.reasons ?? []).some((r) => r.by === 'triage'
+    && ['empty', 'broken', 'unread'].includes(r.code));
+  const seen = (table?.pages ?? []).filter((p) => (
     existsSync(path.join(m, 'pages', p.id, 'visual-tree.json'))));
-  const pages = captured.filter((p) => p.verdict?.status !== 'out');
+  const pages = seen.filter((p) => p.verdict?.status !== 'out' && !shell(p));
   const parts = (p) => new Set((read(path.join(m, 'pages', p.id, 'composition.json'))
     ?.fragments ?? []).map((f) => partOf.get(f.ref)));
   const sample = read(path.join(m, 'pages', 'selections', `${SAMPLE}.json`));
@@ -30,10 +35,11 @@ export function factsOf(project) {
     read(path.join(m, 'pages', id, 'structure.candidates-system1.json'))));
   return {
     steps: Object.fromEntries((state?.steps ?? []).map((s) => [s.id, s.state])),
-    read: pages.length, captured: captured.length,
+    read: pages.length, captured: seen.length,
     out: (table?.pages ?? []).filter((p) => p.verdict?.status === 'out' && p.cache).length,
-    withHeader: captured.filter((p) => parts(p).has('header')).length,
-    withFooter: captured.filter((p) => parts(p).has('footer')).length,
+    withHeader: pages.filter((p) => parts(p).has('header')).length,
+    withFooter: pages.filter((p) => parts(p).has('footer')).length,
+    headerOnAll: share(seen.filter((p) => parts(p).has('header')).length, seen.length),
     misread: pages.filter((p) => (p.verdict?.reasons ?? []).some((r) => r.code === 'misread'))
       .length,
     sample: sample?.pages.length ?? 0,
@@ -50,7 +56,6 @@ export function factsOf(project) {
   };
 }
 
-const share = (n, d) => (d ? Number((n / d).toFixed(2)) : 0);
 
 /** The checks on one project's facts; `cost` and `budget` for the budget check. */
 export function checks(f, { cost, budget }) {
@@ -61,10 +66,10 @@ export function checks(f, { cost, budget }) {
     { id: 'sample', pass: f.sample === 10 && f.structured === 10 && f.sampleTriaged === 10
       && f.review, value: `${f.structured}/${f.sample} structured, ${f.sampleTriaged} triaged,`
         + ` review ${f.review ? 'rendered' : 'missing'}` },
-    { id: 'header', pass: share(f.withHeader, f.captured) >= THRESHOLDS.chromeShare,
-      value: share(f.withHeader, f.captured), threshold: THRESHOLDS.chromeShare },
-    { id: 'footer', pass: share(f.withFooter, f.captured) >= THRESHOLDS.chromeShare,
-      value: share(f.withFooter, f.captured), threshold: THRESHOLDS.chromeShare },
+    { id: 'header', pass: share(f.withHeader, f.read) >= THRESHOLDS.chromeShare,
+      value: share(f.withHeader, f.read), threshold: THRESHOLDS.chromeShare },
+    { id: 'footer', pass: share(f.withFooter, f.read) >= THRESHOLDS.chromeShare,
+      value: share(f.withFooter, f.read), threshold: THRESHOLDS.chromeShare },
     { id: 'report', pass: f.steps.report === 'done', value: f.steps.report ?? 'none' },
     { id: 'misread', pass: share(f.misread, f.read) <= THRESHOLDS.misreadShare,
       value: share(f.misread, f.read), threshold: THRESHOLDS.misreadShare },
