@@ -73,12 +73,14 @@ export function readProject(project) {
 /** The workflow runs a set of sessions started: name, status, cost. */
 export function readWorkflows(project, sessionFiles, home = os.homedir()) {
   const root = path.join(home, '.pi', 'workflows', 'projects');
-  const base = path.basename(project);
-  const dirs = files(root, (d) => d.startsWith(`${base}-`)).map((d) => path.join(d, 'runs'));
-  const own = new Set(sessionFiles);
+  // The extension names the directory after the project, lowercased.
+  const base = path.basename(project).toLowerCase();
+  const dirs = files(root, (d) => d.toLowerCase().startsWith(`${base}-`))
+    .map((d) => path.join(d, 'runs'));
+  const own = new Set(sessionFiles.map((f) => path.basename(f)));
   return dirs.flatMap((d) => files(d, (f) => f.endsWith('.json')))
     .map((f) => JSON.parse(readFileSync(f, 'utf8')).index ?? {})
-    .filter((r) => own.has(r.parentSessionFile))
+    .filter((r) => own.has(path.basename(r.parentSessionFile ?? '')))
     .map((r) => ({ id: r.runId, name: r.workflowName, status: r.status,
       cost: r.tokenUsage?.cost ?? 0, tokens: r.tokenUsage?.total ?? 0, ms: r.durationMs ?? null }));
 }

@@ -4,7 +4,7 @@ import { mkdirSync, mkdtempSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { checks, factsOf } from './checks.mjs';
-import { readSessions, systemOneTokens, verdict } from './monitor.mjs';
+import { readSessions, readWorkflows, systemOneTokens, verdict } from './monitor.mjs';
 import { runId, validate } from './prepare.mjs';
 import { leadPrompt } from './prompts.mjs';
 import { piArgs } from '../run.mjs';
@@ -126,4 +126,18 @@ test('systemOneTokens: triage runs\' summaries and the structures\' usage', () =
     { usage: { inputTokens: 30000 } });
   put(path.join(m, 'pages', 'pag-2', 'visual-tree.json'), {});
   assert.equal(systemOneTokens(project), 159000);
+});
+
+test('readWorkflows: the runs a session started, in the lowercased project directory', () => {
+  const home = tmp();
+  const project = path.join(tmp(), 'site-com-haiku-20261011T2247');
+  const session = path.join(project, 'e2e', 'sessions', 's1.jsonl');
+  const runs = path.join(home, '.pi', 'workflows', 'projects',
+    'site-com-haiku-20261011t2247-40ce04684144', 'runs');
+  put(path.join(runs, 'a.json'), { index: { runId: 'a', workflowName: 'access_step',
+    status: 'completed', parentSessionFile: session, tokenUsage: { cost: 0.48, total: 9 } } });
+  put(path.join(runs, 'b.json'), { index: { runId: 'b', parentSessionFile: '/other/s2.jsonl',
+    tokenUsage: { cost: 1 } } });
+  assert.deepEqual(readWorkflows(project, [session], home).map((w) => [w.id, w.cost]),
+    [['a', 0.48]]);
 });
