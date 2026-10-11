@@ -1,0 +1,9 @@
+{
+  "name": "migration-pipeline-e2e",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test \"lib/*.test.mjs\"",
+    "run": "node run.mjs"
+  }
+}

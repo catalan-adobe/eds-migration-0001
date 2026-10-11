@@ -1,0 +1,16 @@
+{
+  "domain": "https://www.moosemountainvineyards.com/",
+  "pages": 50,
+  "audit": 5,
+  "models": {
+    "lead": "adobe-llm/claude-opus-5-5",
+    "medium": "adobe-llm/claude-opus-5-5",
+    "low": "adobe-llm/claude-opus-5-5"
+  },
+  "thinking": "medium",
+  "skills": { "repo": "/Users/catalan/repos/adobe-skills/.worktrees/eds-content-pipeline", "ref": "50bd2fe2bbe356e5b4a40daa2bf152e423fb034a" },
+  "operator": "Cache 50 pages with 5 audits from excluded groups. Decide single pages and chrome as you see fit, and say why in a note.",
+  "budget": { "usd": 25, "hours": 4, "stallMinutes": 20 },
+  "s1Env": "/Users/catalan/repos/ai/gc/catalan/site-census/.worktrees/xp-cf-clef/.env.clef",
+  "baseline": "/Users/catalan/repos/ai/migration-tests/bench-level3/moose"
+}
