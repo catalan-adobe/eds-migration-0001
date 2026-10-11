@@ -53,11 +53,11 @@ test('checks: steps, sample, chrome, misread, unresolved, budget — from the fi
   const project = tmp();
   const m = path.join(project, 'migration');
   put(path.join(m, 'state.json'), { steps: ['discover', 'access', 'cache', 'chrome', 'triage']
-    .map((id) => ({ id, state: 'done' })) });
+    .map((id) => ({ id, state: 'done' })).concat({ id: 'report', state: 'ready' }) });
   const ids = Array.from({ length: 10 }, (_, i) => `pag-00000000000${i}`);
   put(path.join(m, 'pages', 'pages.json'), { pages: [...ids.map((id, i) => ({ id,
     verdict: { status: 'in', reasons: i < 4 ? [{ code: 'misread', kind: 'flag' }] : [] } })),
-  { id: 'pag-decided-out', verdict: { status: 'out', reasons: [] } }] });
+  { id: 'pag-decided-out', cache: {}, verdict: { status: 'out', reasons: [] } }] });
   put(path.join(m, 'pages', 'pag-decided-out', 'visual-tree.json'), {});
   put(path.join(m, 'website', 'fragments.json'), { fragments: [{ id: 'frg-h', part: 'header' },
     { id: 'frg-f', part: 'footer' }] });
@@ -72,11 +72,13 @@ test('checks: steps, sample, chrome, misread, unresolved, budget — from the fi
   put(path.join(m, 'pages', 'selections', 'judge-10.json'), { pages: ids });
   put(path.join(m, 'views', 'structure-judge-10.html'), '<html></html>');
   const f = factsOf(project);
-  assert.deepEqual([f.read, f.withHeader, f.withFooter, f.misread, f.structured,
-    f.sampleTriaged], [10, 10, 7, 4, 10, 9], 'the page decided out is not counted');
+  assert.deepEqual([f.read, f.captured, f.out, f.withHeader, f.withFooter, f.misread,
+    f.structured, f.sampleTriaged], [10, 11, 1, 10, 7, 4, 10, 9],
+  'chrome judged on every page read, the one decided out included (it has no header)');
   const r = checks(f, { cost: 3, budget: { usd: 25 } });
   assert.deepEqual(Object.fromEntries(r.checks.map((c) => [c.id, c.pass])), { steps: true,
-    sample: false, header: true, footer: false, misread: false, unresolved: true, budget: true });
+    sample: false, header: true, footer: false, report: false, misread: false,
+    unresolved: true, budget: true });
   assert.equal(r.pass, false);
 });
 

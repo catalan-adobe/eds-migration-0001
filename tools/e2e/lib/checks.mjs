@@ -18,9 +18,11 @@ export function factsOf(project) {
   const table = read(path.join(m, 'pages', 'pages.json'));
   const fragments = read(path.join(m, 'website', 'fragments.json'))?.fragments ?? [];
   const partOf = new Map(fragments.map((f) => [f.id, f.part]));
-  // The pages still in the migration and read: a page decided out counts for nothing.
-  const pages = (table?.pages ?? []).filter((p) => p.verdict?.status !== 'out'
-    && existsSync(path.join(m, 'pages', p.id, 'visual-tree.json')));
+  // Every page read: chrome is judged on all of them, a page decided out included —
+  // deciding the pages without a header out must not make the header look found.
+  const captured = (table?.pages ?? []).filter((p) => (
+    existsSync(path.join(m, 'pages', p.id, 'visual-tree.json'))));
+  const pages = captured.filter((p) => p.verdict?.status !== 'out');
   const parts = (p) => new Set((read(path.join(m, 'pages', p.id, 'composition.json'))
     ?.fragments ?? []).map((f) => partOf.get(f.ref)));
   const sample = read(path.join(m, 'pages', 'selections', `${SAMPLE}.json`));
@@ -28,9 +30,10 @@ export function factsOf(project) {
     read(path.join(m, 'pages', id, 'structure.candidates-system1.json'))));
   return {
     steps: Object.fromEntries((state?.steps ?? []).map((s) => [s.id, s.state])),
-    read: pages.length,
-    withHeader: pages.filter((p) => parts(p).has('header')).length,
-    withFooter: pages.filter((p) => parts(p).has('footer')).length,
+    read: pages.length, captured: captured.length,
+    out: (table?.pages ?? []).filter((p) => p.verdict?.status === 'out' && p.cache).length,
+    withHeader: captured.filter((p) => parts(p).has('header')).length,
+    withFooter: captured.filter((p) => parts(p).has('footer')).length,
     misread: pages.filter((p) => (p.verdict?.reasons ?? []).some((r) => r.code === 'misread'))
       .length,
     sample: sample?.pages.length ?? 0,
@@ -54,10 +57,11 @@ export function checks(f, { cost, budget }) {
     { id: 'sample', pass: f.sample === 10 && f.structured === 10 && f.sampleTriaged === 10
       && f.review, value: `${f.structured}/${f.sample} structured, ${f.sampleTriaged} triaged,`
         + ` review ${f.review ? 'rendered' : 'missing'}` },
-    { id: 'header', pass: share(f.withHeader, f.read) >= THRESHOLDS.chromeShare,
-      value: share(f.withHeader, f.read), threshold: THRESHOLDS.chromeShare },
-    { id: 'footer', pass: share(f.withFooter, f.read) >= THRESHOLDS.chromeShare,
-      value: share(f.withFooter, f.read), threshold: THRESHOLDS.chromeShare },
+    { id: 'header', pass: share(f.withHeader, f.captured) >= THRESHOLDS.chromeShare,
+      value: share(f.withHeader, f.captured), threshold: THRESHOLDS.chromeShare },
+    { id: 'footer', pass: share(f.withFooter, f.captured) >= THRESHOLDS.chromeShare,
+      value: share(f.withFooter, f.captured), threshold: THRESHOLDS.chromeShare },
+    { id: 'report', pass: f.steps.report === 'done', value: f.steps.report ?? 'none' },
     { id: 'misread', pass: share(f.misread, f.read) <= THRESHOLDS.misreadShare,
       value: share(f.misread, f.read), threshold: THRESHOLDS.misreadShare },
     { id: 'unresolved', pass: f.unresolved.every((n) => n <= THRESHOLDS.unresolvedPerPage),
