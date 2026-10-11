@@ -97,6 +97,18 @@ sites) → triage → `judge-10` → structure → review at `migration/views/st
 rerun: its captures are stale by version (12) and its structures predate 7.25e, so its
 reviews, and any marks on them, stay as they were.
 
+## 2026-10-11/12: the E2E harness
+
+`tools/e2e/run.mjs <config>` (design: `docs/superpowers/specs/2026-10-11-e2e-harness-design.md`):
+a fresh agent runs the skill end to end on a domain, isolated, monitored, then result checks
+and a retrospective. Runs under `~/repos/ai/migration-tests/e2e-runs/`; configs in
+`tools/e2e/configs/`; `watch.sh <run> <out>` there for one line of progress. Results in the
+ledger (E2E-1…3): moose and AstraZeneca pass on Opus, Sonnet and Haiku 5.5 after the fixes
+the retrospectives found; Haiku costs $0.08–0.10 a run, Sonnet $0.73–1.06, Opus $2.83–3.98.
+The checks do not yet measure judgement (asset origins named, pages decided out): the
+retrospectives do. Next: the open items of E2E-3 in the ledger, then a third domain (JSW or
+Continental), then model combinations.
+
 ## The open question (as of 2026-10-10, now answered above)
 
 Level 2 is not level 1 again: inside a section EDS has items — text runs, blocks, side
