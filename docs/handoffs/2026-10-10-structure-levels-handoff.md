@@ -148,3 +148,37 @@ from a Haiku run on the 93 opened sections (~$0.03) as a stand-in.
 - Haiku's own reference is inconsistent in places (MIT article + rail `default_content/
   main-left` vs MDN `section/main-left`; "Germany heading + addresses" merged, "Ireland +
   Netherlands" not): a human reference is due.
+
+## State at the end of the 2026-10-11/12 session (for the next one)
+
+**Waiting on the user: marks on 15 structure reviews**, then a schema for the marks and the
+method scored against them before any wording or rule changes. Each review shows every level
+(depth up to 6) with a mark per node; "Export marks" downloads
+`structure-marks-judge-10.json`. All on one version (capture 12, detection 7, wording
+`abeae857`, skills `cfcd980`):
+- bench-level2: `~/repos/ai/migration-tests/bench-level2/{wknd,aemlive,nasa,mdn,mit,govuk}`
+  and Synopsys `~/repos/ai/migration-tests/eds-projects/test-content-pipeline-0001/eds-mig-20260914-14`
+- bench-level3: `~/repos/ai/migration-tests/bench-level3/{astrazeneca,continental,wkndadv,aig,moose,gehc,jsw}`
+- backlinko.com (Sonnet E2E run): `~/repos/ai/migration-tests/e2e-runs/backlinko-com-sonnet-20261012T1343`
+- each at `migration/views/structure-judge-10.html`. The folder names are not method
+  levels: both benches ran the full recursive structure.
+
+**Runs**: E2E runs use Sonnet 5.5 at least unless the user names a model.
+`node tools/e2e/run.mjs <config>`; `tools/e2e/watch.sh <run-prefix> <harness-out>` prints
+one line of progress; `--finish <run dir>` completes a run whose harness died.
+`docs/research/2026-10-12-bench-stats.mjs <project>...` prints the structure stats of the
+review set.
+
+**Brand** (added by session 01a13019, commits `fb343cba`, `b93a51d4`, tag `mpipe-7.25-brand`
+— **local, not pushed**, left to that session): run alone on the backlinko Sonnet project with
+`docs/research/2026-10-12-run-brand.mjs <project>` (only `brand()`; `pipeline chrome` would
+rerun detection and reset the compositions structure wrote): name "Backlinko" (JSON-LD, 5/5
+pages), SVG logo in the header (188 x 25, 5/5), `fragments/frg-acbbb2d36b80/logo.svg`; chrome
+stays done. A brand-only command in the pipeline is a candidate.
+
+**Open, by source**: each E2E run's `retro.md` section 8 (most valuable first), notably:
+`assets` replaces instead of adding (backlinko Haiku lost 4 tool pages); lazy `<picture>`
+blank offline; long articles parked too-tall (tile the screenshot); a sibling subdomain's
+CSS/JS as page assets; the structure's unresolved containers (Continental, GE) and card rows
+read as `l[b d d]` (backlinko `/hub/seo`); an image-layer hero read as header chrome
+(wknd-adventures); AIG's translucent panels misread.
