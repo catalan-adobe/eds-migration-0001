@@ -105,9 +105,12 @@ and a retrospective. Runs under `~/repos/ai/migration-tests/e2e-runs/`; configs 
 `tools/e2e/configs/`; `watch.sh <run> <out>` there for one line of progress. Results in the
 ledger (E2E-1…3): moose and AstraZeneca pass on Opus, Sonnet and Haiku 5.5 after the fixes
 the retrospectives found; Haiku costs $0.08–0.10 a run, Sonnet $0.73–1.06, Opus $2.83–3.98.
-The checks do not yet measure judgement (asset origins named, pages decided out): the
-retrospectives do. Next: the open items of E2E-3 in the ledger, then a third domain (JSW or
-Continental), then model combinations.
+The checks do not measure judgement (asset origins named, pages decided out); the facts
+show it beside the baseline's, and the retrospectives judge it. As of E2E-5: four sites
+(moose, AstraZeneca, JSW, Continental) end to end on Haiku 5.5 alone for $0.08–0.21 a run;
+a Haiku-lead/Sonnet-medium mix on Continental cost 5× and changed nothing measurable.
+Open: the structure method's unresolved containers (Continental's press page, 3), the
+retrospectives' remaining lists (each run's `retro.md`, section 8), more sites.
 
 ## The open question (as of 2026-10-10, now answered above)
 
