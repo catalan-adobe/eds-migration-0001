@@ -112,6 +112,11 @@ a Haiku-lead/Sonnet-medium mix on Continental cost 5× and changed nothing measu
 Open: the structure method's unresolved containers (Continental's press page, 3), the
 retrospectives' remaining lists (each run's `retro.md`, section 8), more sites.
 
+2026-10-12: both benches brought to one version for the user's marks — bench-level2
+recaptured (capture 12) and triaged again, all 14 projects re-detected (detection 7),
+structure rerun on every `judge-10` (wording `abeae857`, skills `cfcd980`), reviews
+re-rendered. Same samples. Marks from the reviews: `structure-marks-judge-10.json`.
+
 ## The open question (as of 2026-10-10, now answered above)
 
 Level 2 is not level 1 again: inside a section EDS has items — text runs, blocks, side
