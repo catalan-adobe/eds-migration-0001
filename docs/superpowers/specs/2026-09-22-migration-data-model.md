@@ -59,7 +59,7 @@ migration/
       composition.json      the page in EDS shape: fragments, sections, items     derived
       shots/                crops taken on this page                                evidence
   fragments/<id>/           a shared document's artefacts
-      logo.<ext>            the header's logo as the site serves it (brand.json)   evidence
+      logo.<ext>            the header's logo: svg markup or a picture (brand.json)  evidence
       composition.json      the fragment in EDS shape (a header has its bands here) derived
   cache/                    the site's bodies and assets (the proxy's own layout)   raw
   elements/                 the site's vocabulary
@@ -174,6 +174,7 @@ has one brand, however many pages show it.
 
 ```json
 { "schema": "website/brand@1", "updatedAt": "…", "summary": "JSW; svg logo in the header",
+  "method": { "name": "visual-tree", "at": "…", "inputs": "<the fragments' method.inputs>" },
   "name": { "value": "JSW", "source": "json-ld",
     "candidates": [ { "value": "JSW", "source": "json-ld", "pages": 12 },
                     { "value": "JSW Steel", "source": "title", "pages": 12 } ] },
@@ -182,15 +183,17 @@ has one brand, however many pages show it.
     "width": 120, "height": 40, "pages": 12 } }
 ```
 
+- `method.inputs` repeats the header detection's, so a header found again makes the brand
+  stale: the check is a comparison of hashes inside the data, not of dates.
 - `name.source` is where the chosen value came from — `json-ld` (`Organization.name`),
   `og:site_name`, `application-name`, `logo-alt`, `title` — and `candidates` keeps the others
   with the number of pages that agree, so a disagreement is visible, not resolved silently.
 - `logo` points at the header fragment it was found in (`frg-` id, by id, never by string)
-  and at its `asset` under that fragment's directory; the file is the logo as the site
-  serves it (an `svg` kept as is, an `img` as the cache holds it) and is not inlined here
-  (principle 7). `src` is the image URL when `kind` is `img`; `pages` is how many of the
-  sampled pages carry it. The home page and a sample of others are read; a page with a
-  different logo is a campaign design and is not folded in.
+  and at its `asset` under that fragment's directory; the file is the
+  logo (an `svg` as its markup, an `img` as a picture of the element, `src` naming the
+  original) and is not inlined here (principle 7). `src` is the image URL when `kind` is
+  `img`; `pages` is how many of the sampled pages carry it. The home page and a sample of
+  others are read; a page with a different logo is a campaign design and is not folded in.
 - A site with no readable name or no logo still writes the file, with `name` or `logo`
   `null` and the reason in `summary`; the step reports it as a flag, it does not block.
 - Nothing about a single page lives here (principle 5): the counts are summaries.
