@@ -117,6 +117,9 @@ recaptured (capture 12) and triaged again, all 14 projects re-detected (detectio
 structure rerun on every `judge-10` (wording `abeae857`, skills `cfcd980`), reviews
 re-rendered. Same samples. Marks from the reviews: `structure-marks-judge-10.json`.
 
+E2E runs use Sonnet 5.5 at least unless the user names a model (user, 2026-10-12). The 15th
+review in the marking set is backlinko.com, from a Sonnet run (E2E-7).
+
 ## The open question (as of 2026-10-10, now answered above)
 
 Level 2 is not level 1 again: inside a section EDS has items — text runs, blocks, side

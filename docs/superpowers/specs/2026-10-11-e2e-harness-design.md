@@ -77,6 +77,9 @@ all three is a single-model run.
      for their seven domains — not ground truth).
 - **Order of runs**: one domain on Opus to validate the harness; then Sonnet; then Haiku;
   then combinations (Opus lead, Haiku `low`) where a single model failed.
+- **The model of a run, unless the user names one: Sonnet 5.5 at least** (user, 2026-10-12).
+  Haiku passed four sites, but its retrospectives found it judging less well (missed origins,
+  notes unbacked); a run that feeds the review set or a baseline is a Sonnet run or better.
 - **Headless specifics given in the prompt** (the briefs assume a person between turns):
   workflows with `background: false` (a background workflow would end a `-p` session);
   waiting for a detached worker by `sleep 60` between `state --text` checks.
