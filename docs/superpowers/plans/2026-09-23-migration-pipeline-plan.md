@@ -35,6 +35,10 @@ ledger row; replay before any detection change; nothing about a site in the engi
   schema `methods/visual-tree/tree@1`, registered by this skill — the layer accepts a
   client's schemas). Capture is a phase of the `chrome` run, not a step: `chrome` captures
   what is missing, then detects. `elements` reuses the trees.
+- **Brand is a phase of the `chrome` run, not a step**: after detection, the run reads the
+  header fragment and writes `website/brand.json` (schema `website/brand@1`, derived) and
+  the logo as evidence under `fragments/<id>/`. `STEPS` is unchanged; the `chrome` check
+  fails while `brand.json` is older than `fragments.json`. No brand is a flag, not a failure.
 - **`chrome` writes compositions**: template fragments resolved, `sections: []`,
   `omitted` with what it dropped; `elements` rewrites them with sections. A composition
   without items reads as empty until `elements` runs — the inventory says so.
@@ -100,6 +104,22 @@ ledger row; replay before any detection change; nothing about a site in the engi
 - Dashboard on the new files; integration test.
 - Replay harness re-pointed; expectations re-recorded in the new shapes.
 - `migration-pipeline` documented; tag.
+
+### 7.25 Brand (a phase of chrome)
+
+Spec: data model §3 `website/brand.json`.
+
+- `migration-data`: register `website/brand@1`, `readBrand` / `writeBrand` in
+  `lib/website.mjs`, schema test (accepts the shape, rejects the wrong one); the spec copy
+  `references/data-model.md` brought level with the spec here.
+- `migration-pipeline`: `lib/brand.mjs` (logo from the header region with page-collect's
+  icon/logo classifier; name candidates from JSON-LD, `og:site_name`, `application-name`,
+  logo alt, `<title>`), called by the chrome worker after detection; the logo to
+  `fragments/<id>/logo.<ext>`; a run summary naming what was found; the `chrome` check;
+  `steps/chrome.md` one method item and one output; `references/brand.md`.
+- Dashboard (`dashboard/server`): `store.ts` declares `website.readBrand`; `factory.ts`
+  adds `brand` to `Factory`; `api.ts` comments it; `pnpm api-docs`; a `factory.test.ts` case.
+- e2e: a check that a chrome run left a `brand.json` valid to its schema.
 
 ## First runnable slice
 

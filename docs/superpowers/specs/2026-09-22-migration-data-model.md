@@ -50,6 +50,7 @@ migration/
     website.json            origin, scope, how it was discovered, languages, groups derived
     access.json             how to open a page: bot-protection recipe, overlays     decision
     fragments.json          the shared documents: header, footer (template), inline  derived
+    brand.json              the site's name and logo, read from the header          derived
   pages/                    the pages
     pages.json              the table: one record per URL, with its verdict         derived+facts
     selections/<name>.json  a named set of page ids with its criteria               decision
@@ -58,6 +59,7 @@ migration/
       composition.json      the page in EDS shape: fragments, sections, items     derived
       shots/                crops taken on this page                                evidence
   fragments/<id>/           a shared document's artefacts
+      logo.<ext>            the header's logo as the site serves it (brand.json)   evidence
       composition.json      the fragment in EDS shape (a header has its bands here) derived
   cache/                    the site's bodies and assets (the proxy's own layout)   raw
   elements/                 the site's vocabulary
@@ -162,6 +164,36 @@ their own ids and labels. Which pages use a fragment is not stored here: the pag
 (its composition, summarised on its record), and "pages using X" is a query. Each
 fragment has a composition like a page's under `fragments/<id>/` — a header's bands are
 its sections, decomposable into blocks like any document.
+
+### website/brand.json — *derived*
+
+The site's name and logo, **source facts** read from the rendered header (the target's own
+brand is the build phase's, not this file's). Written by the `chrome` run after it has
+found the header, rebuildable from the cache and `fragments.json`; one file because a site
+has one brand, however many pages show it.
+
+```json
+{ "schema": "website/brand@1", "updatedAt": "…", "summary": "JSW; svg logo in the header",
+  "name": { "value": "JSW", "source": "json-ld",
+    "candidates": [ { "value": "JSW", "source": "json-ld", "pages": 12 },
+                    { "value": "JSW Steel", "source": "title", "pages": 12 } ] },
+  "logo": { "fragment": "frg-0a1b2c3d4e5f", "selector": "header a.logo svg", "kind": "svg",
+    "alt": "JSW", "src": null, "asset": "fragments/frg-0a1b2c3d4e5f/logo.svg",
+    "width": 120, "height": 40, "pages": 12 } }
+```
+
+- `name.source` is where the chosen value came from — `json-ld` (`Organization.name`),
+  `og:site_name`, `application-name`, `logo-alt`, `title` — and `candidates` keeps the others
+  with the number of pages that agree, so a disagreement is visible, not resolved silently.
+- `logo` points at the header fragment it was found in (`frg-` id, by id, never by string)
+  and at its `asset` under that fragment's directory; the file is the logo as the site
+  serves it (an `svg` kept as is, an `img` as the cache holds it) and is not inlined here
+  (principle 7). `src` is the image URL when `kind` is `img`; `pages` is how many of the
+  sampled pages carry it. The home page and a sample of others are read; a page with a
+  different logo is a campaign design and is not folded in.
+- A site with no readable name or no logo still writes the file, with `name` or `logo`
+  `null` and the reason in `summary`; the step reports it as a flag, it does not block.
+- Nothing about a single page lives here (principle 5): the counts are summaries.
 
 ### pages/pages.json — *derived + facts*
 
@@ -342,6 +374,8 @@ Decided here:
 - Four domain units (migration, website, pages, elements) plus runs, notes, evidence,
   views; the target becomes a unit when the build phase needs it.
 - Ids everywhere, 12 hex; classes per file; schemas per file; one access layer.
+- The brand (name, logo) is a source fact of the website, found in the header by the
+  `chrome` run: `website/brand.json`, not a step and not a page fact.
 - Per-page artefacts in `pages/<id>/`; the cache stays the proxy's own directory.
 - One composition schema per page, in EDS document shape (chrome, sections, items),
   `selector` mandatory, `bounds` optional, `omitted` recorded; open to any method.
