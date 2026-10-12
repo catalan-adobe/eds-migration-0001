@@ -74,7 +74,10 @@ test('checks: steps, sample, chrome, misread, unresolved, budget — from the fi
   }
   put(path.join(m, 'pages', 'selections', 'judge-10.json'), { pages: ids });
   put(path.join(m, 'views', 'structure-judge-10.html'), '<html></html>');
+  assert.equal(factsOf(project).brand, null, 'no brand file: nothing said, nothing failed');
+  put(path.join(m, 'website', 'brand.json'), { summary: 'JSW; svg logo in the header' });
   const f = factsOf(project);
+  assert.equal(f.brand, 'JSW; svg logo in the header', 'a judgement beside the baseline');
   assert.deepEqual([f.read, f.captured, f.out, f.withHeader, f.withFooter, f.headerOnAll,
     f.misread, f.structured, f.sampleTriaged], [10, 12, 2, 10, 7, 0.83, 4, 10, 9],
   'chrome judged on the pages still in; the share on every page read beside it');

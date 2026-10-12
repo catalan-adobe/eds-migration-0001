@@ -119,7 +119,8 @@ Spec: data model §3 `website/brand.json`.
   `steps/chrome.md` one method item and one output; `references/brand.md`.
 - Dashboard (`dashboard/server`): `store.ts` declares `website.readBrand`; `factory.ts`
   adds `brand` to `Factory`; `api.ts` comments it; `pnpm api-docs`; a `factory.test.ts` case.
-- e2e: a check that a chrome run left a `brand.json` valid to its schema.
+- e2e: the brand's summary as a judgement fact beside the baseline (`factsOf`), not a check:
+  no brand is a flag, it does not fail a run.
 
 ## First runnable slice
 
@@ -173,3 +174,4 @@ chrome and elements move.
 | `5f71ee9`, `012f111` ($W) | E2E-4 | jsw.in, skills `cfcd980`: **Opus PASS** 42 min $3.51 · **Sonnet PASS** 29 min $1.07 · **Haiku PASS** 51 min $0.18; all three named the S3 bucket and Google Fonts, hid the fraud modal and the cookie banner, wrote the GSAP rendering rule; Opus and Haiku decided 33 pages out, Sonnet 9 (parked instead); checks now judge chrome on pages that are pages (not decided out, not parked as shells), the share over all pages in the facts |
 | `012f111` ($W) | E2E-5 | continental.com/en: **Haiku leading, Sonnet on medium steps** 37 min $0.98 (Sonnet's access and chrome subagents $0.81) · **Haiku alone** 40 min $0.21; both fail only `unresolved` (3 on one sample page, as the baseline: the structure method's); both found the shadow-root consent manager and the specific selector it needs, named cdn.continental.com, header on every page; the mix bought nothing measurable at 5× the cost; monitor fix: workflow runs in the lowercased project directory |
 | `($W) configs/backlinko-haiku.json` | E2E-6 | backlinko.com, Haiku 5.5 alone, skills `cfcd980`: **PASS** 49 min $0.31 ($0.18 of it System 1: 412 structure questions, $0.015/page); review added to the marking set (`e2e-runs/backlinko-com-haiku-20261012T1145`); the retro says the pass hides losses: a second `assets` call replaced the first (tools.backlinko.com dropped, 4 tool pages lost), lazy `<picture>` images blank offline, 7 of 9 root pages too tall, 10 of 55 picks 404, an `rm` under `migration/` |
+| `fb343cba`, `b93a51d4` (`mpipe-7.25-brand`) | 7.25 | brand as a phase of chrome: `website/brand@1`, `lib/brand.mjs`, the check on `method.inputs`, `references/brand.md`; dashboard `Factory.brand`; e2e fact; read live on aem.live and MDN (in-page expression) |
